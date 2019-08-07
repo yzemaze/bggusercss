@@ -144,7 +144,7 @@
 	.legacy .module_title {
 		font-size: var(--fontSizeXL) !important;
 	}
-	.legacy, .legacy .innermoduletable td {
+	.legacy, .legacy .innermoduletable td, .legacy .quotetitle, .legacy .quote {
 		font-size: var(--fontSizeL) !important;
 	}
 	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments {
