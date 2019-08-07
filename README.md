@@ -1,2 +1,2 @@
-# bgg.user.css
+# bggusercss
 user.css for boardgamegeek.com
