@@ -1,0 +1,238 @@
+/* ==UserStyle==
+@name			BGG UI Customizer
+@description	Easy customization of BGG's UI with user.css
+@namespace		github.com/yzemaze/bggusercss/
+@version		0.2.0
+@author			yzemaze
+@changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
+@license		CC-BY-NC 4.0
+@var			checkbox	headerBgGrad		'Change header background'				0
+@advanced		color		headerBgGrad0		'… gradient start (top)'				#3f3a60
+@advanced		color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
+@advanced		color		mainBg				'Main background'						#aaa
+@advanced		color		textBody			'Main text'								#222
+@advanced		color		linkColor			'Link color'							#0053b7
+@advanced		color		linkHover			'Link hover'							#c5130e
+@advanced		checkbox	linkUnderline		'Link underline'						0
+@advanced		color		linkVisited			'Link visited'							#0053b7
+@var			checkbox	moduleHGrad			'Change header bg of modules'			0
+@advanced		color		moduleHGrad0		'… gradient start (top)'				#4b619a
+@advanced		color		moduleHGrad1		'… gradient end (bottom)'				#2a2e75
+@advanced		color		moduleBg			'Background of modules, posts etc.'		#ccc
+@advanced		color		moduleBorder		'Border of modules, posts etc.'			#e2e7ec
+@advanced		color		menuBg				'Background of menus, dropdowns etc.'	#ddd
+@advanced		color		menuBorder			'Border of menus, dropdowns etc.'		#999
+@advanced		color		geeklistHeaderBg	'Background of geeklist headers'		#ddd
+@advanced		color		quoteTitleBg		'Background of quote title'				#6767bb
+@advanced		color		quoteTitleColor		'Color of quote title'					#eee
+@advanced		color		quoteBg				'Background of quotes'					#dadaf2
+@advanced		color		quoteBorder			'Border of quotes'						#555
+@advanced		color		articleNew			'Border of new article'					#CE6C6D
+@advanced		color		articleSelected		'Border of selected article'			#000AFF
+@advanced		color		textPositive		'Text: positive values'					#01ac01
+@advanced		color		textError			'Text: error messages, negative values'	#c5130e
+@advanced		color		editHover			'Edit hover (games/collection view)'	#fdad2f
+@var			checkbox	announcementHide	'Hide announcements'					0
+@var			checkbox	contestHide			'Hide contests and results'				0
+@var			checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
+@var			checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
+@var			checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'		0
+@var			checkbox	frontpageStriped	'Striped rows on front page'			1
+@var			checkbox	fpRowBottomBorder	'Border on bottom of rows in modules'	0
+@preprocessor stylus
+==/UserStyle== */
+
+@-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
+	:root {
+		--articleNew: solid 2px articleNew;
+		--articleSelected: solid 3px articleSelected;
+		--editHover: editHover;
+		--geeklistHeaderBg: geeklistHeaderBg;
+		--headerBgGrad: headerBgGrad;
+		--headerBgGrad0: headerBgGrad0;
+		--headerBgGrad1: headerBgGrad1;
+		--linkColor: linkColor;
+		--linkHover: linkHover;
+		--linkVisited: linkVisited;
+		--linkUnderline: linkUnderline;
+		--mainBg: mainBg;
+		--menuBg: menuBg;
+		--menuBorder: 1px solid menuBorder;
+		--moduleBg: moduleBg;
+		--moduleBorder: 1px solid moduleBorder;
+		--moduleHGrad: moduleHGrad;
+		--moduleHGrad0: moduleHGrad0;
+		--moduleHGrad1: moduleHGrad1;
+		--quoteTitleBg: quoteTitleBg;
+		--quoteTitleColor: quoteTitleColor;
+		--quoteBg: quoteBg;
+		--quoteBorder: 1px solid quoteBorder;
+		--textBody: textBody;
+		--textPositive: textPositive;
+		--textError: textError;
+	}
+
+	/* NEW PAGES */
+	if headerBgGrad {
+		.global-header {
+			background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
+		}
+	}
+	/* geekmarket */
+	.white-bg, .nav > li.active {
+		background: var(--moduleBg);
+	}
+	.panel-primary, .form-control, .pagination, .salesreport tr.even, .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td, .dropdown-menu {
+		background: var(--menuBg);
+	}
+	.table-bordered tbody tr td, .table-bordered tbody tr th {
+		border: var(--menuBorder);
+	}
+	/* game pages */
+	.game-nav-tabs, .global-body-content-primary, .global-secondary-nav-section .toggler-caret-target, .global-footer {
+		background: var(--moduleBg);
+	}
+	.well {
+		background: var(--menuBg) !important;
+	}
+	.summary-border .summary-item {
+		border-bottom: var(--menuBorder);
+	}
+	/* image gallery */
+	gg-markup-quote {
+		background: var(--quoteBg) !important;
+		border: var(--quoteBorder) !important;
+	}
+
+	/* LEGACY PAGES */
+	/* hide announcements and contests if set */
+	if announcementHide {
+		.spotlight_red {
+			display: none !important;
+		}
+	}
+	if contestHide {
+		.spotlight_orange {
+			display: none !important;
+		}
+	}
+	if promotedVideoHide {
+		promotedvideos-module {
+		    display: none;
+		}
+	}
+	if geekpreviewHide {
+		div.geekcentral_module > center > a[href*="/geekpreview"]{
+		    display: none;
+		}
+	}
+	if recommendationsHide {
+		reviews-module + div.panel {
+		    display: none;
+		}
+	}
+	/* modules with gradient bg */
+	if moduleHGrad {
+		.legacy .moduletable th, .legacy .bggstore_widget_controls, .legacy .geekcollection_pager, .legacy .menu_noquickbar_bottom, .legacy .hotitems th, .legacy .spotlight th, .legacy .moduletable .geekpoll th, .legacy .geekpoll tr th.questiontext, .legacy .profile_table th, .legacy .menu_table, .legacy .tabOff, .legacy .geekmail_header, .global-secondary-nav-section-header {
+			background: linear-gradient(var(--moduleHGrad0), var(--moduleHGrad1));
+		}
+	}
+	/* frontpage striped modules */
+	if frontpageStriped {
+		.geekcentral tr.moduleRow:nth-child(2n), tr[bgcolor*="#ECEDEE"] {
+			background: var(--menuBg);
+		}
+		.geekcentral tr.moduleRow:nth-child(2n+1), tr[bgcolor*="#FFFFFF"] {
+			background: var(--moduleBg);
+		}
+	}
+	else {
+		.geekcentral tr.moduleRow {
+			background: var(--moduleBg);
+		}
+	}
+	if fpRowBottomBorder {
+		.geekcentral tr.moduleRow {
+			border-bottom: var(--moduleBorder);
+		}
+	}
+	/* */
+	html, body {
+		color: var(--textBody);
+		background: var(--mainBg);
+	}
+	.legacy a, .legacy a:link, .legacy .nav > li > a, .legacy .comment_button {
+		color: var(--linkColor);
+	}
+	.legacy a:hover, .legacy .menutab-open li a:hover {
+		color: var(--linkHover) !important;
+		transition: none !important;
+	}
+	if linkUnderline {
+		a:hover {
+			text-decoration: underline !important;
+		}
+	}
+	else {
+		a:hover {
+			text-decoration: none !important;
+		}
+	}
+	.legacy a:visited {
+		color: var(--linkVisited);
+	}
+	.legacy .error, .legacy text-danger {
+		color: var(--textError);
+	}
+	.legacy .positive, .legacy .positive a, .legacy .storepositive, .legacy .storeprice, .legacy .price, .legacy .text-success {
+		color: var(--textPositive);
+	}
+	.legacy .forumlink a:visited, .legacy .forumlink a:link, .legacy .forumlink a:hover, .legacy .forumlink a:active, .legacy .objectlink a:visited, .legacy .objectlink a:link, .legacy .objectlink a:hover, .legacy .objectlink a:active {
+		color: var(--textBody);
+	}
+	div.legacy, .legacy .mainmenutabs, .legacy .menu_login, .legacy .menu_quickbar, .legacy .profile_block, .legacy table#collectionitems, .legacy div.global-body-content > div {
+		background: var(--moduleBg);
+	}
+	.legacy .messagebox, .legacy .popupbox, .legacy div.recommend_block, .legacy .bluebox, .legacy div.wikitoc, .legacy input, .legacy textarea, .legacy .profile_title, .legacy .img-thumbnail, .legacy .menutab-open, .legacy .mainmenutabs li a.open, .legacy .submenutabs li a.open, .legacy a.comment_button, .legacy .innermoduletable th, .legacy div.header, .legacy div.article {
+		background: var(--menuBg);
+	}
+	.legacy .menu_login, .legacy .menu_quickbar, .legacy .bluebox, .legacy div.header, .legacy div.recommend_block, .legacy div.article, .legacy div.comment_toolbar {
+		border: var(--menuBorder);
+	}
+	.legacy div.article.subbed {
+		border: var(--articleNew);
+	}
+	.legacy div.article.selected, .legacy div.article.subbed_selected {
+		border: var(--articleSelected);
+	}
+	.legacy .geeklist_title, .legacy .geeklist_item_title, .legacy .comment_toolbar {
+		background: var(--geeklistHeaderBg);
+	}
+	.legacy .quotetitle {
+		color: var(--quoteTitleColor);
+		background: var(--quoteTitleBg);
+		border: var(--quoteBorder);
+		border-bottom: none;
+	}
+	.legacy .quote {
+		background: var(--quoteBg);
+		border: var(--quoteBorder);
+	}
+	.legacy #header {
+		border-top: var(--menuBorder);
+	}
+	.legacy .forum_table td, .legacy .forum_index_table td {
+		background: var(--moduleBg);
+		border-bottom: var(--moduleBorder);
+	}
+	.legacy .infobox {
+		background: var(--menuBg);
+		border: var(--moduleBorder);
+	}
+	.legacy .post_numcomments, .legacy .dull, .legacy .darkgray {
+		color: var(--textBody);
+	}
+	.legacy .editfield:hover {
+		background: var(--editHover);
+	}
+}

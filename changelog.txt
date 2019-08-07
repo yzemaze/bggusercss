@@ -1,0 +1,26 @@
+0.1.7
++ gradients for module headers
+
+0.1.8
++ geeklist headers and comment bars
+
+0.1.9
++ quotes
+
+0.1.10
++ borders of new and selected articles
+
+0.1.11
+background and border of posts fixed (necessary due to BGG changes)
+
+0.1.12
++ hide promoted videos on game pages
+
+0.1.13
++ hide recommendations ("Fans Also Like")
+
+0.2
+several changes due to bgg-rebranding
++ header bg gradient
++ link underline
++ hide geekpreviews
