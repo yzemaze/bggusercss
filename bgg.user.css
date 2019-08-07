@@ -3,48 +3,48 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.2
+@version		0.2.5
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
-@var			checkbox	ernie				'Ernie! (old cornerlogo)'				0
-@var			checkbox	headerBgGrad		'Change header background'				0
-@advanced		color		headerBgGrad0		'… gradient start (top)'				#3f3a60
-@advanced		color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
-@advanced		color		mainBg				'Main background'						#aaa
-@advanced		color		textBody			'Main text color'						#222
-@var	range		fontSizeXL					"Font size module header"				[18,8,48,1,"px"]
-@var	range		fontSizeL					"Font size main text"					[14,8,36,1,"px"]
-@var	range		fontSizeM					"Font size author, pagination …"		[12,8,24,1,"px"]
-@var	range		fontSizeS					"Font size small (quickbar, hotness)"	[11,8,16,1,"px"]
-@advanced		color		linkColor			'Link color'							#0053b7
-@advanced		color		linkHover			'Link hover'							#c5130e
-@advanced		checkbox	linkUnderline		'Link underline'						0
-@advanced		color		linkVisited			'Link visited'							#0053b7
-@var			checkbox	moduleHGrad			'Change header bg of modules'			0
-@advanced		color		moduleHGrad0		'… gradient start (top)'				#4b619a
-@advanced		color		moduleHGrad1		'… gradient end (bottom)'				#2a2e75
-@advanced		color		moduleBg			'Background of modules, posts etc.'		#ccc
-@advanced		color		moduleBorder		'Border of modules, posts etc.'			#e2e7ec
-@advanced		color		menuBg				'Background of menus, dropdowns etc.'	#ddd
-@advanced		color		menuBorder			'Border of menus, dropdowns etc.'		#999
-@advanced		color		geeklistHeaderBg	'Background of geeklist headers'		#ddd
-@advanced		color		quoteTitleBg		'Background of quote title'				#6767bb
-@advanced		color		quoteTitleColor		'Color of quote title'					#eee
-@advanced		color		quoteBg				'Background of quotes'					#dadaf2
-@advanced		color		quoteBorder			'Border of quotes'						#555
-@advanced		color		articleNew			'Border of new article'					#CE6C6D
-@advanced		color		articleSelected		'Border of selected article'			#000AFF
-@advanced		color		textPositive		'Text: positive values'					#01ac01
-@advanced		color		textError			'Text: error messages, negative values'	#c5130e
-@advanced		color		editHover			'Edit hover (games/collection view)'	#fdad2f
-@var			checkbox	announcementHide	'Hide announcements'					0
-@var			checkbox	contestHide			'Hide contests and results'				0
-@var			checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
-@var			checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
-@var			checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'		0
-@var			checkbox	frontpageStriped	'Striped rows on front page'			1
-@var			checkbox	fpRowBottomBorder	'Border on bottom of rows in modules'	0
+@var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
+@var	checkbox	headerBgGrad		'Change header background'				0
+@var 	color		headerBgGrad0		'… gradient start (top)'				#3f3a60
+@var	color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
+@var	color		mainBg				'Main background'						#aaa
+@var	color		textBody			'Main text color'						#222
+@var	range		fontSizeXL			"Font size module header"				[18,8,48,1,"px"]
+@var	range		fontSizeL			"Font size main text"					[14,8,36,1,"px"]
+@var	range		fontSizeM			"Font size author, pagination …"		[12,8,24,1,"px"]
+@var	range		fontSizeS			"Font size small (quickbar, hotness)"	[11,8,16,1,"px"]
+@var	color		linkColor			'Link color'							#0053b7
+@var	color		linkHover			'Link hover'							#c5130e
+@var	checkbox	linkUnderline		'Link underline'						0
+@var	color		linkVisited			'Link visited'							#0053b7
+@var	checkbox	moduleHGrad			'Change header bg of modules'			0
+@var	color		moduleHGrad0		'… gradient start (top)'				#4b619a
+@var	color		moduleHGrad1		'… gradient end (bottom)'				#2a2e75
+@var	color		moduleBg			'Background of modules, posts etc.'		#ccc
+@var	color		moduleBorder		'Border of modules, posts etc.'			#e2e7ec
+@var	color		menuBg				'Background of menus, dropdowns etc.'	#ddd
+@var	color		menuBorder			'Border of menus, dropdowns etc.'		#999
+@var	color		geeklistHeaderBg	'Background of geeklist headers'		#ddd
+@var	color		quoteTitleBg		'Background of quote title'				#6767bb
+@var	color		quoteTitleColor		'Color of quote title'					#eee
+@var	color		quoteBg				'Background of quotes'					#dadaf2
+@var	color		quoteBorder			'Border of quotes'						#555
+@var	color		articleNew			'Border of new article'					#CE6C6D
+@var	color		articleSelected		'Border of selected article'			#000AFF
+@var	color		textPositive		'Text: positive values'					#01ac01
+@var	color		textError			'Text: error messages, negative values'	#c5130e
+@var	color		editHover			'Edit hover (games/collection view)'	#fdad2f
+@var	checkbox	announcementHide	'Hide announcements'					0
+@var	checkbox	contestHide			'Hide contests and results'				0
+@var	checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
+@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
+@var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'		0
+@var	checkbox	frontpageStriped	'Striped rows on front page'			1
+@var	checkbox	fpRowBottomBorder	'Border on bottom of rows in modules'	0
 @preprocessor stylus
 ==/UserStyle== */
 
@@ -104,7 +104,7 @@
 	.game-header-title-info h1, h2, .panel-header-lg .panel-title {
 		font-size: var(--fontSizeXL) !important;		
 	}
-	.btn, body, h3, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
+	.btn, body, h3, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
 		font-size: var(--fontSizeL) !important;
 	}
 	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, .legacy a.tag, .legacy .avatarblock {
@@ -141,13 +141,13 @@
 
 	/* LEGACY PAGES */
 	/* font sizes */
-	.legacy .module_title {
+	.legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"] {
 		font-size: var(--fontSizeXL) !important;
 	}
-	.legacy, .legacy .innermoduletable td, .legacy .quotetitle, .legacy .quote {
+	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, div[style*="9pt"] {
 		font-size: var(--fontSizeL) !important;
 	}
-	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments {
+	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header {
 		font-size: var(--fontSizeM) !important;
 	}
 	.legacy .geekpages, .legacy .pages {
