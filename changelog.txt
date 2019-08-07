@@ -27,3 +27,6 @@ several changes due to bgg-rebranding
 
 0.2.1
 Ernie! (old cornerlogo)
+
+0.2.2
+Font sizes (hey kat! thanks for SPLU! :) )

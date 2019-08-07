@@ -1,8 +1,9 @@
 /* ==UserStyle==
 @name			BGG UI Customizer
 @description	Easy customization of BGG's UI with user.css
-@namespace		github.com/yzemaze/bggusercss/
-@version		0.2.1
+@namespace		https://github.com/yzemaze/bggusercss/
+@supportURL		https://github.com/yzemaze/bggusercss/
+@version		0.2.2
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -11,7 +12,11 @@
 @advanced		color		headerBgGrad0		'… gradient start (top)'				#3f3a60
 @advanced		color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
 @advanced		color		mainBg				'Main background'						#aaa
-@advanced		color		textBody			'Main text'								#222
+@advanced		color		textBody			'Main text color'						#222
+@var	range		fontSizeXL					"Font size module header"				[18,8,48,1,"px"]
+@var	range		fontSizeL					"Font size main text"					[14,8,36,1,"px"]
+@var	range		fontSizeM					"Font size author, pagination …"		[12,8,24,1,"px"]
+@var	range		fontSizeS					"Font size small (quickbar, hotness)"	[11,8,16,1,"px"]
 @advanced		color		linkColor			'Link color'							#0053b7
 @advanced		color		linkHover			'Link hover'							#c5130e
 @advanced		checkbox	linkUnderline		'Link underline'						0
@@ -49,6 +54,10 @@
 		--articleSelected: solid 3px articleSelected;
 		--editHover: editHover;
 		--ernie: ernie;
+		--fontSizeXL: fontSizeXL;
+		--fontSizeL: fontSizeL;
+		--fontSizeM: fontSizeM;
+		--fontSizeS: fontSizeS;
 		--geeklistHeaderBg: geeklistHeaderBg;
 		--headerBgGrad: headerBgGrad;
 		--headerBgGrad0: headerBgGrad0;
@@ -75,6 +84,7 @@
 	}
 
 	/* NEW PAGES */
+	/* header */
 	if ernie {
 		div.global-header-logo > a > img {
 			width: 60px;
@@ -83,12 +93,25 @@
 			padding-left: 60px;
 			background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
 			background-size: contain;
-		}
-	}	
+		}		
+	}
 	if headerBgGrad {
 		.global-header {
 			background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
 		}
+	}
+	/* font sizes */
+	.game-header-title-info h1, h2, .panel-header-lg .panel-title {
+		font-size: var(--fontSizeXL) !important;		
+	}
+	.btn, body, h3, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
+		font-size: var(--fontSizeL) !important;
+	}
+	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, .legacy a.tag, .legacy .avatarblock {
+		font-size: var(--fontSizeM) !important;
+	}
+	.btn-xs, .btn-group-xs > .btn, .fs-xs, a.global-header-user-notification-action, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn,, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+		font-size: var(--fontSizeS) !important;
 	}
 	/* geekmarket */
 	.white-bg, .nav > li.active {
@@ -117,6 +140,19 @@
 	}
 
 	/* LEGACY PAGES */
+	/* font sizes */
+	.legacy .module_title {
+		font-size: var(--fontSizeXL) !important;
+	}
+	.legacy, .legacy .innermoduletable td {
+		font-size: var(--fontSizeL) !important;
+	}
+	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments {
+		font-size: var(--fontSizeM) !important;
+	}
+	.legacy .geekpages, .legacy .pages {
+		font-size: var(--fontSizeS) !important;
+	}
 	/* hide announcements and contests if set */
 	if announcementHide {
 		.spotlight_red {
