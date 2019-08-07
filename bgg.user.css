@@ -141,7 +141,7 @@
 
 	/* LEGACY PAGES */
 	/* font sizes */
-	.legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"] {
+	.legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], div.recommend_block dl.recommend * {
 		font-size: var(--fontSizeXL) !important;
 	}
 	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, div[style*="9pt"] {
