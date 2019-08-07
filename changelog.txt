@@ -19,8 +19,11 @@ background and border of posts fixed (necessary due to BGG changes)
 0.1.13
 + hide recommendations ("Fans Also Like")
 
-0.2
+0.2.0
 several changes due to bgg-rebranding
 + header bg gradient
 + link underline
 + hide geekpreviews
+
+0.2.1
+Ernie! (old cornerlogo)

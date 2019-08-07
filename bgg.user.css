@@ -2,10 +2,11 @@
 @name			BGG UI Customizer
 @description	Easy customization of BGG's UI with user.css
 @namespace		github.com/yzemaze/bggusercss/
-@version		0.2.0
+@version		0.2.1
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
+@var			checkbox	ernie				'Ernie! (old cornerlogo)'				0
 @var			checkbox	headerBgGrad		'Change header background'				0
 @advanced		color		headerBgGrad0		'… gradient start (top)'				#3f3a60
 @advanced		color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
@@ -47,6 +48,7 @@
 		--articleNew: solid 2px articleNew;
 		--articleSelected: solid 3px articleSelected;
 		--editHover: editHover;
+		--ernie: ernie;
 		--geeklistHeaderBg: geeklistHeaderBg;
 		--headerBgGrad: headerBgGrad;
 		--headerBgGrad0: headerBgGrad0;
@@ -73,6 +75,16 @@
 	}
 
 	/* NEW PAGES */
+	if ernie {
+		div.global-header-logo > a > img {
+			width: 60px;
+			height: 45px;
+			box-sizing: border-box;
+			padding-left: 60px;
+			background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+			background-size: contain;
+		}
+	}	
 	if headerBgGrad {
 		.global-header {
 			background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
