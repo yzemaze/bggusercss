@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.8
+@version		0.2.9
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -13,7 +13,8 @@
 @var 	color		headerBgGrad0		'… gradient start (top)'				#3f3a60
 @var	color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
 @var	color		mainBg				'Main background'						#aaa
-@var	color		textBody			'Main text color'						#222
+@var	color		textColor			'Main text color'						#222
+@var	color		titleColor			'Title color (modules, main menu)'		#ddd
 @var	select		fontXXL				"Font XXL (game titles)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXXL			"Font size XXL"							[24,6,48,1,"px"]
 @var	select		fontXL				"Font XL (module headings)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
@@ -92,9 +93,10 @@
 		--quoteTitleColor: quoteTitleColor;
 		--quoteBg: quoteBg;
 		--quoteBorder: 1px solid quoteBorder;
-		--textBody: textBody;
-		--textPositive: textPositive;
+		--textColor: textColor;
 		--textError: textError;
+		--textPositive: textPositive;
+		--titleColor: titleColor;
 	}
 
 	/* NEW PAGES */
@@ -116,14 +118,14 @@
 	}
 	/* colors */
 	html, body {
-		color: var(--textBody) !important;
+		color: var(--textColor) !important;
 		background: var(--mainBg);
 	}
 	h1, h2, h3, h4, h5, h6, p, th, td, .dropdown-header, .panel-heading {
-		color: var(--textBody) !important;
+		color: var(--textColor) !important;
 	}
 	.text-muted {
-		color: var(--textBody) !important;
+		color: var(--textColor) !important;
 		opacity: 0.5;
 	}
 	/* panels */
@@ -132,7 +134,10 @@
 		border: var(--moduleBorder);
 	}
 	/* links */
-	a, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, a.toggler-caret  {
+	.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary > button.btn, a.global-header-icon, a.toggler-caret {
+		color: var(--titleColor) !important;
+	}
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a  {
 		color: var(--linkColor) !important;
 	}
 	a:hover, .btn.btn-text-link:hover, ul.global-secondary-nav-links a:hover,.quickbar-pagination button.btn:hover, .global-header-nav-primary .dropdown-menu li a:hover {
@@ -187,8 +192,11 @@
 
 	/* LEGACY PAGES */
 	/* colors */
-	.legacy, .legacy div, .legacy .module_title {
-		color: var(--textBody) !important;
+	.legacy, .legacy div {
+		color: var(--textColor) !important;
+	}
+	.legacy .module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a {
+		color: var(--titleColor) !important;
 	}
 	/* font sizes */
 	div.recommend_block dl.recommend *, .legacy .post_day {
@@ -293,7 +301,7 @@
 		color: var(--textPositive);
 	}
 	.legacy .forumlink a:visited, .legacy .forumlink a:link, .legacy .forumlink a:hover, .legacy .forumlink a:active, .legacy .objectlink a:visited, .legacy .objectlink a:link, .legacy .objectlink a:hover, .legacy .objectlink a:active {
-		color: var(--textBody);
+		color: var(--textColor);
 	}
 	div.legacy, .legacy .mainmenutabs, .legacy .menu_login, .legacy .menu_quickbar, .legacy .profile_block, .legacy table#collectionitems, .legacy div.global-body-content > div {
 		background: var(--moduleBg);
@@ -335,7 +343,7 @@
 		border: var(--moduleBorder);
 	}
 	.legacy .post_numcomments, .legacy .dull, .legacy .darkgray {
-		color: var(--textBody);
+		color: var(--textColor);
 	}
 	.legacy .editfield:hover {
 		background: var(--editHover);
