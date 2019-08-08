@@ -119,10 +119,20 @@
 		color: var(--textBody) !important;
 		background: var(--mainBg);
 	}
-	h1, h2, h3, h4, h5, h6, p, .dropdown-header {
+	h1, h2, h3, h4, h5, h6, p, th, td, .dropdown-header, .panel-heading {
 		color: var(--textBody) !important;
 	}
-	.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, a.toggler-caret  {
+	.text-muted {
+		color: var(--textBody) !important;
+		opacity: 0.5;
+	}
+	/* panels */
+	.panel-default > .panel-heading, .panel-primary > .panel-heading {
+		background: var(--moduleBg);
+		border: var(--moduleBorder);
+	}
+	/* links */
+	a, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, a.toggler-caret  {
 		color: var(--linkColor) !important;
 	}
 	a:hover, .btn.btn-text-link:hover, ul.global-secondary-nav-links a:hover,.quickbar-pagination button.btn:hover, .global-header-nav-primary .dropdown-menu li a:hover {
@@ -253,10 +263,10 @@
 		}
 	}
 	/* links */
-	.legacy a, .legacy a:link, .legacy .nav > li > a, .legacy .comment_button, .legacy .moduletable th a {
+	.legacy a, .legacy a:link, .legacy .nav > li > a, .legacy .comment_button, .legacy .moduletable th a, .legacy .geeksub_minorlink a:link {
 		color: var(--linkColor);
 	}
-	.legacy a:hover, .legacy .menutab-open li a:hover {
+	.legacy a:hover, .legacy .menutab-open li a:hover, .legacy .geeksub_minorlink a:active {
 		color: var(--linkHover) !important;
 		transition: none !important;
 	}
@@ -273,7 +283,7 @@
 			text-decoration: none !important;
 		}
 	}
-	.legacy a:visited {
+	.legacy a:visited, .legacy .geeksub_minorlink a:visited {
 		color: var(--linkVisited);
 	}
 	.legacy .error, .legacy text-danger {
