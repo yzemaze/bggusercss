@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.6
+@version		0.2.7
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -15,8 +15,8 @@
 @var	color		mainBg				'Main background'						#aaa
 @var	color		textBody			'Main text color'						#222
 @var	select		fontXXL				"Font XXL (game titles)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeXXL			"Font size XXL"							[22,6,48,1,"px"]
-@var	select		fontXL				"Font XL (module headings)"		["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeXXL			"Font size XXL"							[24,6,48,1,"px"]
+@var	select		fontXL				"Font XL (module headings)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXL			"Font size XL"							[18,6,48,1,"px"]
 @var	select		fontL				"Font L (main texts)"				["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeL			"Font size L"							[14,6,36,1,"px"]
@@ -163,23 +163,24 @@
 
 	/* LEGACY PAGES */
 	/* font sizes */
-	div.recommend_block dl.recommend * {
+	div.recommend_block dl.recommend *, .legacy .post_day {
 		font-family: var(--fontXXL) !important;
 		font-size: var(--fontSizeXXL) !important;
 	}
-	.legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], div.recommend_block dl.recommend * {
+	.legacy h1, .legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], .legacy .geeklist_item_title, .legacy .post_month, 
+.legacy dt.tippersbig a  {
 		font-family: var(--fontXL) !important;
 		font-size: var(--fontSizeXL) !important;
 	}
-	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, div[style*="9pt"] {
+	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, .legacy .post_year {
 		font-family: var(--fontL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
-	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date {
+	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date, .legacy .collection_table td, .legacy .owned, .legacy .wanted, .legacy .fortrade, .legacy .wishlist, .legacy .prevowned, .legacy .wanttoplay, .legacy .rating span, .legacy .ratingtext, .legacy #blog_description, .legacy .post_categories ul li, .legacy .post_nlinks ul li {
 		font-family: var(--fontM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
-	.legacy .geekpages, .legacy .pages {
+	.legacy .geekpages, .legacy .pages, .legacy .comment_button, .legacy .comment_button_disabled, .legacy .gallery_caption, .legacy .tagbar-inner, .legacy .post_author, .legacy .post_controls, .legacy .post_tstamp, div[style*="9pt"] {
 		font-family: var(--fontS) !important;
 		font-size: var(--fontSizeS) !important;
 	}

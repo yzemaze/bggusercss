@@ -34,3 +34,6 @@ Font sizes (hey kat! thanks for SPLU! :) )
 0.2.6
 font faces
 + link underline style (enforced for hover only!)
+
+0.2.7
+font size fixes again; wording
