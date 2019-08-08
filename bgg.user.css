@@ -119,11 +119,11 @@
 		font-family: var(--fontXXL) !important;		
 		font-size: var(--fontSizeXXL) !important;		
 	}
-	h2, .panel-header-lg .panel-title {
+	h2, .panel-header-lg .panel-title, .navbar-brand {
 		font-family: var(--fontXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
-	.btn, body, h3, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
+	.btn, body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
 		font-family: var(--fontL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
@@ -167,20 +167,19 @@
 		font-family: var(--fontXXL) !important;
 		font-size: var(--fontSizeXXL) !important;
 	}
-	.legacy h1, .legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], .legacy .geeklist_item_title, .legacy .post_month, 
-.legacy dt.tippersbig a  {
+	.legacy h1, .legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], .legacy .geeklist_item_title, .legacy .post_month, .legacy dt.tippersbig a, .legacy .forum_path, .legacy .lf, .legacy table.lf td {
 		font-family: var(--fontXL) !important;
 		font-size: var(--fontSizeXL) !important;
 	}
-	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, .legacy .post_year {
+	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, .legacy .post_year, .legacy .mf, .legacy table.mf td {
 		font-family: var(--fontL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
-	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date, .legacy .collection_table td, .legacy .owned, .legacy .wanted, .legacy .fortrade, .legacy .wishlist, .legacy .prevowned, .legacy .wanttoplay, .legacy .rating span, .legacy .ratingtext, .legacy #blog_description, .legacy .post_categories ul li, .legacy .post_nlinks ul li {
+	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date, .legacy .collection_table td, .legacy .owned, .legacy .wanted, .legacy .fortrade, .legacy .wishlist, .legacy .prevowned, .legacy .wanttoplay, .legacy .rating span, .legacy .ratingtext, .legacy #blog_description, .legacy .post_categories ul li, .legacy .post_nlinks ul li, .dropdown-header, .legacy .geekinput_medium, .legacy div.wikitoc {
 		font-family: var(--fontM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
-	.legacy .geekpages, .legacy .pages, .legacy .comment_button, .legacy .comment_button_disabled, .legacy .gallery_caption, .legacy .tagbar-inner, .legacy .post_author, .legacy .post_controls, .legacy .post_tstamp, div[style*="9pt"] {
+	.legacy .geekpages, .legacy .pages, .legacy .comment_button, .legacy .comment_button_disabled, .legacy .gallery_caption, .legacy .tagbar-inner, .legacy .post_author, .legacy .post_controls, .legacy .post_tstamp, div[style*="9pt"], .legacy div.recommendbox_str {
 		font-family: var(--fontS) !important;
 		font-size: var(--fontSizeS) !important;
 	}
