@@ -3,23 +3,31 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.5
+@version		0.2.6
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
+@preprocessor stylus
 @var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
 @var	checkbox	headerBgGrad		'Change header background'				0
 @var 	color		headerBgGrad0		'… gradient start (top)'				#3f3a60
 @var	color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
 @var	color		mainBg				'Main background'						#aaa
 @var	color		textBody			'Main text color'						#222
-@var	range		fontSizeXL			"Font size module header"				[18,8,48,1,"px"]
-@var	range		fontSizeL			"Font size main text"					[14,8,36,1,"px"]
-@var	range		fontSizeM			"Font size author, pagination …"		[12,8,24,1,"px"]
-@var	range		fontSizeS			"Font size small (quickbar, hotness)"	[11,8,16,1,"px"]
+@var	select		fontFaceXXL			"Font face XXL (game titles)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeXXL			"Font size XXL"							[22,6,48,1,"px"]
+@var	select		fontFaceXL			"Font face XL (module headings)"		["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeXL			"Font size XL"							[18,6,48,1,"px"]
+@var	select		fontFaceL			"Font face L (main texts)"				["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeL			"Font size L"							[14,6,36,1,"px"]
+@var	select		fontFaceM			"Font face M (author, pagination …)"	["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeM			"Font size M"							[12,6,36,1,"px"]
+@var	select		fontFaceS			"Font face S (quickbar, hotness …)"		["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	range		fontSizeS			"Font size S"							[11,6,24,1,"px"]
 @var	color		linkColor			'Link color'							#0053b7
 @var	color		linkHover			'Link hover'							#c5130e
 @var	checkbox	linkUnderline		'Link underline'						0
+@var	select		linkUnderlineStyle	'Link underline style'					["dashed","dotted*","double","initial","inherit","solid","wavy"]
 @var	color		linkVisited			'Link visited'							#0053b7
 @var	checkbox	moduleHGrad			'Change header bg of modules'			0
 @var	color		moduleHGrad0		'… gradient start (top)'				#4b619a
@@ -45,7 +53,6 @@
 @var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'		0
 @var	checkbox	frontpageStriped	'Striped rows on front page'			1
 @var	checkbox	fpRowBottomBorder	'Border on bottom of rows in modules'	0
-@preprocessor stylus
 ==/UserStyle== */
 
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
@@ -54,6 +61,12 @@
 		--articleSelected: solid 3px articleSelected;
 		--editHover: editHover;
 		--ernie: ernie;
+		--fontFaceXXL: fontFaceXXL;
+		--fontFaceXL: fontFaceXL;
+		--fontFaceL: fontFaceL;
+		--fontFaceM: fontFaceM;
+		--fontFaceS: fontFaceS;
+		--fontSizeXXL: fontSizeXXL;
 		--fontSizeXL: fontSizeXL;
 		--fontSizeL: fontSizeL;
 		--fontSizeM: fontSizeM;
@@ -66,6 +79,7 @@
 		--linkHover: linkHover;
 		--linkVisited: linkVisited;
 		--linkUnderline: linkUnderline;
+		--linkUnderlineStyle: linkUnderlineStyle;
 		--mainBg: mainBg;
 		--menuBg: menuBg;
 		--menuBorder: 1px solid menuBorder;
@@ -101,16 +115,24 @@
 		}
 	}
 	/* font sizes */
-	.game-header-title-info h1, h2, .panel-header-lg .panel-title {
+	.game-header-title-info h1 {
+		font-family: var(--fontFaceXXL) !important;		
+		font-size: var(--fontSizeXXL) !important;		
+	}
+	h2, .panel-header-lg .panel-title {
+		font-family: var(--fontFaceXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
 	.btn, body, h3, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
+		font-family: var(--fontFaceL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
 	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, .legacy a.tag, .legacy .avatarblock {
+		font-family: var(--fontFaceM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
 	.btn-xs, .btn-group-xs > .btn, .fs-xs, a.global-header-user-notification-action, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn,, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+		font-family: var(--fontFaceS) !important;
 		font-size: var(--fontSizeS) !important;
 	}
 	/* geekmarket */
@@ -141,16 +163,24 @@
 
 	/* LEGACY PAGES */
 	/* font sizes */
+	div.recommend_block dl.recommend * {
+		font-family: var(--fontFaceXXL) !important;
+		font-size: var(--fontSizeXXL) !important;
+	}
 	.legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], div.recommend_block dl.recommend * {
+		font-family: var(--fontFaceXL) !important;
 		font-size: var(--fontSizeXL) !important;
 	}
 	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, div[style*="9pt"] {
+		font-family: var(--fontFaceL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
-	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header {
+	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date {
+		font-family: var(--fontFaceM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
 	.legacy .geekpages, .legacy .pages {
+		font-family: var(--fontFaceS) !important;
 		font-size: var(--fontSizeS) !important;
 	}
 	/* hide announcements and contests if set */
@@ -217,12 +247,15 @@
 		transition: none !important;
 	}
 	if linkUnderline {
+		a {
+			text-decoration: underline var(--linkUnderlineStyle);
+		}
 		a:hover {
-			text-decoration: underline !important;
+			text-decoration: underline var(--linkUnderlineStyle) !important;
 		}
 	}
 	else {
-		a:hover {
+		a, a:hover {
 			text-decoration: none !important;
 		}
 	}
