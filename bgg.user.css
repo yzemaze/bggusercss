@@ -242,9 +242,12 @@
 		}
 	}
 	/* */
-	html, body, .legacy, h1, h2, h3, h4, h5, h6, p {
+	html, body {
 		color: var(--textBody) !important;
 		background: var(--mainBg);
+	}
+	.legacy, h1, h2, h3, h4, h5, h6, p {
+		color: var(--textBody) !important;
 	}
 	.legacy a, .legacy a:link, .legacy .nav > li > a, .legacy .comment_button {
 		color: var(--linkColor);
