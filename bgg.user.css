@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.8
+@version		0.2.7
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -113,6 +113,13 @@
 		.global-header {
 			background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
 		}
+	}
+	/* colors */
+	.nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active  {
+		color: var(--linkColor) !important;
+	}
+	a:hover, .btn.btn-text-link:hover, ul.global-secondary-nav-links a:hover {
+		color: var(--linkHover) !important;
 	}
 	/* font sizes */
 	.game-header-title-info h1 {
@@ -235,7 +242,7 @@
 		}
 	}
 	/* */
-	html, body, .legacy {
+	html, body, .legacy, h1, h2, h3, h4, h5, h6, p {
 		color: var(--textBody) !important;
 		background: var(--mainBg);
 	}
