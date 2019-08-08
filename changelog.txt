@@ -37,3 +37,6 @@ font faces
 
 0.2.7
 font size fixes again; wording
+
+0.2.8
+font color fixes
