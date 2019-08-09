@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.0
+@version		0.3.1
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -16,12 +16,12 @@
 == background colors ==
 @var 	color		headerBgGrad0		'Header background: gradient start (top)'	#3f3a60
 @var	color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
-@var	color		headerColor			'Header text color'						#ddd
+@var	color		headerColor			'Header text'							#ddd
 @var	color		mainBg				'Main Background'						#aaa
 @var	color		mainBg2				'2nd level background'					#bbb
 @var	color		moduleHGrad0		'Module header bg: gradient start (top)'	#3f3a60
 @var	color		moduleHGrad1		'… gradient end (bottom)'				#3f3a60
-@var	color		moduleHColor		'Module header text color'				#ddd
+@var	color		moduleHColor		'Module header text'					#ddd
 @var	color		moduleBg			'Background of modules, posts etc.'		#ccc
 @var	color		moduleBorderColor	'Border of modules, posts etc.'			#999
 @var	color		fpColor2n			'Frontpage: bg of even rows'			#ddd
@@ -31,11 +31,11 @@
 @var	color		menuBorderColor		'Border color of menus, dropdowns etc.'	#999
 @var	color		tableColor2n		'Tables: bg of even rows'				#ddd
 @var	color		tableColor2n1		'… bg of odd rows'						#ccc
-@var	color		buttonPrimaryBg		'Background of primary buttons'			#005bca
-@var	color		buttonPrimary		'Text color of primary buttons'			#ffffff
+@var	color		buttonPrimaryBg		'Primary buttons background'			#005bca
+@var	color		buttonPrimary		'primary buttons text'					#ffffff
 == text colors ==
-@var	color		textColor			'Main text color'						#222
-@var	color		linkColor			'Link color'							#0053b7
+@var	color		textColor			'Main text'								#222
+@var	color		linkColor			'Links'									#0053b7
 @var	color		linkHover			'Link hover'							#c5130e
 @var	color		linkSelected		'Link selected'							#fdad2f
 @var	checkbox	linkUnderline		'Link underline'						0
@@ -144,17 +144,19 @@
 		background: var(--headerBgGrad0);
 		color: var(--headerColor);
 	}
-	.btn-primary {
+	.btn-primary, .badge-primary {
 		background: var(--buttonPrimaryBg);
 		border-color: var(--buttonPrimaryBg);
 		color: var(--buttonPrimary);
 	}
+	.btn-primary:hover {
+		background: var(--buttonPrimaryBg);
+		border-color: var(--buttonPrimaryBg);
+		color: var(--linkHover);
+	}
 	.btn-default:not(.active):not(:disabled), .btn-default:not(.active):not(:disabled):focus, .btn-default:not(.active):not(:disabled):active, .btn-default:not(.active):not(:disabled):visited, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
 		background: var(--menuBg) !important;
 		border-color: var(--menuBg);
-	}
-	.btn-default:not(.active):not(:disabled):hover {
-		filter:opacity(80%);
 	}
 	.btn-default, .btn-subtle, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
 		color: var(--textColor) !important;
@@ -162,6 +164,12 @@
 	.btn-subtle {
 		background: var(--menuBg);
 		filter: opacity(70%);
+	}
+	.btn-default:not(.active):not(:disabled):hover {
+		color: var(--linkHover);
+	}
+	.btn-success {
+		background: var(--textPositive);
 	}
 	.global-header-nav-search-advanced a:hover {
 		background: var(--moduleBg);
@@ -216,11 +224,11 @@
 		font-family: var(--fontXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
-	.btn, body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .legacy .quotetitle, .legacy .quote {
+	.btn, body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote {
 		font-family: var(--fontL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
-	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, .legacy a.tag, .legacy .avatarblock {
+	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock {
 		font-family: var(--fontM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
@@ -236,7 +244,7 @@
 		filter: opacity(60%);
 	}
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn) {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn), .global-footer-item a {
 		color: var(--linkColor);
 	}
 	a:hover, .btn:hover {
@@ -335,8 +343,15 @@
 			color: var(--moduleHColor);
 		}
 		.forum_table td, .forum_index_table td {
+			color: var(--textColor);
 			background: var(--moduleBg);
 			border-bottom: var(--moduleBorder);
+		}
+		textarea, .infobox, .messagebox, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
+			color: var(--textColor);
+		}
+		select {
+			background: var(--menuBg);
 		}
 		.post_numcomments, .dull, .darkgray, div.header {
 			color: var(--textColor);
@@ -405,11 +420,11 @@
 			font-family: var(--fontXL) !important;
 			font-size: var(--fontSizeXL) !important;
 		}
-		.moduletable th, .innermoduletable th, .itemmoduletable th, .innermoduletable td, #container, textarea, table, .post_year, .mf, table.mf td {
+		.moduletable th, .innermoduletable th, .itemmoduletable th, .innermoduletable td, #container, textarea, table, .post_year, .mf, table.mf td, .quotetitle, .quote {
 			font-family: var(--fontL) !important;
 			font-size: var(--fontSizeL) !important;
 		}
-		.objectlink > a, .forumlink > a, .modulecommands, .pager, .sf, table.sf td, .post_numcomments, .smallerfont, .tabOn, .tabOff, .geekmail_header, .gm_date, .collection_table td, .owned, .wanted, .fortrade, .wishlist, .prevowned, .wanttoplay, .rating span, .ratingtext, #blog_description, .post_categories ul li, .post_nlinks ul li, .dropdown-header, .geekinput_medium, div.wikitoc {
+		.objectlink > a, .forumlink > a, .modulecommands, .pager, .sf, table.sf td, .post_numcomments, .smallerfont, .tabOn, .tabOff, .geekmail_header, .gm_date, .collection_table td, .owned, .wanted, .fortrade, .wishlist, .prevowned, .wanttoplay, .rating span, .ratingtext, #blog_description, .post_categories ul li, .post_nlinks ul li, .dropdown-header, .geekinput_medium, div.wikitoc, a.tag, .avatarblock {
 			font-family: var(--fontM) !important;
 			font-size: var(--fontSizeM) !important;
 		}
@@ -417,10 +432,10 @@
 			font-family: var(--fontS) !important;
 			font-size: var(--fontSizeS) !important;
 		}
-		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div {
+		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article {
 			background: var(--moduleBg);
 		}
-		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th, div.header, div.article {
+		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th {
 			background: var(--menuBg);
 		}
 		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar {
@@ -446,10 +461,10 @@
 			background: var(--moduleBg) !important;
 			border: var(--moduleBorder) !important;
 		}
-		table.gm_messages:nth-child(2n) tr[style*="background:#F7F7F8"] {
+		table.gm_messages:nth-child(2n) tr[style="background:#F7F7F8"] {
 			background: var(--tableColor2n1) !important;
 		}
-		table.gm_messages:nth-child(2n+1) tr[style*="background:#F7F7F8"] {
+		table.gm_messages:nth-child(2n+1) tr[style="background:#F7F7F8"] {
 			background: var(--tableColor2n) !important;
 		}
 	}
