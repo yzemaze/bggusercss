@@ -40,3 +40,6 @@ font size fixes again; wording
 
 0.2.8
 font color fixes
+
+0.3.0
+refactoring

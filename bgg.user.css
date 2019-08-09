@@ -2,64 +2,79 @@
 @name			BGG UI Customizer
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
-@supportURL		https://github.com/yzemaze/bggusercss/
-@version		0.2.9
+@supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
+@version		0.3.0
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
 @preprocessor stylus
+== specials ==
 @var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
-@var	checkbox	headerBgGrad		'Change header background'				0
-@var 	color		headerBgGrad0		'… gradient start (top)'				#3f3a60
+@var	checkbox	announcementHide	'Hide announcements'					0
+@var	checkbox	contestHide			'Hide contests and results'				0
+@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
+== background colors ==
+@var 	color		headerBgGrad0		'Header background: gradient start (top)'	#3f3a60
 @var	color		headerBgGrad1		'… gradient end (bottom)'				#3f3a60
-@var	color		mainBg				'Main background'						#aaa
+@var	color		headerColor			'Header text color'						#ddd
+@var	color		mainBg				'Main Background'						#aaa
+@var	color		mainBg2				'2nd level background'					#bbb
+@var	color		moduleHGrad0		'Module header bg: gradient start (top)'	#3f3a60
+@var	color		moduleHGrad1		'… gradient end (bottom)'				#3f3a60
+@var	color		moduleHColor		'Module header text color'				#ddd
+@var	color		moduleBg			'Background of modules, posts etc.'		#ccc
+@var	color		moduleBorderColor	'Border of modules, posts etc.'			#999
+@var	color		fpColor2n			'Frontpage: bg of even rows'			#ddd
+@var	color		fpColor2n1			'… bg of odd rows'						#ccc
+@var	checkbox	fpRowBottomBorder	'Bottom border of rows in modules'		0
+@var	color		menuBg				'Background of menus, dropdowns etc.'	#ccc
+@var	color		menuBorderColor		'Border color of menus, dropdowns etc.'	#999
+@var	color		tableColor2n		'Tables: bg of even rows'				#ddd
+@var	color		tableColor2n1		'… bg of odd rows'						#ccc
+@var	color		buttonPrimaryBg		'Background of primary buttons'			#005bca
+@var	color		buttonPrimary		'Text color of primary buttons'			#ffffff
+== text colors ==
 @var	color		textColor			'Main text color'						#222
-@var	color		titleColor			'Title color (modules, main menu)'		#ddd
+@var	color		linkColor			'Link color'							#0053b7
+@var	color		linkHover			'Link hover'							#c5130e
+@var	color		linkSelected		'Link selected'							#fdad2f
+@var	checkbox	linkUnderline		'Link underline'						0
+@var	select		linkUnderlineStyle	'Link underline style'					["dashed","dotted*","double","initial","inherit","solid","wavy"]
+@var	color		linkVisited			'Link visited'							#0053b7
+@var	color		textPositive		'Text: positive values'					#01ac01
+@var	color		textError			'Text: negative values, error messages'	#c5130e
+@var	color		editHover			'Edit hover (games/collection view)'	#fdad2f
+== fonts ==
 @var	select		fontXXL				"Font XXL (game titles)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXXL			"Font size XXL"							[24,6,48,1,"px"]
 @var	select		fontXL				"Font XL (module headings)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXL			"Font size XL"							[18,6,48,1,"px"]
-@var	select		fontL				"Font L (main texts)"				["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontL				"Font L (main text)"				["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeL			"Font size L"							[14,6,36,1,"px"]
 @var	select		fontM				"Font  M (author, pagination …)"	["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeM			"Font size M"							[12,6,36,1,"px"]
-@var	select		fontS				"Font S (quickbar, hotness …)"		["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontS				"Font S (quickbar, hotness, small buttons …)"	["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeS			"Font size S"							[11,6,24,1,"px"]
-@var	color		linkColor			'Link color'							#0053b7
-@var	color		linkHover			'Link hover'							#c5130e
-@var	checkbox	linkUnderline		'Link underline'						0
-@var	select		linkUnderlineStyle	'Link underline style'					["dashed","dotted*","double","initial","inherit","solid","wavy"]
-@var	color		linkVisited			'Link visited'							#0053b7
-@var	checkbox	moduleHGrad			'Change header bg of modules'			0
-@var	color		moduleHGrad0		'… gradient start (top)'				#4b619a
-@var	color		moduleHGrad1		'… gradient end (bottom)'				#2a2e75
-@var	color		moduleBg			'Background of modules, posts etc.'		#ccc
-@var	color		moduleBorder		'Border of modules, posts etc.'			#e2e7ec
-@var	color		menuBg				'Background of menus, dropdowns etc.'	#ddd
-@var	color		menuBorder			'Border of menus, dropdowns etc.'		#999
+== game pages ==
+@var	checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
+@var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'	0
+== geeklists, forum ==
 @var	color		geeklistHeaderBg	'Background of geeklist headers'		#ddd
 @var	color		quoteTitleBg		'Background of quote title'				#6767bb
 @var	color		quoteTitleColor		'Color of quote title'					#eee
 @var	color		quoteBg				'Background of quotes'					#dadaf2
-@var	color		quoteBorder			'Border of quotes'						#555
+@var	color		quoteColor			'Color of quote text'					#eee
+@var	color		quoteBorderColor	'Border of quotes'						#555
 @var	color		articleNew			'Border of new article'					#CE6C6D
 @var	color		articleSelected		'Border of selected article'			#000AFF
-@var	color		textPositive		'Text: positive values'					#01ac01
-@var	color		textError			'Text: error messages, negative values'	#c5130e
-@var	color		editHover			'Edit hover (games/collection view)'	#fdad2f
-@var	checkbox	announcementHide	'Hide announcements'					0
-@var	checkbox	contestHide			'Hide contests and results'				0
-@var	checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
-@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
-@var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'		0
-@var	checkbox	frontpageStriped	'Striped rows on front page'			1
-@var	checkbox	fpRowBottomBorder	'Border on bottom of rows in modules'	0
 ==/UserStyle== */
 
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	:root {
 		--articleNew: solid 2px articleNew;
 		--articleSelected: solid 3px articleSelected;
+		--buttonPrimaryBg: buttonPrimaryBg;
+		--buttonPrimary: buttonPrimary;
 		--editHover: editHover;
 		--ernie: ernie;
 		--fontXXL: fontXXL;
@@ -72,34 +87,37 @@
 		--fontSizeL: fontSizeL;
 		--fontSizeM: fontSizeM;
 		--fontSizeS: fontSizeS;
+		--fpColor2n: fpColor2n;
+		--fpColor2n1: fpColor2n1;
 		--geeklistHeaderBg: geeklistHeaderBg;
-		--headerBgGrad: headerBgGrad;
 		--headerBgGrad0: headerBgGrad0;
 		--headerBgGrad1: headerBgGrad1;
+		--headerColor: headerColor;
 		--linkColor: linkColor;
 		--linkHover: linkHover;
+		--linkSelected: linkSelected;
 		--linkVisited: linkVisited;
-		--linkUnderline: linkUnderline;
 		--linkUnderlineStyle: linkUnderlineStyle;
 		--mainBg: mainBg;
+		--mainBg2: mainBg2;
 		--menuBg: menuBg;
-		--menuBorder: 1px solid menuBorder;
+		--menuBorder: 1px solid menuBorderColor;
 		--moduleBg: moduleBg;
-		--moduleBorder: 1px solid moduleBorder;
-		--moduleHGrad: moduleHGrad;
+		--moduleBorder: 1px solid moduleBorderColor;
 		--moduleHGrad0: moduleHGrad0;
 		--moduleHGrad1: moduleHGrad1;
+		--moduleHColor: moduleHColor;
 		--quoteTitleBg: quoteTitleBg;
 		--quoteTitleColor: quoteTitleColor;
 		--quoteBg: quoteBg;
-		--quoteBorder: 1px solid quoteBorder;
+		--quoteBorder: 1px solid quoteBorderColor;
+		--tableColor2n: tableColor2n;
+		--tableColor2n1: tableColor2n1;
 		--textColor: textColor;
 		--textError: textError;
 		--textPositive: textPositive;
-		--titleColor: titleColor;
 	}
 
-	/* NEW PAGES */
 	/* header */
 	if ernie {
 		div.global-header-logo > a > img {
@@ -111,39 +129,85 @@
 			background-size: contain;
 		}		
 	}
-	if headerBgGrad {
-		.global-header {
-			background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
+	.global-header {
+		background: linear-gradient(var(--headerBgGrad0), var(--headerBgGrad1));
+	}
+	.global-header-nav-primary {
+		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i {
+			color: var(--headerColor) !important;
 		}
 	}
-	/* colors */
-	html, body {
+	.form-control {
+		color: var(--textColor);
+	}
+	.ui-select-bootstrap .ui-select-choices-row.active > a {
+		background: var(--headerBgGrad0);
+		color: var(--headerColor);
+	}
+	.btn-primary {
+		background: var(--buttonPrimaryBg);
+		border-color: var(--buttonPrimaryBg);
+		color: var(--buttonPrimary);
+	}
+	.btn-default:not(.active):not(:disabled), .btn-default:not(.active):not(:disabled):focus, .btn-default:not(.active):not(:disabled):active, .btn-default:not(.active):not(:disabled):visited, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
+		background: var(--menuBg) !important;
+		border-color: var(--menuBg);
+	}
+	.btn-default:not(.active):not(:disabled):hover {
+		filter:opacity(80%);
+	}
+	.btn-default, .btn-subtle, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
 		color: var(--textColor) !important;
+	}
+	.btn-subtle {
+		background: var(--menuBg);
+		filter: opacity(70%);
+	}
+	.global-header-nav-search-advanced a:hover {
+		background: var(--moduleBg);
+	}
+	/* sidebar */
+	.global-secondary-nav-section-header {
+		background: linear-gradient(var(--moduleHGrad0), var(--moduleHGrad1));
+		color: var(--moduleHColor);
+	}
+	a.toggler-caret, a.global-secondary-nav-section-header {
+		color: var(--moduleHColor) !important;
+	}
+	.global-secondary-nav-section .toggler-caret-target {
+		background: var(--moduleBg);
+	}
+	/* content */
+	body, footer.global-footer {
+		color: var(--textColor);
 		background: var(--mainBg);
 	}
-	h1, h2, h3, h4, h5, h6, p, th, td, .dropdown-header, .panel-heading {
-		color: var(--textColor) !important;
+	.global-body-content {
+		background: var(--mainBg2);
 	}
-	.text-muted {
-		color: var(--textColor) !important;
-		opacity: 0.5;
+	/* hide specific modules if set */
+	if announcementHide {
+		.spotlight_red {
+			display: none !important;
+		}
+	}
+	if contestHide {
+		.spotlight_orange {
+			display: none !important;
+		}
+	}
+	if geekpreviewHide {
+		div.geekcentral_module > center > a[href*="/geekpreview"]{
+		    display: none;
+		}
 	}
 	/* panels */
 	.panel-default > .panel-heading, .panel-primary > .panel-heading {
-		background: var(--moduleBg);
+		background: linear-gradient(var(--moduleHGrad0), var(--moduleHGrad1));
 		border: var(--moduleBorder);
+		color: var(--moduleHColor);
 	}
-	/* links */
-	.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary > button.btn, a.global-header-icon, a.toggler-caret {
-		color: var(--titleColor) !important;
-	}
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a  {
-		color: var(--linkColor) !important;
-	}
-	a:hover, .btn.btn-text-link:hover, ul.global-secondary-nav-links a:hover,.quickbar-pagination button.btn:hover, .global-header-nav-primary .dropdown-menu li a:hover {
-		color: var(--linkHover) !important;
-	}
-	/* font sizes */
+	/* fonts */
 	.game-header-title-info h1 {
 		font-family: var(--fontXXL) !important;		
 		font-size: var(--fontSizeXXL) !important;		
@@ -164,18 +228,67 @@
 		font-family: var(--fontS) !important;
 		font-size: var(--fontSizeS) !important;
 	}
+	/* text-colors */
+	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
+		color: var(--textColor) !important;
+	}
+	.text-muted {
+		filter: opacity(60%);
+	}
+	/* links */
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn) {
+		color: var(--linkColor);
+	}
+	a:hover, .btn:hover {
+		color: var(--linkHover) !important;
+	}
+	a.selected {
+		color: var(--linkSelected) !important;
+	}
+	/* frontpage: zebra striped modules */
+	.geekcentral {
+		tr.moduleRow {
+			&:nth-child(2n) {background: var(--fpColor2n);}
+			&:nth-child(2n+1) {background: var(--fpColor2n1);}
+		}
+	}
+	if fpRowBottomBorder {
+		.geekcentral tr.moduleRow {
+			border-bottom: var(--moduleBorder);
+		}
+	}
+	/* zebra striped tables */
+	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n) {
+		background: var(--tableColor2n);
+	}
+	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1) {
+		background: var(--tableColor2n1);
+	}
 	/* geekmarket */
 	.white-bg, .nav > li.active {
-		background: var(--moduleBg);
+		background: var(--menuBg);
 	}
-	.panel-primary, .form-control, .pagination, .salesreport tr.even, .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td, .dropdown-menu {
+	.panel-primary, .form-control, .pagination, .dropdown-menu {
 		background: var(--menuBg);
 	}
 	.table-bordered tbody tr td, .table-bordered tbody tr th {
 		border: var(--menuBorder);
 	}
 	/* game pages */
-	.game-nav-tabs, .global-body-content-primary, .global-secondary-nav-section .toggler-caret-target, .global-footer {
+	if promotedVideoHide {
+		promotedvideos-module {
+		    display: none;
+		}
+	}
+	if recommendationsHide {
+		reviews-module + div.panel {
+		    display: none;
+		}
+	}
+	.game-year {
+		color: white;
+	}
+	.game-nav-tabs, .global-body-content-primary {
 		background: var(--moduleBg);
 	}
 	.well {
@@ -189,163 +302,155 @@
 		background: var(--quoteBg) !important;
 		border: var(--quoteBorder) !important;
 	}
-
-	/* LEGACY PAGES */
-	/* colors */
-	.legacy, .legacy div {
-		color: var(--textColor) !important;
-	}
-	.legacy .module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a {
-		color: var(--titleColor) !important;
-	}
-	/* font sizes */
-	div.recommend_block dl.recommend *, .legacy .post_day {
-		font-family: var(--fontXXL) !important;
-		font-size: var(--fontSizeXXL) !important;
-	}
-	.legacy h1, .legacy .module_title, .legacy .profile_title, .legacy .gallery_title, span[style*="20px"], .legacy .geeklist_item_title, .legacy .post_month, .legacy dt.tippersbig a, .legacy .forum_path, .legacy .lf, .legacy table.lf td {
-		font-family: var(--fontXL) !important;
-		font-size: var(--fontSizeXL) !important;
-	}
-	.legacy, .legacy .moduletable th, .legacy .innermoduletable th, .legacy .itemmoduletable th, .legacy .innermoduletable td, .legacy #container, .legacy textarea, .legacy table, .legacy .post_year, .legacy .mf, .legacy table.mf td {
-		font-family: var(--fontL) !important;
-		font-size: var(--fontSizeL) !important;
-	}
-	.legacy .objectlink > a, .legacy .forumlink > a, .legacy .modulecommands, .legacy .pager, .legacy .sf, .legacy table.sf td, .legacy .post_numcomments, .legacy .smallerfont, .legacy .tabOn, .legacy .tabOff, .legacy .geekmail_header, .legacy .gm_date, .legacy .collection_table td, .legacy .owned, .legacy .wanted, .legacy .fortrade, .legacy .wishlist, .legacy .prevowned, .legacy .wanttoplay, .legacy .rating span, .legacy .ratingtext, .legacy #blog_description, .legacy .post_categories ul li, .legacy .post_nlinks ul li, .dropdown-header, .legacy .geekinput_medium, .legacy div.wikitoc {
-		font-family: var(--fontM) !important;
-		font-size: var(--fontSizeM) !important;
-	}
-	.legacy .geekpages, .legacy .pages, .legacy .comment_button, .legacy .comment_button_disabled, .legacy .gallery_caption, .legacy .tagbar-inner, .legacy .post_author, .legacy .post_controls, .legacy .post_tstamp, div[style*="9pt"], .legacy div.recommendbox_str {
-		font-family: var(--fontS) !important;
-		font-size: var(--fontSizeS) !important;
-	}
-	/* hide announcements and contests if set */
-	if announcementHide {
-		.spotlight_red {
-			display: none !important;
+	
+	/* LEGACY */
+	.legacy {
+		background: var(--mainBg2);
+		color: var(--textColor);
+		/* modules */
+		th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .spotlight_red th, .spotlight_orange th, .moduletable .geekpoll th, .geekpoll tr th.questiontext, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str  {
+			background: linear-gradient(var(--moduleHGrad0), var(--moduleHGrad1));			
+			color: var(--moduleHColor);
 		}
-	}
-	if contestHide {
-		.spotlight_orange {
-			display: none !important;
+		.tabOn {
+			filter: brightness(80%);
 		}
-	}
-	if promotedVideoHide {
-		promotedvideos-module {
-		    display: none;
+		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option {
+			color: var(--moduleHColor);
 		}
-	}
-	if geekpreviewHide {
-		div.geekcentral_module > center > a[href*="/geekpreview"]{
-		    display: none;
+		/* marketplace + images *rolleyes* */
+		table.moduletable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
+			color: var(--moduleHColor);
+			font-size: var(--fontSizeXL);
 		}
-	}
-	if recommendationsHide {
-		reviews-module + div.panel {
-		    display: none;
+		.moduletable th {
+			color: var(--textColor);
 		}
-	}
-	/* modules with gradient bg */
-	if moduleHGrad {
-		.legacy .moduletable th, .legacy .bggstore_widget_controls, .legacy .geekcollection_pager, .legacy .menu_noquickbar_bottom, .legacy .hotitems th, .legacy .spotlight th, .legacy .moduletable .geekpoll th, .legacy .geekpoll tr th.questiontext, .legacy .profile_table th, .legacy .menu_table, .legacy .tabOff, .legacy .geekmail_header, .global-secondary-nav-section-header {
-			background: linear-gradient(var(--moduleHGrad0), var(--moduleHGrad1));
-		}
-	}
-	/* frontpage striped modules */
-	if frontpageStriped {
-		.geekcentral tr.moduleRow:nth-child(2n), tr[bgcolor*="#ECEDEE"] {
+		.modulecommands option {
 			background: var(--menuBg);
+			border: var(--menuBorder);
 		}
-		.geekcentral tr.moduleRow:nth-child(2n+1), tr[bgcolor*="#FFFFFF"] {
+		/* forum */
+		.forum_table th, .forum_index_table th {
+			color: var(--moduleHColor);
+		}
+		.forum_table td, .forum_index_table td {
 			background: var(--moduleBg);
-		}
-	}
-	else {
-		.geekcentral tr.moduleRow {
-			background: var(--moduleBg);
-		}
-	}
-	if fpRowBottomBorder {
-		.geekcentral tr.moduleRow {
 			border-bottom: var(--moduleBorder);
 		}
-	}
-	/* links */
-	.legacy a, .legacy a:link, .legacy .nav > li > a, .legacy .comment_button, .legacy .moduletable th a, .legacy .geeksub_minorlink a:link {
-		color: var(--linkColor);
-	}
-	.legacy a:hover, .legacy .menutab-open li a:hover, .legacy .geeksub_minorlink a:active {
-		color: var(--linkHover) !important;
-		transition: none !important;
-	}
-	if linkUnderline {
-		a {
-			text-decoration: underline var(--linkUnderlineStyle);
+		.post_numcomments, .dull, .darkgray, div.header {
+			color: var(--textColor);
 		}
-		a:hover {
-			text-decoration: underline var(--linkUnderlineStyle) !important;
+		div.article.subbed {
+			border: var(--articleNew);
+		}
+		div.article.selected, div.article.subbed_selected {
+			border: var(--articleSelected);
+		}
+		.quotetitle {
+			color: var(--quoteTitleColor);
+			background: var(--quoteTitleBg);
+			border: var(--quoteBorder);
+			border-bottom: none;
+		}
+		.quote {
+			background: var(--quoteBg);
+			border: var(--quoteBorder);
+		}
+		/* links */
+		a, a:link, .nav > li > a, .comment_button, .geeksub_minorlink a:link {
+			color: var(--linkColor);
+		}
+		a:hover, .menutab-open li a:hover, .geeksub_minorlink a:active, .comment_button:hover {
+			color: var(--linkHover) !important;
+			transition: none !important;
+		}
+		if linkUnderline {
+			a {
+				text-decoration: underline var(--linkUnderlineStyle);
+			}
+			a:hover {
+				text-decoration: underline var(--linkUnderlineStyle) !important;
+			}
+		}
+		else {
+			a, a:hover {
+				text-decoration: none !important;
+			}
+		}
+		a:visited, .geeksub_minorlink a:visited {
+			color: var(--linkVisited);
+		}
+		.forumlink, .objectlink {
+			a:visited, a:link, a:hover, a:active {
+				color: var(--textColor);
+			}
+		}
+		/* text colors */
+		.error, text-danger {
+			color: var(--textError);
+		}
+		.positive, .positive a, .storepositive, .storeprice, .price, .text-success {
+			color: var(--textPositive);
+		}
+		input {
+			color: inherit;
+		}
+		/* fonts */
+		div.recommend_block dl.recommend *, .post_day {
+			font-family: var(--fontXXL) !important;
+			font-size: var(--fontSizeXXL) !important;
+		}
+		h1, .module_title, .profile_title, .gallery_title, span[style*="20px"], .geeklist_item_title, .post_month, dt.tippersbig a, .forum_path, .lf, table.lf td {
+			font-family: var(--fontXL) !important;
+			font-size: var(--fontSizeXL) !important;
+		}
+		.moduletable th, .innermoduletable th, .itemmoduletable th, .innermoduletable td, #container, textarea, table, .post_year, .mf, table.mf td {
+			font-family: var(--fontL) !important;
+			font-size: var(--fontSizeL) !important;
+		}
+		.objectlink > a, .forumlink > a, .modulecommands, .pager, .sf, table.sf td, .post_numcomments, .smallerfont, .tabOn, .tabOff, .geekmail_header, .gm_date, .collection_table td, .owned, .wanted, .fortrade, .wishlist, .prevowned, .wanttoplay, .rating span, .ratingtext, #blog_description, .post_categories ul li, .post_nlinks ul li, .dropdown-header, .geekinput_medium, div.wikitoc {
+			font-family: var(--fontM) !important;
+			font-size: var(--fontSizeM) !important;
+		}
+		.geekpages, .pages, .comment_button, .comment_button_disabled, .gallery_caption, .tagbar-inner, .post_author, .post_controls, .post_tstamp, div[style*="9pt"], div.recommendbox_str {
+			font-family: var(--fontS) !important;
+			font-size: var(--fontSizeS) !important;
+		}
+		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div {
+			background: var(--moduleBg);
+		}
+		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th, div.header, div.article {
+			background: var(--menuBg);
+		}
+		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar {
+			border: var(--menuBorder);
+		}
+		/* geeklists */
+		.geeklist_title, .geeklist_item_title, .comment_toolbar {
+			background: var(--geeklistHeaderBg);
+		}
+		#header {
+			border-top: var(--menuBorder);
+		}
+		.infobox {
+			background: var(--menuBg);
+			border: var(--moduleBorder);
+		}
+		/* collection */
+		.editfield:hover {
+			background: var(--editHover);
+		}
+		/* geekmail */
+		tr:first-child > td.sf > div.sf, .gm_controlbar, div.geekpages:nth-child(2) {
+			background: var(--moduleBg) !important;
+			border: var(--moduleBorder) !important;
+		}
+		table.gm_messages:nth-child(2n) tr[style*="background:#F7F7F8"] {
+			background: var(--tableColor2n1) !important;
+		}
+		table.gm_messages:nth-child(2n+1) tr[style*="background:#F7F7F8"] {
+			background: var(--tableColor2n) !important;
 		}
 	}
-	else {
-		a, a:hover {
-			text-decoration: none !important;
-		}
-	}
-	.legacy a:visited, .legacy .geeksub_minorlink a:visited {
-		color: var(--linkVisited);
-	}
-	.legacy .error, .legacy text-danger {
-		color: var(--textError);
-	}
-	.legacy .positive, .legacy .positive a, .legacy .storepositive, .legacy .storeprice, .legacy .price, .legacy .text-success {
-		color: var(--textPositive);
-	}
-	.legacy .forumlink a:visited, .legacy .forumlink a:link, .legacy .forumlink a:hover, .legacy .forumlink a:active, .legacy .objectlink a:visited, .legacy .objectlink a:link, .legacy .objectlink a:hover, .legacy .objectlink a:active {
-		color: var(--textColor);
-	}
-	div.legacy, .legacy .mainmenutabs, .legacy .menu_login, .legacy .menu_quickbar, .legacy .profile_block, .legacy table#collectionitems, .legacy div.global-body-content > div {
-		background: var(--moduleBg);
-	}
-	.legacy .messagebox, .legacy .popupbox, .legacy div.recommend_block, .legacy .bluebox, .legacy div.wikitoc, .legacy input, .legacy textarea, .legacy .profile_title, .legacy .img-thumbnail, .legacy .menutab-open, .legacy .mainmenutabs li a.open, .legacy .submenutabs li a.open, .legacy a.comment_button, .legacy .innermoduletable th, .legacy div.header, .legacy div.article {
-		background: var(--menuBg);
-	}
-	.legacy .menu_login, .legacy .menu_quickbar, .legacy .bluebox, .legacy div.header, .legacy div.recommend_block, .legacy div.article, .legacy div.comment_toolbar {
-		border: var(--menuBorder);
-	}
-	.legacy div.article.subbed {
-		border: var(--articleNew);
-	}
-	.legacy div.article.selected, .legacy div.article.subbed_selected {
-		border: var(--articleSelected);
-	}
-	.legacy .geeklist_title, .legacy .geeklist_item_title, .legacy .comment_toolbar {
-		background: var(--geeklistHeaderBg);
-	}
-	.legacy .quotetitle {
-		color: var(--quoteTitleColor);
-		background: var(--quoteTitleBg);
-		border: var(--quoteBorder);
-		border-bottom: none;
-	}
-	.legacy .quote {
-		background: var(--quoteBg);
-		border: var(--quoteBorder);
-	}
-	.legacy #header {
-		border-top: var(--menuBorder);
-	}
-	.legacy .forum_table td, .legacy .forum_index_table td {
-		background: var(--moduleBg);
-		border-bottom: var(--moduleBorder);
-	}
-	.legacy .infobox {
-		background: var(--menuBg);
-		border: var(--moduleBorder);
-	}
-	.legacy .post_numcomments, .legacy .dull, .legacy .darkgray {
-		color: var(--textColor);
-	}
-	.legacy .editfield:hover {
-		background: var(--editHover);
-	}
-}
+}	
