@@ -45,4 +45,4 @@ font color fixes
 refactoring
 
 0.3.1
-refactoring: .legacy done?
+refactoring: .legacy done?; .geekpoll

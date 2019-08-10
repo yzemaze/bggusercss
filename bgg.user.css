@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.1
+@version		0.3.0
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -244,7 +244,7 @@
 		filter: opacity(60%);
 	}
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn), .global-footer-item a {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a {
 		color: var(--linkColor);
 	}
 	a:hover, .btn:hover {
@@ -347,7 +347,7 @@
 			background: var(--moduleBg);
 			border-bottom: var(--moduleBorder);
 		}
-		textarea, .infobox, .messagebox, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
+		textarea, .infobox, .messagebox,, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
 			color: var(--textColor);
 		}
 		select {
@@ -435,7 +435,7 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article {
 			background: var(--moduleBg);
 		}
-		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th {
+		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th, .geekpoll {
 			background: var(--menuBg);
 		}
 		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar {
