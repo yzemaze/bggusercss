@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.1
+@version		0.3.2
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -266,10 +266,10 @@
 		}
 	}
 	/* zebra striped tables */
-	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n) {
+	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
 		background: var(--tableColor2n);
 	}
-	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1) {
+	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"] {
 		background: var(--tableColor2n1);
 	}
 	/* geekmarket */

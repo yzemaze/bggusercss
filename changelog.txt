@@ -46,3 +46,6 @@ refactoring
 
 0.3.1
 refactoring: .legacy done?; .geekpoll
+
+0.3.2
+subscription table fix
