@@ -323,7 +323,7 @@
 		.tabOn {
 			filter: brightness(80%);
 		}
-		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option {
+		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages {
 			color: var(--moduleHColor);
 		}
 		/* marketplace + images *rolleyes* */
