@@ -52,3 +52,8 @@ subscription table fix
 
 0.3.3
 announcements + contests fix
+
+0.3.4
+subscriptions pagination fix
+header bg gradient removed
+quickbar-icons fix
