@@ -51,4 +51,4 @@ refactoring: .legacy done?; .geekpoll
 subscription table fix
 
 0.3.3
-announcement + contests fix
+announcements + contests fix
