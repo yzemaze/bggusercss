@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.2
+@version		0.3.3
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -195,12 +195,12 @@
 	}
 	/* hide specific modules if set */
 	if announcementHide {
-		.spotlight_red {
+		.bg-red {
 			display: none !important;
 		}
 	}
 	if contestHide {
-		.spotlight_orange {
+		.bg-blue {
 			display: none !important;
 		}
 	}
