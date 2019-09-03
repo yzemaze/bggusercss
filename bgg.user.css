@@ -99,6 +99,7 @@
 		--menuBorder: 1px solid menuBorderColor;
 		--moduleBg: moduleBg;
 		--moduleBorder: 1px solid moduleBorderColor;
+		--moduleBorderColor: moduleBorderColor;
 		--moduleHBg: moduleHBg;
 		--moduleHColor: moduleHColor;
 		--quoteTitleBg: quoteTitleBg;
@@ -178,6 +179,9 @@
 	}
 	.global-secondary-nav-section .toggler-caret-target {
 		background: var(--moduleBg);
+	}
+	ul.global-secondary-nav-links > li {
+		border-bottom: var(--moduleBorder);
 	}
 	/* content */
 	body, footer.global-footer {
@@ -267,13 +271,10 @@
 		background: var(--tableColor2n1);
 	}
 	/* geekmarket */
-	.white-bg, .nav > li.active {
+	.white-bg, .nav > li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
 		background: var(--menuBg);
 	}
-	.panel-primary, .form-control, .pagination, .dropdown-menu {
-		background: var(--menuBg);
-	}
-	.table-bordered tbody tr td, .table-bordered tbody tr th {
+	.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
 		border: var(--menuBorder);
 	}
 	/* game pages */
@@ -314,6 +315,15 @@
 			background: var(--moduleHBg) !important;		
 			color: var(--moduleHColor);
 		}
+		.moduletable {
+			border: var(--moduleBorder);
+		}
+		.pages a {
+			border-color: var(--moduleHColor);
+		}
+		.pages a:hover, .pages a:active {
+			border-color: var(--linkHover);
+		}
 		.tabOn {
 			filter: brightness(80%);
 		}
@@ -338,11 +348,30 @@
 			background: var(--moduleBg);
 			border-bottom: var(--moduleBorder);
 		}
+		.forum_table {
+			background-color: var(--moduleBorderColor);
+		}
 		textarea, .infobox, .messagebox,, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
 			color: var(--textColor);
 		}
 		select {
 			background: var(--menuBg);
+		}
+		div.article dl {
+			border-bottom: var(--moduleBorder);
+		}
+		div.article dd.right, div.article dd.doubleright, div.article dd.commands, div.article dd.doublecommands {
+			border-left: var(--moduleBorder);
+		}
+		div.article dd.left {
+			border-right: var(--moduleBorder);
+		}
+		/* right border fix */
+		div.recommendbox_str {
+			width: 104px;
+		}
+		ul.commands li.divider {
+			background-color: var(--moduleBorderColor)
 		}
 		.post_numcomments, .dull, .darkgray, div.header {
 			color: var(--textColor);
@@ -426,15 +455,25 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article {
 			background: var(--moduleBg);
 		}
-		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th, .geekpoll {
+		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, .innermoduletable th, .geekpoll, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			background: var(--menuBg);
 		}
-		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar {
+		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: var(--menuBorder);
+		}
+		.post_numcomments::after, .post_numcomments::before {
+			border-color: transparent var(--moduleBorderColor);
+			border-right-color: var(--moduleBorderColor);
 		}
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title, .comment_toolbar {
 			background: var(--moduleHBg);
+		}
+		.geeklist_title {
+			border: var(--moduleBorder);
+		}
+		.geeklist_item_title {
+			border-bottom: var(--moduleBorder);
 		}
 		#header {
 			border-top: var(--menuBorder);
@@ -448,15 +487,19 @@
 			background: var(--editHover);
 		}
 		/* geekmail */
-		tr:first-child > td.sf > div.sf, .gm_controlbar, div.geekpages:nth-child(2) {
+		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks {
 			background: var(--moduleBg) !important;
 			border: var(--moduleBorder) !important;
 		}
-		table.gm_messages:nth-child(2n) tr[style="background:#F7F7F8"] {
+		table.gm_messages:nth-child(2n) tr {
 			background: var(--tableColor2n1) !important;
 		}
-		table.gm_messages:nth-child(2n+1) tr[style="background:#F7F7F8"] {
+		table.gm_messages:nth-child(2n+1) tr {
 			background: var(--tableColor2n) !important;
+		}
+		div#mychecks > table > tbody > tr {
+			border: 0px !important;
+			border-bottom: var(--moduleBorder);
 		}
 	}
 }	

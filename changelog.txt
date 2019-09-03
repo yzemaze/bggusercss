@@ -57,3 +57,5 @@ announcements + contests fix
 subscriptions pagination fix
 header bg gradient removed
 quickbar-icons fix
+geekmail, quickbar edit: zebra striped tables
+quotes fix
