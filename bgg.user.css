@@ -57,7 +57,6 @@
 @var	checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
 @var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'	0
 == geeklists, forum ==
-@var	color		geeklistHeaderBg	'Background of geeklist headers'		#ddd
 @var	color		quoteTitleBg		'Background of quote title'				#6767bb
 @var	color		quoteTitleColor		'Color of quote title'					#eee
 @var	color		quoteBg				'Background of quotes'					#dadaf2
@@ -87,7 +86,6 @@
 		--fontSizeS: fontSizeS;
 		--fpColor2n: fpColor2n;
 		--fpColor2n1: fpColor2n1;
-		--geeklistHeaderBg: geeklistHeaderBg;
 		--headerBg: headerBg;
 		--headerColor: headerColor;
 		--linkColor: linkColor;
@@ -436,7 +434,7 @@
 		}
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title, .comment_toolbar {
-			background: var(--geeklistHeaderBg);
+			background: var(--moduleHBg);
 		}
 		#header {
 			border-top: var(--menuBorder);
