@@ -3,20 +3,21 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.9
+@version		0.4.0
 @author			yzemaze
-@changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
 @preprocessor stylus
 == specials ==
 @var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
+@var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests and results'				0
-@var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
 @var	checkbox	frontpageCondensed	'Frontpage: less whitespace'			1
 @var	checkbox	metadataInline		'Frontpage: metadata inline'			0
-@var	checkbox	skyscraperHide 		'Use full page width (hide skyscraper)'	0
+@var	range		columns				'Frontpage: columns'					[2,2,5,1]
+@var	checkbox	skyscraperHide 		'Hide skyscraper'						0
+@var	range		pageWidth			'Max width of page'						[1550,1000,3840,10,"px"]
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
@@ -108,6 +109,7 @@
 		--moduleHeaderBg: moduleHeaderBg;
 		--moduleHeaderColor: moduleHeaderColor;
 		--moduleHeaderLinkColor: moduleHeaderLinkColor;
+		--pageWidth: pageWidth;
 		--quoteTitleBg: quoteTitleBg;
 		--quoteTitleColor: quoteTitleColor;
 		--quoteBg: quoteBg;
@@ -120,6 +122,27 @@
 		--textPositive: textPositive;
 	}
 
+	/* page */
+	.container-fluid {
+	    max-width: var(--pageWidth);
+	}
+	/* columns */
+	if columns != 2 {
+		.geekcentral_leftcol {
+			flex: 1 1 (100/columns)%;
+    		max-width: (100/columns)%;
+		}
+		.geekcentral_rightcol {
+			flex: 1 1 100%;
+			max-width: 100%;
+			column-count: (columns - 1);
+			column-gap: 10px;
+		}
+		.geekcentral_rightcol > .geekcentral_module {
+			break-inside: avoid;
+		}
+	}
+	
 	/* header */
 	if ernie {
 		div.global-header-logo > a > img {
@@ -248,24 +271,18 @@
 	}
 	
 	/* hide specific modules if set */
-	if announcementHide {
-		.bg-red {
+	if editHomepageHide {
+		.geekcentral-controls {
 			display: none;
-			~div {
-				display:none;
-			}
+		}
+	}
+	if announcementHide {
+		.geekcentral_module.leftcol:nth-child(2) {
+			display: none;
 		}
 	}
 	if contestHide {
-		.bg-blue {
-			display: none;
-			~div {
-				display:none;
-			}
-		}
-	}
-	if editHomepageHide {
-		.geekcentral-controls {
+		.geekcentral_module.leftcol:nth-child(3), .geekcentral_module.leftcol:nth-child(4) {
 			display: none;
 		}
 	}
@@ -617,6 +634,9 @@
 			th {
 				background: var(--moduleHeaderBg);
 				color: var(--moduleHeaderColor);
+			}
+			tr th.questiontext {
+				color: var(--textColor);
 			}
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext {
 				background: var(--menuBg) !important;
