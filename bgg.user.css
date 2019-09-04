@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.7
+@version		0.3.9
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -22,8 +22,9 @@
 @var	color		headerColor			'Header text'							#ddd
 @var	color		mainBg				'Main Background'						#aaa
 @var	color		mainBg2				'2nd level background'					#bbb
-@var	color		moduleHBg			'Module header bg'						#3f3a60
-@var	color		moduleHColor		'Module header text'					#ddd
+@var	color		moduleHeaderBg		'Module header bg'						#3f3a60
+@var	color		moduleHeaderColor	'Module header text'					#ddd
+@var	color		moduleHeaderLinkColor	'Module header links'				#fff
 @var	color		moduleBg			'Background of modules, posts etc.'		#ccc
 @var	color		moduleBorderColor	'Border of modules, posts etc.'			#999
 @var	color		fpColor2n			'Frontpage: bg of even rows'			#ddd
@@ -104,8 +105,9 @@
 		--moduleBg: moduleBg;
 		--moduleBorder: 1px solid moduleBorderColor;
 		--moduleBorderColor: moduleBorderColor;
-		--moduleHBg: moduleHBg;
-		--moduleHColor: moduleHColor;
+		--moduleHeaderBg: moduleHeaderBg;
+		--moduleHeaderColor: moduleHeaderColor;
+		--moduleHeaderLinkColor: moduleHeaderLinkColor;
 		--quoteTitleBg: quoteTitleBg;
 		--quoteTitleColor: quoteTitleColor;
 		--quoteBg: quoteBg;
@@ -175,13 +177,14 @@
 	.global-header-nav-search-advanced a:hover {
 		background: var(--moduleBg);
 	}
+	
 	/* sidebar */
 	.toggler-caret.global-secondary-nav-section-header {
-		background: var(--moduleHBg);
-		color: var(--moduleHColor);
+		background: var(--moduleHeaderBg);
+		color: var(--moduleHeaderColor);
 	}
 	a.toggler-caret, a.global-secondary-nav-section-header {
-		color: var(--moduleHColor) !important;
+		color: var(--moduleHeaderColor) !important;
 	}
 	.global-secondary-nav-section .toggler-caret-target {
 		background: var(--moduleBg);
@@ -189,6 +192,7 @@
 	ul.global-secondary-nav-links > li {
 		border-bottom: var(--moduleBorder);
 	}
+	
 	/* content */
 	body, footer.global-footer {
 		color: var(--textColor);
@@ -197,6 +201,7 @@
 	.global-body-content {
 		background: var(--mainBg2);
 	}
+	
 	/* frontpage */
 	if frontpageCondensed {
 		.media-cell {
@@ -208,7 +213,7 @@
 		h2.media-cell__title {
 			font-size: var(--fontSizeL) !important;
 		}
-		.post-meta {
+		p.media-cell__subtitle {
 			font-size: var(--fontSizeM) !important;
 		}
 	}
@@ -226,21 +231,22 @@
 		border-top: none;
 	}
 	.media-header {
-		background: var(--moduleHBg);
+		background: var(--moduleHeaderBg);
 	}
 	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
-		color: var(--moduleHColor) !important;
+		color: var(--moduleHeaderColor) !important;
 	}
 	.media-filters {
-		background: var(--moduleHBg);
+		background: var(--moduleHeaderBg);
 	}
-	/* frontpage: zebra striped modules */
+	/* zebra striped modules */
 	.geekcentral {
 		.media-module {
 			.media-cell:nth-child(2n) {background: var(--fpColor2n);}
 			.media-cell:nth-child(2n+1) {background: var(--fpColor2n1);}
 		}
 	}
+	
 	/* hide specific modules if set */
 	if announcementHide {
 		.bg-red {
@@ -273,12 +279,14 @@
 			display: none;
 		}
 	}
+	
 	/* panels */
 	.panel-default > .panel-heading, .panel-primary > .panel-heading {
-		background: var(--moduleHBg);
+		background: var(--moduleHeaderBg);
 		border: var(--moduleBorder);
-		color: var(--moduleHColor);
+		color: var(--moduleHeaderColor);
 	}
+	
 	/* fonts */
 	.game-header-title-info h1 {
 		font-family: var(--fontXXL) !important;		
@@ -300,6 +308,7 @@
 		font-family: var(--fontS) !important;
 		font-size: var(--fontSizeS) !important;
 	}
+	
 	/* text-colors */
 	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text-color, a.ng-binding, li.ng-binding a {
 		color: var(--textColor) !important;
@@ -307,6 +316,7 @@
 	.text-muted {
 		filter: opacity(60%);
 	}
+	
 	/* links */
 	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a /* .global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, */ {
 		color: var(--linkColor);
@@ -317,6 +327,7 @@
 	a.selected {
 		color: var(--linkSelected) !important;
 	}
+	
 	/* zebra striped tables */
 	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
 		background: var(--tableColor2n) !important;
@@ -324,6 +335,7 @@
 	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"] {
 		background: var(--tableColor2n1);
 	}
+	
 	/* geekmarket */
 	.white-bg, .nav > li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
 		background: var(--menuBg);
@@ -331,6 +343,7 @@
 	.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
 		border: var(--menuBorder);
 	}
+	
 	/* game pages */
 	if promotedVideoHide {
 		promotedvideos-module {
@@ -354,6 +367,7 @@
 	.summary-border .summary-item {
 		border-bottom: var(--menuBorder);
 	}
+	
 	/* image gallery */
 	gg-markup-quote {
 		background: var(--quoteBg) !important;
@@ -364,16 +378,17 @@
 	.legacy {
 		background: var(--mainBg2);
 		color: var(--textColor);
+		
 		/* modules */
-		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .geekpoll th, .geekpoll tr th.questiontext, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header  {
-			background: var(--moduleHBg) !important;		
-			color: var(--moduleHColor);
+		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header  {
+			background: var(--moduleHeaderBg) !important;		
+			color: var(--moduleHeaderColor);
 		}
 		.moduletable {
 			border: var(--moduleBorder);
 		}
 		.pages a {
-			border-color: var(--moduleHColor);
+			border-color: var(--moduleHeaderColor);
 		}
 		.pages a:hover, .pages a:active {
 			border-color: var(--linkHover);
@@ -382,20 +397,21 @@
 			filter: brightness(80%);
 		}
 		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages {
-			color: var(--moduleHColor);
+			color: var(--moduleHeaderColor);
 		}
 		/* marketplace + images *rolleyes* */
 		table.moduletable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
-			color: var(--moduleHColor);
+			color: var(--moduleHeaderColor);
 			font-size: var(--fontSizeXL);
 		}
 		.modulecommands option, .searchbox, .searchbox_header, .searchbox_inner {
 			background: var(--menuBg);
 			border: var(--menuBorder);
 		}
+		
 		/* forum */
 		.forum_table th, .forum_index_table th {
-			color: var(--moduleHColor);
+			color: var(--moduleHeaderColor);
 		}
 		.forum_table td, .forum_index_table td {
 			color: var(--textColor);
@@ -414,7 +430,7 @@
 				background-color: var(--tableColor2n1) !important;
 			}
 		}
-		textarea, .infobox, .messagebox,, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
+		textarea, .infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
 			color: var(--textColor);
 		}
 		select {
@@ -456,6 +472,7 @@
 			border: var(--quoteBorder);
 			color: var(--quoteColor);
 		}
+		
 		/* links */
 		a, a:link, .nav > li > a, .comment_button, .geeksub_minorlink a:link {
 			color: var(--linkColor);
@@ -491,11 +508,13 @@
 				color: var(--textColor);
 			}
 		}
+		
 		/* overtexts / popups */
 		.location, js-location, .js-badgeovertext, .avatarovertext, a.js_badgelink {
 			background: var(--menuBg);
 			color: var(--textColor);
 		}
+		
 		/* text colors */
 		.error, text-danger {
 			color: var(--textError);
@@ -508,12 +527,13 @@
 			background-color: var(--menuBg) !important;
 
 		}
+		
 		/* fonts */
 		div.recommend_block dl.recommend *, .post_day {
 			font-family: var(--fontXXL) !important;
 			font-size: var(--fontSizeXXL) !important;
 		}
-		h1, .module_title, .profile_title, .gallery_title, span[style*="20px"], .geeklist_item_title, .post_month, dt.tippersbig a, .forum_path, .lf, table.lf td {
+		h1, .module_title, .profile_title, .gallery_title, span[style*="20px"], .geeklist_item_title, .post_month, .forum_path, .lf, table.lf td, div.recommend_block dl.recommend dt.tippersbig a {
 			font-family: var(--fontXL) !important;
 			font-size: var(--fontSizeXL) !important;
 		}
@@ -532,7 +552,7 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article {
 			background: var(--moduleBg);
 		}
-		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, span.comment_button, .innermoduletable th, .geekpoll, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, span.comment_button, .innermoduletable th, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			background: var(--menuBg);
 		}
 		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
@@ -542,10 +562,14 @@
 			border-color: transparent var(--moduleBorderColor);
 			border-right-color: var(--moduleBorderColor);
 		}
+		
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title, .comment_toolbar {
-			color: var(--moduleHColor);
-			background: var(--moduleHBg);
+			color: var(--moduleHeaderColor);
+			background: var(--moduleHeaderBg);
+			a {
+				color: var(--moduleHeaderLinkColor);
+			}
 		}
 		.geeklist_title {
 			border: var(--moduleBorder);
@@ -560,10 +584,12 @@
 			background: var(--menuBg);
 			border: var(--moduleBorder);
 		}
+		
 		/* collection */
 		.editfield:hover {
 			background: var(--editHover);
 		}
+		
 		/* geekmail */
 		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks {
 			background: var(--moduleBg) !important;
@@ -581,6 +607,37 @@
 		}
 		td.sf div[style*="background-color"] {
 			background-color: var(--mainBg) !important;
+		}
+		
+		/* polls */
+		.outerpoll {
+			background: var(--moduleBg);	
+			}
+		.geekpoll {
+			th {
+				background: var(--moduleHeaderBg);
+				color: var(--moduleHeaderColor);
+			}
+			th.header, tfoot > tr, tr.columnlabel, th.questiontext {
+				background: var(--menuBg) !important;
+			}
+			tr:nth-child(2n)  {
+				background: var(--tableColor2n);
+			}
+			tr:nth-child(2n+1)  {
+				background: var(--tableColor2n1);
+			}
+		}	
+		.pollresults {
+			th, tfoot > tr > *  {
+				background: var(--menuBg) !important;
+			}
+			tr:nth-child(2n) td {
+				background: var(--tableColor2n);
+			}
+			tr:nth-child(2n+1) td {
+				background: var(--tableColor2n1);
+			}
 		}
 	}
 }	

@@ -68,4 +68,11 @@ frontpage: metadata inline
 
 0.3.7
 quote fix
-geekliste title fix
+geeklist title fix
+
+0.3.8
+geeklist item headers: links
+gg-tip size
+
+0.3.9
+geekpolls
