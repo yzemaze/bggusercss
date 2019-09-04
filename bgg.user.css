@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.6
+@version		0.3.7
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -64,7 +64,7 @@
 @var	color		quoteTitleBg		'Background of quote title'				#6767bb
 @var	color		quoteTitleColor		'Color of quote title'					#eee
 @var	color		quoteBg				'Background of quotes'					#dadaf2
-@var	color		quoteColor			'Color of quote text'					#555
+@var	color		quoteColor			'Color of quote text'					#333
 @var	color		quoteBorderColor	'Border of quotes'						#555
 @var	color		articleNew			'Border of new article'					#CE6C6D
 @var	color		articleSelected		'Border of selected article'			#000AFF
@@ -544,6 +544,7 @@
 		}
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title, .comment_toolbar {
+			color: var(--moduleHColor);
 			background: var(--moduleHBg);
 		}
 		.geeklist_title {

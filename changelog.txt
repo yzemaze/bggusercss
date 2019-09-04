@@ -65,3 +65,7 @@ new frontpage fixes
 
 0.3.6
 frontpage: metadata inline
+
+0.3.7
+quote fix
+geekliste title fix
