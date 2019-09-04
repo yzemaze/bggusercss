@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.5
+@version		0.3.6
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -12,8 +12,11 @@
 @var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests and results'				0
-@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
 @var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
+@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
+@var	checkbox	frontpageCondensed	'Frontpage: less whitespace'			1
+@var	checkbox	metadataInline		'Frontpage: metadata inline'			0
+@var	checkbox	skyscraperHide 		'Use full page width (hide skyscraper)'	0
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
@@ -131,7 +134,7 @@
 		color: var(--textColor) !important;
 	}
 	.global-header-nav-primary {
-		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i {
+		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, a.global-header-user-notification-action {
 			color: var(--headerColor) !important;
 		}
 	}
@@ -194,6 +197,50 @@
 	.global-body-content {
 		background: var(--mainBg2);
 	}
+	/* frontpage */
+	if frontpageCondensed {
+		.media-cell {
+			padding: 2px 4px;
+		}
+		.media-cell__subtitle {
+			margin: 0;
+		}
+		h2.media-cell__title {
+			font-size: var(--fontSizeL) !important;
+		}
+		.post-meta {
+			font-size: var(--fontSizeM) !important;
+		}
+	}
+	if metadataInline {
+		.media-cell {
+			display: flex;
+			justify-content: space-between;	
+		}
+		p.media-cell__subtitle {
+			padding-left: 5px;
+		}
+	}
+	.media-cell {
+		border: var(--menuBorder);
+		border-top: none;
+	}
+	.media-header {
+		background: var(--moduleHBg);
+	}
+	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
+		color: var(--moduleHColor) !important;
+	}
+	.media-filters {
+		background: var(--moduleHBg);
+	}
+	/* frontpage: zebra striped modules */
+	.geekcentral {
+		.media-module {
+			.media-cell:nth-child(2n) {background: var(--fpColor2n);}
+			.media-cell:nth-child(2n+1) {background: var(--fpColor2n1);}
+		}
+	}
 	/* hide specific modules if set */
 	if announcementHide {
 		.bg-red {
@@ -221,6 +268,11 @@
 		    display: none;
 		}
 	}
+	if skyscraperHide {
+		.global-body-ad {
+			display: none;
+		}
+	}
 	/* panels */
 	.panel-default > .panel-heading, .panel-primary > .panel-heading {
 		background: var(--moduleHBg);
@@ -232,7 +284,7 @@
 		font-family: var(--fontXXL) !important;		
 		font-size: var(--fontSizeXXL) !important;		
 	}
-	.panel-header-lg .panel-title, .navbar-brand {
+	h2, .panel-header-lg .panel-title, .navbar-brand {
 		font-family: var(--fontXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
@@ -249,14 +301,14 @@
 		font-size: var(--fontSizeS) !important;
 	}
 	/* text-colors */
-	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
+	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text-color, a.ng-binding, li.ng-binding a {
 		color: var(--textColor) !important;
 	}
 	.text-muted {
 		filter: opacity(60%);
 	}
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, ul.global-secondary-nav-links a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .global-header-nav-primary .dropdown-menu li a, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a /* .global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, */ {
 		color: var(--linkColor);
 	}
 	a:hover, .btn:hover {
@@ -264,18 +316,6 @@
 	}
 	a.selected {
 		color: var(--linkSelected) !important;
-	}
-	/* frontpage: zebra striped modules */
-	.geekcentral {
-		tr.moduleRow {
-			&:nth-child(2n) {background: var(--fpColor2n);}
-			&:nth-child(2n+1) {background: var(--fpColor2n1);}
-		}
-	}
-	if fpRowBottomBorder {
-		.geekcentral tr.moduleRow {
-			border-bottom: var(--moduleBorder);
-		}
 	}
 	/* zebra striped tables */
 	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {

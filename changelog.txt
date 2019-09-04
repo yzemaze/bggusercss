@@ -61,4 +61,7 @@ geekmail, quickbar edit: zebra striped tables
 quotes fix
 
 0.3.5
-new frontpage fix
+new frontpage fixes
+
+0.3.6
+frontpage: metadata inline
