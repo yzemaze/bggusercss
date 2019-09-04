@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.3.4
+@version		0.3.5
 @author			yzemaze
 @changelog		https://github.com/yzemaze/bggusercss/blob/master/changelog.txt
 @license		CC-BY-NC 4.0
@@ -13,6 +13,7 @@
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests and results'				0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
+@var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
@@ -196,12 +197,23 @@
 	/* hide specific modules if set */
 	if announcementHide {
 		.bg-red {
-			display: none !important;
+			display: none;
+			~div {
+				display:none;
+			}
 		}
 	}
 	if contestHide {
 		.bg-blue {
-			display: none !important;
+			display: none;
+			~div {
+				display:none;
+			}
+		}
+	}
+	if editHomepageHide {
+		.geekcentral-controls {
+			display: none;
 		}
 	}
 	if geekpreviewHide {
@@ -220,7 +232,7 @@
 		font-family: var(--fontXXL) !important;		
 		font-size: var(--fontSizeXXL) !important;		
 	}
-	h2, .panel-header-lg .panel-title, .navbar-brand {
+	.panel-header-lg .panel-title, .navbar-brand {
 		font-family: var(--fontXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
