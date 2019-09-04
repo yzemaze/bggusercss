@@ -61,10 +61,10 @@ geekmail, quickbar edit: zebra striped tables
 quotes fix
 
 0.3.5
-new frontpage fixes
+new front page fixes
 
 0.3.6
-frontpage: metadata inline
+front page: metadata inline
 
 0.3.7
 quote fix
@@ -78,4 +78,7 @@ gg-tip size
 geekpolls
 
 0.4.0
-frontpage: multi-column layout
+front page: multi-column layout
+
+0.4.1
+hide contests and results independently

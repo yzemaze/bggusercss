@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.4.0
+@version		0.4.1
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -11,7 +11,8 @@
 @var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
 @var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
 @var	checkbox	announcementHide	'Hide announcements'					0
-@var	checkbox	contestHide			'Hide contests and results'				0
+@var	checkbox	contestHide			'Hide contests'							0
+@var	checkbox	contestResultsHide	'Hide contest results'					0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
 @var	checkbox	frontpageCondensed	'Frontpage: less whitespace'			1
 @var	checkbox	metadataInline		'Frontpage: metadata inline'			0
@@ -126,22 +127,6 @@
 	.container-fluid {
 	    max-width: var(--pageWidth);
 	}
-	/* columns */
-	if columns != 2 {
-		.geekcentral_leftcol {
-			flex: 1 1 (100/columns)%;
-    		max-width: (100/columns)%;
-		}
-		.geekcentral_rightcol {
-			flex: 1 1 (100 - 100/columns)%;
-			max-width: (100 - 100/columns)%;
-			column-count: (columns - 1);
-			column-gap: 10px;
-		}
-		.geekcentral_rightcol > .geekcentral_module {
-			break-inside: avoid;
-		}
-	}
 	
 	/* header */
 	if ernie {
@@ -216,6 +201,23 @@
 		border-bottom: var(--moduleBorder);
 	}
 	
+	/* columns */
+	if columns != 2 {
+		.geekcentral_leftcol {
+			flex: 1 1 (100/columns)%;
+    		max-width: (100/columns)%;
+		}
+		.geekcentral_rightcol {
+			flex: 1 1 (100 - 100/columns)%;
+			max-width: (100 - 100/columns)%;
+			column-count: (columns - 1);
+			column-gap: 10px;
+		}
+		.geekcentral_rightcol > .geekcentral_module {
+			break-inside: avoid;
+		}
+	}
+	
 	/* content */
 	body, footer.global-footer {
 		color: var(--textColor);
@@ -282,7 +284,12 @@
 		}
 	}
 	if contestHide {
-		.geekcentral_module.leftcol:nth-child(3), .geekcentral_module.leftcol:nth-child(4) {
+		.geekcentral_module.leftcol:nth-child(3) {
+			display: none;
+		}
+	}
+	if contestResultsHide {
+		.geekcentral_module.leftcol:nth-child(4) {
 			display: none;
 		}
 	}
