@@ -82,3 +82,10 @@ front page: multi-column layout
 
 0.4.1
 hide contests and results independently
+
+0.4.2
+front page links color + weight
+link underline fix
+
+0.4.3
+game page header text color

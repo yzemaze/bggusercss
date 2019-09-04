@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.4.1
+@version		0.4.3
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -22,8 +22,8 @@
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
-@var	color		mainBg				'Main Background'						#aaa
-@var	color		mainBg2				'2nd level background'					#bbb
+@var	color		mainBg				'Main background'						#aaa
+@var	color		mainBg2				'Front page background'						#bbb
 @var	color		moduleHeaderBg		'Module header bg'						#3f3a60
 @var	color		moduleHeaderColor	'Module header text'					#ddd
 @var	color		moduleHeaderLinkColor	'Module header links'				#fff
@@ -37,10 +37,13 @@
 @var	color		tableColor2n		'Tables: bg of even rows'				#ddd
 @var	color		tableColor2n1		'… bg of odd rows'						#ccc
 @var	color		buttonPrimaryBg		'Primary buttons background'			#005bca
-@var	color		buttonPrimary		'primary buttons text'					#ffffff
+@var	color		buttonPrimary		'Primary buttons text'					#ffffff
 == text colors ==
 @var	color		textColor			'Main text'								#222
+@var	color		gamepageHeaderColor	'Game pages: header'					#ddd
 @var	color		linkColor			'Links'									#0053b7
+@var	color		fpLinkColor			'Links on front page'					#0053b7
+@var	select		fpLinkWeight		'Links on front page'					["bold", "regular"]
 @var	color		linkHover			'Link hover'							#c5130e
 @var	color		linkSelected		'Link selected'							#fdad2f
 @var	checkbox	linkUnderline		'Link underline'						0
@@ -93,6 +96,8 @@
 		--fontSizeS: fontSizeS;
 		--fpColor2n: fpColor2n;
 		--fpColor2n1: fpColor2n1;
+		--fpLinkColor: fpLinkColor;
+		--gamepageHeaderColor: gamepageHeaderColor;
 		--headerBg: headerBg;
 		--headerColor: headerColor;
 		--linkColor: linkColor;
@@ -334,7 +339,7 @@
 	}
 	
 	/* text-colors */
-	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text-color, a.ng-binding, li.ng-binding a {
+	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text, .post-meta__link, .post-meta__link:visited {
 		color: var(--textColor) !important;
 	}
 	.text-muted {
@@ -342,14 +347,44 @@
 	}
 	
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a /* .global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, */ {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a {
 		color: var(--linkColor);
+	}	
+	.global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a, .quickbar a.ng-binding {
+		color: var(--fpLinkColor);
+	}
+	if fpLinkWeight == "regular" {
+		.geekcentral_module {
+			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
+				font-weight: 400;
+			}
+		}
+	}
+	else {
+		.geekcentral_module {
+			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
+				font-weight: 600;
+			}
+		}
+	}
+	a.visited, .link-text-color:visited {
+		color: var(--linkVisited) !important;
 	}
 	a:hover, .btn:hover {
 		color: var(--linkHover) !important;
 	}
 	a.selected {
 		color: var(--linkSelected) !important;
+	}
+	if linkUnderline {
+		a, a:link, a:hover  {
+			text-decoration: underline var(--linkUnderlineStyle);
+		}
+	}
+	else {
+		a, a:link, a:hover {
+			text-decoration: none !important;
+		}
 	}
 	
 	/* zebra striped tables */
@@ -379,8 +414,11 @@
 		    display: none;
 		}
 	}
-	.game-year {
-		color: white;
+	.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a {
+		color: var(--gamepageHeaderColor) !important;
+	}
+	div.rating-overall > div.rating-overall-callout-container > a.rating-angular {
+		color: #ddd;
 	}
 	.game-nav-tabs, .global-body-content-primary {
 		background: var(--moduleBg);
@@ -390,6 +428,10 @@
 	}
 	.summary-border .summary-item {
 		border-bottom: var(--menuBorder);
+	}
+	.summary-media-grid-count {
+		background: var(--menuBg);
+		border: var(--menuBorder);
 	}
 	
 	/* image gallery */
@@ -512,7 +554,7 @@
 			border-color: var(--linkHover);
 		}
 		if linkUnderline {
-			a {
+			a, a:link {
 				text-decoration: underline var(--linkUnderlineStyle);
 			}
 			a:hover {
@@ -520,7 +562,7 @@
 			}
 		}
 		else {
-			a, a:hover {
+			a, a:link, a:hover {
 				text-decoration: none !important;
 			}
 		}
