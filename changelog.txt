@@ -93,3 +93,6 @@ game page header text color
 0.4.4
 blog fixes
 geekmarket fixes
+
+0.4.5
+removed hide contest results (side effects)

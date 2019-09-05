@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.4.4
+@version		0.4.5
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -12,7 +12,6 @@
 @var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests'							0
-@var	checkbox	contestResultsHide	'Hide contest results'					0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
 @var	checkbox	frontpageCondensed	'Front page: less whitespace'			1
 @var	checkbox	metadataInline		'Front page: metadata inline'			0
@@ -309,11 +308,11 @@
 			display: none;
 		}
 	}
-	if contestResultsHide {
+	/*if contestResultsHide {
 		.geekcentral_module.leftcol:nth-child(4) {
 			display: none;
 		}
-	}
+	}*/
 	if geekpreviewHide {
 		div.geekcentral_module > center > a[href*="/geekpreview"]{
 		    display: none;
