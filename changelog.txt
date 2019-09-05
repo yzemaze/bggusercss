@@ -118,3 +118,4 @@ position searchbar or user menu left
 
 0.5.1
 hr color
+column fix for mobile devices (< 769px => no columns)
