@@ -101,4 +101,4 @@ removed hide contest results (side effects)
 front page, div.legacy: padding reduced/removed
 
 0.4.7
-front page: hide subforums/blog names, authors and reactions
+front page: metadata no truncation, hide subforums/blog names, authors and reactions
