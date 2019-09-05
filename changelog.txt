@@ -106,3 +106,12 @@ front page: metadata no truncation, hide subforums/blog names, authors and react
 0.4.8
 geeklist: minor fix
 quickbar sticky (kudos to Jessica (Albia) https://www.boardgamegeek.com/geeklist/259777/item/7080491#item7080491)
+game pages: backgrounds, colors
+
+0.4.9
+image pages: backgrounds, colors
+user profiles
+minor tweaks
+
+0.5.0
+position searchbar or user menu left
