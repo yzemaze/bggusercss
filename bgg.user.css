@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.4.3
+@version		0.4.4
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -14,9 +14,9 @@
 @var	checkbox	contestHide			'Hide contests'							0
 @var	checkbox	contestResultsHide	'Hide contest results'					0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
-@var	checkbox	frontpageCondensed	'Frontpage: less whitespace'			1
-@var	checkbox	metadataInline		'Frontpage: metadata inline'			0
-@var	range		columns				'Frontpage: columns'					[2,2,5,1]
+@var	checkbox	frontpageCondensed	'Front page: less whitespace'			1
+@var	checkbox	metadataInline		'Front page: metadata inline'			0
+@var	range		columns				'Front page: columns'					[2,2,5,1]
 @var	checkbox	skyscraperHide 		'Hide skyscraper'						0
 @var	range		pageWidth			'Max width of page'						[1550,1000,3840,10,"px"]
 == background colors ==
@@ -269,12 +269,22 @@
 	.media-filters {
 		background: var(--moduleHeaderBg);
 	}
+	/* hide thumbs & counts */
+	/*.media-cell > p > span:not(:first-child) {
+	    display: none;
+	}*/
+
 	/* zebra striped modules */
 	.geekcentral {
 		.media-module {
 			.media-cell:nth-child(2n) {background: var(--fpColor2n);}
 			.media-cell:nth-child(2n+1) {background: var(--fpColor2n1);}
 		}
+	}
+	
+	/* quickbar */
+	.quickbar-list-group {
+    	margin-bottom: -5px;
 	}
 	
 	/* hide specific modules if set */
@@ -284,6 +294,12 @@
 		}
 	}
 	if announcementHide {
+		/*.bg-red {
+			display: none;
+			~div {
+				display: none;
+			}
+		}*/
 		.geekcentral_module.leftcol:nth-child(2) {
 			display: none;
 		}
@@ -340,7 +356,7 @@
 	
 	/* text-colors */
 	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text, .post-meta__link, .post-meta__link:visited {
-		color: var(--textColor) !important;
+		color: var(--textColor);
 	}
 	.text-muted {
 		filter: opacity(60%);
@@ -368,7 +384,7 @@
 		}
 	}
 	a.visited, .link-text-color:visited {
-		color: var(--linkVisited) !important;
+		color: var(--linkVisited);
 	}
 	a:hover, .btn:hover {
 		color: var(--linkHover) !important;
@@ -396,8 +412,17 @@
 	}
 	
 	/* geekmarket */
-	.white-bg, .nav > li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
+	.white-bg {
+		background: var(--moduleBg);
+	}
+	.nav > li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
 		background: var(--menuBg);
+	}
+	.nav > li > a:hover {
+		background: var(--moduleHeaderBg);
+	}
+	.nav > li.active > a {
+		color: var(--linkSelected);
 	}
 	.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
 		border: var(--menuBorder);
@@ -442,11 +467,11 @@
 	
 	/* LEGACY */
 	.legacy {
-		background: var(--mainBg2);
+		background: var(--mainBg);
 		color: var(--textColor);
 		
 		/* modules */
-		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header  {
+		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header {
 			background: var(--moduleHeaderBg) !important;		
 			color: var(--moduleHeaderColor);
 		}
@@ -615,7 +640,9 @@
 			font-family: var(--fontS) !important;
 			font-size: var(--fontSizeS) !important;
 		}
-		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article {
+		
+		/* backgrounds */
+		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post {
 			background: var(--moduleBg);
 		}
 		.messagebox, .popupbox, div.recommend_block, .bluebox, div.wikitoc, input, textarea, .profile_title, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, span.comment_button, .innermoduletable th, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
@@ -637,7 +664,7 @@
 				color: var(--moduleHeaderLinkColor);
 			}
 		}
-		.geeklist_title {
+		.geeklist_title, .blog_post {
 			border: var(--moduleBorder);
 		}
 		.geeklist_item_title {
@@ -707,6 +734,20 @@
 			tr:nth-child(2n+1) td {
 				background: var(--tableColor2n1);
 			}
+		}
+		
+		/* blog */
+		#blog_header, #blog_nav h2 {
+			background: var(--moduleHeaderBg);		
+			color: var(--moduleHeaderColor);
+		}
+		#blog_title a {
+			color: var(--moduleHeaderLinkColor);
+		}
+		#blog_nav > div > *:nth-child(2) {
+			color: var(--textColor);
+			background-color: var(--moduleBg);
+			border: var(--moduleBorder);
 		}
 	}
 }	

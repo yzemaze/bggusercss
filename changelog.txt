@@ -89,3 +89,7 @@ link underline fix
 
 0.4.3
 game page header text color
+
+0.4.4
+blog fixes
+geekmarket fixes
