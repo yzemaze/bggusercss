@@ -2,8 +2,8 @@
 @name			BGG UI Customizer
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
-@supportURL		https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-hid
-@version		0.4.5
+@supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
+@version		0.4.7
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -13,11 +13,15 @@
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests'							0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
-@var	checkbox	frontpageCondensed	'Front page: less whitespace'			1
-@var	checkbox	metadataInline		'Front page: metadata inline'			0
 @var	range		columns				'Front page: columns'					[2,2,5,1]
+@var	checkbox	frontpageCondensed	'Less whitespace'						1
 @var	checkbox	skyscraperHide 		'Hide skyscraper'						0
 @var	range		pageWidth			'Max width of page'						[1550,1000,3840,10,"px"]
+@var	checkbox	metadataInline		'Metadata inline'						0
+@var	checkbox	metadataTotal		'… no truncation'						0
+@var	checkbox	metadataForumHide	'… hide subforum/blog'					0
+@var	checkbox	metadataAuthorHide	'… hide author'							0
+@var	checkbox	metadataReactionsHide	'… hide reactions'					0
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
@@ -205,6 +209,17 @@
 		border-bottom: var(--moduleBorder);
 	}
 	
+	/* content */
+	body, footer.global-footer {
+		color: var(--textColor);
+		background: var(--mainBg);
+	}
+	.global-body-content {
+		background: var(--mainBg2);
+	}
+	
+	
+	/* front page */
 	/* columns */
 	if columns != 2 {
 		.geekcentral_leftcol {
@@ -221,17 +236,6 @@
 			break-inside: avoid;
 		}
 	}
-	
-	/* content */
-	body, footer.global-footer {
-		color: var(--textColor);
-		background: var(--mainBg);
-	}
-	.global-body-content {
-		background: var(--mainBg2);
-	}
-	
-	/* frontpage */
 	if frontpageCondensed {
 		.media-cell {
 			padding: 2px 4px;
@@ -253,6 +257,32 @@
 		}
 		p.media-cell__subtitle {
 			padding-left: 5px;
+		}
+	}
+	if metadataTotal {
+		.post-meta {
+			overflow: inherit;
+		}
+	}
+	if metadataForumHide {
+		.geekcentral_module span.post-meta__item:nth-last-child(3) {
+			display: none;
+			::after {
+				display: none;
+			}
+		}
+	}
+	if metadataAuthorHide {
+		.geekcentral_module span.post-meta__item:nth-last-child(2) {
+			display: none;
+			::after {
+				display: none;
+			}
+		}
+	}
+	if metadataReactionsHide {
+		.geekcentral_module span.post-reactions, .geekcentral_module span.post-meta__item:nth-last-child(2)::after {
+			display:none;
 		}
 	}
 	.media-cell {
@@ -316,6 +346,9 @@
 	if geekpreviewHide {
 		div.geekcentral_module > center > a[href*="/geekpreview"]{
 		    display: none;
+		}
+		.geekcentral_module.rightcol:nth-child(1) {
+			margin-bottom: 0px;
 		}
 	}
 	if skyscraperHide {
@@ -466,6 +499,7 @@
 	
 	/* LEGACY */
 	.legacy {
+		padding-top: 0px;
 		background: var(--mainBg);
 		color: var(--textColor);
 		

@@ -96,3 +96,9 @@ geekmarket fixes
 
 0.4.5
 removed hide contest results (side effects)
+
+0.4.6
+front page, div.legacy: padding reduced/removed
+
+0.4.7
+front page: hide subforums/blog names, authors and reactions
