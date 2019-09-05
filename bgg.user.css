@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.4.7
+@version		0.4.8
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -22,6 +22,7 @@
 @var	checkbox	metadataForumHide	'… hide subforum/blog'					0
 @var	checkbox	metadataAuthorHide	'… hide author'							0
 @var	checkbox	metadataReactionsHide	'… hide reactions'					0
+@var	checkbox	quickbarSticky		'Quickbar etc. sticky'					0
 == background colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'Header text'							#ddd
@@ -315,7 +316,13 @@
 	.quickbar-list-group {
     	margin-bottom: -5px;
 	}
-	
+	if quickbarSticky {
+		.global-body-content-container .global-secondary-nav,
+		.sidebar-type-embedded {
+			position: sticky;
+			top: 72px;
+		}
+	}
 	/* hide specific modules if set */
 	if editHomepageHide {
 		.geekcentral-controls {
@@ -690,12 +697,16 @@
 		}
 		
 		/* geeklists */
-		.geeklist_title, .geeklist_item_title, .comment_toolbar {
+		.geeklist_title, .geeklist_item_title {
 			color: var(--moduleHeaderColor);
 			background: var(--moduleHeaderBg);
 			a {
 				color: var(--moduleHeaderLinkColor);
 			}
+		}
+		.comment_toolbar {
+			color: var(--moduleHeaderColor);
+			background: var(--moduleHeaderBg);
 		}
 		.geeklist_title, .blog_post {
 			border: var(--moduleBorder);

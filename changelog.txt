@@ -102,3 +102,7 @@ front page, div.legacy: padding reduced/removed
 
 0.4.7
 front page: metadata no truncation, hide subforums/blog names, authors and reactions
+
+0.4.8
+geeklist: minor fix
+quickbar sticky (kudos to Jessica (Albia) https://www.boardgamegeek.com/geeklist/259777/item/7080491#item7080491)
