@@ -134,3 +134,10 @@ front page:
 - buttonPrimary options
 + metadata inline tweaks
 + user menu open right fix
+
+0.6.1
+hr: ensuing br removed
+
+0.7.0
+var(--foo) eliminated from source
+alternative next-button
