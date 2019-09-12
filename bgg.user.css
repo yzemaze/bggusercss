@@ -3,94 +3,98 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.5.1
+@version		0.6.0
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
 == specials ==
-@var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
-@var	checkbox	siteSelectorHide	'Hide site selector'					0
+@var	select		logo				'Logo'			["default", "BGG", "Ernie"]
 @var	checkbox	userMenuLeft		'User menu on the left'					0
 @var	checkbox	searchBarLeft		'Search bar left of menus'				0
-@var	checkbox	editHomepageHide 	'Hide Edit Homepage'					0
+@var	checkbox	nextAlways			'Display NEXT when empty'				0
+@var	checkbox	siteSelectorHide	'Hide site selector'					0
+@var	checkbox	editHomepageHide 	'Hide subdomain dropdown / edit homepage'	0
 @var	checkbox	announcementHide	'Hide announcements'					0
 @var	checkbox	contestHide			'Hide contests'							0
-@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen banners etc.)'	0
-@var	range		columns				'Front page: columns'					[2,2,5,1]
-@var	checkbox	frontpageCondensed	'Less whitespace'						1
-@var	checkbox	skyscraperHide 		'Hide skyscraper'						0
+@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen etc.)'	0
+@var	checkbox	skyscraperHide 		'Hide skyscraper ad'					0
 @var	range		pageWidth			'Max width of page'						[1550,1000,3840,10,"px"]
-@var	checkbox	metadataInline		'Metadata inline'						0
-@var	checkbox	metadataTotal		'… no truncation'						0
+@var	range		columns				'Front page columns'					[2,2,5,1]
+@var	checkbox	frontpageCondensed	'… less whitespace'						1
+@var	color		fpColor2n			'… background of even rows'				#ddd
+@var	color		fpColor2n1			'… background of odd rows'				#ccc
+@var	color		fpLinkColor			'… links'								#222
+@var	color		fpLinkVisited		'… links visited'						#666
+@var	select		fpLinkWeight		'… link weight'	["normal","bold","bolder","lighter"]
+@var	color		metadataColor		'Post metadata'							#666
+@var	checkbox	metadataInline		'… inline'								0
+@var	checkbox	titleTruncation		'… truncate titles'						1
 @var	checkbox	metadataForumHide	'… hide subforum/blog'					0
 @var	checkbox	metadataAuthorHide	'… hide author'							0
 @var	checkbox	metadataReactionsHide	'… hide reactions'					0
-@var	checkbox	quickbarSticky		'Quickbar etc. sticky'					0
+@var	checkbox	quickbarSticky		'Quickbar etc. sticky'					1
 == background colors ==
+@var	color		mainBg				'Body background'						#aaa
+@var	color		mainBg2				'Main content background'				#bbb
+@var	color		textColor			'… text'								#222
 @var 	color		headerBg			'Header background'						#3f3a60
-@var	color		headerColor			'Header text'							#ddd
-@var	color		mainBg				'Main background'						#aaa
-@var	color		mainBg2				'Front page background'						#bbb
-@var	color		moduleHeaderBg		'Module header bg'						#3f3a60
-@var	color		moduleHeaderColor	'Module header text'					#ddd
-@var	color		moduleHeaderLinkColor	'Module header links'				#fff
-@var	color		moduleBg			'Background of modules, posts etc.'		#ccc
-@var	color		moduleBorderColor	'Border of modules, posts etc.'			#999
-@var	color		fpColor2n			'Frontpage: bg of even rows'			#ddd
-@var	color		fpColor2n1			'… bg of odd rows'						#ccc
-@var	checkbox	fpRowBottomBorder	'Bottom border of rows in modules'		0
-@var	color		menuBg				'Background of menus, dropdowns etc.'	#ccc
-@var	color		menuBorderColor		'Border color of menus, dropdowns etc.'	#999
-@var	color		tableColor2n		'Tables: bg of even rows'				#ddd
-@var	color		tableColor2n1		'… bg of odd rows'						#ccc
-@var	color		buttonPrimaryBg		'Primary buttons background'			#005bca
-@var	color		buttonPrimary		'Primary buttons text'					#ffffff
+@var	color		headerColor			'… text'								#ddd
+@var	color		moduleHeaderBg		'Module header background'				#3f3a60
+@var	color		moduleHeaderColor	'… text'								#ddd
+@var	color		moduleHeaderLinkColor	'… links'							#fff
+@var	color		moduleBg			'Module background'						#ccc
+@var	color		moduleBorderColor	'… border'								#999
+@var	color		menuBg				'Menus, dropdowns etc. background'		#ccc
+@var	color		menuBorderColor		'… border'								#999
+@var	color		tableColor2n		'Tables even rows'						#ddd
+@var	color		tableColor2n1		'… odd rows'							#ccc
 == text colors ==
-@var	color		textColor			'Main text'								#222
-@var	color		gamepageHeaderColor	'Game pages: header'					#ddd
 @var	color		linkColor			'Links'									#0053b7
-@var	color		fpLinkColor			'Links on front page'					#0053b7
-@var	select		fpLinkWeight		'Links on front page'					["bold", "regular"]
-@var	color		linkHover			'Link hover'							#c5130e
-@var	color		linkSelected		'Link selected'							#fdad2f
-@var	checkbox	linkUnderline		'Link underline'						0
-@var	select		linkUnderlineStyle	'Link underline style'					["dashed","dotted*","double","initial","inherit","solid","wavy"]
-@var	color		linkVisited			'Link visited'							#0053b7
+@var	color		linkHover			'… hover'								#c5130e
+@var	color		linkSelected		'… selected'							#fdad2f
+@var	checkbox	linkUnderline		'… underline'							0
+@var	select		linkUnderlineStyle	'… underline style'				["dashed","dotted*","double","initial","inherit","solid","wavy"]
+@var	color		linkVisited			'… visited'								#666
 @var	color		textPositive		'Text: positive values'					#01ac01
 @var	color		textError			'Text: negative values, error messages'	#c5130e
 @var	color		editHover			'Edit hover (games/collection view)'	#fdad2f
 == fonts ==
 @var	select		fontXXL				"Font XXL (game titles)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeXXL			"Font size XXL"							[24,6,48,1,"px"]
+@var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
 @var	select		fontXL				"Font XL (module headings)"			["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeXL			"Font size XL"							[18,6,48,1,"px"]
+@var	range		fontSizeXL			"… size"							[18,6,48,1,"px"]
 @var	select		fontL				"Font L (main text)"				["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeL			"Font size L"							[14,6,36,1,"px"]
+@var	range		fontSizeL			"… size"							[14,6,36,1,"px"]
 @var	select		fontM				"Font  M (author, pagination …)"	["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeM			"Font size M"							[12,6,36,1,"px"]
+@var	range		fontSizeM			"… size"							[12,6,36,1,"px"]
 @var	select		fontS				"Font S (quickbar, hotness, small buttons …)"	["default","proxima-nova*","monospace","proportional","sans-serif","serif"]
-@var	range		fontSizeS			"Font size S"							[11,6,24,1,"px"]
+@var	range		fontSizeS			"… size"							[11,6,24,1,"px"]
 == game pages ==
-@var	checkbox	promotedVideoHide	'Hide promoted videos on game pages'	0
-@var	checkbox	recommendationsHide	'Hide recommendations "Fans Also Like" on game pages'	0
+@var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
+@var	checkbox	promotedVideoHide	'… hide promoted videos'				0
+@var	checkbox	recommendationsHide	'… hide recommendations "Fans Also Like"'	0
 == geeklists, forum ==
-@var	color		quoteTitleBg		'Background of quote title'				#6767bb
-@var	color		quoteTitleColor		'Color of quote title'					#eee
-@var	color		quoteBg				'Background of quotes'					#dadaf2
-@var	color		quoteColor			'Color of quote text'					#333
-@var	color		quoteBorderColor	'Border of quotes'						#555
-@var	color		articleNew			'Border of new article'					#CE6C6D
-@var	color		articleSelected		'Border of selected article'			#000AFF
+@var	color		quoteTitleBg		'Quotes: title background'				#6767bb
+@var	color		quoteTitleColor		'… title text'							#eee
+@var	color		quoteBg				'… background'							#dadaf2
+@var	color		quoteColor			'… text'								#333
+@var	color		quoteBorderColor	'… border'								#555
+@var	color		articleNew			'New article/item border'				#CE6C6D
+@var	color		articleSelected		'Selected article/item border'			#000AFF
 ==/UserStyle== */
 
+/* old options
+@var	checkbox	ernie				'Ernie! (old cornerlogo)'				0
+@var	color		buttonPrimaryBg		'Primary buttons background'			#005bca
+@var	color		buttonPrimary		'… text'								#ffffff
+*/
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	:root {
 		--articleNew: solid 2px articleNew;
 		--articleSelected: solid 3px articleSelected;
-		--buttonPrimaryBg: buttonPrimaryBg;
-		--buttonPrimary: buttonPrimary;
+		/*--buttonPrimaryBg: buttonPrimaryBg;
+		--buttonPrimary: buttonPrimary;*/
 		--editHover: editHover;
-		--ernie: ernie;
 		--fontXXL: fontXXL;
 		--fontXL: fontXL;
 		--fontL: fontL;
@@ -104,6 +108,8 @@
 		--fpColor2n: fpColor2n;
 		--fpColor2n1: fpColor2n1;
 		--fpLinkColor: fpLinkColor;
+		--fpLinkVisited: fpLinkVisited;
+		--fpLinkWeight: fpLinkWeight;
 		--gamepageHeaderColor: gamepageHeaderColor;
 		--headerBg: headerBg;
 		--headerColor: headerColor;
@@ -116,6 +122,7 @@
 		--mainBg2: mainBg2;
 		--menuBg: menuBg;
 		--menuBorder: 1px solid menuBorderColor;
+		--metadataColor: metadataColor;
 		--moduleBg: moduleBg;
 		--moduleBorder: 1px solid moduleBorderColor;
 		--moduleBorderColor: moduleBorderColor;
@@ -135,28 +142,47 @@
 		--textPositive: textPositive;
 	}
 
+	/* NEW PAGES */
 	/* page */
 	.container-fluid {
 	    max-width: var(--pageWidth);
 	}
 	
 	/* header */
-	if ernie {
-		div.global-header-logo > a > img {
-			width: 60px;
-			height: 45px;
-			box-sizing: border-box;
-			padding-left: 60px;
-			background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
-			background-size: contain;
-		}		
+	/* logo */
+	if logo == "Ernie" {
+		div.global-header-logo {
+			margin-left: 1em;
+			> a > img {
+				width: 60px;
+				height: 45px;
+				box-sizing: border-box;
+				padding-left: 60px;
+				background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+				background-size: contain;
+			}	
+		}
+	}
+	if logo == "BGG" {
+		div.global-header-logo {
+			a > img {
+				display: none;
+			} 
+			> a:after {			
+				content: "BGG";
+				color: var(--headerColor); /* #ff5100 */
+				font: var(--fontXXL);
+				font-size: 2.5em;
+				font-weight: 900;
+			}
+		}
 	}
 	.global-header {
 		background: var(--headerBg);
 		color: var(--textColor) !important;
 	}
 	.global-header-nav-primary {
-		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, a.global-header-user-notification-action {
+		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, a.global-header-user-notification-action, button.btn.global-header-icon {
 			color: var(--headerColor) !important;
 		}
 	}
@@ -203,14 +229,14 @@
 				order: 2;
 			}
 		}
-		/* open user menu to the right */
-		li.global-header-nav-user .dropdown-menu {
-			left: 0;
-		}
-		/* open other menus to the left */
+		/* open menus to the left */
 		ul.global-header-nav-primary .dropdown-menu {
 			left: auto;
 			right: 0;
+		}
+		/* open user menu to the right */
+		li.global-header-nav-user .dropdown-menu {
+			left: 0;
 		}
 	}
 	if searchBarLeft {
@@ -228,8 +254,12 @@
 	div.global-header-nav-search-advanced div.ui-select-container {
 		background: var(--menuBg);
 	}
-	
-	.btn-primary, .badge-primary {
+	if nextAlways {
+		a.global-header-user-notification-action.ng-hide {
+			display: initial !important;
+		}
+	}
+	/*btn-primary, .badge-primary {
 		background: var(--buttonPrimaryBg);
 		border-color: var(--buttonPrimaryBg);
 		color: var(--buttonPrimary);
@@ -238,17 +268,13 @@
 		background: var(--buttonPrimaryBg);
 		border-color: var(--buttonPrimaryBg);
 		color: var(--linkHover);
-	}
-	.btn-default:not(.active):not(:disabled), .btn-default:not(.active):not(:disabled):focus, .btn-default:not(.active):not(:disabled):active, .btn-default:not(.active):not(:disabled):visited, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
+	}*/
+	/*.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
 		background: var(--menuBg) !important;
 		border-color: var(--menuBg);
-	}
-	.btn-default, .btn-subtle, .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
+	}*/
+	.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
 		color: var(--textColor) !important;
-	}
-	.btn-subtle {
-		background: var(--menuBg);
-		filter: opacity(70%);
 	}
 	.btn-default:not(.active):not(:disabled):hover {
 		color: var(--linkHover);
@@ -278,47 +304,68 @@
 	
 	/* front page */
 	/* columns */
-	if columns != 2 {
-		.geekcentral_leftcol {
-			flex: 1 1 (100/columns)%;
-    		max-width: (100/columns)%;
+	@media screen and (min-width:769px) {
+		if columns != 2 {
+			.geekcentral_leftcol {
+				flex: 1 1 (100/columns)%;
+				max-width: (100/columns)%;
+			}
+			.geekcentral_rightcol {
+				flex: 1 1 (100 - 100/columns)%;
+				max-width: (100 - 100/columns)%;
+				column-count: (columns - 1);
+				column-gap: 10px;
+			}
+			.geekcentral_rightcol > .geekcentral_module {
+				break-inside: avoid;
+			}
 		}
-		.geekcentral_rightcol {
-			flex: 1 1 (100 - 100/columns)%;
-			max-width: (100 - 100/columns)%;
-			column-count: (columns - 1);
-			column-gap: 10px;
-		}
-		.geekcentral_rightcol > .geekcentral_module {
-			break-inside: avoid;
-		}
+	}
+	.global-body-content-primary {
+		background: var(--mainBg2);
+	}
+	ul.geekcentral-controls {
+		background: var(--moduleBg);
+		border: var(--moduleBorder);
 	}
 	if frontpageCondensed {
 		.media-cell {
-			padding: 2px 4px;
+			padding: 2px 4px 2px 4px;
 		}
 		.media-cell__subtitle {
-			margin: 0;
+			margin: 0px 0 0 0;
 		}
-		h2.media-cell__title {
-			font-size: var(--fontSizeL) !important;
-		}
-		p.media-cell__subtitle {
-			font-size: var(--fontSizeM) !important;
-		}
+	}
+
+	/* metadata */
+	.post-meta {
+		overflow: visible;
 	}
 	if metadataInline {
-		.media-cell {
-			display: flex;
-			justify-content: space-between;	
+		if not titleTruncation  {		
+			.media-cell {
+				overflow: auto;
+			}
+			h2.media-cell__title, p.media-cell__subtitle {
+				display: inline;
+				line-height: var(--fontSizeL);
+			}
+			p.media-cell__subtitle {
+				margin: 3px 0 0 5px;
+			}
+			.post-meta, .post-reactions {
+				float: right;
+			}
 		}
-		p.media-cell__subtitle {
-			padding-left: 5px;
-		}
-	}
-	if metadataTotal {
-		.post-meta {
-			overflow: inherit;
+		if titleTruncation {
+			.media-cell {
+				display: flex;
+				justify-content: space-between;
+			}
+			p.media-cell__subtitle {
+				align-self: flex-end;
+				margin-left: 5px;
+			}
 		}
 	}
 	if metadataForumHide {
@@ -359,10 +406,6 @@
 			color: var(--moduleHeaderLinkColor) !important;
 		}
 	}
-	/* hide thumbs & counts */
-	/*.media-cell > p > span:not(:first-child) {
-	    display: none;
-	}*/
 
 	/* zebra striped modules */
 	.geekcentral {
@@ -418,11 +461,6 @@
 			display: none;
 		}
 	}
-	/*if contestResultsHide {
-		.geekcentral_module.leftcol:nth-child(4) {
-			display: none;
-		}
-	}*/
 	if geekpreviewHide {
 		div.geekcentral_module > center > a[href*="/geekpreview"]{
 		    display: none;
@@ -453,11 +491,11 @@
 		font-family: var(--fontXL) !important;		
 		font-size: var(--fontSizeXL) !important;		
 	}
-	.btn, body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote {
+	body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title{
 		font-family: var(--fontL) !important;
 		font-size: var(--fontSizeL) !important;
 	}
-	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock {
+	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
 		font-family: var(--fontM) !important;
 		font-size: var(--fontSizeM) !important;
 	}
@@ -467,7 +505,7 @@
 	}
 	
 	/* text-colors */
-	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price, .link-text, .post-meta__link, .post-meta__link:visited {
+	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
 		color: var(--textColor);
 	}
 	.text-muted {
@@ -478,22 +516,8 @@
 	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
 		color: var(--linkColor);
 	}	
-	.global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a, .quickbar a.ng-binding {
-		color: var(--fpLinkColor);
-	}
-	if fpLinkWeight == "regular" {
-		.geekcentral_module {
-			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
-				font-weight: 400;
-			}
-		}
-	}
-	else {
-		.geekcentral_module {
-			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
-				font-weight: 600;
-			}
-		}
+	.link-text:link, .link-text:visited {
+		color: var(--textColor);
 	}
 	a.visited, .link-text-color:visited {
 		color: var(--linkVisited);
@@ -512,6 +536,21 @@
 	else {
 		a, a:link, a:hover {
 			text-decoration: none !important;
+		}
+	}
+	/* front page links */
+	.geekcentral_module {
+		.global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, .link-text-color, .geekcentral-controls button, .link-text-color:link, .quickbar a.ng-binding {
+			color: var(--fpLinkColor);
+		}
+		.link-text-color:visited {
+			color: var(--fpLinkVisited);
+		}
+		.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
+			font-weight: var(--fpLinkWeight);
+		}
+		a.post-meta__link, , a.post-meta__link:visited {
+			color: var(--metadataColor);
 		}
 	}
 	
@@ -552,13 +591,13 @@
 		}
 	}
 	.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a {
-		color: var(--gamepageHeaderColor) !important;
+		color: var(--gamepageHeaderColor);
 	}
-	div.rating-overall > div.rating-overall-callout-container > a.rating-angular {
-		color: #ddd;
+	.game-header-title-rating a.rating-angular {
+		color: #ddd !important;
 	}
-	.game-nav-tabs, .global-body-content-primary {
-		background: var(--moduleBg);
+	.game-nav-tabs {
+		background: var(--mainBg2);
 	}
 	.well {
 		background: var(--menuBg) !important;
@@ -569,12 +608,32 @@
 	.summary-media-grid-count {
 		background: var(--menuBg);
 		border: var(--menuBorder);
+		a {
+			color: var(--linkColor);
+		}
 	}
 	.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
 		color: var(--textColor);
 	}
 	.panel-header-lg .panel-title > a:link {
 		color: var(--linkColor);
+	}
+	
+	/* forum */
+	forum-threads {
+		background: var(--moduleBg);
+	}
+	forum-threads ul.summary li.summary-item:nth-child(2n) {
+		background: var(--tableColor2n);
+		a {
+			background: var(--tableColor2n);
+		}
+	}
+	forum-threads ul.summary li.summary-item:nth-child(2n+1) {
+		background: var(--tableColor2n1);
+		a {
+			background: var(--tableColor2n1);
+		}
 	}
 	
 	/* image pages + gallery */
@@ -592,9 +651,65 @@
 		border: var(--quoteBorder) !important;
 	}
 	
+	/* geekpreview */
+	.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1 {
+		color: var(--gamepageHeaderColor);
+		p, .text-muted {
+			color: var(--gamepageHeaderColor) !important;
+		}
+	}
+	.geekpreview-sticky-menu {
+		background: var(--headerBg);
+		color: var(--headerColor);
+	}
+	.geekpreview-toolbar-primary-search form input.form-control {
+		background: var(--menuBg);
+		border: var(--menuBorder);
+		color: var(--textColor);
+	}
+	.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher {
+		color: var(--textColor);
+		a {
+			color: var(--linkColor);
+		}
+	}
+	div.geekpreview-item-inner-info-header p.text-muted a {
+		color: var(--linkColor);
+	}
+	.geekpreview-parent {
+		background: var(--headerBg);
+		color: var(--headerColor);
+		border: none;
+	}
+	.geekpreview-parent-info h2 a, .geekpreview-parent-social .btn, .geekpreview-parent-info a {
+		color: var(--moduleHeaderLinkColor);
+	}
+	.c-green-600 {
+		color: var(--textPositive) !important;
+	}
+	
+	.modal .modal-dialog {
+		.modal-dialog, .modal-body, .modal-footer {
+			background: var(--moduleBg);
+		}
+		.panel-title {
+			color: var(--textColor);
+		}
+	}
+
+	/* buttons */
+	.btn-icon, .form-group-search button.search {
+		color: var(--linkColor);
+	}
+	/*.legacy {
+		.post_categories ul li a, a.comment_button, span.comment_button {
+			color: var(--linkColor);
+			background: var(--menuBg);
+		}
+	}*/
+	
 	/* LEGACY */
 	.legacy {
-		padding-top: 0px;
 		background: var(--mainBg2);
 		color: var(--textColor);
 		
@@ -643,6 +758,12 @@
 		/* border fix */
 		.forum_table {
 			background-color: var(--moduleBorderColor);
+		}
+		.geekmodule tr:nth-child(2n) {
+			background-color: var(--tableColor2n);
+		}
+		.geekmodule tr:nth-child(2n+1) {
+			background-color: var(--tableColor2n1);
 		}
 		form[action="/quickbar.php"] {
 			.forum_table tr:nth-child(2n), .forum_table tr:nth-child(2n) > td {
@@ -744,11 +865,6 @@
 		.positive, .positive a, .storepositive, .storeprice, .price, .text-success {
 			color: var(--textPositive);
 		}
-		input {
-			color: inherit;
-			background-color: var(--menuBg) !important;
-
-		}
 		
 		/* fonts */
 		div.recommend_block dl.recommend *, .post_day {
@@ -776,7 +892,7 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
 			background: var(--moduleBg);
 		}
-		.messagebox, .popupbox, div.recommend_block, div.wikitoc, input, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, a.comment_button, span.comment_button, .innermoduletable th, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.messagebox, .popupbox, div.recommend_block, div.wikitoc, input, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .innermoduletable th, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			background: var(--menuBg);
 		}
 		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {

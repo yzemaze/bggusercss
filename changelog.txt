@@ -118,9 +118,19 @@ position searchbar or user menu left
 
 0.5.1
 hr color
-column fix for mobile devices (< 769px => no columns)
+column fix for mobile devices (< 769px => column setting gets ignored)
 
 0.5.2
 GeekPreview
 button colors removed (except primary/blue)
 minor tweaks
+
+0.6.0
+options streamlined
+front page:
++ links font-weight: bolder + lighter; :visited colors
++ NEXT always displayed
++ text-only logo option
+- buttonPrimary options
++ metadata inline tweaks
++ user menu open right fix
