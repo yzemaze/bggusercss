@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.2
+@version		0.7.3
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -216,7 +216,7 @@
 	}
 
 	.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
-		color: textColor !important;
+		color: textColor;
 	}
 	.btn-default:not(.active):not(:disabled):hover {
 		color: linkHover;
@@ -470,7 +470,7 @@
 	a.visited, .link-text-color:visited {
 		color: linkVisited;
 	}
-	a:hover, .btn:hover {
+	a:hover:not(.ng-scope):not(.btn) {
 		color: linkHover !important;
 	}
 	a.selected {
@@ -514,13 +514,13 @@
 	.white-bg {
 		background: moduleBg;
 	}
-	.nav > li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
+	nav.navbar-static-side li.active, .panel-primary, .form-control, .pagination, .dropdown-menu {
 		background: menuBg;
 	}
-	.nav > li > a:hover {
+	nav.navbar-static-side  li > a:hover {
 		background: moduleHeaderBg;
 	}
-	.nav > li.active > a {
+	nav.navbar-static-side li.active > a {
 		color: linkSelected;
 	}
 	.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
@@ -566,21 +566,58 @@
 	.panel-header-lg .panel-title > a:link {
 		color: linkColor;
 	}
-	
+	/* forum navigation */
+	ul.nav.nav-pills {
+		> li {
+			.active > a .glyphicon-chevron-right {
+				color: linkSelected;
+			}
+			> a:hover .glyphicon-chevron-right {
+				color: linkHover;
+			}
+			> a .nav-pills-count {
+				color: textColor;
+			}
+			ul.nav-pills > li > a {
+				color: textColor;
+			}
+		}
+		li.nav-header {
+			color: textColor;
+		}
+		> li > a {
+			color: textColor;
+		}
+	}
+
 	/* forum */
 	forum-threads {
 		background: moduleBg;
-	}
-	forum-threads ul.summary li.summary-item:nth-child(2n) {
-		background: tableColor2n;
-		a {
-			background: tableColor2n;
+		ul.summary {
+			> li.summary-item:nth-child(2n) {
+				background: tableColor2n;
+				> a {
+					background: tableColor2n;
+				}
+			}
+			> li.summary-item:nth-child(2n+1) {
+				background: tableColor2n1;
+				> a {
+					background: tableColor2n1;
+				}
+			}
 		}
-	}
-	forum-threads ul.summary li.summary-item:nth-child(2n+1) {
-		background: tableColor2n1;
-		a {
-			background: tableColor2n1;
+		.summary-item-title	a:visited {
+			color: linkVisited;
+		}
+		.summary-item-pagination li {
+			background: menuBg;
+			a {
+				color: linkColor;
+				:visited {
+					color: linkVisited;
+				}
+			}
 		}
 	}
 	
