@@ -139,5 +139,13 @@ front page:
 hr: ensuing br removed
 
 0.7.0
-var(--foo) eliminated from source
-alternative next-button
+- var(--foo)
++ alternative next-button
+
+0.7.1
+tags
+box borders
+collection table:
+header fix
+column version: nowrap killed
+padding-bottom: 10px => 2px

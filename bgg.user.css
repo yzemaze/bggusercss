@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.0
+@version		0.7.1
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -837,10 +837,10 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
 			background: moduleBg;
 		}
-		.messagebox, .popupbox, div.recommend_block, div.wikitoc, input, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .innermoduletable th, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, input, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .innermoduletable th, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			background: menuBg;
 		}
-		.menu_login, .menu_quickbar, .bluebox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.menu_login, .menu_quickbar, .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
 		}
 		.post_numcomments::after, .post_numcomments::before {
@@ -872,11 +872,6 @@
 		.infobox {
 			background: moduleBg;
 			border: moduleBorder;
-		}
-		
-		/* collection */
-		.editfield:hover {
-			background: editHover;
 		}
 		
 		/* geekmail */
@@ -959,15 +954,25 @@
 		}
 		
 		/* collection */
+		.editfield:hover {
+			background: editHover;
+		}
 		table.collection_table > tbody > tr:first-child {
-			background: moduleBg;
+			background: moduleHeaderBg;
 			th { 
-				color: moduleHeaderColor
+				color: moduleHeaderColor;
 				a {
 					color: moduleHeaderLinkColor;
 				}
 			}
 		}
+		.collection_table td {
+			padding: 2px;
+		}
+		.collection_version {
+			white-space: normal;
+		}
+		
 		/* subscription icon */
 		if nextChange {		
 			img.i_silk_newspaper_go_gray, img.i_silk_newspaper_go {
@@ -984,6 +989,11 @@
 				transform:scale(1.5);
 			}
 			*/
+		}
+		
+		/* tags */
+		div.tagouter {
+			background: moduleBg;
 		}
 	}
 }	
