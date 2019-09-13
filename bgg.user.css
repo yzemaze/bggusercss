@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.1
+@version		0.7.2
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -43,8 +43,10 @@
 @var	color		moduleHeaderLinkColor	'… links'							#fff
 @var	color		moduleBg			'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
-@var	color		menuBg				'Menus, dropdowns etc. background'		#ccc
+@var	color		menuBg				'Menus, dropdowns etc. background'		#ddd
 @var	color		menuBorderColor		'… border'								#999
+@var	color		inputBg				'Input background'						#eee
+@var	color		inputBorderColor	'… border'								#999
 @var	color		tableColor2n		'Tables even rows'						#ddd
 @var	color		tableColor2n1		'… odd rows'							#ccc
 == text colors ==
@@ -90,6 +92,7 @@
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	articleNewBorder = solid 2px articleNewColor
 	articleSelectedBorder = solid 3px articleSelectedColor
+	inputBorder = 1px solid inputBorderColor
 	menuBorder = 1px solid menuBorderColor
 	moduleBorder = 1px solid moduleBorderColor
 	quoteBorder = 1px solid quoteBorderColor
@@ -122,7 +125,7 @@
 			} 
 			> a:after {			
 				content: "BGG";
-				color: headerColor; /* ff5100 */
+				color: headerColor; /* #ff5100 */
 				font: fontXXL;
 				font-size: 2.5em;
 				font-weight: 900;
@@ -608,8 +611,8 @@
 		color: headerColor;
 	}
 	.geekpreview-toolbar-primary-search form input.form-control {
-		background: menuBg;
-		border: menuBorder;
+		background: inputBg;
+		border: inputBorderColor;
 		color: textColor;
 	}
 	.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher {
@@ -721,9 +724,6 @@
 		textarea, .infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
 			color: textColor;
 		}
-		select {
-			background: menuBg;
-		}
 		div.article dl {
 			border-bottom: moduleBorder;
 		}
@@ -820,7 +820,7 @@
 			font-family: fontXL !important;
 			font-size: fontSizeXL !important;
 		}
-		.moduletable th, .innermoduletable th, .itemmoduletable th, .innermoduletable td, #container, textarea, table, .post_year, .mf, table.mf td, .quotetitle, .quote {
+		.moduletable th, .innermoduletable th, .itemmoduletable th, .innermoduletable td, #container, textarea, select, input, .geekinput, .table, .post_year, .mf, table.mf td, .quotetitle, .quote {
 			font-family: fontL !important;
 			font-size: fontSizeL !important;
 		}
@@ -837,12 +837,25 @@
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
 			background: moduleBg;
 		}
-		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, input, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .innermoduletable th, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .innermoduletable th, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body, {
 			background: menuBg;
 		}
 		.menu_login, .menu_quickbar, .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
 		}
+		/* input, select */
+		input, .geekinput, .geekinput_medium, .geekinput_large, select {
+			background-color: inputBg;
+			border: inputBorder;
+		}
+		input[type="button"], .geekinput {
+			font-family: fontL !important;
+			font-size: fontSizeL !important;
+			font-weight: 600;
+			border-color: inputBorderColor;
+			border-radius: 2px;
+		}
+		
 		.post_numcomments::after, .post_numcomments::before {
 			border-color: transparent moduleBorderColor;
 			border-right-color: moduleBorderColor;
@@ -954,8 +967,15 @@
 		}
 		
 		/* collection */
-		.editfield:hover {
-			background: editHover;
+		.collectionfilter_commandbar {
+			background: moduleHeaderBg;
+			color: moduleHeaderColor;
+		}
+		.collectionfilter_body {
+			background: menuBg;
+		}
+		.geekcollection_pager a {
+			color: moduleHeaderLinkColor;
 		}
 		table.collection_table > tbody > tr:first-child {
 			background: moduleHeaderBg;
@@ -971,6 +991,9 @@
 		}
 		.collection_version {
 			white-space: normal;
+		}
+		.editfield:hover {
+			background: editHover;
 		}
 		
 		/* subscription icon */
@@ -996,4 +1019,4 @@
 			background: moduleBg;
 		}
 	}
-}
+}	

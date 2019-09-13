@@ -152,4 +152,4 @@ padding-bottom: 10px => 2px
 
 0.7.2
 collection table: filters, pager
-input bg
+.legacy input: bg, size, border, font-weight
