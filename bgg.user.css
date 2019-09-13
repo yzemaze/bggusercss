@@ -122,7 +122,7 @@
 			} 
 			> a:after {			
 				content: "BGG";
-				color: headerColor; /* #ff5100 */
+				color: headerColor; /* ff5100 */
 				font: fontXXL;
 				font-size: 2.5em;
 				font-weight: 900;
@@ -996,4 +996,4 @@
 			background: moduleBg;
 		}
 	}
-}	
+}
