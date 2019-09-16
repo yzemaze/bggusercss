@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.5
+@version		0.7.6
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -513,7 +513,7 @@
 	}
 	
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
 		color: linkColor;
 	}	
 	.link-text:link, .link-text:visited {
@@ -567,11 +567,11 @@
 		}
 		/* dropdown menus */
 		.dropdown-menu > li > button.btn:hover {
-			if dark(headerBg) {
+			if dark(moduleHeaderBg) {
 				background: lighten(moduleHeaderBg, 50%);
 				color: darken(moduleHeaderColor, 90%) !important;
 			}
-			if light(headerBg) {
+			if light(moduleHeaderBg) {
 				background: darken(moduleHeaderBg, 50%);
 				color: lighten(moduleHeaderColor, 90%) !important;				
 			}
@@ -620,11 +620,29 @@
 	.game-header-title-rating a.rating-angular {
 		color: #ddd !important;
 	}
-	.game-header button.btn-link.btn-xs:hover {
-		color: linkHover;
-	}
 	.game-nav-tabs {
 		background: mainBg2;
+	}
+	.nav.nav-tabs > li > a, .game-header button.btn-link.btn-xs {
+		&:hover {
+			color: linkHover;
+		}
+	}
+	div.nav-tabs-more-dropdown {
+		a {
+			padding-left: 5px;
+		}
+		a:hover {
+			/* padding-left: 10px;*/
+			if dark(moduleHeaderBg) {
+				background: lighten(moduleHeaderBg, 50%);
+				color: darken(moduleHeaderColor, 90%) !important;
+			}
+			if light(moduleHeaderBg) {
+				background: darken(moduleHeaderBg, 50%);
+				color: lighten(moduleHeaderColor, 90%) !important;				
+			}
+		}
 	}
 	.well {
 		background: menuBg !important;
@@ -792,7 +810,7 @@
 		
 		/* modules */
 		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header {
-			background: moduleHeaderBg !important;		
+			background: moduleHeaderBg;		
 			color: moduleHeaderColor;
 		}
 		.moduletable {
@@ -803,9 +821,6 @@
 		}
 		.pages a:hover, .pages a:active {
 			border-color: linkHover;
-		}
-		.tabOn {
-			filter: brightness(80%);
 		}
 		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages {
 			color: moduleHeaderColor;
@@ -1085,6 +1100,16 @@
 		}
 		
 		/* user profile */
+		.tabOn {
+			if dark(moduleHeaderBg) {
+				background: lighten(moduleHeaderBg, 50%);
+				color: darken(moduleHeaderColor, 90%);
+			}
+			if light(moduleHeaderBg) {
+				background: darken(moduleHeaderBg, 50%);
+				color: lighten(moduleHeaderColor, 90%);				
+			}
+		}
 		.tabOff a:link, .tabOn a:link, .profile_title a  {
 			color: moduleHeaderLinkColor;
 		}
@@ -1093,11 +1118,11 @@
 				padding: 4px 10px;
 			}
 			a:hover {
-				if dark(headerBg) {
+				if dark(moduleHeaderBg) {
 					background: lighten(moduleHeaderBg, 50%);
 					color: darken(moduleHeaderColor, 90%) !important;
 				}
-				if light(headerBg) {
+				if light(moduleHeaderBg) {
 					background: darken(moduleHeaderBg, 50%);
 					color: lighten(moduleHeaderColor, 90%) !important;				
 				}
