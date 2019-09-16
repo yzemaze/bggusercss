@@ -173,4 +173,5 @@ moduleHeader specific settings removed
 
 0.8.1
 user profile: links
-geeklist-title: links
+geeklist item title: links
+collection_table: links

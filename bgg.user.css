@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.8.0
+@version		0.8.1
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -1131,6 +1131,10 @@ else
 				color: headerColor;
 				a {
 					color: headerLinkColor;
+					&:hover {
+						background: headerHoverBg;
+						color: headerHoverColor !important;
+					}
 				}
 			}
 		}
