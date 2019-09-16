@@ -546,6 +546,16 @@
 				color: linkHover;				
 			}
 		}
+		.dropdown-menu > li > button.btn:hover {
+			if dark(moduleHeaderBg) {
+				background: lighten(moduleHeaderBg, 50%);
+				color: darken(moduleHeaderColor, 90%) !important;
+			}
+			if light(moduleHeaderBg) {
+				background: darken(moduleHeaderBg, 50%);
+				color: lighten(moduleHeaderColor, 90%) !important;				
+			}
+		}
 	}
 	.geekcentral_module {
 		ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding {
