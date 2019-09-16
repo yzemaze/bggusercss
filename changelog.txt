@@ -176,3 +176,6 @@ user profile: links
 geeklist item title: links
 collection_table: links
 plays: links
+
+0.8.2
+legacy forum_tables zebra

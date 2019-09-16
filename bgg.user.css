@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.8.1
+@version		0.8.2
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -824,16 +824,22 @@ else
 			background-color: moduleBg;
 			border-bottom: moduleBorder;
 		}
+		.forum_table, .forum_index_table {
+			border-spacing: 0;
+			border: moduleBorder;
+			tr:nth-child(2n), tr:nth-child(2n) > td {
+				background-color: tableColor2n;
+			}
+			tr:nth-child(2n+1), tr:nth-child(2n+1) > td {
+				background-color: tableColor2n1;
+			}
+		}
 		/* border fix */
 		.forum_table {
 			background-color: moduleBorderColor;
 		}
-		.geekmodule tr:nth-child(2n) {
-			background-color: tableColor2n;
-		}
-		.geekmodule tr:nth-child(2n+1) {
-			background-color: tableColor2n1;
-		}
+		
+		/* quickbar edit */
 		form[action="/quickbar.php"] {
 			.forum_table tr:nth-child(2n), .forum_table tr:nth-child(2n) > td {
 				background-color: tableColor2n !important;
