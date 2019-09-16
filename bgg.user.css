@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.3
+@version		0.7.4
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -135,83 +135,122 @@
 	/* colors */
 	.global-header {
 		background: headerBg;
-		color: textColor !important;
-	}
-	.global-header-nav-primary {
-		.dropdown-toggle, button.btn, a.btn, .global-header-site-selector, > button.btn, a.global-header-icon, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, a.global-header-user-notification-action, button.btn.global-header-icon {
+		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
+			&:hover {
+				if dark(headerBg) {
+					background: lighten(headerBg, 50%);
+					color: darken(headerColor, 90%) !important;
+				}
+				if light(headerBg) {
+					background: darken(headerBg, 50%);
+					color: lighten(headerColor, 90%) !important;				
+				}
+			}
 		}
-	}
-	.form-control {
-		color: textColor;
-	}
-	.ui-select-bootstrap .ui-select-choices-row.active > a {
-		background: headerBg;
-		color: headerColor;
-	}
-	if siteSelectorHide {
-		button.global-header-site-selector {
-			display: none;
+		/* dropdown menus */
+		div.global-header-nav-search-advanced div.ui-select-container {
+			background: menuBg;
 		}
-	}
-	/* order of menu items */
-	if userMenuLeft {
-		ul.global-header-nav-primary > {
-			li:nth-child(1) {
-				order: 3;
-				margin-left: 2em;
+		.global-header-nav-primary .dropdown-menu li a:hover, div.global-header-logo.ng-scope div.ng-scope.dropdown.open ul.dropdown-menu li a:hover {
+			if dark(headerBg) {
+				background: lighten(headerBg, 50%);
+				color: darken(headerColor, 90%) !important;
 			}
-			li:nth-child(2) {
-				order: 4;
+			if light(headerBg) {
+				background: darken(headerBg, 50%);
+				color: lighten(headerColor, 90%) !important;				
 			}
-			li:nth-child(3) {
-				order: 5;
+		}
+		/* buttons */
+		button.btn.global-header-site-selector {
+			border-radius: 3px;		
+			padding: 7px 9px;
+		}
+		geekmail-notifications a.global-header-icon {
+			border-radius: 3px;
+			padding: 4px 7px;
+		}
+		subscription-notifications span a.global-header-icon {
+			border-radius: 3px;
+			padding: 5px 7px 3px 7px;
+		}
+		a.global-header-user-notification-action {
+			border: none;
+			border-radius: 3px;
+			padding: 3px 5px;
+			font-family: fontM !important;
+			font-size: fontSizeM !important;
+			font-weight: 700;
+		}
+		.form-control {
+			color: textColor;
+		}
+		.ui-select-bootstrap .ui-select-choices-row.active > a {
+			background: headerBg;
+			color: headerColor;
+		}
+		if siteSelectorHide {
+			button.global-header-site-selector {
+				display: none;
 			}
-			li:nth-child(4) {
-				order: 6;
+		}
+		/* order of menu items */
+		if userMenuLeft {
+			ul.global-header-nav-primary > {
+				li:nth-child(1) {
+					order: 3;
+					margin-left: 2em;
+				}
+				li:nth-child(2) {
+					order: 4;
+				}
+				li:nth-child(3) {
+					order: 5;
+				}
+				li:nth-child(4) {
+					order: 6;
+				}
+				li:nth-child(5) {
+					order: 7;
+				}
+				li:nth-child(6) {
+					order: 8;
+				}
+				li:nth-child(7) {
+					order: 1;
+					margin-left: 2em;
+				}
+				li:nth-child(8) {
+					order: 2;
+				}
 			}
-			li:nth-child(5) {
-				order: 7;
+			/* open menus to the left */
+			ul.global-header-nav-primary .dropdown-menu {
+				left: auto;
+				right: 0;
 			}
-			li:nth-child(6) {
-				order: 8;
+			/* open user menu to the right */
+			li.global-header-nav-user .dropdown-menu {
+				left: 0;
 			}
-			li:nth-child(7) {
-				order: 1;
-				margin-left: 2em;
-			}
-			li:nth-child(8) {
+		}
+		if searchBarLeft {
+			div.global-header-nav-primary-wrapper {
 				order: 2;
 			}
+			div.global-header-nav-search {
+				margin-left: 5 em;
+				order: 1;
+			}
+			div.global-header-nav-search-advanced ul.dropdown-menu {
+				left: 0 !important;
+			}
 		}
-		/* open menus to the left */
-		ul.global-header-nav-primary .dropdown-menu {
-			left: auto;
-			right: 0;
-		}
-		/* open user menu to the right */
-		li.global-header-nav-user .dropdown-menu {
-			left: 0;
-		}
-	}
-	if searchBarLeft {
-		div.global-header-nav-primary-wrapper {
-			order: 2;
-		}
-		div.global-header-nav-search {
-			margin-left: 5 em;
-			order: 1;
-		}
-		div.global-header-nav-search-advanced ul.dropdown-menu {
-			left: 0 !important;
-		}
-	}
-	div.global-header-nav-search-advanced div.ui-select-container {
-		background: menuBg;
-	}
-	if nextAlways {
-		a.global-header-user-notification-action.ng-hide {
-			display: initial !important;
+		if nextAlways {
+			a.global-header-user-notification-action.ng-hide {
+				display: initial !important;
+			}
 		}
 	}
 
@@ -373,9 +412,12 @@
 	}
 	ul.global-secondary-nav-links > li {
 		border-bottom: moduleBorder;
-	}	
+	}
 	.quickbar-list-group {
     	margin-bottom: -5px;
+	}
+	ul.global-secondary-nav-links a:hover, .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover {
+		color: linkHover;
 	}
 	if quickbarSticky {
 		.global-body-content-container .global-secondary-nav,
@@ -454,7 +496,7 @@
 		font-family: fontM !important;
 		font-size: fontSizeM !important;
 	}
-	.btn-xs, .btn-group-xs > .btn, .fs-xs, a.global-header-user-notification-action, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+	.btn-xs, .btn-group-xs > .btn, .fs-xs, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
 		font-family: fontS !important;
 		font-size: fontSizeS !important;
 	}
@@ -471,7 +513,7 @@
 	}
 	
 	/* links */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .dropdown-menu > li > a, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .nav.nav-tabs > li > a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
 		color: linkColor;
 	}	
 	.link-text:link, .link-text:visited {
@@ -480,8 +522,8 @@
 	a.visited, .link-text-color:visited {
 		color: linkVisited;
 	}
-	a:hover {
-		color: linkHover !important;
+	a:hover, .link-text-color:hover {
+		color: linkHover;
 	}
 	a.selected {
 		color: linkSelected !important;
@@ -497,9 +539,22 @@
 		}
 	}
 	/* front page links */
-	.geekcentral_module {
-		.global-header-nav-primary .dropdown-menu li a, ul.global-secondary-nav-links a, .link-text-color, .geekcentral-controls button, .link-text-color:link, .quickbar a.ng-binding {
+	.geekcentral-controls {
+		button, .link-text-color:link {
 			color: fpLinkColor;
+			&.btn.btn-empty:hover {
+				color: linkHover;				
+			}
+		}
+	}
+	.geekcentral_module {
+		ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding {
+			color: fpLinkColor;
+		}
+		.link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link {
+			&:hover {
+				color: linkHover;
+			}
 		}
 		.link-text-color:visited {
 			color: fpLinkVisited;
@@ -507,8 +562,19 @@
 		.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
 			font-weight: fpLinkWeight;
 		}
-		a.post-meta__link, , a.post-meta__link:visited {
+		a.post-meta__link, a.post-meta__link:visited {
 			color: metadataColor;
+		}
+		/* dropdown menus */
+		.dropdown-menu > li > button.btn:hover {
+			if dark(headerBg) {
+				background: lighten(moduleHeaderBg, 50%);
+				color: darken(moduleHeaderColor, 90%) !important;
+			}
+			if light(headerBg) {
+				background: darken(moduleHeaderBg, 50%);
+				color: lighten(moduleHeaderColor, 90%) !important;				
+			}
 		}
 	}
 	
@@ -718,12 +784,6 @@
 	.btn-icon, .form-group-search button.search {
 		color: linkColor;
 	}
-	/*.legacy {
-		.post_categories ul li a, a.comment_button, span.comment_button {
-			color: linkColor;
-			background: menuBg;
-		}
-	}*/
 	
 	/* LEGACY */
 	.legacy {
@@ -840,6 +900,7 @@
 		}
 		.comment_button {
 			border-color: linkColor;
+			background: menuBg;
 		}
 		.comment_button:hover {
 			border-color: linkHover;

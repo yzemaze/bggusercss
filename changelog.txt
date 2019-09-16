@@ -156,3 +156,7 @@ collection table: filters, pager
 
 0.7.3
 game pages: navigation, forums
+
+0.7.4
+front page + header: links, menus
+a:hover bg + color in contrast to header bg/color
