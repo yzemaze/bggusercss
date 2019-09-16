@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.4
+@version		0.7.5
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -895,7 +895,7 @@
 			color: linkColor;
 		}
 		a:hover, .menutab-open li a:hover, .geeksub_minorlink a:active, .comment_button:hover {
-			color: linkHover !important;
+			color: linkHover;
 			transition: none !important;
 		}
 		.comment_button {
@@ -1084,9 +1084,24 @@
 			border: moduleBorder;
 		}
 		
-		/* user profiles */
+		/* user profile */
 		.tabOff a:link, .tabOn a:link, .profile_title a  {
 			color: moduleHeaderLinkColor;
+		}
+		.tabOff, .tabOn {
+			a {
+				padding: 4px 10px;
+			}
+			a:hover {
+				if dark(headerBg) {
+					background: lighten(moduleHeaderBg, 50%);
+					color: darken(moduleHeaderColor, 90%) !important;
+				}
+				if light(headerBg) {
+					background: darken(moduleHeaderBg, 50%);
+					color: lighten(moduleHeaderColor, 90%) !important;				
+				}
+			}
 		}
 		.profile_block {
 			color: textColor;
