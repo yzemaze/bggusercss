@@ -169,7 +169,7 @@ game pages: nav, more-dropdown
 subdomain-selector: dropdown
 
 0.8.0
-moduleHeader specific settings removed
+moduleHeader-specific settings removed
 
 0.8.1
 user profile: links
@@ -179,3 +179,4 @@ plays: links
 
 0.8.2
 legacy forum_tables zebra
+- dedicated editHover option

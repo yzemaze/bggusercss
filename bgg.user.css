@@ -56,7 +56,6 @@
 @var	color		linkVisited			'… visited'								#666
 @var	color		textPositive		'Text: positive values'					#01ac01
 @var	color		textError			'Text: negative values, error messages'	#c5130e
-@var	color		editHover			'Edit hover (games/collection view)'	#fdad2f
 == fonts ==
 @var	select		fontXXL				"Font XXL (game titles)"			["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
@@ -1142,7 +1141,7 @@ else
 			white-space: normal;
 		}
 		.editfield:hover {
-			background: editHover;
+			background: headerHoverBg;
 		}
 		
 		/* subscription icon */
