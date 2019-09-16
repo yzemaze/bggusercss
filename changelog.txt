@@ -167,3 +167,6 @@ user profile: header links
 0.7.6
 game pages: nav, more-dropdown
 subdomain-selector: dropdown
+
+0.8.0
+moduleHeader specific settings removed

@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.7.6
+@version		0.8.0
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -38,9 +38,7 @@
 @var	color		textColor			'… text'								#222
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		headerColor			'… text'								#ddd
-@var	color		moduleHeaderBg		'Module header background'				#3f3a60
-@var	color		moduleHeaderColor	'… text'								#ddd
-@var	color		moduleHeaderLinkColor	'… links'							#fff
+@var	color		headerLinkColor		'… links'								#fff
 @var	color		moduleBg			'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
 @var	color		menuBg				'Menus, dropdowns etc. background'		#ddd
@@ -89,14 +87,21 @@
 @var	color		nextColor			'… icon'								#01ac01
 @var	range		nextSize			'… size'								[1.5,1,6,0.25,"em"]
 ==/UserStyle== */
-@-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
-	articleNewBorder = solid 2px articleNewColor
-	articleSelectedBorder = solid 3px articleSelectedColor
-	inputBorder = 1px solid inputBorderColor
-	menuBorder = 1px solid menuBorderColor
-	moduleBorder = 1px solid moduleBorderColor
-	quoteBorder = 1px solid quoteBorderColor
 
+/* vars */
+articleNewBorder = solid 2px articleNewColor
+articleSelectedBorder = solid 3px articleSelectedColor
+inputBorder = 1px solid inputBorderColor
+menuBorder = 1px solid menuBorderColor
+moduleBorder = 1px solid moduleBorderColor
+quoteBorder = 1px solid quoteBorderColor
+if dark(headerBg)
+	headerHoverBg = lighten(headerBg, 50%)
+	headerHoverColor = darken(headerColor, 90%)
+else
+	headerHoverBg = darken(headerBg, 50%)
+	headerHoverColor = lighten(headerColor, 90%)		
+@-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	/* NEW PAGES */
 	/* page */
 	.container-fluid {
@@ -138,14 +143,8 @@
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
 			&:hover {
-				if dark(headerBg) {
-					background: lighten(headerBg, 50%);
-					color: darken(headerColor, 90%) !important;
-				}
-				if light(headerBg) {
-					background: darken(headerBg, 50%);
-					color: lighten(headerColor, 90%) !important;				
-				}
+				background: headerHoverBg;
+				color: headerHoverColor !important;
 			}
 		}
 		/* dropdown menus */
@@ -153,14 +152,8 @@
 			background: menuBg;
 		}
 		.global-header-nav-primary .dropdown-menu li a:hover, div.global-header-logo.ng-scope div.ng-scope.dropdown.open ul.dropdown-menu li a:hover {
-			if dark(headerBg) {
-				background: lighten(headerBg, 50%);
-				color: darken(headerColor, 90%) !important;
-			}
-			if light(headerBg) {
-				background: darken(headerBg, 50%);
-				color: lighten(headerColor, 90%) !important;				
-			}
+			background: headerHoverBg;
+			color: headerHoverColor !important;
 		}
 		/* buttons */
 		button.btn.global-header-site-selector {
@@ -378,16 +371,16 @@
 		border-top: none;
 	}
 	.media-header {
-		background: moduleHeaderBg;
+		background: headerBg;
 	}
 	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
-		color: moduleHeaderColor !important;
+		color: headerColor !important;
 	}
 	.media-filters {
-		background: moduleHeaderBg;
-		color: moduleHeaderColor;
+		background: headerBg;
+		color: headerColor;
 		.media-link {
-			color: moduleHeaderLinkColor !important;
+			color: headerLinkColor !important;
 		}
 	}
 
@@ -401,11 +394,11 @@
 	
 	/* sidebar */
 	.toggler-caret.global-secondary-nav-section-header {
-		background: moduleHeaderBg;
-		color: moduleHeaderColor;
+		background: headerBg;
+		color: headerColor;
 	}
 	a.toggler-caret, a.global-secondary-nav-section-header {
-		color: moduleHeaderColor !important;
+		color: headerColor !important;
 	}
 	.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
 		background: moduleBg !important;
@@ -474,9 +467,9 @@
 	
 	/* panels */
 	.panel-default > .panel-heading, .panel-primary > .panel-heading {
-		background: moduleHeaderBg;
+		background: headerBg;
 		border: moduleBorder;
-		color: moduleHeaderColor;
+		color: headerColor;
 	}
 	
 	/* fonts */
@@ -547,14 +540,8 @@
 			}
 		}
 		.dropdown-menu > li > button.btn:hover {
-			if dark(moduleHeaderBg) {
-				background: lighten(moduleHeaderBg, 50%);
-				color: darken(moduleHeaderColor, 90%) !important;
-			}
-			if light(moduleHeaderBg) {
-				background: darken(moduleHeaderBg, 50%);
-				color: lighten(moduleHeaderColor, 90%) !important;				
-			}
+			background: headerHoverBg;
+			color: headerHoverColor !important;
 		}
 	}
 	.geekcentral_module {
@@ -577,14 +564,8 @@
 		}
 		/* dropdown menus */
 		.dropdown-menu > li > button.btn:hover {
-			if dark(moduleHeaderBg) {
-				background: lighten(moduleHeaderBg, 50%);
-				color: darken(moduleHeaderColor, 90%) !important;
-			}
-			if light(moduleHeaderBg) {
-				background: darken(moduleHeaderBg, 50%);
-				color: lighten(moduleHeaderColor, 90%) !important;				
-			}
+			background: headerHoverBg;
+			color: headerHoverColor !important;
 		}
 	}
 	
@@ -604,7 +585,7 @@
 		background: menuBg;
 	}
 	nav.navbar-static-side  li > a:hover {
-		background: moduleHeaderBg;
+		background: headerBg;
 	}
 	nav.navbar-static-side li.active > a {
 		color: linkSelected;
@@ -644,14 +625,8 @@
 		}
 		a:hover {
 			/* padding-left: 10px;*/
-			if dark(moduleHeaderBg) {
-				background: lighten(moduleHeaderBg, 50%);
-				color: darken(moduleHeaderColor, 90%) !important;
-			}
-			if light(moduleHeaderBg) {
-				background: darken(moduleHeaderBg, 50%);
-				color: lighten(moduleHeaderColor, 90%) !important;				
-			}
+			background: headerHoverBg;
+			color: headerHoverColor !important;
 		}
 	}
 	.well {
@@ -681,16 +656,14 @@
 	/* forum navigation */
 	ul.nav.nav-pills {
 		> li {
+			color: textColor;
 			.active > a .glyphicon-chevron-right {
 				color: linkSelected;
 			}
-			> a:hover .glyphicon-chevron-right {
+			> a:hover, > a:hover .glyphicon-chevron-right {
 				color: linkHover;
 			}
 			> a .nav-pills-count {
-				color: textColor;
-			}
-			ul.nav-pills > li > a {
 				color: textColor;
 			}
 		}
@@ -710,7 +683,7 @@
 				> a {
 					background: tableColor2n;
 				}
-				ul.pagination a, .summary-item-tag a {
+				ul.pagination a, ul.pagination span, .summary-item-tag a {
 					background: tableColor2n1;
 					border-radius: 2px;
 				}
@@ -720,10 +693,13 @@
 				> a {
 					background: tableColor2n1;
 				}
-				ul.pagination a, .summary-item-tag a {
+				ul.pagination a, ul.pagination span, .summary-item-tag a {
 					background: tableColor2n;
 					border-radius: 2px;
 				}
+			}
+			.summary-item-counts:hover .summary-item-counts-item {
+				color: linkHover;
 			}
 			.summary-item-title	a:visited {
 				color: linkVisited;
@@ -793,7 +769,7 @@
 		border: none;
 	}
 	.geekpreview-parent-info h2 a, .geekpreview-parent-social .btn, .geekpreview-parent-info a {
-		color: moduleHeaderLinkColor;
+		color: headerLinkColor;
 	}
 	.c-green-600 {
 		color: textPositive !important;
@@ -820,24 +796,24 @@
 		
 		/* modules */
 		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header {
-			background: moduleHeaderBg;		
-			color: moduleHeaderColor;
+			background: headerBg;		
+			color: headerColor;
 		}
 		.moduletable {
 			border: moduleBorder;
 		}
 		.pages a {
-			border-color: moduleHeaderColor;
+			border-color: headerColor;
 		}
 		.pages a:hover, .pages a:active {
 			border-color: linkHover;
 		}
 		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages {
-			color: moduleHeaderColor;
+			color: headerColor;
 		}
 		/* marketplace + images *rolleyes* */
 		table.moduletable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
-			color: moduleHeaderColor;
+			color: headerColor;
 			font-size: fontSizeXL;
 		}
 		.modulecommands option, .searchbox, .searchbox_header, .searchbox_inner {
@@ -847,10 +823,10 @@
 		
 		/* forum */
 		.forum_index_table th a {
-			color: moduleHeaderLinkColor !important;
+			color: headerLinkColor !important;
 		}
 		.forum_table th, .forum_index_table th {
-			color: moduleHeaderColor;
+			color: headerColor;
 		}
 		.forum_table td, .forum_index_table td {
 			color: textColor;
@@ -1018,15 +994,15 @@
 		
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title {
-			color: moduleHeaderColor;
-			background: moduleHeaderBg;
+			color: headerColor;
+			background: headerBg;
 			a {
-				color: moduleHeaderLinkColor;
+				color: headerLinkColor;
 			}
 		}
 		.comment_toolbar {
-			color: moduleHeaderColor;
-			background: moduleHeaderBg;
+			color: headerColor;
+			background: headerBg;
 		}
 		.geeklist_title, .blog_post {
 			border: moduleBorder;
@@ -1067,8 +1043,8 @@
 			}
 		.geekpoll {
 			th {
-				background: moduleHeaderBg;
-				color: moduleHeaderColor;
+				background: headerBg;
+				color: headerColor;
 			}
 			tr th.questiontext {
 				color: textColor;
@@ -1097,11 +1073,11 @@
 		
 		/* blog */
 		#blog_header, #blog_nav h2 {
-			background: moduleHeaderBg;		
-			color: moduleHeaderColor;
+			background: headerBg;		
+			color: headerColor;
 		}
 		#blog_title a {
-			color: moduleHeaderLinkColor;
+			color: headerLinkColor;
 		}
 		#blog_nav > div > *:nth-child(2) {
 			color: textColor;
@@ -1111,58 +1087,46 @@
 		
 		/* user profile */
 		.tabOn {
-			if dark(moduleHeaderBg) {
-				background: lighten(moduleHeaderBg, 50%);
-				color: darken(moduleHeaderColor, 90%);
-			}
-			if light(moduleHeaderBg) {
-				background: darken(moduleHeaderBg, 50%);
-				color: lighten(moduleHeaderColor, 90%);				
-			}
+			background: headerHoverBg;
+			color: headerHoverColor;
 		}
 		.tabOff a:link, .tabOn a:link, .profile_title a  {
-			color: moduleHeaderLinkColor;
+			color: headerLinkColor;
 		}
 		.tabOff, .tabOn {
 			a {
 				padding: 4px 10px;
 			}
 			a:hover {
-				if dark(moduleHeaderBg) {
-					background: lighten(moduleHeaderBg, 50%);
-					color: darken(moduleHeaderColor, 90%) !important;
-				}
-				if light(moduleHeaderBg) {
-					background: darken(moduleHeaderBg, 50%);
-					color: lighten(moduleHeaderColor, 90%) !important;				
-				}
+				background: headerHoverBg;
+				color: headerHoverColor !important;
 			}
 		}
 		.profile_block {
 			color: textColor;
 		}
 		div.profile_title {
-			background: moduleHeaderBg;
-			color: moduleHeaderColor;
+			background: headerBg;
+			color: headerColor;
 		}
 		
 		/* collection */
 		.collectionfilter_commandbar {
-			background: moduleHeaderBg;
-			color: moduleHeaderColor;
+			background: headerBg;
+			color: headerColor;
 		}
 		.collectionfilter_body {
 			background: menuBg;
 		}
 		.geekcollection_pager a {
-			color: moduleHeaderLinkColor;
+			color: headerLinkColor;
 		}
 		table.collection_table > tbody > tr:first-child {
-			background: moduleHeaderBg;
+			background: headerBg;
 			th { 
-				color: moduleHeaderColor;
+				color: headerColor;
 				a {
-					color: moduleHeaderLinkColor;
+					color: headerLinkColor;
 				}
 			}
 		}
