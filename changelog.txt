@@ -170,3 +170,7 @@ subdomain-selector: dropdown
 
 0.8.0
 moduleHeader specific settings removed
+
+0.8.1
+user profile: links
+geeklist-title: links

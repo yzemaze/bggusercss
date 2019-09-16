@@ -895,6 +895,9 @@ else
 		a, a:link, .nav > li > a, .comment_button, .geeksub_minorlink a:link {
 			color: linkColor;
 		}
+		a:visited, .geeksub_minorlink a:visited {
+			color: linkVisited;
+		}
 		a:hover, .menutab-open li a:hover, .geeksub_minorlink a:active, .comment_button:hover {
 			color: linkHover;
 			transition: none !important;
@@ -918,9 +921,6 @@ else
 			a, a:link, a:hover {
 				text-decoration: none !important;
 			}
-		}
-		a:visited, .geeksub_minorlink a:visited {
-			color: linkVisited;
 		}
 		.forumlink, .objectlink {
 			a:visited, a:link, a:hover, a:active {
@@ -998,6 +998,9 @@ else
 			background: headerBg;
 			a {
 				color: headerLinkColor;
+				&:hover {
+					color: linkHover;
+				}
 			}
 		}
 		.comment_toolbar {
@@ -1108,6 +1111,7 @@ else
 		div.profile_title {
 			background: headerBg;
 			color: headerColor;
+			padding-left: 5px;
 		}
 		
 		/* collection */
