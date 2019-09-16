@@ -175,3 +175,4 @@ moduleHeader specific settings removed
 user profile: links
 geeklist item title: links
 collection_table: links
+plays: links

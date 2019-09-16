@@ -811,15 +811,6 @@ else
 		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages {
 			color: headerColor;
 		}
-		/* marketplace + images *rolleyes* */
-		table.moduletable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) {
-			color: headerColor;
-			font-size: fontSizeXL;
-		}
-		.modulecommands option, .searchbox, .searchbox_header, .searchbox_inner {
-			background: menuBg;
-			border: menuBorder;
-		}
 		
 		/* forum */
 		.forum_index_table th a {
@@ -1169,6 +1160,22 @@ else
 		/* tags */
 		div.tagouter {
 			background: moduleBg;
+		}
+		/* plays */
+		table.forum_table > tbody > tr > th {
+			background: headerBg;
+			color: headerColor;
+			a {
+				color: headerLinkColor !important;
+				&:hover {
+					background: headerHoverBg;
+					color: headerHoverColor !important;
+					padding: 3px;
+				}
+			}
+		}
+		form[action="/geekplay.php"] .forum_table td {
+			border: none;
 		}
 	}
 }	
