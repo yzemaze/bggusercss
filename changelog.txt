@@ -163,3 +163,6 @@ a:hover bg + color in contrast to header bg/color
 
 0.7.5
 user profile: header links
+
+0.7.6
+game pages: nav, more-dropdown
