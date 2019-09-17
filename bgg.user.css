@@ -187,6 +187,22 @@ else
 			}
 		}
 		/* nextAlways doesn’t work */
+
+		/* colors */
+		div.c-inner {
+			button.btn.btn-empty:hover {
+				background: headerHoverBg;
+				path {
+					fill: headerHoverColor;			
+				}
+			}
+		}
+		div.c-nav-primary-wrapper {
+			li.dropdown-primary.show {
+				background: headerHoverBg;
+				color: headerHoverColor !important;
+			}			
+		}
 	}
 	
 	/* AngularJS header */
@@ -296,6 +312,9 @@ else
 			color: headerHoverColor !important;
 		}
 		/* buttons */
+		.btn.btn-empty.global-header-icon.global-header-nav-toggle:hover path {
+			fill: headerHoverColor;			
+		}
 		button.btn.global-header-site-selector {
 			border-radius: 3px;		
 			padding: 7px 9px;
