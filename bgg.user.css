@@ -94,6 +94,7 @@ inputBorder = 1px solid inputBorderColor
 menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
 quoteBorder = 1px solid quoteBorderColor
+headerHoverRadius = 2px
 if dark(headerBg)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
@@ -144,8 +145,7 @@ else
 			gg-menu-logo div.menu-logo-inner > div.dropdown > button.dropdown-toggle {
 				display: none !important;
 			}
-		}
-		
+		}		
 		/* order of menu items */
 		if userMenuLeft {
 			div.c-nav-primary-wrapper > {
@@ -181,7 +181,7 @@ else
 					order: 3;
 					div.c-nav-primary div.dropdown-menu.show {
 						left: auto !important;
-						right: 0px !important;
+						right: 0 !important;
 					}
 				}
 			}
@@ -189,8 +189,12 @@ else
 		/* nextAlways doesn’t work */
 
 		/* colors */
+		> header.header {
+			background: headerBg !important;
+		}
+		/* sidebar toggle */
 		div.c-inner button.btn.btn-empty.header-icon {
-			border-radius: 3px;
+			border-radius: headerHoverRadius;
 			padding: 0.5em;
 			path {
 				fill: headerColor;
@@ -202,36 +206,85 @@ else
 				}
 			}
 		}
-		gg-menu-logo div.menu-logo-inner > div.dropdown > button.dropdown-toggle[_ngcontent-yqg-c5] {
+		/* site selector */
+		gg-menu-logo div.menu-logo-inner > div.dropdown > button.dropdown-toggle[aria-haspopup="true"] {
 			color: headerColor !important;
-			border-radius: 3px;
+			border-radius: headerHoverRadius;
 			padding: 0.4em 0.5em;
 			&:hover {
 				background: headerHoverBg !important;
 				color: headerHoverColor !important;
 			}
 		}
-		gg-geekmail-notifications, gg-subscription-notifications {
+		/* geekmail */
+		gg-geekmail-notifications {
+			border-radius: headerHoverRadius;
+			padding: 0.35em 0em;
 			path {
 				fill: headerColor;
 			}
 			&:hover {
-				background: headerHoverBg; 
-				border-radius: 3px;
-				padding: 0.35em 0;
+				background: headerHoverBg;
 				path {
 					fill: headerHoverColor;			
 				}
 			}
 		}
+		gg-subscription-notifications {
+			/* subscriptions */
+			a.geekmenu-notification-icon {
+				border-radius: headerHoverRadius;
+				margin-left: 0;
+				padding: 0.35em;
+				path {
+					fill: headerColor;
+				}
+				span.count {
+					transform: translate(-5px, 5px);
+				}
+				&:hover {
+					background: headerHoverBg;
+					padding: p=0.35em;
+					path {
+						fill: headerHoverColor;			
+					}
+				}
+			}
+			/* next button */
+			a.header-user-notification-next {
+				border: none;
+				border-radius: headerHoverRadius;
+				color: headerColor;
+				font-size: fontSizeS;
+				font-weight: 700;
+				margin-left: 0;
+				padding: 0.7em 0.3em;
+				&:hover {
+					background: headerHoverBg; 
+					path {
+						fill: headerHoverColor;			
+					}
+				}
+			}
+		}
+		/* user + menus */
 		li.c-nav-user.dropdown-primary button.dropdown-toggle, div.c-nav-primary-wrapper li.dropdown-primary button.dropdown-toggle {
 			color: headerColor;
-			&:hover {
+			border-radius: headerHoverRadius;
+			padding: 0.5em;
+			&:hover, &[aria-expanded="true"] {
 				background: headerHoverBg; 
-				border-radius: 3px;
 				color: headerHoverColor;
-				padding: 0.5em;
-			}			
+			}
+		}
+		/* dropdown menus */
+		div.dropdown-menu a:hover, div.dropdown-menu span.dropdown-item:hover {
+			background: headerHoverBg;
+			color: headerHoverColor !important;
+		}
+		div.dropdown-menu span.dropdown-item a {
+			padding: 0.25em 1em;
+			margin: -0.25em -1em;
 		}
 	}
 	
@@ -328,7 +381,7 @@ else
 		background: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
-			&:hover {
+			&:hover, &[aria-expanded="true"] {
 				background: headerHoverBg;
 				color: headerHoverColor !important;
 			}
@@ -337,9 +390,11 @@ else
 		div.global-header-nav-search-advanced div.ui-select-container {
 			background: menuBg;
 		}
-		.global-header-nav-primary .dropdown-menu li a:hover, div.global-header-logo.ng-scope div.ng-scope.dropdown.open ul.dropdown-menu li a:hover {
-			background: headerHoverBg;
-			color: headerHoverColor !important;
+		.global-header-nav-primary, div.global-header-logo.ng-scope div.ng-scope {
+			.dropdown-menu li a:hover {
+				background: headerHoverBg;
+				color: headerHoverColor !important;
+			}
 		}
 		/* buttons */
 		.btn.btn-empty.global-header-icon.global-header-nav-toggle {
@@ -351,20 +406,20 @@ else
 			}
 		}
 		button.btn.global-header-site-selector {
-			border-radius: 3px;		
+			border-radius: headerHoverRadius;		
 			padding: 7px 9px;
 		}
 		geekmail-notifications a.global-header-icon {
-			border-radius: 3px;
+			border-radius: headerHoverRadius;
 			padding: 4px 7px;
 		}
 		subscription-notifications span a.global-header-icon {
-			border-radius: 3px;
+			border-radius: headerHoverRadius;
 			padding: 5px 7px 3px 7px;
 		}
 		a.global-header-user-notification-action {
 			border: none;
-			border-radius: 3px;
+			border-radius: headerHoverRadius;
 			padding: 3px 5px;
 			font-family: fontM !important;
 			font-size: fontSizeM !important;
@@ -715,22 +770,35 @@ else
 	}
 	
 	/* geekmarket */
-	.white-bg {
-		background: moduleBg;
+	body[ng-app="geekmarketApp"] {
+		.white-bg {
+			background: moduleBg;
+		}
+		nav.navbar-static-side li.active, .panel-primary, .form-control, .dropdown-menu {
+			background: menuBg;
+		}
+		nav.navbar-static-side  li > a:hover {
+			background: headerBg;
+		}
+		nav.navbar-static-side li.active > a {
+			color: linkSelected;
+		}
+		.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
+			border: menuBorder;
+		}
+		div.panel-heading {
+			border: none;
+		}
+		div.modal-content {
+			background: moduleBg !important;
+		}
+		div#confirm div.modal-header {
+			background: headerBg;
+			border: none;
+			color: headerColor;
+		}
 	}
-	nav.navbar-static-side li.active, .panel-primary, .form-control, .dropdown-menu {
-		background: menuBg;
-	}
-	nav.navbar-static-side  li > a:hover {
-		background: headerBg;
-	}
-	nav.navbar-static-side li.active > a {
-		color: linkSelected;
-	}
-	.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
-		border: menuBorder;
-	}
-	
+		
 	/* game pages */
 	if promotedVideoHide {
 		promotedvideos-module {
