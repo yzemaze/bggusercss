@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.8.2
+@version		0.8.3
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -107,37 +107,178 @@ else
 	    max-width: pageWidth;
 	}
 	
-	/* header */
-	/* logo */
-	if logo == "Ernie" {
-		div.global-header-logo {
-			margin-left: 1em;
-			> a > img {
-				width: 60px;
-				height: 45px;
-				box-sizing: border-box;
-				padding-left: 60px;
-				background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
-				background-size: contain;
-			}	
-		}
-	}
-	if logo == "BGG" {
-		div.global-header-logo {
-			a > img {
-				display: none;
-			} 
-			> a:after {			
-				content: "BGG";
-				color: headerColor; /* #ff5100 */
-				font: fontXXL;
-				font-size: 2.5em;
-				font-weight: 900;
+	/* Angular 8 header: file & image pages */
+	gg-app gg-header {
+		/* logo */
+		if logo == "Ernie" {
+			div.menu-logo-inner {
+				margin-left: 1em;
+				a > img {
+					width: 60px;
+					height: 45px;
+					box-sizing: border-box;
+					padding-left: 60px;
+					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background-size: contain;
+				}	
 			}
 		}
+		if logo == "BGG" {
+			div.menu-logo-inner {
+				a > img {
+					display: none;
+				} 
+				a:after {			
+					content: "BGG";
+					color: headerColor; /* #ff5100 */
+					font: fontXXL;
+					font-size: 2.5em;
+					font-weight: 900;
+				}
+			}
+			gg-menu-logo div.dropdown {
+				margin-bottom: 15px;
+			}
+		}
+		if siteSelectorHide {
+			gg-menu-logo div.menu-logo-inner > div.dropdown > button.dropdown-toggle {
+				display: none !important;
+			}
+		}
+		
+		/* order of menu items */
+		if userMenuLeft {
+			div.c-nav-primary-wrapper > {
+				div.c-nav-primary {
+					margin-left: 2em;
+					order: 2;
+				}
+				div.c-nav-primary-user {
+					flex: 0;
+					margin-left: 2em;
+					order: 1;
+				}
+			}
+			/* open user menu to the right */
+			div.c-nav-primary-user .dropdown-menu {
+				left: 217px !important; /* counter inline transform */
+				right: auto !important;
+			}
+		}
+		if searchBarLeft {
+			div.c-inner {
+				button {
+					order: 0;
+				}
+				gg-menu-logo {
+					order: 1;
+				}
+				gg-header-search {
+					order: 2;
+					margin-left: 2em;
+				}
+				div.c-nav {
+					order: 3;
+					div.c-nav-primary div.dropdown-menu.show {
+						left: auto !important;
+						right: 0px !important;
+					}
+				}
+			}
+		}
+		/* nextAlways doesn’t work */
 	}
-	/* colors */
+	
+	/* AngularJS header */
 	.global-header {
+		/* logo */
+		if logo == "Ernie" {
+			div.global-header-logo {
+				margin-left: 1em;
+				a > img {
+					width: 60px;
+					height: 45px;
+					box-sizing: border-box;
+					padding-left: 60px;
+					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background-size: contain;
+				}	
+			}
+		}
+		if logo == "BGG" {
+			div.global-header-logo {
+				a > img {
+					display: none;
+				} 
+				a:after {			
+					content: "BGG";
+					color: headerColor; /* #ff5100 */
+					font: fontXXL;
+					font-size: 2.5em;
+					font-weight: 900;
+				}
+			}
+		}
+		
+		/* order of menu items */
+		if userMenuLeft {
+			ul.global-header-nav-primary > {
+				li:nth-child(1) {
+					order: 3;
+					margin-left: 2em;
+				}
+				li:nth-child(2) {
+					order: 4;
+				}
+				li:nth-child(3) {
+					order: 5;
+				}
+				li:nth-child(4) {
+					order: 6;
+				}
+				li:nth-child(5) {
+					order: 7;
+				}
+				li:nth-child(6) {
+					order: 8;
+				}
+				li:nth-child(7) {
+					order: 1;
+					margin-left: 2em;
+				}
+				li:nth-child(8) {
+					order: 2;
+				}
+			}
+			/* open menus to the left */
+			ul.global-header-nav-primary .dropdown-menu {
+				left: auto;
+				right: 0;
+			}
+			/* open user menu to the right */
+			li.global-header-nav-user .dropdown-menu {
+				left: 0;
+			}
+		}
+		if searchBarLeft {
+			div.global-header-nav-primary-wrapper {
+				order: 2;
+			}
+			div.global-header-nav-search {
+				margin-left: 2em;
+				order: 1;
+			}
+			div.global-header-nav-search-advanced ul.dropdown-menu {
+				left: 0 !important;
+			}
+		}
+		if nextAlways {
+			a.global-header-user-notification-action.ng-hide {
+				display: initial !important;
+			}
+		}
+		
+		/* colors */
 		background: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
@@ -185,63 +326,6 @@ else
 		if siteSelectorHide {
 			button.global-header-site-selector {
 				display: none;
-			}
-		}
-		/* order of menu items */
-		if userMenuLeft {
-			ul.global-header-nav-primary > {
-				li:nth-child(1) {
-					order: 3;
-					margin-left: 2em;
-				}
-				li:nth-child(2) {
-					order: 4;
-				}
-				li:nth-child(3) {
-					order: 5;
-				}
-				li:nth-child(4) {
-					order: 6;
-				}
-				li:nth-child(5) {
-					order: 7;
-				}
-				li:nth-child(6) {
-					order: 8;
-				}
-				li:nth-child(7) {
-					order: 1;
-					margin-left: 2em;
-				}
-				li:nth-child(8) {
-					order: 2;
-				}
-			}
-			/* open menus to the left */
-			ul.global-header-nav-primary .dropdown-menu {
-				left: auto;
-				right: 0;
-			}
-			/* open user menu to the right */
-			li.global-header-nav-user .dropdown-menu {
-				left: 0;
-			}
-		}
-		if searchBarLeft {
-			div.global-header-nav-primary-wrapper {
-				order: 2;
-			}
-			div.global-header-nav-search {
-				margin-left: 5 em;
-				order: 1;
-			}
-			div.global-header-nav-search-advanced ul.dropdown-menu {
-				left: 0 !important;
-			}
-		}
-		if nextAlways {
-			a.global-header-user-notification-action.ng-hide {
-				display: initial !important;
 			}
 		}
 	}
@@ -1183,4 +1267,4 @@ else
 			border: none;
 		}
 	}
-}	
+}

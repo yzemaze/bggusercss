@@ -180,3 +180,6 @@ plays: links
 0.8.2
 legacy forum_tables zebra
 - dedicated editHover option
+
+0.8.3
+file & image pages: Angular 8 header
