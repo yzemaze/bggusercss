@@ -189,18 +189,48 @@ else
 		/* nextAlways doesn’t work */
 
 		/* colors */
-		div.c-inner {
-			button.btn.btn-empty:hover {
-				background: headerHoverBg;
+		div.c-inner button.btn.btn-empty.header-icon {
+			border-radius: 3px;
+			padding: 0.5em;
+			path {
+				fill: headerColor;
+			}
+			&:hover {
+				background: headerHoverBg; 
 				path {
 					fill: headerHoverColor;			
 				}
 			}
 		}
-		div.c-nav-primary-wrapper {
-			li.dropdown-primary.show {
-				background: headerHoverBg;
+		gg-menu-logo div.menu-logo-inner > div.dropdown > button.dropdown-toggle[_ngcontent-yqg-c5] {
+			color: headerColor !important;
+			border-radius: 3px;
+			padding: 0.4em 0.5em;
+			&:hover {
+				background: headerHoverBg !important;
 				color: headerHoverColor !important;
+			}
+		}
+		gg-geekmail-notifications, gg-subscription-notifications {
+			path {
+				fill: headerColor;
+			}
+			&:hover {
+				background: headerHoverBg; 
+				border-radius: 3px;
+				padding: 0.35em 0;
+				path {
+					fill: headerHoverColor;			
+				}
+			}
+		}
+		li.c-nav-user.dropdown-primary button.dropdown-toggle, div.c-nav-primary-wrapper li.dropdown-primary button.dropdown-toggle {
+			color: headerColor;
+			&:hover {
+				background: headerHoverBg; 
+				border-radius: 3px;
+				color: headerHoverColor;
+				padding: 0.5em;
 			}			
 		}
 	}
@@ -312,8 +342,13 @@ else
 			color: headerHoverColor !important;
 		}
 		/* buttons */
-		.btn.btn-empty.global-header-icon.global-header-nav-toggle:hover path {
-			fill: headerHoverColor;			
+		.btn.btn-empty.global-header-icon.global-header-nav-toggle {
+			path {
+				fill: headerColor;
+			}			
+			&:hover path {
+				fill: headerHoverColor;			
+			}
 		}
 		button.btn.global-header-site-selector {
 			border-radius: 3px;		
