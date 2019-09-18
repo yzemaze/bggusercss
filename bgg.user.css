@@ -400,6 +400,7 @@ else
 			.dropdown-menu li a:hover {
 				background: headerHoverBg;
 				color: headerHoverColor !important;
+				text-decoration: linkStyle;
 			}
 		}
 		/* buttons */
