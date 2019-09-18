@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.2
+@version		0.9.4
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -51,8 +51,7 @@
 @var	color		linkColor			'Links'									#0053b7
 @var	color		linkHover			'… hover'								#c5130e
 @var	color		linkSelected		'… selected'							#fdad2f
-@var	checkbox	linkUnderline		'… underline'							0
-@var	select		linkUnderlineStyle	'… underline style'				["dashed","dotted*","double","initial","inherit","solid","wavy"]
+@var	select		linkUnderlineStyle	'… underline style'				["none","dashed","dotted*","double","initial","inherit","solid","wavy"]
 @var	color		linkVisited			'… visited'								#666
 @var	color		textPositive		'Text: positive values'					#01ac01
 @var	color		textError			'Text: negative values, error messages'	#c5130e
@@ -100,7 +99,11 @@ if dark(headerBg)
 	headerHoverColor = darken(headerColor, 90%)
 else
 	headerHoverBg = darken(headerBg, 50%)
-	headerHoverColor = lighten(headerColor, 90%)		
+	headerHoverColor = lighten(headerColor, 90%)
+if linkUnderlineStyle != "none"
+	linkStyle = underline linkUnderlineStyle
+else
+	linkStyle = none
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	/* NEW PAGES */
 	/* page */
@@ -440,7 +443,7 @@ else
 	}
 	/* inputs, forms */
 	input, .form-control, textarea.form-control[readonly] {
-		background: inputBg;
+		background: inputBg !important;
 		border: inputBorder;
 		color: textColor;
 	}
@@ -699,7 +702,7 @@ else
 	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
 		color: textColor;
 	}
-	.text-muted {
+	.text-muted:not(label) {
 		filter: opacity(60%);
 	}
 	
@@ -719,15 +722,8 @@ else
 	a.selected {
 		color: linkSelected !important;
 	}
-	if linkUnderline {
-		a, a:link, a:hover  {
-			text-decoration: underline linkUnderlineStyle;
-		}
-	}
-	else {
-		a, a:link, a:hover {
-			text-decoration: none !important;
-		}
+	a, a:link, a:hover  {
+		text-decoration: linkStyle;
 	}
 	/* front page links */
 	.geekcentral-controls {
@@ -934,8 +930,11 @@ else
 		}
 	}
 	
-	/* image pages + gallery */
-	div.breadcrumb-row, gg-breadcrumbs.c-light-bg, .c-container, div.media-sidebar.image, gg-image-nav div.image-nav{
+	/* image pages, gallery, file pages */
+	div.breadcrumb-row, gg-breadcrumbs.c-light-bg {
+		background: transparent;
+	}
+	.c-container, div.media-sidebar.image, gg-image-nav div.image-nav{
 		background: moduleBg !important;
 	}
 	.c-container {
@@ -947,6 +946,34 @@ else
 	gg-markup-quote {
 		background: quoteBg !important;
 		border: quoteBorder !important;
+	}
+	/* image pages */
+	gg-image-page > div.global-body-content-primary {
+		gg-image-nav {
+			border-bottom: moduleBorder;
+			> .image-metadata {
+				background: moduleBg;
+				&:hover {
+					color: textColor;
+				}
+			}
+		}
+		gg-image-caption .media-sidebar.image {
+			border: moduleBorder;
+			.media-sidebar-actions {
+				border-bottom: moduleBorder;				
+			}
+			gg-pins button.btn-unstyled {
+				color: linkColor;
+				&:hover {
+					color: linkHover;
+					text-decoration: linkStyle;
+				}
+			}
+		}
+		gg-comments-block gg-comment {
+			border: moduleBorder;
+		}
 	}
 	
 	/* geekpreview */
@@ -1049,6 +1076,16 @@ else
 		.forum_table {
 			background-color: moduleBorderColor;
 		}
+		.moduletable {
+			border-spacing: 0;
+			border: moduleBorder;
+			tr.moduleRow:nth-child(2n) {
+				background-color: tableColor2n;
+			}
+			tr.moduleRow:nth-child(2n+1) {
+				background-color: tableColor2n1;
+			}
+		}
 		
 		/* quickbar edit */
 		form[action="/quickbar.php"] {
@@ -1117,18 +1154,8 @@ else
 		.comment_button:hover {
 			border-color: linkHover;
 		}
-		if linkUnderline {
-			a, a:link {
-				text-decoration: underline linkUnderlineStyle;
-			}
-			a:hover {
-				text-decoration: underline linkUnderlineStyle !important;
-			}
-		}
-		else {
-			a, a:link, a:hover {
-				text-decoration: none !important;
-			}
+		a, a:link {
+			text-decoration: linkStyle;
 		}
 		.forumlink, .objectlink {
 			a:visited, a:link, a:hover, a:active {
@@ -1179,7 +1206,7 @@ else
 		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body, {
 			background: menuBg;
 		}
-		.menu_login, .menu_quickbar, .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
+		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
 		}
 		/* input, select */
