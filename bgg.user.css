@@ -949,6 +949,20 @@ else
 	}
 	/* image pages */
 	gg-image-page > div.global-body-content-primary {
+		.breadcrumb-row .c-light-bg .c-crumb {
+			a {
+				color: linkColor;
+				&:hover {
+					color: linkHover;
+				}
+			}
+			&:first-of-type a {
+				color: linkColor;
+				&:hover {
+					color: linkHover;
+				}
+			}
+		}
 		gg-image-nav {
 			border-bottom: moduleBorder;
 			> .image-metadata {
