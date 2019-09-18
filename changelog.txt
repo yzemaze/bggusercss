@@ -198,3 +198,6 @@ legacy guilds forum table
 0.9.4
 image pages: tweaks
 link styling simplified
+
+0.9.5
+thumbs & geekgold buttons

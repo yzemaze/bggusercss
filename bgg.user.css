@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.4
+@version		0.9.5
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -89,6 +89,8 @@
 /* vars */
 articleNewBorder = solid 2px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
+buttonBg = menuBg
+buttonBorder = menuBorder
 inputBorder = 1px solid inputBorderColor
 menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
@@ -954,6 +956,7 @@ else
 			a {
 				color: linkColor;
 				&:hover {
+					border: none;
 					color: linkHover;
 				}
 			}
@@ -973,22 +976,68 @@ else
 				}
 			}
 		}
-		gg-image-caption .media-sidebar.image {
-			border: moduleBorder;
-			.media-sidebar-actions {
-				border-bottom: moduleBorder;				
+		gg-image-caption {
+			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
+				color: linkHover;
 			}
-			gg-pins button.btn-unstyled {
-				color: linkColor;
-				&:hover {
+			.caption-footer {
+				.interaction-btn-group .interaction-btn {
+					background: buttonBg;
+					border: buttonBorder;
+					&:hover {
+						color: linkHover;
+					}
+				}
+			}
+			.media-sidebar {
+				border: moduleBorder;
+				.media-sidebar-actions {
+					border-bottom: moduleBorder;
+					.btn:hover {
+						color: linkHover;
+						fa-icon.ng-fa-icon {
+							color: linkHover;
+						}
+					}
+				}
+				a.dropdown:hover fa-icon.ng-fa-icon {
 					color: linkHover;
-					text-decoration: linkStyle;
+				}
+				gg-pins button.btn-unstyled {
+					color: linkColor;
+					&:hover {
+						color: linkHover;
+						text-decoration: linkStyle;
+					}
 				}
 			}
 		}
 		gg-comments-block gg-comment {
 			border: moduleBorder;
 		}
+	}
+	
+	/* geekgold button */
+	gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
+		.interaction-btn.geekgold:hover path {
+			&#coin-background {
+				fill: #fde538;
+			}
+			&#coin-outline {
+				fill: #a37900;
+			}
+		}
+		gg-geekgold-quick-give.dropdown-menu.show {
+			background: menuBg;
+			button.dropdown-item:hover {
+				background: headerHoverBg;
+				color: headerHoverColor;
+			}
+		}
+	}
+	/* thumbs button */		
+	.interaction-btn-group .interaction-btn:hover path#thumbsup-outline {
+		fill: textPositive;
 	}
 	
 	/* geekpreview */
