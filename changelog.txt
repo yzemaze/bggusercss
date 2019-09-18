@@ -183,3 +183,8 @@ legacy forum_tables zebra
 
 0.9.0
 file & image pages: Angular 8 header
+
+0.9.1
+input bg
+dropdown-menus bg
+legacy subs table bg
