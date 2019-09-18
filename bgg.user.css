@@ -722,7 +722,7 @@ else
 	a.selected {
 		color: linkSelected !important;
 	}
-	a, a:link, a:hover  {
+	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
 		text-decoration: linkStyle;
 	}
 	/* front page links */
