@@ -387,10 +387,6 @@ else
 					color: buttonHoverColor;
 				}
 			}
-			/* popover */
-			.popover-body {
-				background-color: menuBg;
-			}			
 			/* image pages, gallery, file pages */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg {
 				background-color: moduleBg;
@@ -401,22 +397,17 @@ else
 			}
 			.c-container,  gg-image-nav .image-nav, gg-comment {
 				background-color: moduleBg;
+				.popover {
+					background-color: menuBg !important;
+				}
 			}
 			.c-container {
 				border: moduleBorder !important;
-			}
-			textarea.newcomment {
-				background-color: menuBg !important;
-			}
-			gg-comment {
-				margin: 0.5em 0;
-				padding: 1em;
 			}
 			gg-markup-quote {
 				background-color: quoteBg !important;
 				border: quoteBorder !important;
 			}
-			/* image pages */
 			.breadcrumb-row .c-light-bg .c-crumb {
 				a {
 					color: linkColor;
@@ -452,7 +443,6 @@ else
 					}
 				}
 			}
-			
 			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
 				color: linkHover;
 			}
@@ -474,6 +464,7 @@ else
 						&:hover {
 							color: buttonHoverColor;
 							background-color: buttonHoverBg;
+							border-color: buttonHoverBg;
 						}
 					}
 				}
@@ -500,13 +491,35 @@ else
 					color: linkHover;
 				}
 			}
+			gg-timeline-item .timeline-data {
+				border-color: moduleBorderColor;
+				gg-file + gg-file {
+					border-color: moduleBorderColor;					
+				}
+				a:hover .file-badge, a:not(.loading) .file-badge:hover {
+					color: buttonHoverColor;
+					background-color: buttonHoverBg;
+					border-color: buttonHoverBg;
+				}
+			}
+			.view-all-container {
+				border-color: moduleBorderColor;
+				&::before {
+					box-shadow: none;
+				}
+			}
 			gg-comments-block .panel gg-comment {
 				border: moduleBorder;
+				margin: 0.5em 0;
+				padding: 1em;
 				gg-reactions-popup-trigger a:hover span {
 					&.count, &.label {
 						color: linkHover;
 					}
 				}
+			}
+			textarea.newcomment {
+				background-color: menuBg !important;
 			}
 		}
 		
