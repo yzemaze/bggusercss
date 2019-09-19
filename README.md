@@ -1,4 +1,4 @@
 # bggusercss
-user.css for boardgamegeek.com
+user.css for boardgamegeek.com relying on Stylus
 
-Details on BGG: <a href="https://www.boardgamegeek.com/thread/2009167/howto-customize-bggs-appearance-usercss-colors-dar">howto: customize BGG’s appearance with user.css (colors, dark theme, hide contests or announcements etc.)</a>
+Details: <a href="https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con">BGG UI customizer (colors, fonts, dark theme, hide contests, front page 3+ columns, less whitespace etc.)</a>
