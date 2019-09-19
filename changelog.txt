@@ -204,3 +204,8 @@ thumbs & geekgold buttons
 
 0.9.6
 background => background-color
+
+0.9.7
+image/file pages consolidated
+modal dialogs
+button hover
