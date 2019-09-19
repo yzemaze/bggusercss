@@ -302,6 +302,15 @@ else
 		
 		/* body */
 		div.global-body-content-primary {
+			/* buttons */
+			.btn-icon, .form-group-search button.search {
+				color: linkColor;
+			}
+			.btn:hover {
+				background-color: buttonHoverBg;
+				border: 1px solid buttonHoverBg;
+				color: buttonHoverColor;
+			}
 			/* geekgold button */
 			gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
 				.interaction-btn.geekgold:hover path {
@@ -1171,15 +1180,7 @@ else
 		}
 	}
 
-	/* buttons */
-	.btn-icon, .form-group-search button.search {
-		color: linkColor;
-	}
-	.btn:hover {
-		background-color: buttonHoverBg;
-		border: 1px solid buttonHoverBg;
-		color: buttonHoverColor;
-	}
+
 	
 /* LEGACY PAGES */
 	.legacy {
