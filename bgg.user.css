@@ -124,7 +124,7 @@ else
 					height: 45px;
 					box-sizing: border-box;
 					padding-left: 60px;
-					background-color: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
 					background-size: contain;
 				}	
 			}
@@ -307,7 +307,7 @@ else
 					height: 45px;
 					box-sizing: border-box;
 					padding-left: 60px;
-					background-color: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
 					background-size: contain;
 				}	
 			}
@@ -952,7 +952,7 @@ else
 			border: quoteBorder !important;
 		}
 		/* image pages */
-		gg-image-page > div.global-body-content-primary {
+		div.global-body-content-primary {
 			.breadcrumb-row .c-light-bg .c-crumb {
 				a {
 					color: linkColor;
@@ -977,91 +977,86 @@ else
 					}
 				}
 			}
-			gg-image-caption {
-				.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
-					color: linkHover;
-				}
-				.media-sidebar {
-					border: moduleBorder;
-					.media-sidebar-actions {
-						border-bottom: moduleBorder;
-						.btn:hover {
-							color: linkHover;
-							fa-icon.ng-fa-icon {
-								color: linkHover;
-							}
-						}
-					}
-					a.dropdown:hover fa-icon.ng-fa-icon {
+			
+			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
+				color: linkHover;
+			}
+			.media-sidebar {
+				border: moduleBorder;
+				.media-sidebar-actions {
+					border-bottom: moduleBorder;
+					.btn:hover {
 						color: linkHover;
-					}
-					gg-pins button.btn-unstyled {
-						color: linkColor;
-						&:hover {
+						fa-icon.ng-fa-icon {
 							color: linkHover;
-							text-decoration: linkStyle;
 						}
 					}
 				}
-			}
-		}
-		gg-comments-block .panel gg-comment {
-			border: moduleBorder;
-			gg-reactions-popup-trigger a:hover span {
-				&.count, &.label {
+				a.dropdown:hover fa-icon.ng-fa-icon {
 					color: linkHover;
 				}
+				gg-pins button.btn-unstyled {
+					color: linkColor;
+					&:hover {
+						color: linkHover;
+						text-decoration: linkStyle;
+					}
+				}
 			}
-		}
-
-		.caption-footer {
-			.interaction-btn-group .interaction-btn {
+			.caption-footer .interaction-btn-group .interaction-btn {
 				background-color: buttonBg;
 				border: buttonBorder;
 				&:hover {
 					color: linkHover;
 				}
 			}
-		}
-		
-		/* geekgold button */
-		gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
-			.interaction-btn.geekgold:hover path {
-				&#coin-background {
-					fill: #fde538;
-				}
-				&#coin-outline {
-					fill: #a37900;
+			gg-comments-block .panel gg-comment {
+				border: moduleBorder;
+				gg-reactions-popup-trigger a:hover span {
+					&.count, &.label {
+						color: linkHover;
+					}
 				}
 			}
-			gg-geekgold-quick-give.dropdown-menu.show {
-				background-color: menuBg;
-				button.dropdown-item:hover {
+			/* geekgold button */
+			gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
+				.interaction-btn.geekgold:hover path {
+					&#coin-background {
+						fill: #fde538;
+					}
+					&#coin-outline {
+						fill: #a37900;
+					}
+				}
+				gg-geekgold-quick-give.dropdown-menu.show {
+					background-color: menuBg;
+					button.dropdown-item:hover {
+						background-color: headerHoverBg;
+						color: headerHoverColor;
+					}
+				}
+			}
+			/* thumbs button */		
+			.interaction-btn.thumbsup:hover path#thumbsup-outline {
+				fill: textPositive;
+			}
+			gg-reactions-popup-trigger a:hover span {
+				&.count, &.label {
+					color: linkHover;
+				}
+			}
+			/* comment button */
+			ul.comment-actions > li button.comment-btn {
+				&.active, &:focus, &:hover {
 					background-color: headerHoverBg;
+					border-color: headerHoverBg;
 					color: headerHoverColor;
 				}
 			}
-		}
-		/* thumbs button */		
-		.interaction-btn.thumbsup:hover path#thumbsup-outline {
-			fill: textPositive;
-		}
-		gg-reactions-popup-trigger a:hover span {
-			&.count, &.label {
-				color: linkHover;
+			/* popover */
+			.popover-body {
+				background-color: menuBg;
 			}
-		}
-		/* comment button */
-		ul.comment-actions > li button.comment-btn {
-			&.active, &:focus, &:hover {
-				background-color: headerHoverBg;
-				border-color: headerHoverBg;
-				color: headerHoverColor;
-			}
-		}
-		/* popover */
-		.popover-body {
-			background-color: menuBg;
 		}
 	}
 
