@@ -209,3 +209,6 @@ background => background-color
 image/file pages consolidated
 modal dialogs
 button hover
+
+0.9.8
+image/file pages: sidebar colors

@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.7
+@version		0.9.8
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -110,12 +110,33 @@ else
 	linkStyle = none
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 /* NEW PAGES */
+	/* dropdown menus */
+	.dropdown-menu {
+		background-color: menuBg;
+	}
+	.dropdown-menu a:hover, .dropdown-menu .dropdown-item:hover {
+		background-color: headerHoverBg;
+		color: headerHoverColor !important;
+	}
+	/* fix for Angular8 header dropdowns to extend hover range */
+	.dropdown-menu .dropdown-item a {
+		padding: 0.25em 1em;
+		margin: -0.25em -1em;
+	}
+	.text-muted:hover {
+		color: textColor !important; /* counter-i! */
+		filter: opacity(100%);
+	}
+	a, button {
+		outline: none !important;
+	}
 	/* page */
 	.container-fluid {
 	    max-width: pageWidth;
 	}
 	
-	/* Angular 8: header, file & image pages */
+/* Angular 8 PAGES */
+	/* header, file & image pages */
 	gg-app {
 		/* header */
 		gg-header {
@@ -287,18 +308,38 @@ else
 			}
 		}
 		
-		/* dropdown menus */
-		.dropdown-menu {
-			background-color: menuBg;
+		/* sidebar */
+		.geeksidebar-section {
+			.geeksidebar-section-header.toggler-caret {
+				background-color: headerBg;
+				color: headerColor;
+				&:hover {
+					background-color: headerHoverBg;
+					color: headerHoverColor;
+				}
+			}
+			.geeksidebar-section-body {
+				background-color: moduleBg;
+				.geeksidebar-links > li:not(:last-child) {
+					border-bottom: moduleBorder;
+				}
+				.btn, .quickbar-pagination .btn, .quickbar-header .color-icon {
+					color: linkColor;
+					&:hover {
+						color: linkHover;
+					}
+				}
+				a:hover {
+					color: linkHover;
+				}
+			}
 		}
-		.dropdown-menu a:hover, .dropdown-menu .dropdown-item:hover {
-			background-color: headerHoverBg;
-			color: headerHoverColor !important;
+		if quickbarSticky {
+			gg-sidebar.sidebar-type-embedded.sidebar-open {
+				position: sticky;
+				top: 72px;
+			}
 		}
-		/*.dropdown-menu .dropdown-item a {
-			padding: 0.25em 1em;
-			margin: -0.25em -1em;
-		}*/
 		
 		/* body */
 		div.global-body-content-primary {
@@ -476,13 +517,9 @@ else
 			}
 		}
 	}
-	.text-muted:hover {
-		color: textColor !important; /* counter-i! */
-		filter: opacity(100%);
-	}
 	
-/* INTERMEDIATE? PAGES */
-	/* AngularJS header */
+/* AngularJS PAGES */
+	/* header */
 	.global-header {
 		/* logo */
 		if logo == "Ernie" {
@@ -783,15 +820,16 @@ else
 	}
 	
 	/* sidebar */
-	.toggler-caret.global-secondary-nav-section-header {
+	.global-secondary-nav-section .global-secondary-nav-section-header.toggler-caret {
 		background-color: headerBg;
 		color: headerColor;
-	}
-	a.toggler-caret, a.global-secondary-nav-section-header {
-		color: headerColor !important;
+		&:hover {
+			background-color: headerHoverBg;
+			color: headerHoverColor;
+		}
 	}
 	.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
-		background-color: moduleBg !important;
+		background-color: moduleBg;
 	}
 	ul.global-secondary-nav-links > li {
 		border-bottom: moduleBorder;
@@ -803,8 +841,7 @@ else
 		color: linkHover;
 	}
 	if quickbarSticky {
-		.global-body-content-container .global-secondary-nav,
-		.sidebar-type-embedded {
+		.global-body-content-container .global-secondary-nav {
 			position: sticky;
 			top: 72px;
 		}
