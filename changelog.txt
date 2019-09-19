@@ -211,4 +211,4 @@ modal dialogs
 button hover
 
 0.9.8
-image/file pages: sidebar colors
+image/file pages: sidebar colors + sticky

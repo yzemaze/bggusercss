@@ -309,6 +309,12 @@ else
 		}
 		
 		/* sidebar */
+		if quickbarSticky {
+			.geeksidebar {
+				position: sticky;
+				top: 70px;
+			}
+		}
 		.geeksidebar-section {
 			.geeksidebar-section-header.toggler-caret {
 				background-color: headerBg;
@@ -334,15 +340,9 @@ else
 				}
 			}
 		}
-		if quickbarSticky {
-			gg-sidebar.sidebar-type-embedded.sidebar-open {
-				position: sticky;
-				top: 72px;
-			}
-		}
 		
 		/* body */
-		div.global-body-content-primary {
+		div.global-body-content {
 			/* buttons */
 			.btn-icon, .form-group-search button.search {
 				color: linkColor;
