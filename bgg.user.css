@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.5
+@version		0.9.6
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -90,12 +90,12 @@
 articleNewBorder = solid 2px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
 buttonBg = menuBg
-buttonBorder = menuBorder
+buttonBorder = 1px solid menuBorderColor
+headerHoverRadius = 2px
 inputBorder = 1px solid inputBorderColor
 menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
 quoteBorder = 1px solid quoteBorderColor
-headerHoverRadius = 2px
 if dark(headerBg)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
@@ -124,7 +124,7 @@ else
 					height: 45px;
 					box-sizing: border-box;
 					padding-left: 60px;
-					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background-color: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
 					background-size: contain;
 				}	
 			}
@@ -195,7 +195,7 @@ else
 
 		/* colors */
 		> header.header {
-			background: headerBg !important;
+			background-color: headerBg !important;
 		}
 		/* sidebar toggle */
 		div.c-inner button.btn.btn-empty.header-icon {
@@ -205,7 +205,7 @@ else
 				fill: headerColor;
 			}
 			&:hover {
-				background: headerHoverBg; 
+				background-color: headerHoverBg; 
 				path {
 					fill: headerHoverColor;			
 				}
@@ -217,7 +217,7 @@ else
 			border-radius: headerHoverRadius;
 			padding: 0.4em 0.5em;
 			&:hover {
-				background: headerHoverBg !important;
+				background-color: headerHoverBg !important;
 				color: headerHoverColor !important;
 			}
 		}
@@ -229,7 +229,7 @@ else
 				fill: headerColor;
 			}
 			&:hover {
-				background: headerHoverBg;
+				background-color: headerHoverBg;
 				path {
 					fill: headerHoverColor;			
 				}
@@ -248,7 +248,7 @@ else
 					transform: translate(-5px, 5px);
 				}
 				&:hover {
-					background: headerHoverBg;
+					background-color: headerHoverBg;
 					padding: p=0.35em;
 					path {
 						fill: headerHoverColor;			
@@ -265,7 +265,7 @@ else
 				margin-left: 0;
 				padding: 0.7em 0.3em;
 				&:hover {
-					background: headerHoverBg; 
+					background-color: headerHoverBg; 
 					path {
 						fill: headerHoverColor;			
 					}
@@ -278,16 +278,16 @@ else
 			border-radius: headerHoverRadius;
 			padding: 0.5em;
 			&:hover, &[aria-expanded="true"] {
-				background: headerHoverBg; 
+				background-color: headerHoverBg; 
 				color: headerHoverColor;
 			}
 		}
 		/* dropdown menus */
 		div.dropdown-menu {
-			background: menuBg;
+			background-color: menuBg;
 		}
 		div.dropdown-menu a:hover, div.dropdown-menu span.dropdown-item:hover {
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 			color: headerHoverColor !important;
 		}
 		div.dropdown-menu span.dropdown-item a {
@@ -307,7 +307,7 @@ else
 					height: 45px;
 					box-sizing: border-box;
 					padding-left: 60px;
-					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+					background-color: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
 					background-size: contain;
 				}	
 			}
@@ -386,21 +386,21 @@ else
 		}
 		
 		/* colors */
-		background: headerBg;
+		background-color: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
 			&:hover, &[aria-expanded="true"] {
-				background: headerHoverBg;
+				background-color: headerHoverBg;
 				color: headerHoverColor !important;
 			}
 		}
 		/* dropdown menus */
 		ul.dropdown-menu, div.dropdown-menu, div.global-header-nav-search-advanced div.ui-select-container {
-			background: menuBg;
+			background-color: menuBg;
 		}
 		.global-header-nav-primary, div.global-header-logo.ng-scope div.ng-scope {
 			.dropdown-menu li a:hover {
-				background: headerHoverBg;
+				background-color: headerHoverBg;
 				color: headerHoverColor !important;
 				text-decoration: linkStyle;
 			}
@@ -435,7 +435,7 @@ else
 			font-weight: 700;
 		}
 		.ui-select-bootstrap .ui-select-choices-row.active > a {
-			background: headerBg;
+			background-color: headerBg;
 			color: headerColor;
 		}
 		if siteSelectorHide {
@@ -446,7 +446,7 @@ else
 	}
 	/* inputs, forms */
 	input, .form-control, textarea.form-control[readonly] {
-		background: inputBg !important;
+		background-color: inputBg !important;
 		border: inputBorder;
 		color: textColor;
 	}
@@ -458,23 +458,23 @@ else
 		color: linkHover;
 	}
 	.btn-success {
-		background: textPositive;
+		background-color: textPositive;
 	}
 	.global-header-nav-search-advanced a:hover {
-		background: moduleBg;
+		background-color: moduleBg;
 	}
 	
 	/* content */
 	body {
 		color: textColor;
-		background: mainBg;
+		background-color: mainBg;
 	}
 	.global-body-content {
-		background: mainBg2;
+		background-color: mainBg2;
 	}
 	footer.global-footer {
 		color: textColor;
-		background: mainBg2;
+		background-color: mainBg2;
 	}
 	hr {
 		border-color: moduleBorderColor;
@@ -503,10 +503,10 @@ else
 		}
 	}
 	.global-body-content-primary {
-		background: mainBg2;
+		background-color: mainBg2;
 	}
 	ul.geekcentral-controls {
-		background: moduleBg;
+		background-color: moduleBg;
 		border: moduleBorder;
 	}
 	if frontpageCondensed {
@@ -575,13 +575,13 @@ else
 		border-top: none;
 	}
 	.media-header {
-		background: headerBg;
+		background-color: headerBg;
 	}
 	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
 		color: headerColor !important;
 	}
 	.media-filters {
-		background: headerBg;
+		background-color: headerBg;
 		color: headerColor;
 		.media-link {
 			color: headerLinkColor !important;
@@ -591,21 +591,21 @@ else
 	/* zebra striped modules */
 	.geekcentral {
 		.media-module {
-			.media-cell:nth-child(2n) {background: fpColor2n;}
-			.media-cell:nth-child(2n+1) {background: fpColor2n1;}
+			.media-cell:nth-child(2n) {background-color: fpColor2n;}
+			.media-cell:nth-child(2n+1) {background-color: fpColor2n1;}
 		}
 	}
 	
 	/* sidebar */
 	.toggler-caret.global-secondary-nav-section-header {
-		background: headerBg;
+		background-color: headerBg;
 		color: headerColor;
 	}
 	a.toggler-caret, a.global-secondary-nav-section-header {
 		color: headerColor !important;
 	}
 	.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
-		background: moduleBg !important;
+		background-color: moduleBg !important;
 	}
 	ul.global-secondary-nav-links > li {
 		border-bottom: moduleBorder;
@@ -671,7 +671,7 @@ else
 	
 	/* panels */
 	.panel-default > .panel-heading, .panel-primary > .panel-heading {
-		background: headerBg;
+		background-color: headerBg;
 		border: moduleBorder;
 		color: headerColor;
 	}
@@ -737,7 +737,7 @@ else
 			}
 		}
 		.dropdown-menu > li > button.btn:hover {
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 			color: headerHoverColor !important;
 		}
 	}
@@ -761,29 +761,29 @@ else
 		}
 		/* dropdown menus */
 		.dropdown-menu > li > button.btn:hover {
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 			color: headerHoverColor !important;
 		}
 	}
 	
 	/* zebra striped tables */
 	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
-		background: tableColor2n !important;
+		background-color: tableColor2n !important;
 	}
 	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"] {
-		background: tableColor2n1;
+		background-color: tableColor2n1;
 	}
 	
 	/* geekmarket */
 	body[ng-app="geekmarketApp"] {
 		.white-bg {
-			background: moduleBg;
+			background-color: moduleBg;
 		}
 		nav.navbar-static-side li.active, .panel-primary, .dropdown-menu {
-			background: menuBg;
+			background-color: menuBg;
 		}
 		nav.navbar-static-side  li > a:hover {
-			background: headerBg;
+			background-color: headerBg;
 		}
 		nav.navbar-static-side li.active > a {
 			color: linkSelected;
@@ -795,10 +795,10 @@ else
 			border: none;
 		}
 		div.modal-content {
-			background: moduleBg !important;
+			background-color: moduleBg !important;
 		}
 		div#confirm div.modal-header {
-			background: headerBg;
+			background-color: headerBg;
 			border: none;
 			color: headerColor;
 		}
@@ -822,7 +822,7 @@ else
 		color: #ddd !important;
 	}
 	.game-nav-tabs {
-		background: mainBg2;
+		background-color: mainBg2;
 	}
 	.nav.nav-tabs > li > a, .game-header button.btn-link.btn-xs {
 		&:hover {
@@ -835,18 +835,18 @@ else
 		}
 		a:hover {
 			/* padding-left: 10px;*/
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 			color: headerHoverColor !important;
 		}
 	}
 	.well {
-		background: menuBg !important;
+		background-color: menuBg !important;
 	}
 	.summary-border .summary-item {
 		border-bottom: menuBorder;
 	}
 	.summary-media-grid-count {
-		background: menuBg;
+		background-color: menuBg;
 		border: menuBorder;
 		a {
 			color: linkColor;
@@ -886,25 +886,25 @@ else
 	}
 	/* forum */
 	forum-threads {
-		background: moduleBg;
+		background-color: moduleBg;
 		ul.summary {
 			> li.summary-item:nth-child(2n) {
-				background: tableColor2n;
+				background-color: tableColor2n;
 				> a {
-					background: tableColor2n;
+					background-color: tableColor2n;
 				}
 				ul.pagination a, ul.pagination span, .summary-item-tag a {
-					background: tableColor2n1;
+					background-color: tableColor2n1;
 					border-radius: 2px;
 				}
 			}
 			> li.summary-item:nth-child(2n+1) {
-				background: tableColor2n1;
+				background-color: tableColor2n1;
 				> a {
-					background: tableColor2n1;
+					background-color: tableColor2n1;
 				}
 				ul.pagination a, ul.pagination span, .summary-item-tag a {
-					background: tableColor2n;
+					background-color: tableColor2n;
 					border-radius: 2px;
 				}
 			}
@@ -922,124 +922,149 @@ else
 					color: linkVisited;
 				}	
 				&:hover {
-					background: invert(linkHover);
+					background-color: invert(linkHover);
 				}
 			}
 			li.summary-item .summary-item-meta > .summary-item-tag > a {
 				&:hover {
-					background: invert(linkHover);
+					background-color: invert(linkHover);
 				}
 			}
 		}
 	}
 	
-	/* image pages, gallery, file pages */
-	div.breadcrumb-row, gg-breadcrumbs.c-light-bg {
-		background: transparent;
-	}
-	.c-container, div.media-sidebar.image, gg-image-nav div.image-nav{
-		background: moduleBg !important;
-	}
-	.c-container {
-		border: moduleBorder !important;
-	}
-	textarea.newcomment {
-		background: menuBg !important;
-	}
-	gg-markup-quote {
-		background: quoteBg !important;
-		border: quoteBorder !important;
-	}
-	/* image pages */
-	gg-image-page > div.global-body-content-primary {
-		.breadcrumb-row .c-light-bg .c-crumb {
-			a {
-				color: linkColor;
-				&:hover {
-					border: none;
-					color: linkHover;
-				}
-			}
-			&:first-of-type a {
-				color: linkColor;
-				&:hover {
-					color: linkHover;
-				}
-			}
+	gg-app {
+		/* image pages, gallery, file pages */
+		div.breadcrumb-row, gg-breadcrumbs.c-light-bg {
+			background-color: transparent;
 		}
-		gg-image-nav {
-			border-bottom: moduleBorder;
-			> .image-metadata {
-				background: moduleBg;
-				&:hover {
-					color: textColor;
-				}
-			}
+		.c-container, div.media-sidebar.image, gg-image-nav div.image-nav{
+			background-color: moduleBg !important;
 		}
-		gg-image-caption {
-			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
-				color: linkHover;
-			}
-			.caption-footer {
-				.interaction-btn-group .interaction-btn {
-					background: buttonBg;
-					border: buttonBorder;
+		.c-container {
+			border: moduleBorder !important;
+		}
+		textarea.newcomment {
+			background-color: menuBg !important;
+		}
+		gg-markup-quote {
+			background-color: quoteBg !important;
+			border: quoteBorder !important;
+		}
+		/* image pages */
+		gg-image-page > div.global-body-content-primary {
+			.breadcrumb-row .c-light-bg .c-crumb {
+				a {
+					color: linkColor;
 					&:hover {
+						border: none;
 						color: linkHover;
 					}
 				}
-			}
-			.media-sidebar {
-				border: moduleBorder;
-				.media-sidebar-actions {
-					border-bottom: moduleBorder;
-					.btn:hover {
-						color: linkHover;
-						fa-icon.ng-fa-icon {
-							color: linkHover;
-						}
-					}
-				}
-				a.dropdown:hover fa-icon.ng-fa-icon {
-					color: linkHover;
-				}
-				gg-pins button.btn-unstyled {
+				&:first-of-type a {
 					color: linkColor;
 					&:hover {
 						color: linkHover;
-						text-decoration: linkStyle;
+					}
+				}
+			}
+			gg-image-nav {
+				border-bottom: moduleBorder;
+				> .image-metadata {
+					background-color: moduleBg;
+					&:hover {
+						color: textColor;
+					}
+				}
+			}
+			gg-image-caption {
+				.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon {
+					color: linkHover;
+				}
+				.media-sidebar {
+					border: moduleBorder;
+					.media-sidebar-actions {
+						border-bottom: moduleBorder;
+						.btn:hover {
+							color: linkHover;
+							fa-icon.ng-fa-icon {
+								color: linkHover;
+							}
+						}
+					}
+					a.dropdown:hover fa-icon.ng-fa-icon {
+						color: linkHover;
+					}
+					gg-pins button.btn-unstyled {
+						color: linkColor;
+						&:hover {
+							color: linkHover;
+							text-decoration: linkStyle;
+						}
 					}
 				}
 			}
 		}
-		gg-comments-block gg-comment {
+		gg-comments-block .panel gg-comment {
 			border: moduleBorder;
-		}
-	}
-	
-	/* geekgold button */
-	gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
-		.interaction-btn.geekgold:hover path {
-			&#coin-background {
-				fill: #fde538;
-			}
-			&#coin-outline {
-				fill: #a37900;
+			gg-reactions-popup-trigger a:hover span {
+				&.count, &.label {
+					color: linkHover;
+				}
 			}
 		}
-		gg-geekgold-quick-give.dropdown-menu.show {
-			background: menuBg;
-			button.dropdown-item:hover {
-				background: headerHoverBg;
+
+		.caption-footer {
+			.interaction-btn-group .interaction-btn {
+				background-color: buttonBg;
+				border: buttonBorder;
+				&:hover {
+					color: linkHover;
+				}
+			}
+		}
+		
+		/* geekgold button */
+		gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
+			.interaction-btn.geekgold:hover path {
+				&#coin-background {
+					fill: #fde538;
+				}
+				&#coin-outline {
+					fill: #a37900;
+				}
+			}
+			gg-geekgold-quick-give.dropdown-menu.show {
+				background-color: menuBg;
+				button.dropdown-item:hover {
+					background-color: headerHoverBg;
+					color: headerHoverColor;
+				}
+			}
+		}
+		/* thumbs button */		
+		.interaction-btn.thumbsup:hover path#thumbsup-outline {
+			fill: textPositive;
+		}
+		gg-reactions-popup-trigger a:hover span {
+			&.count, &.label {
+				color: linkHover;
+			}
+		}
+		/* comment button */
+		ul.comment-actions > li button.comment-btn {
+			&.active, &:focus, &:hover {
+				background-color: headerHoverBg;
+				border-color: headerHoverBg;
 				color: headerHoverColor;
 			}
 		}
+		/* popover */
+		.popover-body {
+			background-color: menuBg;
+		}
 	}
-	/* thumbs button */		
-	.interaction-btn-group .interaction-btn:hover path#thumbsup-outline {
-		fill: textPositive;
-	}
-	
+
 	/* geekpreview */
 	.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1 {
 		color: gamepageHeaderColor;
@@ -1048,11 +1073,11 @@ else
 		}
 	}
 	.geekpreview-sticky-menu {
-		background: headerBg;
+		background-color: headerBg;
 		color: headerColor;
 	}
 	.geekpreview-toolbar-primary-search form input.form-control {
-		background: inputBg;
+		background-color: inputBg;
 		border: inputBorderColor;
 		color: textColor;
 	}
@@ -1066,7 +1091,7 @@ else
 		color: linkColor;
 	}
 	.geekpreview-parent {
-		background: headerBg;
+		background-color: headerBg;
 		color: headerColor;
 		border: none;
 	}
@@ -1079,7 +1104,7 @@ else
 	
 	.modal .modal-dialog {
 		.modal-dialog, .modal-body, .modal-footer {
-			background: moduleBg;
+			background-color: moduleBg;
 		}
 		.panel-title {
 			color: textColor;
@@ -1093,12 +1118,12 @@ else
 	
 	/* LEGACY */
 	.legacy {
-		background: mainBg2;
+		background-color: mainBg2;
 		color: textColor;
 		
 		/* modules */
 		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header {
-			background: headerBg;		
+			background-color: headerBg;		
 			color: headerColor;
 		}
 		.moduletable {
@@ -1190,33 +1215,36 @@ else
 		}
 		.quotetitle {
 			color: quoteTitleColor;
-			background: quoteTitleBg;
+			background-color: quoteTitleBg;
 			border: quoteBorder;
 			border-bottom: none;
 		}
 		.quote {
-			background: quoteBg;
+			background-color: quoteBg;
 			border: quoteBorder;
 			color: quoteColor;
 		}
 		
 		/* links */
-		a, a:link, .nav > li > a, .comment_button, .geeksub_minorlink a:link {
+		a, a:link, .nav > li > a, .comment_button, .bluebox a {
 			color: linkColor;
+			&:hover {
+				color: linkHover;
+				transition: none;
+			}
 		}
-		a:visited, .geeksub_minorlink a:visited {
+		.geeksub_minorlink a:hover {
+			color: linkHover;
+		}
+		a:visited {
 			color: linkVisited;
 		}
-		a:hover, .menutab-open li a:hover, .geeksub_minorlink a:active, .comment_button:hover {
+		.menutab-open li a:hover, .geeksub_minorlink a:active {
 			color: linkHover;
-			transition: none !important;
 		}
 		.comment_button {
 			border-color: linkColor;
-			background: menuBg;
-		}
-		.comment_button:hover {
-			border-color: linkHover;
+			background-color: buttonBg;
 		}
 		a, a:link {
 			text-decoration: linkStyle;
@@ -1229,7 +1257,7 @@ else
 		
 		/* overtexts / popups */
 		.location, js-location, .js-badgeovertext, .avatarovertext {
-			background: menuBg;
+			background-color: menuBg;
 			color: textColor;
 		}
 		
@@ -1265,10 +1293,10 @@ else
 		
 		/* backgrounds */
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
-			background: moduleBg;
+			background-color: moduleBg;
 		}
 		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body, {
-			background: menuBg;
+			background-color: menuBg;
 		}
 		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
@@ -1294,7 +1322,7 @@ else
 		/* geeklists */
 		.geeklist_title, .geeklist_item_title {
 			color: headerColor;
-			background: headerBg;
+			background-color: headerBg;
 			a {
 				color: headerLinkColor;
 				&:hover {
@@ -1304,7 +1332,7 @@ else
 		}
 		.comment_toolbar {
 			color: headerColor;
-			background: headerBg;
+			background-color: headerBg;
 		}
 		.geeklist_title, .blog_post {
 			border: moduleBorder;
@@ -1316,20 +1344,20 @@ else
 			border-top: menuBorder;
 		}
 		.infobox {
-			background: moduleBg;
+			background-color: moduleBg;
 			border: moduleBorder;
 		}
 		
 		/* geekmail */
 		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks {
-			background: moduleBg !important;
+			background-color: moduleBg !important;
 			border: moduleBorder !important;
 		}
 		table.gm_messages:nth-child(2n) tr {
-			background: tableColor2n1 !important;
+			background-color: tableColor2n1 !important;
 		}
 		table.gm_messages:nth-child(2n+1) tr {
-			background: tableColor2n !important;
+			background-color: tableColor2n !important;
 		}
 		div#mychecks > table > tbody > tr {
 			border: 0px !important;
@@ -1341,41 +1369,41 @@ else
 		
 		/* polls */
 		.outerpoll {
-			background: moduleBg;	
+			background-color: moduleBg;	
 			}
 		.geekpoll {
 			th {
-				background: headerBg;
+				background-color: headerBg;
 				color: headerColor;
 			}
 			tr th.questiontext {
 				color: textColor;
 			}
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext {
-				background: menuBg !important;
+				background-color: menuBg !important;
 			}
 			tr:nth-child(2n)  {
-				background: tableColor2n;
+				background-color: tableColor2n;
 			}
 			tr:nth-child(2n+1)  {
-				background: tableColor2n1;
+				background-color: tableColor2n1;
 			}
 		}	
 		.pollresults {
 			th, tfoot > tr > *  {
-				background: menuBg !important;
+				background-color: menuBg !important;
 			}
 			tr:nth-child(2n) td {
-				background: tableColor2n;
+				background-color: tableColor2n;
 			}
 			tr:nth-child(2n+1) td {
-				background: tableColor2n1;
+				background-color: tableColor2n1;
 			}
 		}
 		
 		/* blog */
 		#blog_header, #blog_nav h2 {
-			background: headerBg;		
+			background-color: headerBg;		
 			color: headerColor;
 		}
 		#blog_title a {
@@ -1389,7 +1417,7 @@ else
 		
 		/* user profile */
 		.tabOn {
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 			color: headerHoverColor;
 		}
 		.tabOff a:link, .tabOn a:link, .profile_title a  {
@@ -1400,7 +1428,7 @@ else
 				padding: 4px 10px;
 			}
 			a:hover {
-				background: headerHoverBg;
+				background-color: headerHoverBg;
 				color: headerHoverColor !important;
 			}
 		}
@@ -1408,30 +1436,30 @@ else
 			color: textColor;
 		}
 		div.profile_title {
-			background: headerBg;
+			background-color: headerBg;
 			color: headerColor;
 			padding-left: 5px;
 		}
 		
 		/* collection */
 		.collectionfilter_commandbar {
-			background: headerBg;
+			background-color: headerBg;
 			color: headerColor;
 		}
 		.collectionfilter_body {
-			background: menuBg;
+			background-color: menuBg;
 		}
 		.geekcollection_pager a {
 			color: headerLinkColor;
 		}
 		table.collection_table > tbody > tr:first-child {
-			background: headerBg;
+			background-color: headerBg;
 			th { 
 				color: headerColor;
 				a {
 					color: headerLinkColor;
 					&:hover {
-						background: headerHoverBg;
+						background-color: headerHoverBg;
 						color: headerHoverColor !important;
 					}
 				}
@@ -1444,7 +1472,7 @@ else
 			white-space: normal;
 		}
 		.editfield:hover {
-			background: headerHoverBg;
+			background-color: headerHoverBg;
 		}
 		
 		/* subscription icon */
@@ -1467,16 +1495,16 @@ else
 		
 		/* tags */
 		div.tagouter {
-			background: moduleBg;
+			background-color: moduleBg;
 		}
 		/* plays */
 		table.forum_table > tbody > tr > th {
-			background: headerBg;
+			background-color: headerBg;
 			color: headerColor;
 			a {
 				color: headerLinkColor !important;
 				&:hover {
-					background: headerHoverBg;
+					background-color: headerHoverBg;
 					color: headerHoverColor !important;
 					padding: 3px;
 				}

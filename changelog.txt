@@ -201,3 +201,6 @@ link styling simplified
 
 0.9.5
 thumbs & geekgold buttons
+
+0.9.6
+background => background-color
