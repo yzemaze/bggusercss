@@ -123,10 +123,17 @@ else
 	/* dropdown menus */
 	.dropdown-menu {
 		background-color: menuBg;
+		a, li a, .dropdown-item a, .dropdown-item a:link {
+			color: textColor;
+			&:hover, &:visited:hover {
+				background-color: headerHoverBg;
+				color: headerHoverColor;
+				text-decoration: linkStyle;
+			}
+		}
 	}
-	.dropdown-menu a:hover, .dropdown-menu .dropdown-item:hover {
-		background-color: headerHoverBg;
-		color: headerHoverColor !important;
+	.global-header-nav-primary .dropdown-menu li a:hover {
+		text-decoration: linkStyle;
 	}
 	/* fix for Angular8 header dropdowns to extend hover range */
 	.dropdown-menu .dropdown-item a {
@@ -474,9 +481,9 @@ else
 					&.btn-tag {
 						background: buttonBg;
 						&:hover {
-							color: buttonHoverColor;
 							background-color: buttonHoverBg;
 							border-color: buttonHoverBg;
+							color: buttonHoverColor;
 						}
 					}
 				}
@@ -484,15 +491,24 @@ else
 					color: linkHover;
 				}
 				a.see-all-btn {
+					padding: 3px 5px;
 					&:hover {
-						color: linkHover;
+						background-color: buttonHoverBg;
+						border-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor;
 					}
 				}
 				.tag-link-wrapper button.btn-unstyled {
 					color: linkColor;
 					&:hover {
-						color: linkHover;
-						text-decoration: linkStyle;
+						background-color: buttonHoverBg;
+						border-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor;
+						margin: -3px -5px;
+						padding: 3px 5px;
+						text-decoration: none;
 					}
 				}
 			}
@@ -640,17 +656,6 @@ else
 			&:hover, &[aria-expanded="true"] {
 				background-color: headerHoverBg;
 				color: headerHoverColor !important;
-			}
-		}
-		/* dropdown menus */
-		ul.dropdown-menu, div.dropdown-menu, div.global-header-nav-search-advanced div.ui-select-container {
-			background-color: menuBg;
-		}
-		.global-header-nav-primary, div.global-header-logo.ng-scope div.ng-scope {
-			.dropdown-menu li a:hover {
-				background-color: headerHoverBg;
-				color: headerHoverColor !important;
-				text-decoration: linkStyle;
 			}
 		}
 		/* buttons */

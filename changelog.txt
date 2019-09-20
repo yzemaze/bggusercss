@@ -226,4 +226,5 @@ quotes: padding + margins
 
 0.10.2
 front page module header links, dropdowns, buttons :hover
-geekpreviewHide: margins fixed
+geekpreviewHide: margins
+dropdown-menu: consolidation
