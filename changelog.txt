@@ -218,3 +218,6 @@ file pages: item data
 textError color = error message bg
 quote colors taken from header, main text and bg
 headerColor + headerLinkColor: contrast to headerBg
+
+0.10.1
+new pages: tag-link-wrapper fix

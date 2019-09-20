@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.10.0
+@version		0.10.1
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -24,7 +24,7 @@
 @var	color		fpColor2n1			'… background of odd rows'				#ccc
 @var	color		fpLinkColor			'… links'								#222
 @var	color		fpLinkVisited		'… links visited'						#666
-@var	select		fpLinkWeight		'… link weight'	["normal","bold","bolder","lighter"]
+@var	select		fpLinkWeight		'… link weight'	["bold","bolder","lighter","normal*"]
 @var	color		metadataColor		'Post metadata'							#666
 @var	checkbox	metadataInline		'… inline'								0
 @var	checkbox	titleTruncation		'… truncate titles'						1
@@ -49,20 +49,20 @@
 @var	color		linkColor			'Links'									#0053b7
 @var	color		linkHover			'… hover'								#c5130e
 @var	color		linkSelected		'… selected'							#fdad2f
-@var	select		linkUnderlineStyle	'… underline style'				["none","dashed","dotted*","double","initial","inherit","solid","wavy"]
+@var	select		linkUnderlineStyle	'… underline style'				["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
 @var	color		linkVisited			'… visited'								#666
 @var	color		textPositive		'Text: positive values'					#01ac01
 @var	color		textError			'Text: negative values, error messages'	#ff5100
 == fonts ==
-@var	select		fontXXL				"Font XXL (game titles)"			["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontXXL				"Font XXL (game titles)"			["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
-@var	select		fontXL				"Font XL (module headings)"			["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontXL				"Font XL (module headings)"			["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeXL			"… size"							[18,6,48,1,"px"]
-@var	select		fontL				"Font L (main text)"				["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontL				"Font L (main text)"				["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeL			"… size"							[14,6,36,1,"px"]
-@var	select		fontM				"Font  M (author, pagination …)"	["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontM				"Font  M (author, pagination …)"	["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeM			"… size"							[12,6,36,1,"px"]
-@var	select		fontS				"Font S (quickbar, hotness, small buttons …)"	["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
+@var	select		fontS				"Font S (quickbar, hotness, small buttons …)"	["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeS			"… size"							[11,6,24,1,"px"]
 == game pages ==
 @var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
@@ -96,12 +96,12 @@ if dark(headerBg)
 	headerColor = lighten(headerBg, 85%)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
-	headerLinkColor = darken(headerColor, 20%)
+	headerLinkColor = lighten(headerColor, 20%)
 else
 	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
-	headerLinkColor = lighten(headerColor, 20%)
+	headerLinkColor = darken(headerColor, 20%)
 	
 headerHoverRadius = 2px
 inputBorder = 1px solid inputBorderColor
@@ -491,7 +491,7 @@ else
 						color: linkHover;
 					}
 				}
-				gg-pins button.btn-unstyled {
+				.tag-link-wrapper button.btn-unstyled {
 					color: linkColor;
 					&:hover {
 						color: linkHover;
