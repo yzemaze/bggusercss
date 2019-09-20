@@ -123,7 +123,7 @@ else
 	/* dropdown menus */
 	.dropdown-menu {
 		background-color: menuBg;
-		a, li a, .dropdown-item a, .dropdown-item a:link {
+		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item {
 			color: textColor;
 			&:hover, &:visited:hover {
 				background-color: headerHoverBg;
@@ -132,20 +132,25 @@ else
 			}
 		}
 	}
-	.global-header-nav-primary .dropdown-menu li a:hover {
-		text-decoration: linkStyle;
+	/* popover */
+	.popover {
+		background: menuBg;
 	}
-	/* fix for Angular8 header dropdowns to extend hover range */
-	.dropdown-menu .dropdown-item a {
-		padding: 0.25em 1em;
-		margin: -0.25em -1em;
-	}
+	/* text */
 	.text-muted:hover {
 		color: textColor !important; /* counter-i! */
 		filter: opacity(100%);
 	}
+	/* links, buttons */
 	a, button {
 		outline: none !important;
+	}
+	.btn, .btn-outline-secondary {
+		&:hover {
+			background-color: buttonHoverBg;
+			border-color: buttonHoverBg;
+			color: buttonHoverColor;
+		}
 	}
 	/* page */
 	.container-fluid {
@@ -235,8 +240,8 @@ else
 			}
 			/* nextAlways doesn’t work */
 			/* colors */
-			> header.header {
-				background-color: headerBg !important;
+			> header.header > .container-fluid {
+				background-color: headerBg;
 			}
 			/* sidebar toggle */
 			div.c-inner button.btn.btn-empty.header-icon {
@@ -322,6 +327,12 @@ else
 					background-color: headerHoverBg; 
 					color: headerHoverColor;
 				}
+			}
+			/* fix for Angular8 header dropdowns to extend hover range */
+			/* TODO remove */
+			.dropdown-menu .dropdown-item a {
+				padding: 0.25em 1em;
+				margin: -0.25em -1em;
 			}
 		}
 		
@@ -431,14 +442,12 @@ else
 				a {
 					color: linkColor;
 					&:hover {
-						border: none;
-						color: linkHover;
-					}
-				}
-				&:first-of-type a {
-					color: linkColor;
-					&:hover {
-						color: linkHover;
+						background-color: buttonHoverBg;
+						border-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor;
+						margin: -2px -4px;
+						padding: 2px 4px;
 					}
 				}
 			}
@@ -471,9 +480,13 @@ else
 				.media-sidebar-actions {
 					border-bottom: moduleBorder;
 					.btn:hover {
-						color: linkHover;
-						fa-icon.ng-fa-icon {
-							color: linkHover;
+						fa-icon.ng-fa-icon, span {
+							background-color: buttonHoverBg;
+							border-color: buttonHoverBg;
+							border-radius: headerHoverRadius;
+							color: buttonHoverColor;
+							margin: -2px;
+							padding: 5px;
 						}
 					}
 				}
@@ -648,17 +661,21 @@ else
 				display: initial !important;
 			}
 		}
-		
+		/* fix AngularJS header */
+		/* TODO remove */
+		.global-header-nav-primary .dropdown-menu li a:hover {
+			color: headerHoverColor;
+			text-decoration: linkStyle;
+		}
 		/* colors */
 		background-color: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			color: headerColor !important;
-			&:hover, &[aria-expanded="true"] {
+			&:hover, &[aria-expanded="true"], &:focus {
 				background-color: headerHoverBg;
 				color: headerHoverColor !important;
 			}
 		}
-		/* buttons */
 		.btn.btn-empty.global-header-icon.global-header-nav-toggle {
 			path {
 				fill: headerColor;
@@ -1010,29 +1027,30 @@ else
 		}
 		/* buttons & dropdowns */
 		.media-module {
-				.dropdown {
-					.dropdown-toggle {
-						&:hover, &[aria-expanded="true"] {
-							background-color: buttonHoverBg;
-							border-radius: headerHoverRadius;
-							color: buttonHoverColor !important; /* counter-i! */
-							margin: -4px;
-							padding: 4px;
-						}
-					}
-					/* dropdown menus */
-					.dropdown-menu > li > button.btn:hover {
-						background-color: headerHoverBg;
-						color: headerHoverColor;
+			.dropdown {
+				.dropdown-toggle {
+					color: headerColor !important; /* counter-i! */
+					&:hover, &[aria-expanded="true"] {
+						background-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor !important; /* counter-i! */
+						margin: -4px;
+						padding: 4px;
 					}
 				}
-				.module-pager .module-pager__arrow:not(.disabled):hover {
-					background-color: buttonHoverBg;
-					border-radius: headerHoverRadius;
-					color: buttonHoverColor;
-					margin: 5px;
-					padding: 5px;
+				/* dropdown menus */
+				.dropdown-menu > li > button.btn:hover {
+					background-color: headerHoverBg;
+					color: headerHoverColor;
 				}
+			}
+			.module-pager .module-pager__arrow:not(.disabled):hover {
+				background-color: buttonHoverBg;
+				border-radius: headerHoverRadius;
+				color: buttonHoverColor;
+				margin: 5px;
+				padding: 5px;
+			}
 			.media-filters {
 				background-color: headerBg;
 				color: headerColor;
@@ -1045,6 +1063,9 @@ else
 						color: buttonHoverColor !important; /* counter-i! */
 					}
 				}
+			}
+			.media-grid {
+				border-color: moduleBorderColor;
 			}
 		}
 	}
@@ -1325,9 +1346,9 @@ else
 			}
 		}
 		/* border fix */
-		.forum_table {
+		/*.forum_table {
 			background-color: moduleBorderColor;
-		}
+		}*/
 		.moduletable {
 			border-spacing: 0;
 			border: moduleBorder;
