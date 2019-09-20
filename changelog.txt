@@ -214,5 +214,7 @@ button hover
 image/file pages: sidebar colors + sticky
 file pages: item data
 
-0.9.9
+0.10.0
 textError color = error message bg
+quote colors taken from header, main text and bg
+headerColor + headerLinkColor: contrast to headerBg

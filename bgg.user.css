@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.9
+@version		0.10.0
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -37,8 +37,6 @@
 @var	color		mainBg2				'Main content background'				#bbb
 @var	color		textColor			'… text'								#222
 @var 	color		headerBg			'Header background'						#3f3a60
-@var	color		headerColor			'… text'								#ddd
-@var	color		headerLinkColor		'… links'								#fff
 @var	color		moduleBg			'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
 @var	color		menuBg				'Menus, dropdowns etc. background'		#ddd
@@ -98,10 +96,12 @@ if dark(headerBg)
 	headerColor = lighten(headerBg, 85%)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
+	headerLinkColor = darken(headerColor, 20%)
 else
 	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
+	headerLinkColor = lighten(headerColor, 20%)
 	
 headerHoverRadius = 2px
 inputBorder = 1px solid inputBorderColor
