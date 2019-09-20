@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.9.8
+@version		0.9.9
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -54,7 +54,7 @@
 @var	select		linkUnderlineStyle	'… underline style'				["none","dashed","dotted*","double","initial","inherit","solid","wavy"]
 @var	color		linkVisited			'… visited'								#666
 @var	color		textPositive		'Text: positive values'					#01ac01
-@var	color		textError			'Text: negative values, error messages'	#c5130e
+@var	color		textError			'Text: negative values, error messages'	#ff5100
 == fonts ==
 @var	select		fontXXL				"Font XXL (game titles)"			["initial","proxima-nova*","monospace","proportional","sans-serif","serif"]
 @var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
@@ -93,21 +93,36 @@ buttonBg = menuBg
 buttonBorder = menuBorder
 buttonHoverColor = headerHoverColor
 buttonHoverBg = headerHoverBg
-headerHoverRadius = 2px
-inputBorder = 1px solid inputBorderColor
-menuBorder = 1px solid menuBorderColor
-moduleBorder = 1px solid moduleBorderColor
-quoteBorder = 1px solid quoteBorderColor
+
 if dark(headerBg)
+	headerColor = lighten(headerBg, 85%)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 else
+	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
+	
+headerHoverRadius = 2px
+inputBorder = 1px solid inputBorderColor
+
 if linkUnderlineStyle != "none"
 	linkStyle = underline linkUnderlineStyle
 else
 	linkStyle = none
+	
+menuBorder = 1px solid menuBorderColor
+moduleBorder = 1px solid moduleBorderColor
+quoteTitleBg = headerBg
+quoteTitleColor = headerColor
+quoteBorder = 1px solid quoteBorderColor
+
+if dark(moduleBg)
+	quoteBg = lighten(moduleBg, 10%)
+	quoteColor = darken(textColor, 5%)
+else
+	quoteBg = darken(moduleBg, 5%)
+	quoteColor = lighten(textColor, 5%)
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 /* NEW PAGES */
 	/* dropdown menus */

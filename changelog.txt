@@ -213,3 +213,6 @@ button hover
 0.9.8
 image/file pages: sidebar colors + sticky
 file pages: item data
+
+0.9.9
+textError color = error message bg
