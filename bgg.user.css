@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.10.1
+@version		0.10.2
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -826,14 +826,7 @@ else
 		background-color: headerBg;
 	}
 	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
-		color: headerColor !important;
-	}
-	.media-filters {
-		background-color: headerBg;
 		color: headerColor;
-		.media-link {
-			color: headerLinkColor !important;
-		}
 	}
 
 	/* zebra striped modules */
@@ -976,7 +969,7 @@ else
 	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
 		text-decoration: linkStyle;
 	}
-	/* front page links */
+	/* front page modules & links */
 	.geekcentral-controls {
 		button, .link-text-color:link {
 			color: fpLinkColor;
@@ -1007,10 +1000,44 @@ else
 		a.post-meta__link, a.post-meta__link:visited {
 			color: metadataColor;
 		}
-		/* dropdown menus */
-		.dropdown-menu > li > button.btn:hover {
-			background-color: headerHoverBg;
-			color: headerHoverColor !important;
+		/* buttons & dropdowns */
+		.media-module {
+				.dropdown {
+					.dropdown-toggle {
+						&:hover, &[aria-expanded="true"] {
+							background-color: buttonHoverBg;
+							border-radius: headerHoverRadius;
+							color: buttonHoverColor !important; /* counter-i! */
+							margin: -4px;
+							padding: 4px;
+						}
+					}
+					/* dropdown menus */
+					.dropdown-menu > li > button.btn:hover {
+						background-color: headerHoverBg;
+						color: headerHoverColor;
+					}
+				}
+				.module-pager .module-pager__arrow:not(.disabled):hover {
+					background-color: buttonHoverBg;
+					border-radius: headerHoverRadius;
+					color: buttonHoverColor;
+					margin: 5px;
+					padding: 5px;
+				}
+			.media-filters {
+				background-color: headerBg;
+				color: headerColor;
+				.media-link {
+					color: headerLinkColor !important;
+					padding: 5px;
+					&:hover {
+						background-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor !important; /* counter-i! */
+					}
+				}
+			}
 		}
 	}
 	
@@ -1548,7 +1575,7 @@ else
 			background-color: headerHoverBg;
 			color: headerHoverColor;
 		}
-		.tabOff a:link, .tabOn a:link, .profile_title a  {
+		.tabOff a:link, .profile_title a  {
 			color: headerLinkColor;
 		}
 		.tabOff, .tabOn {
@@ -1557,8 +1584,13 @@ else
 			}
 			a:hover {
 				background-color: headerHoverBg;
-				color: headerHoverColor !important;
+				color: headerHoverColor;
 			}
+		}
+		.tabOn a:link {
+				background-color: headerHoverBg;
+				color: headerHoverColor !important;
+				text-decoration: linkStyle;
 		}
 		.profile_block {
 			color: textColor;

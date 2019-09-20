@@ -223,3 +223,6 @@ headerColor + headerLinkColor: contrast to headerBg
 new pages: tag-link-wrapper fix
 config: -quote options
 quotes: padding + margins
+
+0.10.2
+front page module header links, dropdowns, buttons :hover
