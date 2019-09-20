@@ -417,6 +417,8 @@ else
 			gg-markup-quote {
 				background-color: quoteBg !important;
 				border: quoteBorder !important;
+				margin: 10px 0;
+				padding: 10px;
 			}
 			.breadcrumb-row .c-light-bg .c-crumb {
 				a {
