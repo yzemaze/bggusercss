@@ -221,3 +221,4 @@ headerColor + headerLinkColor: contrast to headerBg
 
 0.10.1
 new pages: tag-link-wrapper fix
+config: -quote options

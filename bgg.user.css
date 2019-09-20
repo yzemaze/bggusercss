@@ -69,11 +69,6 @@
 @var	checkbox	promotedVideoHide	'… hide promoted videos'				0
 @var	checkbox	recommendationsHide	'… hide recommendations "Fans Also Like"'	0
 == geeklists, forum ==
-@var	color		quoteTitleBg		'Quotes: title background'				#6767bb
-@var	color		quoteTitleColor		'… title text'							#eee
-@var	color		quoteBg				'… background'							#dadaf2
-@var	color		quoteColor			'… text'								#333
-@var	color		quoteBorderColor	'… border'								#555
 @var	color		articleNewColor		'Article/item new: border'				#CE6C6D
 @var	color		articleSelectedColor	'… selected: border'				#000AFF
 == subscriptions ==
@@ -115,7 +110,7 @@ menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
 quoteTitleBg = headerBg
 quoteTitleColor = headerColor
-quoteBorder = 1px solid quoteBorderColor
+quoteBorder = moduleBorder
 
 if dark(moduleBg)
 	quoteBg = lighten(moduleBg, 10%)
