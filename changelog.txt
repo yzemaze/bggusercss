@@ -233,4 +233,7 @@ new pages: breadcrumb links
 .popover bg
 
 0.10.3
-file/image pages .media-sidebar buttons
+file/image pages: .media-sidebar buttons, comment buttons
+
+0.10.4
+- articleNew/Selected Colors

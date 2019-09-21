@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.10.3
+@version		0.10.4
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -51,8 +51,8 @@
 @var	color		linkSelected		'… selected'							#fdad2f
 @var	select		linkUnderlineStyle	'… underline style'				["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
 @var	color		linkVisited			'… visited'								#666
-@var	color		textPositive		'Text: positive values'					#01ac01
-@var	color		textError			'Text: negative values, error messages'	#ff5100
+@var	color		positiveColor		'Positive values'						#01ac01
+@var	color		errorColor			'New item, negative values, errors'		#ff5100
 == fonts ==
 @var	select		fontXXL				"Font XXL (game titles)"			["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
 @var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
@@ -68,9 +68,6 @@
 @var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
 @var	checkbox	promotedVideoHide	'… hide promoted videos'				0
 @var	checkbox	recommendationsHide	'… hide recommendations "Fans Also Like"'	0
-== geeklists, forum ==
-@var	color		articleNewColor		'Article/item new: border'				#CE6C6D
-@var	color		articleSelectedColor	'… selected: border'				#000AFF
 == subscriptions ==
 @var	checkbox	nextAlways			'Subscriptions: display NEXT when empty'	0
 @var	checkbox	nextChange			'… change next new sub icon'			0
@@ -80,7 +77,8 @@
 ==/UserStyle== */
 
 /* vars */
-articleNewBorder = solid 2px articleNewColor
+articleNewBorder = solid 3px articleNewColor
+articleNewColor = errorColor
 articleSelectedBorder = solid 3px articleSelectedColor
 buttonBg = menuBg
 buttonBorder = menuBorder
@@ -92,11 +90,13 @@ if dark(headerBg)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 	headerLinkColor = lighten(headerColor, 20%)
+	articleSelectedColor = lighten(headerBg, 20%)
 else
 	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
 	headerLinkColor = darken(headerColor, 20%)
+	articleSelectedColor = darken(headerBg, 20%)
 	
 headerHoverRadius = 2px
 inputBorder = 1px solid inputBorderColor
@@ -400,7 +400,7 @@ else
 			}
 			/* thumbs button */		
 			.interaction-btn.thumbsup:hover path#thumbsup-outline {
-				fill: textPositive;
+				fill: positiveColor;
 			}
 			gg-reactions-popup-trigger a:hover span {
 				&.count, &.label {
@@ -779,7 +779,7 @@ else
 		color: linkHover;
 	}
 	.btn-success {
-		background-color: textPositive;
+		background-color: positiveColor;
 	}
 	.global-header-nav-search-advanced a:hover {
 		background-color: moduleBg;
@@ -1322,7 +1322,7 @@ else
 		color: headerLinkColor;
 	}
 	.c-green-600 {
-		color: textPositive !important;
+		color: positiveColor !important;
 	}
 	
 	/* modal dialog */
@@ -1332,7 +1332,7 @@ else
 			border: none;
 			color: headerColor;
 			button.close:hover {
-				color: textError;
+				color: errorColor;
 			}
 		}
 		.modal-body, .modal-footer {
@@ -1498,10 +1498,10 @@ else
 		
 		/* text colors */
 		.error, text-danger {
-			color: textError;
+			color: errorColor;
 		}
 		.positive, .positive a, .storepositive, .storeprice, .price, .text-success {
-			color: textPositive;
+			color: positiveColor;
 		}
 		
 		/* fonts */
