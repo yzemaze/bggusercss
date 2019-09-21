@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.10.2
+@version		0.10.3
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -134,7 +134,7 @@ else
 	}
 	/* popover */
 	.popover {
-		background: menuBg;
+		background-color: menuBg;
 	}
 	/* text */
 	.text-muted:hover {
@@ -145,7 +145,7 @@ else
 	a, button {
 		outline: none !important;
 	}
-	.btn, .btn-outline-secondary {
+	.btn:not(.disabled), .btn-outline-secondary {
 		&:hover {
 			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
@@ -409,6 +409,7 @@ else
 			}
 			/* comment button */
 			ul.comment-actions > li button.comment-btn {
+				border-radius: headerHoverRadius;
 				&.active, &:focus, &:hover {
 					background-color: buttonHoverBg;
 					border-color: buttonHoverBg;
@@ -479,20 +480,27 @@ else
 				border: moduleBorder;
 				.media-sidebar-actions {
 					border-bottom: moduleBorder;
-					.btn:hover {
-						fa-icon.ng-fa-icon, span {
-							background-color: buttonHoverBg;
-							border-color: buttonHoverBg;
-							border-radius: headerHoverRadius;
-							color: buttonHoverColor;
-							margin: -2px;
-							padding: 5px;
+					gg-subscription-button, gg-image-size-dropdown, gg-share-buttons {
+						.btn {
+							border: none !important; /* counter-i! */
+							&:hover {
+								background-color: buttonHoverBg;
+								border-color: buttonHoverBg;
+								border-radius: headerHoverRadius !important;
+								color: buttonHoverColor;
+								fa-icon.ng-fa-icon {
+									color: buttonHoverColor;
+								}
+							}
+							&.dropdown-toggle.btn-right fa-icon.ng-fa-icon {
+								border: none;
+							}
 						}
 					}
 				}
 				a, button {
 					&.btn-tag {
-						background: buttonBg;
+						background-color: buttonBg;
 						&:hover {
 							background-color: buttonHoverBg;
 							border-color: buttonHoverBg;
@@ -523,6 +531,49 @@ else
 						padding: 3px 5px;
 						text-decoration: none;
 					}
+				}
+			}
+			/* button specials … */
+			gg-image-page .media-sidebar .media-sidebar-actions {
+				gg-subscription-button .subscription-btn {
+					.btn-block.btn-left {
+						margin: 0px 0px 0px 11px !important;
+						padding: 0px 6px 0px 0px !important;
+					}
+					.btn-right.dropdown-toggle {
+						margin: 0px 5px 0px 5px !important;
+						padding: 0px 0px 0px 4px !important;
+						fa-icon.ng-fa-icon {
+							border: none;
+						}
+					}
+				}
+				gg-image-size-dropdown .btn {
+					margin: 0px 5px 0px 5px !important;
+					padding: 0px 0px 0px 4px !important;
+				}
+				gg-share-buttons .btn {
+					margin: 0px 5px 0px 5px !important;
+					padding: 0px 0px 0px 4px !important;
+				}
+			}
+			gg-filepage-page .media-sidebar .media-sidebar-actions {
+				gg-subscription-button .subscription-btn {
+					.btn-block.btn-left {
+						margin: 0px 10px 0px 30px !important;
+						padding: 0px 5px 0px 0px !important;
+					}
+					.btn-right.dropdown-toggle {
+						margin: 0px 5px 0px 5px !important;
+						padding: 0px 0px 0px 5px !important;
+						fa-icon.ng-fa-icon {
+							border: none;
+						}
+					}
+				}
+				gg-share-buttons .btn {
+					margin: 0px 45px 0px 45px !important;
+					padding: 0px 0px 0px 5px !important;
 				}
 			}
 			.caption-footer .interaction-btn-group .interaction-btn {
@@ -670,10 +721,10 @@ else
 		/* colors */
 		background-color: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
-			color: headerColor !important;
+			color: headerColor !important; /* counter-i! */
 			&:hover, &[aria-expanded="true"], &:focus {
 				background-color: headerHoverBg;
-				color: headerHoverColor !important;
+				color: headerHoverColor !important; /* override counter-i! */
 			}
 		}
 		.btn.btn-empty.global-header-icon.global-header-nav-toggle {
@@ -982,7 +1033,7 @@ else
 	.link-text:link, .link-text:visited {
 		color: textColor;
 	}
-	a.visited, .link-text-color:visited {
+	a:visited, .link-text-color:visited {
 		color: linkVisited;
 	}
 	a:hover, .link-text-color:hover {
@@ -1410,6 +1461,9 @@ else
 		}
 		
 		/* links */
+		a:visited {
+			color: linkVisited;
+		}
 		a, a:link, .nav > li > a, .comment_button, .bluebox a {
 			color: linkColor;
 			&:hover {
@@ -1419,9 +1473,6 @@ else
 		}
 		.geeksub_minorlink a:hover {
 			color: linkHover;
-		}
-		a:visited {
-			color: linkVisited;
 		}
 		.menutab-open li a:hover, .geeksub_minorlink a:active {
 			color: linkHover;

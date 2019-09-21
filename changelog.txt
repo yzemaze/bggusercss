@@ -230,3 +230,7 @@ geekpreviewHide margins
 dropdown-menus consolidation
 image module border
 new pages: breadcrumb links
+.popover bg
+
+0.10.3
+file/image pages .media-sidebar buttons
