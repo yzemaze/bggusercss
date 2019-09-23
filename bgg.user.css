@@ -760,6 +760,17 @@ body {
 		}
 	}
 	/* ==== body ==== */
+	/* === buttons === */
+	.btn, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
+		&:hover {
+			background-color: buttonHoverBg;
+			border-color: buttonHoverBg !important;
+			color: buttonHoverColor;
+			i {
+				color: buttonHoverColor;
+			}
+		}
+	}
 	/* === inputs, forms === */
 	input, .form-control, textarea.form-control[readonly] {
 		background-color: inputBg !important;
@@ -990,6 +1001,9 @@ body {
 	/* === fonts === */
 	/* AngularJS only, Angular 8 = rem */
 	body.ng-scope {
+		p, textarea {
+			font-family: bodyFont;
+		}
 		.game-header-title-info h1 {
 			font-family: fontXXL;		
 			font-size: fontSizeXXL;		
@@ -999,10 +1013,9 @@ body {
 			font-size: fontSizeXL;		
 		}
 		body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title{
-			font-family: fontL;
 			font-size: fontSizeL;
 		}
-		.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
+		.btn.btn-sm, .btn-group-sm > .btn, h4, .nav.nav-tabs > li > a, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
 			font-family: fontM;
 			font-size: fontSizeM;
 		}
