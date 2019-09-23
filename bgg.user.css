@@ -33,10 +33,9 @@
 @var	checkbox	metadataReactionsHide	'… hide reactions'					0
 @var	checkbox	quickbarSticky		'Quickbar etc. sticky'					1
 == fonts ==
-@var	range		fontSize			"Font size body text"					[14,6,36,1,"px"]
-@var	select		headerFont			"… header"								["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
+@var	range		fontSize			"Font size text"						[14,6,36,1,"px"]
 @var	select		bodyFont			"… body text"							["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
-@var	select		buttonFont			"… small text, buttons"					["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
+@var	select		headerFont			"… header, buttons, small text …"		["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 == background colors ==
 @var	color		mainBg				'Body background'						#aaa
 @var	color		mainBg2				'Main content background'				#bbb
@@ -70,7 +69,7 @@
 @var	range		nextSize			'… size'								[1.5,1,6,0.25,"em"]
 ==/UserStyle== */
 
-/* vars */
+/* ===== VARS ===== */
 articleNewBorder = solid 3px articleNewColor
 articleNewColor = errorColor
 articleSelectedBorder = solid 3px articleSelectedColor
@@ -78,9 +77,8 @@ buttonBg = menuBg
 buttonBorder = menuBorder
 buttonHoverColor = headerHoverColor
 buttonHoverBg = headerHoverBg
-fontXL = fontXXL = headerFont
+fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
-fontS = fontM = buttonFont
 fontSizeXXL = 1.5rem
 fontSizeXL = 1.1rem
 fontSizeL = 0.875rem /* == fontSize set in config */
@@ -122,15 +120,15 @@ else
 	quoteColor = lighten(textColor, 5%)
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 html {
-	font-family: bodyFont;
+	font-family: headerFont;
 	font-size: round((fontSize/0.875)); /* body text = 0.875rem */
 }
 body {
-	font-family: bodyFont;
+	font-family:headerFont;
 	font-size: fontSize;
 }
-/* NEW PAGES */
-	/* dropdown menus */
+/* ===== NEW PAGES ===== */
+	/* === dropdown menus === */
 	.dropdown-menu {
 		background-color: menuBg;
 		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item {
@@ -142,16 +140,16 @@ body {
 			}
 		}
 	}
-	/* popover */
+	/* === popover === */
 	.popover {
 		background-color: menuBg;
 	}
-	/* text */
+	/* === text === */
 	.text-muted:hover {
 		color: textColor !important; /* counter-i! */
 		filter: opacity(100%);
 	}
-	/* links, buttons */
+	/* === links, buttons === */
 	a, button {
 		outline: none !important;
 	}
@@ -162,15 +160,15 @@ body {
 			color: buttonHoverColor;
 		}
 	}
-	/* page */
+	/* === page === */
 	.container-fluid {
 	    max-width: pageWidth;
 	}
 	
-/* Angular 8 PAGES */
-	/* header, file & image pages */
+/* ===== Angular 8 PAGES ===== */
+	/* ==== header, file, image & video pages ==== */
 	gg-app {
-		/* header */
+		/* ==== header ==== */
 		gg-header {
 			/* logo */
 			if logo == "Ernie" {
@@ -346,7 +344,7 @@ body {
 			}
 		}
 		
-		/* sidebar */
+		/* ==== sidebar ==== */
 		if quickbarSticky {
 			.geeksidebar {
 				position: sticky;
@@ -379,9 +377,9 @@ body {
 			}
 		}
 		
-		/* body */
+		/* ==== body ==== */
 		div.global-body-content {
-			/* buttons */
+			/* === buttons === */
 			.btn-icon, .form-group-search button.search {
 				color: linkColor;
 			}
@@ -426,7 +424,7 @@ body {
 					color: buttonHoverColor;
 				}
 			}
-			/* image pages, gallery, file pages, video pages */
+			/* === image pages, gallery, file pages, video pages === */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg {
 				background-color: moduleBg;
 				margin: 0; /* fix different margins */
@@ -604,7 +602,7 @@ body {
 			}
 		}
 		
-		/* footer */
+		/* === footer === */
 		div.global-body-content-secondary .geekfooter {
 			a:hover {
 				color: linkHover;
@@ -612,10 +610,10 @@ body {
 		}
 	}
 	
-/* AngularJS PAGES */
-	/* header */
+/* ===== AngularJS PAGES ===== */
+	/* ==== header ==== */
 	.global-header {
-		/* logo */
+		/* === logo === */
 		if logo == "Ernie" {
 			div.global-header-logo {
 				margin-left: 1em;
@@ -758,7 +756,8 @@ body {
 			}
 		}
 	}
-	/* inputs, forms */
+	/* ==== body ==== */
+	/* === inputs, forms === */
 	input, .form-control, textarea.form-control[readonly] {
 		background-color: inputBg !important;
 		border: inputBorder;
@@ -778,7 +777,6 @@ body {
 		background-color: moduleBg;
 	}
 	
-	/* content */
 	body {
 		color: textColor;
 		background-color: mainBg;
@@ -797,7 +795,7 @@ body {
 		display: none;
 	}
 	
-	/* front page */
+	/* === front page === */
 	/* columns */
 	@media screen and (min-width:769px) {
 		if columns != 2 {
@@ -903,7 +901,7 @@ body {
 		}
 	}
 	
-	/* sidebar */
+	/* ==== sidebar ==== */
 	.global-secondary-nav-section .global-secondary-nav-section-header.toggler-caret {
 		background-color: headerBg;
 		color: headerColor;
@@ -930,7 +928,7 @@ body {
 			top: 72px;
 		}
 	}
-	/* hide specific modules if set */
+	/* === hidden modules === */
 	if editHomepageHide {
 		.geekcentral-controls {
 			display: none;
@@ -986,7 +984,7 @@ body {
 		color: headerColor;
 	}
 	
-	/* fonts */
+	/* === fonts === */
 	/* AngularJS only, Angular 8 = rem */
 	body.ng-scope {
 		.game-header-title-info h1 {
@@ -1014,7 +1012,7 @@ body {
 		font-family: "Glyphicons Halflings";
 	}
 	
-	/* text-colors */
+	/* === text-colors === */
 	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
 		color: textColor;
 	}
@@ -1022,7 +1020,7 @@ body {
 		filter: opacity(60%);
 	}
 	
-	/* links */
+	/* === links === */
 	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
 		color: linkColor;
 	}	
@@ -1041,7 +1039,7 @@ body {
 	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
 		text-decoration: linkStyle;
 	}
-	/* front page modules & links */
+	/* === front page modules & links === */
 	.geekcentral-controls {
 		button, .link-text-color:link {
 			color: fpLinkColor;
@@ -1072,7 +1070,7 @@ body {
 		a.post-meta__link, a.post-meta__link:visited {
 			color: metadataColor;
 		}
-		/* buttons & dropdowns */
+		/* === buttons & dropdowns === */
 		.media-module {
 			.dropdown {
 				.dropdown-toggle {
@@ -1117,7 +1115,7 @@ body {
 		}
 	}
 	
-	/* zebra striped tables */
+	/* === zebra striped tables === */
 	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
 		background-color: tableColor2n !important;
 	}
@@ -1125,7 +1123,7 @@ body {
 		background-color: tableColor2n1;
 	}
 	
-	/* geekmarket */
+	/* === geekmarket === */
 	body[ng-app="geekmarketApp"] {
 		.white-bg {
 			background-color: moduleBg;
@@ -1155,7 +1153,7 @@ body {
 		}
 	}
 		
-	/* game pages */
+	/* === game pages === */
 	if promotedVideoHide {
 		promotedvideos-module {
 		    display: none;
@@ -1214,7 +1212,7 @@ body {
 			color: linkHover !important;
 		}
 	}
-	/* forum navigation */
+	/* === forum navigation === */
 	ul.nav.nav-pills {
 		> li {
 			color: textColor;
@@ -1235,7 +1233,7 @@ body {
 			color: textColor;
 		}
 	}
-	/* forum */
+	/* === forum === */
 	forum-threads {
 		background-color: moduleBg;
 		ul.summary {
@@ -1284,7 +1282,7 @@ body {
 		}
 	}
 
-	/* geekpreview */
+	/* === geekpreview === */
 	.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1 {
 		color: gamepageHeaderColor;
 		p, .text-muted {
@@ -1321,7 +1319,7 @@ body {
 		color: positiveColor !important;
 	}
 	
-	/* modal dialog */
+	/* === modal dialog === */
 	.modal .modal-dialog {
 		.modal-header {
 			background-color: headerBg;
@@ -1347,12 +1345,12 @@ body {
 
 
 	
-/* LEGACY PAGES */
+/* ===== LEGACY PAGES ===== */
 	.legacy {
 		background-color: mainBg2;
 		color: textColor;
 		
-		/* modules */
+		/* === modules === */
 		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header {
 			background-color: headerBg;		
 			color: headerColor;
@@ -1370,7 +1368,7 @@ body {
 			color: headerColor;
 		}
 		
-		/* forum */
+		/* === forum === */
 		.forum_index_table th a {
 			color: headerLinkColor !important;
 		}
@@ -1456,7 +1454,7 @@ body {
 			color: quoteColor;
 		}
 		
-		/* links */
+		/* === links === */
 		a:visited {
 			color: linkVisited;
 		}
@@ -1486,13 +1484,13 @@ body {
 			}
 		}
 		
-		/* overtexts / popups */
+		/* === overtexts / popups === */
 		.location, js-location, .js-badgeovertext, .avatarovertext {
 			background-color: menuBg;
 			color: textColor;
 		}
 		
-		/* text colors */
+		/* === text colors === */
 		.error, text-danger {
 			color: errorColor;
 		}
@@ -1500,7 +1498,7 @@ body {
 			color: positiveColor;
 		}
 		
-		/* fonts */
+		/* === fonts === */
 		div.recommend_block dl.recommend *, .post_day {
 			font-family: fontXXL !important;
 			font-size: fontSizeXXL !important;
@@ -1522,7 +1520,7 @@ body {
 			font-size: fontSizeS !important;
 		}
 		
-		/* backgrounds */
+		/* === backgrounds === */
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
 			background-color: moduleBg;
 		}
@@ -1532,7 +1530,7 @@ body {
 		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
 		}
-		/* input, select */
+		/* === input, select === */
 		input, .geekinput, .geekinput_medium, .geekinput_large, select {
 			background-color: inputBg;
 			border: inputBorder;
@@ -1550,7 +1548,7 @@ body {
 			border-right-color: moduleBorderColor;
 		}
 		
-		/* geeklists */
+		/* === geeklists === */
 		.geeklist_title, .geeklist_item_title {
 			color: headerColor;
 			background-color: headerBg;
@@ -1579,7 +1577,7 @@ body {
 			border: moduleBorder;
 		}
 		
-		/* geekmail */
+		/* === geekmail === */
 		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks {
 			background-color: moduleBg !important;
 			border: moduleBorder !important;
@@ -1598,7 +1596,7 @@ body {
 			background-color: mainBg !important;
 		}
 		
-		/* polls */
+		/* === polls === */
 		.outerpoll {
 			background-color: moduleBg;	
 			}
@@ -1632,7 +1630,7 @@ body {
 			}
 		}
 		
-		/* blog */
+		/* === blog === */
 		#blog_header, #blog_nav h2 {
 			background-color: headerBg;		
 			color: headerColor;
@@ -1646,7 +1644,7 @@ body {
 			border: moduleBorder;
 		}
 		
-		/* user profile */
+		/* === user profile === */
 		.tabOn {
 			background-color: headerHoverBg;
 			color: headerHoverColor;
@@ -1677,7 +1675,7 @@ body {
 			padding-left: 5px;
 		}
 		
-		/* collection */
+		/* === collection === */
 		.collectionfilter_commandbar {
 			background-color: headerBg;
 			color: headerColor;
@@ -1711,7 +1709,7 @@ body {
 			background-color: headerHoverBg;
 		}
 		
-		/* subscription icon */
+		/* === subscription icon === */
 		if nextChange {		
 			img.i_silk_newspaper_go_gray, img.i_silk_newspaper_go {
 				display: none;
@@ -1729,11 +1727,11 @@ body {
 			*/
 		}
 		
-		/* tags */
+		/* === tags === */
 		div.tagouter {
 			background-color: moduleBg;
 		}
-		/* plays */
+		/* === plays === */
 		table.forum_table > tbody > tr > th {
 			background-color: headerBg;
 			color: headerColor;
