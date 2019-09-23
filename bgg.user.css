@@ -122,10 +122,11 @@ else
 	quoteColor = lighten(textColor, 5%)
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 html {
-	font-size: round((fontSize/0.875)); /* body text = 0.875rem */
 	font-family: bodyFont;
+	font-size: round((fontSize/0.875)); /* body text = 0.875rem */
 }
 body {
+	font-family: bodyFont;
 	font-size: fontSize;
 }
 /* NEW PAGES */
@@ -543,47 +544,24 @@ body {
 				}
 			}
 			/* button specials … */
-			gg-image-page .media-sidebar .media-sidebar-actions {
-				gg-subscription-button .subscription-btn {
-					.btn-block.btn-left {
-						margin: 0px 0px 0px 11px !important;
-						padding: 0px 6px 0px 0px !important;
-					}
-					.btn-right.dropdown-toggle {
-						margin: 0px 5px 0px 5px !important;
-						padding: 0px 0px 0px 4px !important;
-						fa-icon.ng-fa-icon {
-							border: none;
-						}
-					}
-				}
-				gg-image-size-dropdown .btn {
-					margin: 0px 5px 0px 5px !important;
-					padding: 0px 0px 0px 4px !important;
-				}
-				gg-share-buttons .btn {
-					margin: 0px 5px 0px 5px !important;
-					padding: 0px 0px 0px 4px !important;
-				}
-			}
 			gg-filepage-page, gg-video-page {
 				.media-sidebar .media-sidebar-actions {
 					gg-subscription-button .subscription-btn {
 						.btn-block.btn-left {
-							margin: 0px 10px 0px 30px !important;
-							padding: 0px 5px 0px 0px !important;
+							margin: 0 0.7em 0 1.5em;
+							padding: 0 0.3em 0 0;
 						}
 						.btn-right.dropdown-toggle {
-							margin: 0px 5px 0px 5px !important;
-							padding: 0px 0px 0px 5px !important;
+							margin: 0 0.3em 0 0.3em;
+							padding: 0 0 0 0.3em;
 							fa-icon.ng-fa-icon {
 								border: none;
 							}
 						}
 					}
 					gg-share-buttons .btn {
-						margin: 0px 45px 0px 45px !important;
-						padding: 0px 0px 0px 5px !important;
+						margin: 0 3em 0 3em;
+						padding: 0 0 0 0.3em;
 					}
 				}
 			}
