@@ -125,7 +125,7 @@ html {
 }
 body {
 	font-family:headerFont;
-	font-size: fontSize;
+	font-size: 0.875rem;
 }
 /* ===== NEW PAGES ===== */
 	/* === dropdown menus === */
@@ -1012,10 +1012,10 @@ body {
 			font-family: fontXL;		
 			font-size: fontSizeXL;		
 		}
-		body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title{
+		body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .game-header-title-summary, .credits ul li, .rating-stars-title, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title, .nav.nav-tabs > li > a, {
 			font-size: fontSizeL;
 		}
-		.btn.btn-sm, .btn-group-sm > .btn, h4, .nav.nav-tabs > li > a, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
+		.btn.btn-sm, .btn-group-sm > .btn, h4, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
 			font-family: fontM;
 			font-size: fontSizeM;
 		}
