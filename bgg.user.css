@@ -425,6 +425,7 @@ body {
 				}
 			}
 			/* === image pages, gallery, file pages, video pages === */
+			/* == header == */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg {
 				background-color: moduleBg;
 				margin: 0; /* fix different margins */
@@ -597,8 +598,10 @@ body {
 					}
 				}
 			}
-			textarea.newcomment {
-				background-color: menuBg !important;
+			
+			/* === body === */
+			gg-markup-text, p, textarea {
+				font-family: bodyFont;
 			}
 		}
 		
