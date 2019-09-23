@@ -663,6 +663,9 @@ body {
 					font-size: 36px;
 					font-weight: 900;
 				}
+				div.dropdown {
+					top: -8px;
+				}
 			}
 		}
 		
@@ -671,7 +674,7 @@ body {
 			ul.global-header-nav-primary > {
 				li:nth-child(1) {
 					order: 3;
-					margin-left: 2em;
+					margin-left: 20px;
 				}
 				li:nth-child(2) {
 					order: 4;
@@ -690,7 +693,7 @@ body {
 				}
 				li:nth-child(7) {
 					order: 1;
-					margin-left: 2em;
+					margin-left: 20px;
 				}
 				li:nth-child(8) {
 					order: 2;
@@ -711,7 +714,7 @@ body {
 				order: 2;
 			}
 			div.global-header-nav-search {
-				margin-left: 4em;
+				margin-left: 20px;
 				order: 1;
 			}
 			div.global-header-nav-search-advanced ul.dropdown-menu {
