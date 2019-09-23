@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.10.4
+@version		0.10.5
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -32,6 +32,11 @@
 @var	checkbox	metadataAuthorHide	'… hide author'							0
 @var	checkbox	metadataReactionsHide	'… hide reactions'					0
 @var	checkbox	quickbarSticky		'Quickbar etc. sticky'					1
+== fonts ==
+@var	range		fontSize			"Font size body text"					[14,6,36,1,"px"]
+@var	select		headerFont			"… header"								["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
+@var	select		bodyFont			"… body text"							["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
+@var	select		buttonFont			"… small text, buttons"					["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 == background colors ==
 @var	color		mainBg				'Body background'						#aaa
 @var	color		mainBg2				'Main content background'				#bbb
@@ -53,17 +58,6 @@
 @var	color		linkVisited			'… visited'								#666
 @var	color		positiveColor		'Positive values'						#01ac01
 @var	color		errorColor			'New item, negative values, errors'		#ff5100
-== fonts ==
-@var	select		fontXXL				"Font XXL (game titles)"			["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
-@var	range		fontSizeXXL			"… size"							[24,6,48,1,"px"]
-@var	select		fontXL				"Font XL (module headings)"			["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
-@var	range		fontSizeXL			"… size"							[18,6,48,1,"px"]
-@var	select		fontL				"Font L (main text)"				["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
-@var	range		fontSizeL			"… size"							[14,6,36,1,"px"]
-@var	select		fontM				"Font  M (author, pagination …)"	["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
-@var	range		fontSizeM			"… size"							[12,6,36,1,"px"]
-@var	select		fontS				"Font S (quickbar, hotness, small buttons …)"	["initial","monospace","proportional","proxima-nova*","sans-serif","serif"]
-@var	range		fontSizeS			"… size"							[11,6,24,1,"px"]
 == game pages ==
 @var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
 @var	checkbox	promotedVideoHide	'… hide promoted videos'				0
@@ -84,19 +78,27 @@ buttonBg = menuBg
 buttonBorder = menuBorder
 buttonHoverColor = headerHoverColor
 buttonHoverBg = headerHoverBg
+fontXL = fontXXL = headerFont
+fontL = bodyFont
+fontS = fontM = buttonFont
+fontSizeXXL = 1.5rem
+fontSizeXL = 1.1rem
+fontSizeL = 0.875rem /* == fontSize set in config */
+fontSizeM = 0.75rem
+fontSizeS = 0.75rem
 
 if dark(headerBg)
+	articleSelectedColor = lighten(headerBg, 20%)
 	headerColor = lighten(headerBg, 85%)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 	headerLinkColor = lighten(headerColor, 20%)
-	articleSelectedColor = lighten(headerBg, 20%)
 else
+	articleSelectedColor = darken(headerBg, 20%)
 	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
 	headerLinkColor = darken(headerColor, 20%)
-	articleSelectedColor = darken(headerBg, 20%)
 	
 headerHoverRadius = 2px
 inputBorder = 1px solid inputBorderColor
@@ -119,6 +121,13 @@ else
 	quoteBg = darken(moduleBg, 5%)
 	quoteColor = lighten(textColor, 5%)
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
+html {
+	font-size: round((fontSize/0.875)); /* body text = 0.875rem */
+	font-family: bodyFont;
+}
+body {
+	font-size: fontSize;
+}
 /* NEW PAGES */
 	/* dropdown menus */
 	.dropdown-menu {
@@ -181,11 +190,11 @@ else
 					a > img {
 						display: none;
 					} 
-					a:after {			
+					a:first-child:after {			
 						content: "BGG";
 						color: headerColor; /* #ff5100 */
 						font: fontXXL;
-						font-size: 2.5em;
+						font-size: 36px;
 						font-weight: 900;
 					}
 				}
@@ -202,12 +211,12 @@ else
 			if userMenuLeft {
 				div.c-nav-primary-wrapper > {
 					div.c-nav-primary {
-						margin-left: 2em;
+						margin-left: 20px;
 						order: 2;
 					}
 					div.c-nav-primary-user {
 						flex: 0;
-						margin-left: 2em;
+						margin-left: 20px;
 						order: 1;
 					}
 				}
@@ -227,7 +236,7 @@ else
 					}
 					gg-header-search {
 						order: 2;
-						margin-left: 4em;
+						margin-left: 20px;
 					}
 					div.c-nav {
 						order: 3;
@@ -416,7 +425,7 @@ else
 					color: buttonHoverColor;
 				}
 			}
-			/* image pages, gallery, file pages */
+			/* image pages, gallery, file pages, video pages */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg {
 				background-color: moduleBg;
 				margin: 0; /* fix different margins */
@@ -557,23 +566,25 @@ else
 					padding: 0px 0px 0px 4px !important;
 				}
 			}
-			gg-filepage-page .media-sidebar .media-sidebar-actions {
-				gg-subscription-button .subscription-btn {
-					.btn-block.btn-left {
-						margin: 0px 10px 0px 30px !important;
-						padding: 0px 5px 0px 0px !important;
-					}
-					.btn-right.dropdown-toggle {
-						margin: 0px 5px 0px 5px !important;
-						padding: 0px 0px 0px 5px !important;
-						fa-icon.ng-fa-icon {
-							border: none;
+			gg-filepage-page, gg-video-page {
+				.media-sidebar .media-sidebar-actions {
+					gg-subscription-button .subscription-btn {
+						.btn-block.btn-left {
+							margin: 0px 10px 0px 30px !important;
+							padding: 0px 5px 0px 0px !important;
+						}
+						.btn-right.dropdown-toggle {
+							margin: 0px 5px 0px 5px !important;
+							padding: 0px 0px 0px 5px !important;
+							fa-icon.ng-fa-icon {
+								border: none;
+							}
 						}
 					}
-				}
-				gg-share-buttons .btn {
-					margin: 0px 45px 0px 45px !important;
-					padding: 0px 0px 0px 5px !important;
+					gg-share-buttons .btn {
+						margin: 0px 45px 0px 45px !important;
+						padding: 0px 0px 0px 5px !important;
+					}
 				}
 			}
 			.caption-footer .interaction-btn-group .interaction-btn {
@@ -645,11 +656,11 @@ else
 				a > img {
 					display: none;
 				} 
-				a:after {			
+				a:first-child:after {			
 					content: "BGG";
 					color: headerColor; /* #ff5100 */
 					font: fontXXL;
-					font-size: 2.5em;
+					font-size: 36px;
 					font-weight: 900;
 				}
 			}
@@ -747,6 +758,7 @@ else
 			border-radius: headerHoverRadius;
 			padding: 5px 7px 3px 7px;
 		}
+		/* NEXT button */
 		a.global-header-user-notification-action {
 			border: none;
 			border-radius: headerHoverRadius;
@@ -994,28 +1006,31 @@ else
 	}
 	
 	/* fonts */
-	.game-header-title-info h1 {
-		font-family: fontXXL !important;		
-		font-size: fontSizeXXL !important;		
-	}
-	h2, .panel-header-lg .panel-title, .navbar-brand {
-		font-family: fontXL !important;		
-		font-size: fontSizeXL !important;		
-	}
-	body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title{
-		font-family: fontL !important;
-		font-size: fontSizeL !important;
-	}
-	.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
-		font-family: fontM !important;
-		font-size: fontSizeM !important;
-	}
-	.btn-xs, .btn-group-xs > .btn, .fs-xs, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
-		font-family: fontS !important;
-		font-size: fontSizeS !important;
+	/* AngularJS only, Angular 8 = rem */
+	body.ng-scope {
+		.game-header-title-info h1 {
+			font-family: fontXXL;		
+			font-size: fontSizeXXL;		
+		}
+		h2, .panel-header-lg .panel-title, .navbar-brand {
+			font-family: fontXL;		
+			font-size: fontSizeXL;		
+		}
+		body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title{
+			font-family: fontL;
+			font-size: fontSizeL;
+		}
+		.btn.btn-sm, .btn-group-sm > .btn, h4, .game-header-title-summary, .nav.nav-tabs > li > a, .credits, .credits > * > *, .credits-cta, .rating-stars-title, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
+			font-family: fontM;
+			font-size: fontSizeM;
+		}
+		.btn-xs, .btn-group-xs > .btn, .fs-xs, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+			font-family: fontS;
+			font-size: fontSizeS;
+		}
 	}
 	.glyphicon {
-		font-family: "Glyphicons Halflings" !important;
+		font-family: "Glyphicons Halflings";
 	}
 	
 	/* text-colors */

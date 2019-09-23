@@ -237,3 +237,8 @@ file/image pages: .media-sidebar buttons, comment buttons
 
 0.10.4
 - articleNew/Selected Colors
+
+0.10.5
+fonts: options reduced (1 size, 3 fonts)
+logo BGG fix
+video pages
