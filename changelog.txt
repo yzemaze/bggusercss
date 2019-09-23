@@ -247,3 +247,6 @@ video pages
 logo BGG dropdown fix
 new pages: .media-sidebar buttons
 game page: font-size, buttons
+
+0.11.2
+revert: + articleNew/Selected Colors

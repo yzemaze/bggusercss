@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.11.1
+@version		0.11.2
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -61,6 +61,9 @@
 @var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
 @var	checkbox	promotedVideoHide	'… hide promoted videos'				0
 @var	checkbox	recommendationsHide	'… hide recommendations "Fans Also Like"'	0
+== geeklists, forum ==
+@var	color		articleNewColor		'Article/item new: border'				#CE6C6D
+@var	color		articleSelectedColor	'… selected: border'				#000AFF
 == subscriptions ==
 @var	checkbox	nextAlways			'Subscriptions: display NEXT when empty'	0
 @var	checkbox	nextChange			'… change next new sub icon'			0
@@ -71,7 +74,6 @@
 
 /* ===== VARS ===== */
 articleNewBorder = solid 3px articleNewColor
-articleNewColor = errorColor
 articleSelectedBorder = solid 3px articleSelectedColor
 buttonBg = menuBg
 buttonBorder = menuBorder
@@ -86,13 +88,11 @@ fontSizeM = 0.75rem
 fontSizeS = 0.75rem
 
 if dark(headerBg)
-	articleSelectedColor = lighten(headerBg, 20%)
 	headerColor = lighten(headerBg, 85%)
 	headerHoverBg = lighten(headerBg, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 	headerLinkColor = lighten(headerColor, 20%)
 else
-	articleSelectedColor = darken(headerBg, 20%)
 	headerColor = darken(headerBg, 85%)
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
