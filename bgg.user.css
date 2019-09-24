@@ -1196,6 +1196,9 @@ else
 		color: #ddd !important;
 	}
 	/* hover colors */
+	.btn-white:hover {
+		border-color: buttonHoverBg !important; // counter-i!
+	}
 	.game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
 		a:hover {
 			background-color: buttonHoverBg;
@@ -1299,6 +1302,13 @@ else
 		}
 		> li > a {
 			color: textColor;
+		}
+	}
+	.panel-header-actions {
+		a:not(.btn), a.is-active {
+			&:hover {
+				color: linkHover !important; // counter-i!
+			}
 		}
 	}
 	/* forum */
