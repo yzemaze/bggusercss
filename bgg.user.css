@@ -119,14 +119,14 @@ else
 	quoteBg = darken(moduleBg, 5%)
 	quoteColor = lighten(textColor, 5%)
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
-html {
-	font-family: headerFont;
-	font-size: round((fontSize/0.875)); /* body text = 0.875rem */
-}
-body {
-	font-family:headerFont;
-	font-size: 0.875rem;
-}
+	html {
+		font-family: headerFont;
+		font-size: round((fontSize/0.875)); /* body text = 0.875rem */
+	}
+	body {
+		font-family:headerFont;
+		font-size: 0.875rem;
+	}
 /* ===== NEW PAGES ===== */
 	/* === page === */
 	.container-fluid {
@@ -150,17 +150,27 @@ body {
 	}
 	/* === text === */
 	.text-muted:hover {
-		color: textColor !important; /* counter-i! */
+		color: textColor !important; // counter-i!
 		filter: opacity(100%);
 	}
 	/* === links, buttons === */
 	a, button {
 		outline: none !important;
 	}
-	.btn:not(.disabled):not(.btn-empty), .btn-outline-secondary {
+	.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary {
 		&:hover {
 			background-color: buttonHoverBg;
 			color: buttonHoverColor;
+		}
+	}
+	.btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
+		&:hover {
+			background-color: buttonHoverBg;
+			border-color: buttonHoverBg;
+			color: buttonHoverColor;
+			i {
+				color: buttonHoverColor;
+			}
 		}
 	}
 	/* === navigation === */
@@ -492,7 +502,7 @@ body {
 					border-bottom: moduleBorder;
 					gg-subscription-button, gg-image-size-dropdown, gg-share-buttons {
 						.btn {
-							border: none !important; /* counter-i! */
+							border: none !important; // counter-i!
 							&:hover {
 								background-color: buttonHoverBg;
 								border-color: buttonHoverBg;
@@ -549,11 +559,11 @@ body {
 					gg-subscription-button .subscription-btn {
 						.btn-block.btn-left {
 							margin: 0 0.7em 0 1.5em;
-							padding: 0 1em 0 0 !important; /* counter-i! */
+							padding: 0 1em 0 0 !important; // counter-i!
 						}
 						.btn-right.dropdown-toggle {
 							margin: 0 0.3em 0 0.3em;
-							padding: 0 0 0 0.6em !important; /* counter-i! */
+							padding: 0 0 0 0.6em !important; // counter-i!
 							fa-icon.ng-fa-icon {
 								border: none;
 							}
@@ -561,7 +571,7 @@ body {
 					}
 					gg-share-buttons .btn {
 						margin: 0 3em 0 3em;
-						padding: 0 0 0 0.6em !important; /* counter-i! */;
+						padding: 0 0 0 0.6em !important; // counter-i!;
 					}
 				}
 			}
@@ -722,7 +732,7 @@ body {
 		/* colors */
 		background-color: headerBg;
 		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
-			color: headerColor !important; /* counter-i! */
+			color: headerColor !important; // counter-i!
 			&:hover, &[aria-expanded="true"], &:focus {
 				background-color: headerHoverBg;
 				color: headerHoverColor !important; /* override counter-i! */
@@ -768,17 +778,6 @@ body {
 		}
 	}
 	/* ==== body ==== */
-	/* === buttons === */
-	.btn, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
-		&:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			color: buttonHoverColor;
-			i {
-				color: buttonHoverColor;
-			}
-		}
-	}
 	/* === inputs, forms === */
 	input, .form-control, textarea.form-control[readonly] {
 		background-color: inputBg;
@@ -1102,11 +1101,11 @@ body {
 		.media-module {
 			.dropdown {
 				.dropdown-toggle {
-					color: headerColor !important; /* counter-i! */
+					color: headerColor !important; // counter-i!
 					&:hover, &[aria-expanded="true"] {
 						background-color: buttonHoverBg;
 						border-radius: headerHoverRadius;
-						color: buttonHoverColor !important; /* counter-i! */
+						color: buttonHoverColor !important; // counter-i!
 						margin: -4px;
 						padding: 4px;
 					}
@@ -1133,7 +1132,7 @@ body {
 					&:hover {
 						background-color: buttonHoverBg;
 						border-radius: headerHoverRadius;
-						color: buttonHoverColor !important; /* counter-i! */
+						color: buttonHoverColor !important; // counter-i!
 					}
 				}
 			}
@@ -1204,12 +1203,13 @@ body {
 			color: buttonHoverColor;
 		}
 	}
-	.gameplay-item .btn {
-		background-color: transparent;
-		border: none;
-		> span.glyphicon:hover {
+	.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
+		&:hover {
 			color: linkHover;
 		}
+	}
+	a i.fi-pencil.c-icon:hover {
+		color: linkHover !important; // counter-i!
 	}
 	/* navigation */
 	.game-nav-tabs {
@@ -1248,25 +1248,7 @@ body {
 			color: buttonHoverColor;
 		}
 	}
-	/* classification */
-	div.game-classification {
-		a > i.fi-pencil.c-icon {
-			color: linkColor !important; /* counter-i! */
-			&:hover {
-				color: linkHover !important; /* counter-i! */
-			}
-		}
-		.feature-description button.feature-action-icon {
-			background: none;
-			.glyphicon {
-				color: linkColor;
-				&:hover {
-					color: linkHover;
-				}
-			}
-		}
-	}
-	/* sections titles */
+	/* sections */
 	.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
 		color: textColor;
 	}
@@ -1276,7 +1258,24 @@ body {
 			color: linkHover;
 		}
 	}
-	/* === forum navigation === */
+	/* geekmarket */
+	.panel-inline-links > a:link:not(.btn):hover {
+		color: linkHover;
+	}
+	/* videos, reviews */
+	.summary-item-meta {
+		a:hover {
+			color: linkHover;		
+		}
+		.summary-item-tag a:hover {
+			background: buttonHoverBg;
+			color: buttonHoverColor;
+		}
+	}
+	.summary-item-counts:hover .summary-item-counts-item {
+		color: linkHover;
+	}
+	/* forum navigation */
 	ul.nav.nav-pills {
 		> li {
 			color: textColor;
@@ -1297,7 +1296,7 @@ body {
 			color: textColor;
 		}
 	}
-	/* === forum === */
+	/* forum */
 	forum-threads {
 		background-color: moduleBg;
 		ul.summary {
@@ -1335,14 +1334,29 @@ body {
 					color: linkVisited;
 				}	
 				&:hover {
-					background-color: invert(linkHover);
+					background-color: buttonHoverBg;
+					color: buttonHoverColor;
 				}
 			}
 			li.summary-item .summary-item-meta > .summary-item-tag > a {
 				&:hover {
-					background-color: invert(linkHover);
+					background-color: buttonHoverBg;
+					color: buttonHoverColor;
 				}
 			}
+		}
+	}
+	/* files */
+	.summary-file-type a:hover {
+		background-color: buttonHoverBg;
+		border-color: buttonHoverBg;
+		color: buttonHoverColor;
+	}
+	/* geeklists */
+	.summary-item-geeklist:hover {
+		border-color: linkHover;
+		.summary-item-title {
+			color: linkHover;
 		}
 	}
 
