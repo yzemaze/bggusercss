@@ -1196,6 +1196,9 @@ else
 		color: #ddd !important;
 	}
 	/* hover colors */
+	.btn-primary:hover {
+		border-color: buttonHoverBg;
+	}
 	.btn-white:hover {
 		border-color: buttonHoverBg !important; // counter-i!
 	}
