@@ -549,11 +549,11 @@ body {
 					gg-subscription-button .subscription-btn {
 						.btn-block.btn-left {
 							margin: 0 0.7em 0 1.5em;
-							padding: 0 0.3em 0 0;
+							padding: 0 1em 0 0 !important; /* counter-i! */
 						}
 						.btn-right.dropdown-toggle {
 							margin: 0 0.3em 0 0.3em;
-							padding: 0 0 0 0.3em;
+							padding: 0 0 0 0.6em !important; /* counter-i! */
 							fa-icon.ng-fa-icon {
 								border: none;
 							}
@@ -561,7 +561,7 @@ body {
 					}
 					gg-share-buttons .btn {
 						margin: 0 3em 0 3em;
-						padding: 0 0 0 0.3em;
+						padding: 0 0 0 0.6em !important; /* counter-i! */;
 					}
 				}
 			}
@@ -781,7 +781,7 @@ body {
 	}
 	/* === inputs, forms === */
 	input, .form-control, textarea.form-control[readonly] {
-		background-color: inputBg !important;
+		background-color: inputBg;
 		border: inputBorder;
 		color: textColor;
 	}
@@ -815,6 +815,10 @@ body {
 	}
 	hr+br {
 		display: none;
+	}
+	/* modal dialogs */
+	div.modal-content {
+		background-color: moduleBg;
 	}
 	
 	/* === front page === */
@@ -1167,9 +1171,6 @@ body {
 		div.panel-heading {
 			border: none;
 		}
-		div.modal-content {
-			background-color: moduleBg !important;
-		}
 		div#confirm div.modal-header {
 			background-color: headerBg;
 			border: none;
@@ -1248,8 +1249,22 @@ body {
 		}
 	}
 	/* classification */
-	.feature-description button.feature-action .glyphicon {
-		color: linkColor;
+	div.game-classification {
+		a > i.fi-pencil.c-icon {
+			color: linkColor !important; /* counter-i! */
+			&:hover {
+				color: linkHover !important; /* counter-i! */
+			}
+		}
+		.feature-description button.feature-action-icon {
+			background: none;
+			.glyphicon {
+				color: linkColor;
+				&:hover {
+					color: linkHover;
+				}
+			}
+		}
 	}
 	/* sections titles */
 	.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
@@ -1795,6 +1810,12 @@ body {
 		}
 		form[action="/geekplay.php"] .forum_table td {
 			border: none;
+		}
+		input[type="submit"] {
+			&:hover {
+				background-color: buttonHoverBg;
+				color: buttonHoverColor;				
+			}
 		}
 	}
 }
