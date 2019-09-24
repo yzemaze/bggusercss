@@ -1203,6 +1203,11 @@ else
 			color: buttonHoverColor;
 		}
 	}
+	.gameplay-item .btn:not(.btn-empty):hover {
+		background-color: buttonHoverBg;
+		border-radius: headerHoverRadius;
+		color: buttonHoverColor;
+	}
 	.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
 		&:hover {
 			color: linkHover;
