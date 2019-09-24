@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.11.2
+@version		0.11.3
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -128,6 +128,10 @@ body {
 	font-size: 0.875rem;
 }
 /* ===== NEW PAGES ===== */
+	/* === page === */
+	.container-fluid {
+	    max-width: pageWidth;
+	}
 	/* === dropdown menus === */
 	.dropdown-menu {
 		background-color: menuBg;
@@ -156,13 +160,15 @@ body {
 	.btn:not(.disabled), .btn-outline-secondary {
 		&:hover {
 			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
 			color: buttonHoverColor;
 		}
 	}
-	/* === page === */
-	.container-fluid {
-	    max-width: pageWidth;
+	/* === navigation === */
+	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link {
+		&:hover {
+			background-color: buttonHoverBg;
+			color: buttonHoverColor;
+		}
 	}
 	
 /* ===== Angular 8 PAGES ===== */
@@ -388,6 +394,10 @@ body {
 				border: 1px solid buttonHoverBg;
 				color: buttonHoverColor;
 			}
+			/* thumbs button */		
+			.interaction-btn.thumbsup:hover path#thumbsup-outline {
+				fill: positiveColor;
+			}
 			/* geekgold button */
 			gg-geekgold gg-reactions-popup-trigger gg-button-geekgold {
 				.interaction-btn.geekgold:hover path {
@@ -406,16 +416,7 @@ body {
 					}
 				}
 			}
-			/* thumbs button */		
-			.interaction-btn.thumbsup:hover path#thumbsup-outline {
-				fill: positiveColor;
-			}
-			gg-reactions-popup-trigger a:hover span {
-				&.count, &.label {
-					color: linkHover;
-				}
-			}
-			/* comment button */
+			/* comment buttons */
 			ul.comment-actions > li button.comment-btn {
 				border-radius: headerHoverRadius;
 				&.active, &:focus, &:hover {
@@ -592,9 +593,16 @@ body {
 				border: moduleBorder;
 				margin: 0.5em 0;
 				padding: 1em;
-				gg-reactions-popup-trigger a:hover span {
-					&.count, &.label {
-						color: linkHover;
+				gg-reactions-popup-trigger a {
+					padding: 4px 8px;
+					&:hover {
+						background-color: buttonHoverBg;
+						border-color: buttonHoverBg;
+						border-radius: headerHoverRadius;
+						color: buttonHoverColor;
+						.count, .label {
+							color: buttonHoverColor;
+						}
 					}
 				}
 			}
@@ -1188,11 +1196,6 @@ body {
 	}
 	.game-nav-tabs {
 		background-color: mainBg2;
-	}
-	.nav.nav-tabs > li > a, .game-header button.btn-link.btn-xs {
-		&:hover {
-			color: linkHover;
-		}
 	}
 	div.nav-tabs-more-dropdown {
 		a {
