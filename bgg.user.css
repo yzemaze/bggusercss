@@ -157,7 +157,7 @@ body {
 	a, button {
 		outline: none !important;
 	}
-	.btn:not(.disabled), .btn-outline-secondary {
+	.btn:not(.disabled):not(.btn-empty), .btn-outline-secondary {
 		&:hover {
 			background-color: buttonHoverBg;
 			color: buttonHoverColor;
@@ -772,7 +772,7 @@ body {
 	.btn, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
 		&:hover {
 			background-color: buttonHoverBg;
-			border-color: buttonHoverBg !important;
+			border-color: buttonHoverBg;
 			color: buttonHoverColor;
 			i {
 				color: buttonHoverColor;
@@ -1027,7 +1027,7 @@ body {
 			font-family: fontM;
 			font-size: fontSizeM;
 		}
-		.btn-xs, .btn-group-xs > .btn, .fs-xs, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+		.btn-xs, .btn-group-xs > .btn, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
 			font-family: fontS;
 			font-size: fontSizeS;
 		}
@@ -1188,12 +1188,29 @@ body {
 		    display: none;
 		}
 	}
+	/* header */
 	.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a, .gameplay-item .glyphicon.glyphicon-question-sign {
 		color: gamepageHeaderColor;
 	}
 	.game-header-title-rating a.rating-angular {
 		color: #ddd !important;
 	}
+	/* hover colors */
+	.game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
+		a:hover {
+			background-color: buttonHoverBg;
+			border-radius: headerHoverRadius;
+			color: buttonHoverColor;
+		}
+	}
+	.gameplay-item .btn {
+		background-color: transparent;
+		border: none;
+		> span.glyphicon:hover {
+			color: linkHover;
+		}
+	}
+	/* navigation */
 	.game-nav-tabs {
 		background-color: mainBg2;
 	}
@@ -1213,22 +1230,35 @@ body {
 	.summary-border .summary-item {
 		border-bottom: menuBorder;
 	}
+	/* overview – images */
 	.summary-media-grid-count {
 		background-color: menuBg;
 		border: menuBorder;
 		a {
 			color: linkColor;
+			&:hover { 
+				color: buttonHoverColor;
+			}
+		}
+		&:hover {
+			background-color: buttonHoverBg;
+			border-color: buttonHoverBg;
+			border-radius: headerHoverRadius;
+			color: buttonHoverColor;
 		}
 	}
+	/* classification */
+	.feature-description button.feature-action .glyphicon {
+		color: linkColor;
+	}
+	/* sections titles */
 	.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
 		color: textColor;
 	}
 	.panel-header-lg .panel-title > a:link {
 		color: linkColor;
-	}
-	.panel-header-actions, .panel-actions {
-		a.is-active:hover {
-			color: linkHover !important;
+		&:hover {
+			color: linkHover;
 		}
 	}
 	/* === forum navigation === */
