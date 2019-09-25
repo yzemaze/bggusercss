@@ -190,7 +190,7 @@ else
 			text-decoration: linkStyle;
 		}
 	}
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove {
 		color: linkColor;
 	}	
 	.link-text:link, .link-text:visited {
@@ -1320,6 +1320,16 @@ else
 			}
 		}
 		/* description */
+		.game-awards.panel li a, .panel-expandable .expandable-body a {
+			&:link {
+				border-bottom: none;
+				color: linkColor;
+				text-decoration: linkStyle;
+			}
+			&:hover {
+				color: linkHover;
+			}
+		}
 		.text-domain:hover {
 			color: linkHover !important; // counter-i!
 		}
@@ -1332,9 +1342,6 @@ else
 			&:hover {
 				color: linkHover;
 			}
-		}
-		ul.list-block-border > li {
-			border-color: moduleBorderColor;
 		}
 		/* geekmarket */
 		.panel-inline-links > a:link:not(.btn):hover {
@@ -1444,6 +1451,21 @@ else
 			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
 			color: buttonHoverColor;
+		}
+		/* more */
+		ul.list-block-border > li {
+			//border-color: moduleBorderColor;
+			border: none;
+			padding: 0 0.5em;
+			&:nth-child(2n) {
+				background: tableColor2n;
+			}
+			&:nth-child(2n+1) {
+				background: tableColor2n1;
+			}
+		}
+		.game-more > li > a::after {
+			color: linkColor;
 		}
 		/* geeklists */
 		.summary-item-geeklist {
