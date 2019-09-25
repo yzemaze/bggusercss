@@ -207,7 +207,7 @@ else
 	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
 		text-decoration: linkStyle;
 	}
-	.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary, input[type="button"] {
+	.btn:not(.disabled):not(.btn-empty):not(.btn-xs):not(.btn-primary), .btn-outline-secondary, input[type="button"] {
 		&:hover {
 			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
@@ -498,10 +498,11 @@ else
 			}
 			/* comment buttons */
 			ul.comment-actions > li button.comment-btn {
-				border-radius: bottonHoverRadius;
+				border-radius: buttonHoverRadius;
 				&.active, &:focus, &:hover {
 					background-color: buttonHoverBg;
 					border-color: buttonHoverBg;
+					border-radius: buttonHoverRadius;
 					color: buttonHoverColor;
 				}
 			}
@@ -541,7 +542,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: bottonHoverRadius;
+						border-radius: buttonHoverRadius;
 						color: buttonHoverColor;
 						margin: -2px -4px;
 						padding: 2px 4px;
@@ -582,7 +583,7 @@ else
 							&:hover {
 								background-color: buttonHoverBg;
 								border-color: buttonHoverBg;
-								border-radius: bottonHoverRadius !important;
+								border-radius: buttonHoverRadius !important;
 								color: buttonHoverColor;
 								fa-icon.ng-fa-icon {
 									color: buttonHoverColor;
@@ -612,7 +613,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: bottonHoverRadius;
+						border-radius: buttonHoverRadius;
 						color: buttonHoverColor;
 					}
 				}
@@ -621,7 +622,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: bottonHoverRadius;
+						border-radius: buttonHoverRadius;
 						color: buttonHoverColor;
 						margin: -3px -5px;
 						padding: 3px 5px;
@@ -688,7 +689,7 @@ else
 						&:hover {
 							background-color: buttonHoverBg;
 							border-color: buttonHoverBg;
-							border-radius: bottonHoverRadius;
+							border-radius: buttonHoverRadius;
 							color: buttonHoverColor;
 							.count, .label {
 								color: buttonHoverColor;
@@ -1146,7 +1147,7 @@ else
 						color: headerColor !important; // counter-i!
 						&:hover, &[aria-expanded="true"] {
 							background-color: buttonHoverBg;
-							border-radius: bottonHoverRadius;
+							border-radius: buttonHoverRadius;
 							color: buttonHoverColor !important; // counter-i!
 							margin: -4px;
 							padding: 4px;
@@ -1160,7 +1161,7 @@ else
 				}
 				.module-pager .module-pager__arrow:not(.disabled):hover {
 					background-color: buttonHoverBg;
-					border-radius: bottonHoverRadius;
+					border-radius: buttonHoverRadius;
 					color: buttonHoverColor;
 					margin: 5px;
 					padding: 5px;
@@ -1173,7 +1174,7 @@ else
 						padding: 5px;
 						&:hover {
 							background-color: buttonHoverBg;
-							border-radius: bottonHoverRadius;
+							border-radius: buttonHoverRadius;
 							color: buttonHoverColor !important; // counter-i!
 						}
 					}
@@ -1248,13 +1249,13 @@ else
 		.game-header-subtype, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
 			a:hover {
 				background-color: buttonHoverBg;
-				border-radius: bottonHoverRadius;
+				border-radius: buttonHoverRadius;
 				color: buttonHoverColor;
 			}
 		}
 		.gameplay-item .btn:not(.btn-empty):hover {
 			background-color: buttonHoverBg;
-			border-radius: bottonHoverRadius;
+			border-radius: buttonHoverRadius;
 			color: buttonHoverColor;
 		}
 		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
@@ -1298,7 +1299,7 @@ else
 			&:hover {
 				background-color: buttonHoverBg;
 				border-color: buttonHoverBg;
-				border-radius: bottonHoverRadius;
+				border-radius: buttonHoverRadius;
 				color: buttonHoverColor;
 			}
 		}
