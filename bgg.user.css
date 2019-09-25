@@ -1597,7 +1597,7 @@ else
 		a:visited {
 			color: linkVisited;
 		}
-		a, a:link, .nav > li > a, .comment_button, .bluebox a {
+		a, a:link, .nav > li > a, .bluebox a {
 			color: linkColor;
 			&:hover {
 				color: linkHover;
@@ -1613,6 +1613,12 @@ else
 		.comment_button {
 			border-color: linkColor;
 			background-color: buttonBg;
+			&:hover {
+				background-color: buttonHoverBg;
+				border-color: buttonHoverBg;
+				border-radius: buttonHoverRadius;
+				color: buttonHoverColor;
+			}
 		}
 		a, a:link {
 			text-decoration: linkStyle;
