@@ -1319,6 +1319,10 @@ else
 				color: buttonHoverColor;
 			}
 		}
+		/* description */
+		.text-domain:hover {
+			color: linkHover !important; // counter-i!
+		}
 		/* sections */
 		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
 			color: textColor;
@@ -1428,6 +1432,14 @@ else
 			}
 		}
 		/* files */
+		ul.summary > li.summary-item {
+			&:nth-child(2n) {
+				background: tableColor2n;
+			}
+			&:nth-child(2n+1) {
+				background: tableColor2n1;
+			}
+		}
 		.summary-file-type a:hover {
 			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
