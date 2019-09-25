@@ -1200,7 +1200,7 @@ else
 		}
 
 		/* === geekmarket === */
-		body[ng-app="geekmarketApp"] {
+		div[ng-controller="GeekMarketCtrl"] {
 			.white-bg {
 				background-color: moduleBg;
 			}
@@ -1259,7 +1259,9 @@ else
 		}
 		/* hover colors */
 		.btn-primary:hover {
+			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
+			color: buttonHoverColor;
 		}
 		.btn-white:hover {
 			border-color: buttonHoverBg !important; // counter-i!
@@ -1536,6 +1538,9 @@ else
 				color: headerColor;
 				button.close:hover {
 					color: errorColor;
+				}
+				.modal-title, button.close {
+					color: headerColor;
 				}
 			}
 			.modal-body, .modal-footer {
