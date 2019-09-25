@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.11.3
+@version		0.11.4
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -167,6 +167,10 @@ else
 			color: linkHover;
 		}
 	}
+	/* overlay */
+	.expandable div.expandable-envelope p.expandable-overlay {
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), mainBg2);
+	}
 	/* === text === */
 	p, textarea {
 		color: textColor;
@@ -236,6 +240,7 @@ else
 	}
 	/* === navigation === */
 	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link {
+		color: textColor;
 		&:hover {
 			background-color: buttonHoverBg;
 			color: buttonHoverColor;
@@ -1231,6 +1236,17 @@ else
 			reviews-module + div.panel {
 				display: none;
 			}
+		}
+		/* mobile */
+		.game-nav-tabs .nav.nav-tabs > li > a, .game-nav-tabs .nav.nav-tabs > li.active > a {
+			color: textColor;
+			&:hover {
+				background-color: buttonHoverBg;
+				color: buttonHoverColor;
+			}
+		}
+		.game-header-body {
+			background-color: #0a090f;
 		}
 		/* header */
 		.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a, .gameplay-item .glyphicon.glyphicon-question-sign {
