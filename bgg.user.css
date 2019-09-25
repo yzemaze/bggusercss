@@ -1329,6 +1329,9 @@ else
 				color: linkHover;
 			}
 		}
+		ul.list-block-border > li {
+			border-color: moduleBorderColor;
+		}
 		/* geekmarket */
 		.panel-inline-links > a:link:not(.btn):hover {
 			color: linkHover;
@@ -1431,10 +1434,13 @@ else
 			color: buttonHoverColor;
 		}
 		/* geeklists */
-		.summary-item-geeklist:hover {
-			border-color: linkHover;
-			.summary-item-title {
-				color: linkHover;
+		.summary-item-geeklist {
+			border-color: moduleBorderColor;
+			&:hover {
+				border-color: linkHover;
+				.summary-item-title {
+					color: linkHover;
+				}
 			}
 		}
 
