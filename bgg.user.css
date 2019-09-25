@@ -83,7 +83,7 @@ buttonHoverRadius = 2px
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
-fontSizeXL = 1.1rem
+fontSizeXL = 1.2rem
 fontSizeL = 0.875rem /* == fontSize set in config */
 fontSizeM = 0.75rem
 fontSizeS = 0.625rem
@@ -1091,10 +1091,10 @@ else
 			font-family: fontXL;		
 			font-size: fontSizeXL;		
 		}
-		h3, h5, .h5, .btn.btn-sm, .btn-group-sm > .btn, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .game-header-title-summary, .credits ul li, .rating-stars-title, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title, .nav.nav-tabs > li > a, {
+		h3, h5, .h5, .btn.btn-sm, .btn-group-sm > .btn, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .game-header-title-summary, .credits ul li, .rating-stars-title, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title, .nav.nav-tabs > li > a, .game-marketplace, .summary-video-item > div, ul.list-block-border > li > a {
 			font-size: fontSizeL;
 		}
-		h4, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .game-header-flags, .gameplay-item-secondary, .game-itemid, .btn-xs, .btn-group-xs > .btn, button.global-header-user-notification-action {
+		h4, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .game-header-flags, .gameplay-item-secondary, .game-itemid, .btn-xs, .btn-group-xs > .btn, button.global-header-user-notification-action {
 			font-family: fontM;
 			font-size: fontSizeM;
 		}
@@ -1245,8 +1245,10 @@ else
 				color: buttonHoverColor;
 			}
 		}
-		.game-header-body {
-			background-color: #0a090f;
+		@media (max-width:767px) {
+			.game-header-body {
+				background-color: #0a090f;
+			}
 		}
 		/* header */
 		.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a, .gameplay-item .glyphicon.glyphicon-question-sign {
@@ -1319,6 +1321,31 @@ else
 				color: buttonHoverColor;
 			}
 		}
+		/* sections */
+		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
+			color: textColor;
+		}
+		.panel-header-lg .panel-title > a:link {
+			color: linkColor;
+			&:hover {
+				color: linkHover;
+			}
+		}
+		/* zebra style */
+		ul.summary > li.summary-item {
+			margin-bottom: 0;
+			padding-top: 0.2em;
+			padding-right: 0.2em
+			&:nth-child(2n) {
+				background: tableColor2n;
+			}
+			&:nth-child(2n+1) {
+				background: tableColor2n1;
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+		}
 		/* description */
 		.game-awards.panel li a, .panel-expandable .expandable-body a {
 			&:link {
@@ -1333,15 +1360,10 @@ else
 		.text-domain:hover {
 			color: linkHover !important; // counter-i!
 		}
-		/* sections */
-		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
-			color: textColor;
-		}
-		.panel-header-lg .panel-title > a:link {
-			color: linkColor;
-			&:hover {
-				color: linkHover;
-			}
+		/* buy a copy */
+		ul.summary-sale > li.summary-sale-item {
+			padding: 0.2em 0.5em;
+			margin-bottom: 0 !important; // counter-i!
 		}
 		/* geekmarket */
 		.panel-inline-links > a:link:not(.btn):hover {
@@ -1439,14 +1461,6 @@ else
 			}
 		}
 		/* files */
-		ul.summary > li.summary-item {
-			&:nth-child(2n) {
-				background: tableColor2n;
-			}
-			&:nth-child(2n+1) {
-				background: tableColor2n1;
-			}
-		}
 		.summary-file-type a:hover {
 			background-color: buttonHoverBg;
 			border-color: buttonHoverBg;
@@ -1454,8 +1468,7 @@ else
 		}
 		/* more */
 		ul.list-block-border > li {
-			//border-color: moduleBorderColor;
-			border: none;
+			border-color: moduleBorderColor;
 			padding: 0 0.5em;
 			&:nth-child(2n) {
 				background: tableColor2n;
