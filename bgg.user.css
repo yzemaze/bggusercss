@@ -77,15 +77,16 @@ articleNewBorder = solid 3px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
 buttonBg = menuBg
 buttonBorder = menuBorder
-buttonHoverColor = headerHoverColor
 buttonHoverBg = headerHoverBg
+buttonHoverColor = headerHoverColor
+buttonHoverRadius = headerHoverRadius
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
 fontSizeXL = 1.1rem
 fontSizeL = 0.875rem /* == fontSize set in config */
 fontSizeM = 0.75rem
-fontSizeS = 0.75rem
+fontSizeS = 0.625rem
 
 if dark(headerBg)
 	headerColor = lighten(headerBg, 85%)
@@ -124,6 +125,8 @@ else
 		font-size: round((fontSize/0.875)); /* body text = 0.875rem */
 	}
 	body {
+		background: mainBg;
+		color: textColor;
 		font-family:headerFont;
 		font-size: 0.875rem;
 	}
@@ -132,7 +135,13 @@ else
 	.container-fluid {
 	    max-width: pageWidth;
 	}
-	/* === dropdown menus === */
+	if skyscraperHide {
+		.global-body-ad {
+			display: none;
+		}
+	}
+	/* === menus === */
+	/* dropdowns */
 	.dropdown-menu {
 		background-color: menuBg;
 		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item {
@@ -144,22 +153,62 @@ else
 			}
 		}
 	}
-	/* === popover === */
+	/* modal dialogs */
+	div.modal-content {
+		background-color: moduleBg;
+		.list-group-item {
+			background: menuBg;
+		}
+	}
+	/* popover */
 	.popover {
 		background-color: menuBg;
 	}
 	/* === text === */
+	p, textarea {
+		color: textColor;
+		font-family: bodyFont;
+	}
 	.text-muted:hover {
 		color: textColor !important; // counter-i!
 		filter: opacity(100%);
 	}
 	/* === links, buttons === */
-	a, button {
+	a, button, .link-muted-color {
 		outline: none !important;
 	}
-	.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary {
+	a, .link-muted-color {
+		&:hover {
+			color: linkHover;
+			text-decoration: linkStyle;
+		}
+	}
+	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
+		color: linkColor;
+	}	
+	.link-text:link, .link-text:visited {
+		color: textColor;
+	}
+	a:visited, .link-text-color:visited {
+		color: linkVisited;
+	}
+	a:hover, .link-text-color:hover {
+		color: linkHover;
+	}
+	.outline.outline-muted a:hover:not(.btn) {
+		color: linkHover;
+	}
+	a.selected {
+		color: linkSelected !important;
+	}
+	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
+		text-decoration: linkStyle;
+	}
+	.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary, input[type="button"] {
 		&:hover {
 			background-color: buttonHoverBg;
+			border-color: buttonHoverBg;
+			border-radius: buttonHoverRadius;
 			color: buttonHoverColor;
 		}
 	}
@@ -173,12 +222,27 @@ else
 			}
 		}
 	}
+	/* === inputs, forms === */
+	input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly] {
+		background-color: inputBg;
+		border: inputBorder;
+		color: textColor;
+		&:focus {
+			background-color: inputBg;			
+		}
+	}
 	/* === navigation === */
 	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link {
 		&:hover {
 			background-color: buttonHoverBg;
 			color: buttonHoverColor;
 		}
+	}
+	hr {
+		border-color: moduleBorderColor;
+	}
+	hr+br {
+		display: none;
 	}
 	
 /* ===== Angular 8 PAGES ===== */
@@ -330,12 +394,13 @@ else
 					border: none;
 					border-radius: headerHoverRadius;
 					color: headerColor;
-					font-size: fontSizeS;
+					font-size: fontSizeM;
 					font-weight: 700;
 					margin-left: 0;
 					padding: 0.7em 0.3em;
 					&:hover {
-						background-color: headerHoverBg; 
+						background-color: headerHoverBg;
+						color: headerHoverColor;
 						path {
 							fill: headerHoverColor;			
 						}
@@ -359,6 +424,7 @@ else
 				margin: -0.25em -1em;
 			}
 		}
+		/* === /header === */
 		
 		/* ==== sidebar ==== */
 		if quickbarSticky {
@@ -394,7 +460,8 @@ else
 		}
 		
 		/* ==== body ==== */
-		div.global-body-content {
+		div.global-body-content, .global-body-content-primary {
+			background: mainBg2;
 			/* === buttons === */
 			.btn-icon, .form-group-search button.search {
 				color: linkColor;
@@ -434,6 +501,12 @@ else
 					border-color: buttonHoverBg;
 					color: buttonHoverColor;
 				}
+			}
+			/* input */
+			input, textarea, .form-control, textarea.form-control[readonly] {
+				background-color: inputBg;
+				border: inputBorder;
+				color: textColor;
 			}
 			/* === image pages, gallery, file pages, video pages === */
 			/* == header == */
@@ -599,26 +672,31 @@ else
 					box-shadow: none;
 				}
 			}
-			gg-comments-block .panel gg-comment {
-				border: moduleBorder;
-				margin: 0.5em 0;
-				padding: 1em;
-				gg-reactions-popup-trigger a {
-					padding: 4px 8px;
-					&:hover {
-						background-color: buttonHoverBg;
-						border-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
-						color: buttonHoverColor;
-						.count, .label {
+			gg-comments-block .panel {
+				button.flex-grow-1 {
+					background-color: menuBg;
+				}
+				gg-comment {
+					border: moduleBorder;
+					margin: 0.5em 0;
+					padding: 1em;
+					gg-reactions-popup-trigger a {
+						padding: 4px 8px;
+						&:hover {
+							background-color: buttonHoverBg;
+							border-color: buttonHoverBg;
+							border-radius: headerHoverRadius;
 							color: buttonHoverColor;
+							.count, .label {
+								color: buttonHoverColor;
+							}
 						}
 					}
 				}
 			}
 			
 			/* === body === */
-			gg-markup-text, p, textarea {
+			gg-markup-text {
 				font-family: bodyFont;
 			}
 		}
@@ -632,389 +710,370 @@ else
 	}
 	
 /* ===== AngularJS PAGES ===== */
+	body.ng-scope {
 	/* ==== header ==== */
-	.global-header {
-		/* === logo === */
-		if logo == "Ernie" {
-			div.global-header-logo {
-				margin-left: 1em;
-				a > img {
-					width: 60px;
-					height: 45px;
-					box-sizing: border-box;
-					padding-left: 60px;
-					background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
-					background-size: contain;
-				}	
-			}
-		}
-		if logo == "BGG" {
-			div.global-header-logo {
-				a > img {
-					display: none;
-				} 
-				a:first-child:after {			
-					content: "BGG";
-					color: headerColor; /* #ff5100 */
-					font: fontXXL;
-					font-size: 36px;
-					font-weight: 900;
-				}
-				div.dropdown {
-					top: -8px;
+		.global-header {
+			/* === logo === */
+			if logo == "Ernie" {
+				div.global-header-logo {
+					margin-left: 1em;
+					a > img {
+						width: 60px;
+						height: 45px;
+						box-sizing: border-box;
+						padding-left: 60px;
+						background: url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png");
+						background-size: contain;
+					}	
 				}
 			}
-		}
-		
-		/* order of menu items */
-		if userMenuLeft {
-			ul.global-header-nav-primary > {
-				li:nth-child(1) {
-					order: 3;
-					margin-left: 20px;
+			if logo == "BGG" {
+				div.global-header-logo {
+					a > img {
+						display: none;
+					} 
+					a:first-child:after {			
+						content: "BGG";
+						color: headerColor; /* #ff5100 */
+						font: fontXXL;
+						font-size: 36px;
+						font-weight: 900;
+					}
+					div.dropdown {
+						top: -8px;
+					}
 				}
-				li:nth-child(2) {
-					order: 4;
+			}
+
+			/* order of menu items */
+			if userMenuLeft {
+				ul.global-header-nav-primary > {
+					li:nth-child(1) {
+						order: 3;
+						margin-left: 20px;
+					}
+					li:nth-child(2) {
+						order: 4;
+					}
+					li:nth-child(3) {
+						order: 5;
+					}
+					li:nth-child(4) {
+						order: 6;
+					}
+					li:nth-child(5) {
+						order: 7;
+					}
+					li:nth-child(6) {
+						order: 8;
+					}
+					li:nth-child(7) {
+						order: 1;
+						margin-left: 20px;
+					}
+					li:nth-child(8) {
+						order: 2;
+					}
 				}
-				li:nth-child(3) {
-					order: 5;
+				/* open menus to the left */
+				ul.global-header-nav-primary .dropdown-menu {
+					left: auto;
+					right: 0;
 				}
-				li:nth-child(4) {
-					order: 6;
+				/* open user menu to the right */
+				li.global-header-nav-user .dropdown-menu {
+					left: 0;
 				}
-				li:nth-child(5) {
-					order: 7;
-				}
-				li:nth-child(6) {
-					order: 8;
-				}
-				li:nth-child(7) {
-					order: 1;
-					margin-left: 20px;
-				}
-				li:nth-child(8) {
+			}
+			if searchBarLeft {
+				div.global-header-nav-primary-wrapper {
 					order: 2;
 				}
+				div.global-header-nav-search {
+					margin-left: 20px;
+					order: 1;
+				}
+				div.global-header-nav-search-advanced ul.dropdown-menu {
+					left: 0 !important;
+				}
 			}
-			/* open menus to the left */
-			ul.global-header-nav-primary .dropdown-menu {
-				left: auto;
-				right: 0;
+			if nextAlways {
+				a.global-header-user-notification-action.ng-hide {
+					display: initial !important;
+				}
 			}
-			/* open user menu to the right */
-			li.global-header-nav-user .dropdown-menu {
-				left: 0;
+			/* fix AngularJS header */
+			/* TODO remove */
+			.global-header-nav-primary .dropdown-menu li a:hover {
+				color: headerHoverColor;
+				text-decoration: linkStyle;
 			}
-		}
-		if searchBarLeft {
-			div.global-header-nav-primary-wrapper {
-				order: 2;
-			}
-			div.global-header-nav-search {
-				margin-left: 20px;
-				order: 1;
-			}
-			div.global-header-nav-search-advanced ul.dropdown-menu {
-				left: 0 !important;
-			}
-		}
-		if nextAlways {
-			a.global-header-user-notification-action.ng-hide {
-				display: initial !important;
-			}
-		}
-		/* fix AngularJS header */
-		/* TODO remove */
-		.global-header-nav-primary .dropdown-menu li a:hover {
-			color: headerHoverColor;
-			text-decoration: linkStyle;
-		}
-		/* colors */
-		background-color: headerBg;
-		.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
-			color: headerColor !important; // counter-i!
-			&:hover, &[aria-expanded="true"], &:focus {
-				background-color: headerHoverBg;
-				color: headerHoverColor !important; /* override counter-i! */
-			}
-		}
-		.btn.btn-empty.global-header-icon.global-header-nav-toggle {
-			path {
-				fill: headerColor;
-			}			
-			&:hover path {
-				fill: headerHoverColor;			
-			}
-		}
-		button.btn.global-header-site-selector {
-			border-radius: headerHoverRadius;		
-			padding: 7px 9px;
-		}
-		geekmail-notifications a.global-header-icon {
-			border-radius: headerHoverRadius;
-			padding: 4px 7px;
-		}
-		subscription-notifications span a.global-header-icon {
-			border-radius: headerHoverRadius;
-			padding: 5px 7px 3px 7px;
-		}
-		/* NEXT button */
-		a.global-header-user-notification-action {
-			border: none;
-			border-radius: headerHoverRadius;
-			padding: 3px 5px;
-			font-family: fontM !important;
-			font-size: fontSizeM !important;
-			font-weight: 700;
-		}
-		.ui-select-bootstrap .ui-select-choices-row.active > a {
+			/* colors */
 			background-color: headerBg;
-			color: headerColor;
-		}
-		if siteSelectorHide {
-			button.global-header-site-selector {
-				display: none;
+			.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
+				color: headerColor !important; // counter-i!
+				&:hover, &[aria-expanded="true"], &:focus {
+					background-color: headerHoverBg;
+					color: headerHoverColor !important; /* override counter-i! */
+				}
+			}
+			.btn.btn-empty.global-header-icon.global-header-nav-toggle {
+				path {
+					fill: headerColor;
+				}			
+				&:hover path {
+					fill: headerHoverColor;			
+				}
+			}
+			button.btn.global-header-site-selector {
+				border-radius: headerHoverRadius;		
+				padding: 7px 9px;
+			}
+			geekmail-notifications a.global-header-icon {
+				border-radius: headerHoverRadius;
+				padding: 4px 7px;
+			}
+			subscription-notifications span a.global-header-icon {
+				border-radius: headerHoverRadius;
+				padding: 5px 7px 3px 7px;
+			}
+			/* NEXT button */
+			a.global-header-user-notification-action {
+				border: none;
+				border-radius: headerHoverRadius;
+				padding: 3px 5px;
+				font-family: fontM !important;
+				font-size: fontSizeM !important;
+				font-weight: 700;
+			}
+			.ui-select-bootstrap .ui-select-choices-row.active > a {
+				background-color: headerBg;
+				color: headerColor;
+			}
+			if siteSelectorHide {
+				button.global-header-site-selector {
+					display: none;
+				}
 			}
 		}
-	}
 	/* ==== body ==== */
-	/* === inputs, forms === */
-	input, .form-control, textarea.form-control[readonly] {
-		background-color: inputBg;
-		border: inputBorder;
-		color: textColor;
-	}
+		.global-body-content, footer.global-footer {
+			background-color: mainBg2;
+		}
 
-	.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
-		color: textColor;
-	}
-	.btn-default:not(.active):not(:disabled):hover {
-		color: linkHover;
-	}
-	.btn-success {
-		background-color: positiveColor;
-	}
-	.global-header-nav-search-advanced a:hover {
-		background-color: moduleBg;
-	}
-	
-	body {
-		color: textColor;
-		background-color: mainBg;
-	}
-	.global-body-content {
-		background-color: mainBg2;
-	}
-	footer.global-footer {
-		color: textColor;
-		background-color: mainBg2;
-	}
-	hr {
-		border-color: moduleBorderColor;
-	}
-	hr+br {
-		display: none;
-	}
-	/* modal dialogs */
-	div.modal-content {
-		background-color: moduleBg;
-	}
-	
-	/* === front page === */
-	/* columns */
-	@media screen and (min-width:769px) {
-		if columns != 2 {
-			.geekcentral_leftcol {
-				flex: 1 1 (100/columns)%;
-				max-width: (100/columns)%;
-			}
-			.geekcentral_rightcol {
-				flex: 1 1 (100 - 100/columns)%;
-				max-width: (100 - 100/columns)%;
-				column-count: (columns - 1);
-				column-gap: 10px;
-			}
-			.geekcentral_rightcol > .geekcentral_module {
-				break-inside: avoid;
+		.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a {
+			color: textColor;
+		}
+		.btn-success {
+			background-color: positiveColor;
+		}
+		.global-header-nav-search-advanced a:hover {
+			background-color: moduleBg;
+		}
+		/* links, buttons */
+		/*.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary {
+			&:hover {
+				background-color: buttonHoverBg;
+				color: buttonHoverColor;
 			}
 		}
-	}
-	.global-body-content-primary {
-		background-color: mainBg2;
-	}
-	ul.geekcentral-controls {
-		background-color: moduleBg;
-		border: moduleBorder;
-	}
-	if frontpageCondensed {
-		.media-cell {
-			padding: 2px 4px 2px 4px;
-		}
-		.media-cell__subtitle {
-			margin: 0px 0 0 0;
-		}
-	}
-
-	/* metadata */
-	.post-meta {
-		overflow: visible;
-	}
-	if metadataInline {
-		if not titleTruncation  {		
-			.media-cell {
-				overflow: auto;
-			}
-			h2.media-cell__title, p.media-cell__subtitle {
-				display: inline;
-				line-height: fontSizeL;
-			}
-			p.media-cell__subtitle {
-				margin: 3px 0 0 5px;
-			}
-			.post-meta, .post-reactions {
-				float: right;
-			}
-		}
-		if titleTruncation {
-			.media-cell {
-				display: flex;
-				justify-content: space-between;
-			}
-			p.media-cell__subtitle {
-				align-self: flex-end;
-				margin-left: 5px;
-			}
-		}
-	}
-	if metadataForumHide {
-		.geekcentral_module span.post-meta__item:nth-last-child(3) {
-			display: none;
-			::after {
-				display: none;
-			}
-		}
-	}
-	if metadataAuthorHide {
-		.geekcentral_module span.post-meta__item:nth-last-child(2) {
-			display: none;
-			::after {
-				display: none;
-			}
-		}
-	}
-	if metadataReactionsHide {
-		.geekcentral_module span.post-reactions, .geekcentral_module span.post-meta__item:nth-last-child(2)::after {
-			display:none;
-		}
-	}
-	.media-cell {
-		border: menuBorder;
-		border-top: none;
-	}
-	.media-header {
-		background-color: headerBg;
-	}
-	.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
-		color: headerColor;
-	}
-
-	/* zebra striped modules */
-	.geekcentral {
-		.media-module {
-			.media-cell:nth-child(2n) {background-color: fpColor2n;}
-			.media-cell:nth-child(2n+1) {background-color: fpColor2n1;}
-		}
-	}
-	
-	/* ==== sidebar ==== */
-	.global-secondary-nav-section .global-secondary-nav-section-header.toggler-caret {
-		background-color: headerBg;
-		color: headerColor;
-		&:hover {
-			background-color: headerHoverBg;
-			color: headerHoverColor;
-		}
-	}
-	.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
-		background-color: moduleBg;
-	}
-	ul.global-secondary-nav-links > li {
-		border-bottom: moduleBorder;
-	}
-	.quickbar-list-group {
-    	margin-bottom: -5px;
-	}
-	ul.global-secondary-nav-links a:hover, .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover {
-		color: linkHover;
-	}
-	if quickbarSticky {
-		.global-body-content-container .global-secondary-nav {
-			position: sticky;
-			top: 72px;
-		}
-	}
-	/* === hidden modules === */
-	if editHomepageHide {
-		.geekcentral-controls {
-			display: none;
-		}
-	}
-	if announcementHide {
-		/*.bg-red {
-			display: none;
-			~div {
-				display: none;
+		.btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
+			&:hover {
+				background-color: buttonHoverBg;
+				border-color: buttonHoverBg;
+				color: buttonHoverColor;
+				i {
+					color: buttonHoverColor;
+				}
 			}
 		}*/
-		.geekcentral_module.leftcol:nth-child(2) {
-			display: none;
+
+		/* === front page === */
+		/* columns */
+		@media screen and (min-width:769px) {
+			if columns != 2 {
+				.geekcentral_leftcol {
+					flex: 1 1 (100/columns)%;
+					max-width: (100/columns)%;
+				}
+				.geekcentral_rightcol {
+					flex: 1 1 (100 - 100/columns)%;
+					max-width: (100 - 100/columns)%;
+					column-count: (columns - 1);
+					column-gap: 10px;
+				}
+				.geekcentral_rightcol > .geekcentral_module {
+					break-inside: avoid;
+				}
+			}
 		}
-	}
-	if contestHide {
-		.geekcentral_module.leftcol:nth-child(3) {
-			display: none;
+		.global-body-content-primary {
+			background-color: mainBg2;
 		}
-	}
-	if geekpreviewHide {
-		.geekcentral_module > center > a[href*="/geekpreview"]{
-		    display: none;
+		ul.geekcentral-controls {
+			background-color: moduleBg;
+			border: moduleBorder;
 		}
-		.geekcentral_module.rightcol:nth-child(-n+2) {
-			margin-bottom: 0px;
-			#dfp-medrect-reserved-home {
+		if frontpageCondensed {
+			.media-cell {
+				padding: 2px 4px 2px 4px;
+			}
+			.media-cell__subtitle {
+				margin: 0px 0 0 0;
+			}
+		}
+
+		/* metadata */
+		.post-meta {
+			overflow: visible;
+		}
+		if metadataInline {
+			if not titleTruncation  {		
+				.media-cell {
+					overflow: auto;
+				}
+				h2.media-cell__title, p.media-cell__subtitle {
+					display: inline;
+					line-height: fontSizeL;
+				}
+				p.media-cell__subtitle {
+					margin: 3px 0 0 5px;
+				}
+				.post-meta, .post-reactions {
+					float: right;
+				}
+			}
+			if titleTruncation {
+				.media-cell {
+					display: flex;
+					justify-content: space-between;
+				}
+				p.media-cell__subtitle {
+					align-self: flex-end;
+					margin-left: 5px;
+				}
+			}
+		}
+		if metadataForumHide {
+			.geekcentral_module span.post-meta__item:nth-last-child(3) {
+				display: none;
+				::after {
+					display: none;
+				}
+			}
+		}
+		if metadataAuthorHide {
+			.geekcentral_module span.post-meta__item:nth-last-child(2) {
+				display: none;
+				::after {
+					display: none;
+				}
+			}
+		}
+		if metadataReactionsHide {
+			.geekcentral_module span.post-reactions, .geekcentral_module span.post-meta__item:nth-last-child(2)::after {
+				display:none;
+			}
+		}
+		.media-cell {
+			border: menuBorder;
+			border-top: none;
+		}
+		.media-header {
+			background-color: headerBg;
+		}
+		.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager  {
+			color: headerColor;
+		}
+
+		/* zebra striped modules */
+		.geekcentral {
+			.media-module {
+				.media-cell:nth-child(2n) {background-color: fpColor2n;}
+				.media-cell:nth-child(2n+1) {background-color: fpColor2n1;}
+			}
+		}
+
+		/* ==== sidebar ==== */
+		.global-secondary-nav-section .global-secondary-nav-section-header.toggler-caret {
+			background-color: headerBg;
+			color: headerColor;
+			&:hover {
+				background-color: headerHoverBg;
+				color: headerHoverColor;
+			}
+		}
+		.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
+			background-color: moduleBg;
+		}
+		ul.global-secondary-nav-links > li {
+			border-bottom: moduleBorder;
+		}
+		.quickbar-list-group {
+			margin-bottom: -5px;
+		}
+		ul.global-secondary-nav-links a:hover, .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover {
+			color: linkHover;
+		}
+		if quickbarSticky {
+			.global-body-content-container .global-secondary-nav {
+				position: sticky;
+				top: 72px;
+			}
+		}
+		/* === hidden modules === */
+		if editHomepageHide {
+			.geekcentral-controls {
 				display: none;
 			}
 		}
-	}
-	if skyscraperHide {
-		.global-body-ad {
-			display: none;
+		if announcementHide {
+			/*.bg-red {
+				display: none;
+				~div {
+					display: none;
+				}
+			}*/
+			.geekcentral_module.leftcol:nth-child(2) {
+				display: none;
+			}
 		}
-	}
-	/* modules */
-	/*button.dropdown-toggle {
-		&:hover {
-			color: linkHover !important;
+		if contestHide {
+			.geekcentral_module.leftcol:nth-child(3) {
+				display: none;
+			}
 		}
-		> ul.dropdown-menu {
-			left: -6px;
-			margin: 0;
+		if geekpreviewHide {
+			.geekcentral_module > center > a[href*="/geekpreview"]{
+				display: none;
+			}
+			.geekcentral_module.rightcol:nth-child(-n+2) {
+				margin-bottom: 0px;
+				#dfp-medrect-reserved-home {
+					display: none;
+				}
+			}
 		}
-	}*/
-	
-	/* panels */
-	.panel-default > .panel-heading, .panel-primary > .panel-heading {
-		background-color: headerBg;
-		border: moduleBorder;
-		color: headerColor;
-	}
-	
-	/* === fonts === */
-	/* AngularJS only, Angular 8 = rem */
-	body.ng-scope {
-		p, textarea {
-			font-family: bodyFont;
+		/* modules */
+		/*button.dropdown-toggle {
+			&:hover {
+				color: linkHover !important;
+			}
+			> ul.dropdown-menu {
+				left: -6px;
+				margin: 0;
+			}
+		}*/
+
+		/* panels */
+		.panel-default > .panel-heading, .panel-primary > .panel-heading {
+			background-color: headerBg;
+			border: moduleBorder;
+			color: headerColor;
 		}
+
+		/* === fonts === */
+		/* AngularJS only, Angular 8 = rem */
 		.game-header-title-info h1 {
 			font-family: fontXXL;		
 			font-size: fontSizeXXL;		
@@ -1023,422 +1082,403 @@ else
 			font-family: fontXL;		
 			font-size: fontSizeXL;		
 		}
-		body, h3, h5, .h5, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .game-header-title-summary, .credits ul li, .rating-stars-title, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title, .nav.nav-tabs > li > a, {
+		h3, h5, .h5, .btn.btn-sm, .btn-group-sm > .btn, .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary a.btn, .global-header-site-selector, .global-header-nav-primary .dropdown-menu li a, .form-control, .game-year, .game-header-title-summary, .credits ul li, .rating-stars-title, .gameplay-item-primary, .quotetitle, .quote, .geekcentral-controls__item, h2.media-cell__title, .nav.nav-tabs > li > a, {
 			font-size: fontSizeL;
 		}
-		.btn.btn-sm, .btn-group-sm > .btn, h4, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle {
+		h4, .panel-header-sm .panel-title, .fs-responsive-sm, .game-classification, .game-marketplace, .summary-video-item > div, .summary-item-description > *, .summary-item-counts > *, .summary-item-meta, .summary-item-meta > *, .summary-item-actions > *, .summary-item-actions-below > *, ul.list-block-border > li > a, .global-footer p, .condition-label, .pagination-sm > li > a, .pagination-sm > li > span, .badge, a.tag, .avatarblock, p.media-cell__subtitle, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .game-header-flags, .gameplay-item-secondary, .game-itemid, .btn-xs, .btn-group-xs > .btn, button.global-header-user-notification-action {
 			font-family: fontM;
 			font-size: fontSizeM;
 		}
-		.btn-xs, .btn-group-xs > .btn, button.global-header-user-notification-action, .global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .quickbar-header button.btn, .quickbar-icon, ul.global-secondary-nav-links > li, .hotness-item-title, .game-header-flags, .gameplay-item-secondary, .game-itemid, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
+		.global-secondary-nav-section-header, .global-secondary-nav-section-header.toggler-caret, .hotness-item-title, .text-domain, .summary-item-tag a, .summary-media-grid-count, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file .summary-file-type a {
 			font-family: fontS;
 			font-size: fontSizeS;
 		}
-	}
-	.glyphicon {
-		font-family: "Glyphicons Halflings";
-	}
-	
-	/* === text-colors === */
-	h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
-		color: textColor;
-	}
-	.text-muted:not(label) {
-		filter: opacity(60%);
-	}
-	
-	/* === links === */
-	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove, .wiki_angular a:link, .panel-expandable .expandable-body a:link {
-		color: linkColor;
-	}	
-	.link-text:link, .link-text:visited {
-		color: textColor;
-	}
-	a:visited, .link-text-color:visited {
-		color: linkVisited;
-	}
-	a:hover, .link-text-color:hover {
-		color: linkHover;
-	}
-	a.selected {
-		color: linkSelected !important;
-	}
-	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover {
-		text-decoration: linkStyle;
-	}
-	/* === front page modules & links === */
-	.geekcentral-controls {
-		button, .link-text-color:link {
-			color: fpLinkColor;
-			&.btn.btn-empty:hover {
-				color: linkHover;				
+		.glyphicon {
+			font-family: "Glyphicons Halflings";
+		}
+
+		/* === text-colors === */
+		h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price {
+			color: textColor;
+		}
+		.text-muted:not(label) {
+			filter: opacity(60%);
+		}
+
+		/* === front page modules & links === */
+		.geekcentral-controls {
+			button, .link-text-color:link {
+				color: fpLinkColor;
+				&.btn.btn-empty:hover {
+					color: linkHover;				
+				}
+			}
+			.dropdown-menu > li > button.btn:hover {
+				background-color: headerHoverBg;
+				color: headerHoverColor !important;
 			}
 		}
-		.dropdown-menu > li > button.btn:hover {
-			background-color: headerHoverBg;
-			color: headerHoverColor !important;
-		}
-	}
-	.geekcentral_module {
-		ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding {
-			color: fpLinkColor;
-		}
-		.link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link {
-			&:hover {
-				color: linkHover;
+		.geekcentral_module {
+			ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding {
+				color: fpLinkColor;
 			}
-		}
-		.link-text-color:visited {
-			color: fpLinkVisited;
-		}
-		.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
-			font-weight: fpLinkWeight;
-		}
-		a.post-meta__link, a.post-meta__link:visited {
-			color: metadataColor;
-		}
-		/* === buttons & dropdowns === */
-		.media-module {
-			.dropdown {
-				.dropdown-toggle {
-					color: headerColor !important; // counter-i!
-					&:hover, &[aria-expanded="true"] {
-						background-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
-						color: buttonHoverColor !important; // counter-i!
-						margin: -4px;
-						padding: 4px;
+			.link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link {
+				&:hover {
+					color: linkHover;
+				}
+			}
+			.link-text-color:visited {
+				color: fpLinkVisited;
+			}
+			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a {
+				font-weight: fpLinkWeight;
+			}
+			a.post-meta__link, a.post-meta__link:visited {
+				color: metadataColor;
+			}
+			/* === buttons & dropdowns === */
+			.media-module {
+				.dropdown {
+					.dropdown-toggle {
+						color: headerColor !important; // counter-i!
+						&:hover, &[aria-expanded="true"] {
+							background-color: buttonHoverBg;
+							border-radius: headerHoverRadius;
+							color: buttonHoverColor !important; // counter-i!
+							margin: -4px;
+							padding: 4px;
+						}
+					}
+					/* dropdown menus */
+					.dropdown-menu > li > button.btn:hover {
+						background-color: headerHoverBg;
+						color: headerHoverColor;
 					}
 				}
-				/* dropdown menus */
-				.dropdown-menu > li > button.btn:hover {
-					background-color: headerHoverBg;
-					color: headerHoverColor;
+				.module-pager .module-pager__arrow:not(.disabled):hover {
+					background-color: buttonHoverBg;
+					border-radius: headerHoverRadius;
+					color: buttonHoverColor;
+					margin: 5px;
+					padding: 5px;
+				}
+				.media-filters {
+					background-color: headerBg;
+					color: headerColor;
+					.media-link {
+						color: headerLinkColor !important;
+						padding: 5px;
+						&:hover {
+							background-color: buttonHoverBg;
+							border-radius: headerHoverRadius;
+							color: buttonHoverColor !important; // counter-i!
+						}
+					}
+				}
+				.media-grid {
+					border-color: moduleBorderColor;
 				}
 			}
-			.module-pager .module-pager__arrow:not(.disabled):hover {
+		}
+		/* === /front page modules & links === */
+
+		/* === zebra striped tables === */
+		table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
+			background-color: tableColor2n !important;
+		}
+		table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"] {
+			background-color: tableColor2n1;
+		}
+
+		/* === geekmarket === */
+		body[ng-app="geekmarketApp"] {
+			.white-bg {
+				background-color: moduleBg;
+			}
+			nav.navbar-static-side li.active, .panel-primary, .dropdown-menu {
+				background-color: menuBg;
+			}
+			nav.navbar-static-side  li > a:hover {
+				background-color: headerBg;
+			}
+			nav.navbar-static-side li.active > a {
+				color: linkSelected;
+			}
+			.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
+				border: menuBorder;
+			}
+			div.panel-heading {
+				border: none;
+			}
+			div#confirm div.modal-header {
+				background-color: headerBg;
+				border: none;
+				color: headerColor;
+			}
+		}
+
+		/* === game pages === */
+		if promotedVideoHide {
+			promotedvideos-module {
+				display: none;
+			}
+		}
+		if recommendationsHide {
+			reviews-module + div.panel {
+				display: none;
+			}
+		}
+		/* header */
+		.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a, .gameplay-item .glyphicon.glyphicon-question-sign {
+			color: gamepageHeaderColor;
+		}
+		.game-header-title-rating a.rating-angular {
+			color: #ddd !important;
+		}
+		/* hover colors */
+		.btn-primary:hover {
+			border-color: buttonHoverBg;
+		}
+		.btn-white:hover {
+			border-color: buttonHoverBg !important; // counter-i!
+		}
+		.game-header-subtype, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
+			a:hover {
 				background-color: buttonHoverBg;
 				border-radius: headerHoverRadius;
 				color: buttonHoverColor;
-				margin: 5px;
-				padding: 5px;
-			}
-			.media-filters {
-				background-color: headerBg;
-				color: headerColor;
-				.media-link {
-					color: headerLinkColor !important;
-					padding: 5px;
-					&:hover {
-						background-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
-						color: buttonHoverColor !important; // counter-i!
-					}
-				}
-			}
-			.media-grid {
-				border-color: moduleBorderColor;
 			}
 		}
-	}
-	
-	/* === zebra striped tables === */
-	table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"] {
-		background-color: tableColor2n !important;
-	}
-	table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"] {
-		background-color: tableColor2n1;
-	}
-	
-	/* === geekmarket === */
-	body[ng-app="geekmarketApp"] {
-		.white-bg {
-			background-color: moduleBg;
-		}
-		nav.navbar-static-side li.active, .panel-primary, .dropdown-menu {
-			background-color: menuBg;
-		}
-		nav.navbar-static-side  li > a:hover {
-			background-color: headerBg;
-		}
-		nav.navbar-static-side li.active > a {
-			color: linkSelected;
-		}
-		.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu {
-			border: menuBorder;
-		}
-		div.panel-heading {
-			border: none;
-		}
-		div#confirm div.modal-header {
-			background-color: headerBg;
-			border: none;
-			color: headerColor;
-		}
-	}
-		
-	/* === game pages === */
-	if promotedVideoHide {
-		promotedvideos-module {
-		    display: none;
-		}
-	}
-	if recommendationsHide {
-		reviews-module + div.panel {
-		    display: none;
-		}
-	}
-	/* header */
-	.game-header, .game-header-flags a:not(.btn):link, .game-header-title-info h1 a:not(.btn):link, .game-header-title-info h1 a:not(.btn):visited, .game-header-title-info h1 a:not(.btn):hover, .game-header-title-info h1 a:not(.btn):focus, .game-year, .game-header-title a:not(.btn):link, .gameplay-item-primary, .gameplay-item .btn:not(.btn-empty), .game-header-credits a:not(.btn):link, .game-header-credits a.ng-binding, .game-header-credits .credits-cta.ng-scope a, .gameplay-item .glyphicon.glyphicon-question-sign {
-		color: gamepageHeaderColor;
-	}
-	.game-header-title-rating a.rating-angular {
-		color: #ddd !important;
-	}
-	/* hover colors */
-	.btn-primary:hover {
-		border-color: buttonHoverBg;
-	}
-	.btn-white:hover {
-		border-color: buttonHoverBg !important; // counter-i!
-	}
-	.game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
-		a:hover {
+		.gameplay-item .btn:not(.btn-empty):hover {
 			background-color: buttonHoverBg;
 			border-radius: headerHoverRadius;
 			color: buttonHoverColor;
 		}
-	}
-	.gameplay-item .btn:not(.btn-empty):hover {
-		background-color: buttonHoverBg;
-		border-radius: headerHoverRadius;
-		color: buttonHoverColor;
-	}
-	.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
-		&:hover {
-			color: linkHover;
+		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
+			&:hover {
+				color: linkHover;
+			}
 		}
-	}
-	a i.fi-pencil.c-icon:hover {
-		color: linkHover !important; // counter-i!
-	}
-	/* navigation */
-	.game-nav-tabs {
-		background-color: mainBg2;
-	}
-	div.nav-tabs-more-dropdown {
-		a {
-			padding-left: 5px;
+		a i.fi-pencil.c-icon:hover {
+			color: linkHover !important; // counter-i!
 		}
-		a:hover {
-			/* padding-left: 10px;*/
-			background-color: headerHoverBg;
-			color: headerHoverColor !important;
+		/* navigation */
+		.game-nav-tabs {
+			background-color: mainBg2;
 		}
-	}
-	.well {
-		background-color: menuBg !important;
-	}
-	.summary-border .summary-item {
-		border-bottom: menuBorder;
-	}
-	/* overview – images */
-	.summary-media-grid-count {
-		background-color: menuBg;
-		border: menuBorder;
-		a {
-			color: linkColor;
-			&:hover { 
+		div.nav-tabs-more-dropdown {
+			a {
+				padding-left: 5px;
+			}
+			a:hover {
+				/* padding-left: 10px;*/
+				background-color: headerHoverBg;
+				color: headerHoverColor !important;
+			}
+		}
+		.well {
+			background-color: menuBg !important;
+		}
+		.summary-border .summary-item {
+			border-bottom: menuBorder;
+		}
+		/* overview – images */
+		.summary-media-grid-count {
+			background-color: menuBg;
+			border: menuBorder;
+			a {
+				color: linkColor;
+				&:hover { 
+					color: buttonHoverColor;
+				}
+			}
+			&:hover {
+				background-color: buttonHoverBg;
+				border-color: buttonHoverBg;
+				border-radius: headerHoverRadius;
 				color: buttonHoverColor;
 			}
 		}
-		&:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			border-radius: headerHoverRadius;
-			color: buttonHoverColor;
-		}
-	}
-	/* sections */
-	.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
-		color: textColor;
-	}
-	.panel-header-lg .panel-title > a:link {
-		color: linkColor;
-		&:hover {
-			color: linkHover;
-		}
-	}
-	/* geekmarket */
-	.panel-inline-links > a:link:not(.btn):hover {
-		color: linkHover;
-	}
-	/* videos, reviews */
-	.summary-item-meta {
-		a:hover {
-			color: linkHover;		
-		}
-		.summary-item-tag a:hover {
-			background: buttonHoverBg;
-			color: buttonHoverColor;
-		}
-	}
-	.summary-item-counts:hover .summary-item-counts-item {
-		color: linkHover;
-	}
-	/* forum navigation */
-	ul.nav.nav-pills {
-		> li {
+		/* sections */
+		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3 {
 			color: textColor;
-			.active > a .glyphicon-chevron-right {
-				color: linkSelected;
-			}
-			> a:hover, > a:hover .glyphicon-chevron-right {
+		}
+		.panel-header-lg .panel-title > a:link {
+			color: linkColor;
+			&:hover {
 				color: linkHover;
 			}
-			> a .nav-pills-count {
+		}
+		/* geekmarket */
+		.panel-inline-links > a:link:not(.btn):hover {
+			color: linkHover;
+		}
+		/* videos, reviews */
+		.summary-item-meta {
+			a:hover {
+				color: linkHover;		
+			}
+			.summary-item-tag a:hover {
+				background: buttonHoverBg;
+				color: buttonHoverColor;
+			}
+		}
+		.summary-item-counts:hover .summary-item-counts-item {
+			color: linkHover;
+		}
+		/* forum navigation */
+		ul.nav.nav-pills {
+			> li {
+				color: textColor;
+				.active > a .glyphicon-chevron-right {
+					color: linkSelected;
+				}
+				> a:hover, > a:hover .glyphicon-chevron-right {
+					color: linkHover;
+				}
+				> a .nav-pills-count {
+					color: textColor;
+				}
+			}
+			li.nav-header {
+				color: textColor;
+			}
+			> li > a {
 				color: textColor;
 			}
 		}
-		li.nav-header {
-			color: textColor;
-		}
-		> li > a {
-			color: textColor;
-		}
-	}
-	.panel-header-actions {
-		a:not(.btn), a.is-active {
-			&:hover {
-				color: linkHover !important; // counter-i!
+		.panel-header-actions {
+			a:not(.btn), a.is-active {
+				&:hover {
+					color: linkHover !important; // counter-i!
+				}
 			}
 		}
-	}
-	/* forum */
-	forum-threads {
-		background-color: moduleBg;
-		ul.summary {
-			> li.summary-item:nth-child(2n) {
-				background-color: tableColor2n;
-				> a {
+		/* forum */
+		forum-threads {
+			background-color: moduleBg;
+			ul.summary {
+				> li.summary-item:nth-child(2n) {
 					background-color: tableColor2n;
+					> a {
+						background-color: tableColor2n;
+					}
+					ul.pagination a, ul.pagination span, .summary-item-tag a {
+						background-color: tableColor2n1;
+						border-radius: 2px;
+					}
 				}
-				ul.pagination a, ul.pagination span, .summary-item-tag a {
+				> li.summary-item:nth-child(2n+1) {
 					background-color: tableColor2n1;
-					border-radius: 2px;
+					> a {
+						background-color: tableColor2n1;
+					}
+					ul.pagination a, ul.pagination span, .summary-item-tag a {
+						background-color: tableColor2n;
+						border-radius: 2px;
+					}
+				}
+				.summary-item-counts:hover .summary-item-counts-item {
+					color: linkHover;
+				}
+				.summary-item-title	a:visited {
+					color: linkVisited;
+				}
+				ul.summary-item-pagination.pagination > li > a {
+					&:link {				
+						color: linkColor;
+					}
+					&:visited {
+						color: linkVisited;
+					}	
+					&:hover {
+						background-color: buttonHoverBg;
+						color: buttonHoverColor;
+					}
+				}
+				li.summary-item .summary-item-meta > .summary-item-tag > a {
+					&:hover {
+						background-color: buttonHoverBg;
+						color: buttonHoverColor;
+					}
 				}
 			}
-			> li.summary-item:nth-child(2n+1) {
-				background-color: tableColor2n1;
-				> a {
-					background-color: tableColor2n1;
-				}
-				ul.pagination a, ul.pagination span, .summary-item-tag a {
-					background-color: tableColor2n;
-					border-radius: 2px;
-				}
-			}
-			.summary-item-counts:hover .summary-item-counts-item {
+		}
+		/* files */
+		.summary-file-type a:hover {
+			background-color: buttonHoverBg;
+			border-color: buttonHoverBg;
+			color: buttonHoverColor;
+		}
+		/* geeklists */
+		.summary-item-geeklist:hover {
+			border-color: linkHover;
+			.summary-item-title {
 				color: linkHover;
 			}
-			.summary-item-title	a:visited {
-				color: linkVisited;
-			}
-			ul.summary-item-pagination.pagination > li > a {
-				&:link {				
-					color: linkColor;
-				}
-				&:visited {
-					color: linkVisited;
-				}	
-				&:hover {
-					background-color: buttonHoverBg;
-					color: buttonHoverColor;
-				}
-			}
-			li.summary-item .summary-item-meta > .summary-item-tag > a {
-				&:hover {
-					background-color: buttonHoverBg;
-					color: buttonHoverColor;
-				}
-			}
 		}
-	}
-	/* files */
-	.summary-file-type a:hover {
-		background-color: buttonHoverBg;
-		border-color: buttonHoverBg;
-		color: buttonHoverColor;
-	}
-	/* geeklists */
-	.summary-item-geeklist:hover {
-		border-color: linkHover;
-		.summary-item-title {
-			color: linkHover;
-		}
-	}
 
-	/* === geekpreview === */
-	.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1 {
-		color: gamepageHeaderColor;
-		p, .text-muted {
-			color: gamepageHeaderColor !important;
+		/* === geekpreview === */
+		.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1 {
+			color: gamepageHeaderColor;
+			p, .text-muted {
+				color: gamepageHeaderColor !important;
+			}
 		}
-	}
-	.geekpreview-sticky-menu {
-		background-color: headerBg;
-		color: headerColor;
-	}
-	.geekpreview-toolbar-primary-search form input.form-control {
-		background-color: inputBg;
-		border: inputBorderColor;
-		color: textColor;
-	}
-	.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher {
-		color: textColor;
-		a {
-			color: linkColor;
-		}
-	}
-	div.geekpreview-item-inner-info-header p.text-muted a {
-		color: linkColor;
-	}
-	.geekpreview-parent {
-		background-color: headerBg;
-		color: headerColor;
-		border: none;
-	}
-	.geekpreview-parent-info h2 a, .geekpreview-parent-social .btn, .geekpreview-parent-info a {
-		color: headerLinkColor;
-	}
-	.c-green-600 {
-		color: positiveColor !important;
-	}
-	
-	/* === modal dialog === */
-	.modal .modal-dialog {
-		.modal-header {
+		.geekpreview-sticky-menu {
 			background-color: headerBg;
-			border: none;
 			color: headerColor;
-			button.close:hover {
-				color: errorColor;
-			}
 		}
-		.modal-body, .modal-footer {
-			background-color: moduleBg;
-			ul.list-group .list-group-item {
-				background-color: menuBg;
-			}
-		}
-		.modal-footer {
-			border-top: moduleBorder;
-		}
-		.panel-title {
+		.geekpreview-toolbar-primary-search form input.form-control {
+			background-color: inputBg;
+			border: inputBorderColor;
 			color: textColor;
 		}
-	}
+		.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher {
+			color: textColor;
+			a {
+				color: linkColor;
+			}
+		}
+		div.geekpreview-item-inner-info-header p.text-muted a {
+			color: linkColor;
+		}
+		.geekpreview-parent {
+			background-color: headerBg;
+			color: headerColor;
+			border: none;
+		}
+		.geekpreview-parent-info h2 a, .geekpreview-parent-social .btn, .geekpreview-parent-info a {
+			color: headerLinkColor;
+		}
+		.c-green-600 {
+			color: positiveColor !important;
+		}
 
+		/* === modal dialog === */
+		.modal .modal-dialog {
+			.modal-header {
+				background-color: headerBg;
+				border: none;
+				color: headerColor;
+				button.close:hover {
+					color: errorColor;
+				}
+			}
+			.modal-body, .modal-footer {
+				background-color: moduleBg;
+				ul.list-group .list-group-item {
+					background-color: menuBg;
+				}
+			}
+			.modal-footer {
+				border-top: moduleBorder;
+			}
+			.panel-title {
+				color: textColor;
+			}
+		}
+	}
 
 	
 /* ===== LEGACY PAGES ===== */
@@ -1510,7 +1550,7 @@ else
 				background-color: tableColor2n1 !important;
 			}
 		}
-		textarea, .infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
+		.infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select {
 			color: textColor;
 		}
 		div.article dl {
@@ -1620,23 +1660,20 @@ else
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox,  {
 			background-color: moduleBg;
 		}
-		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, textarea, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body, {
+		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body, {
 			background-color: menuBg;
 		}
 		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body {
 			border: menuBorder;
 		}
 		/* === input, select === */
-		input, .geekinput, .geekinput_medium, .geekinput_large, select {
+		input:not([type="button"]), .geekinput, .geekinput_medium, .geekinput_large, select {
 			background-color: inputBg;
 			border: inputBorder;
 		}
 		input[type="button"], .geekinput {
-			font-family: fontL !important;
 			font-size: fontSizeL !important;
 			font-weight: 600;
-			border-color: inputBorderColor;
-			border-radius: 2px;
 		}
 		
 		.post_numcomments::after, .post_numcomments::before {
@@ -1702,6 +1739,7 @@ else
 				color: headerColor;
 			}
 			tr th.questiontext {
+				background: transparent;
 				color: textColor;
 			}
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext {
