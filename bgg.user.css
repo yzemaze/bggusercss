@@ -79,7 +79,7 @@ buttonBg = menuBg
 buttonBorder = menuBorder
 buttonHoverBg = headerHoverBg
 buttonHoverColor = headerHoverColor
-buttonHoverRadius = headerHoverRadius
+buttonHoverRadius = 2px
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
@@ -163,6 +163,9 @@ else
 	/* popover */
 	.popover {
 		background-color: menuBg;
+		.dropdown-item:hover {
+			color: linkHover;
+		}
 	}
 	/* === text === */
 	p, textarea {
@@ -495,7 +498,7 @@ else
 			}
 			/* comment buttons */
 			ul.comment-actions > li button.comment-btn {
-				border-radius: headerHoverRadius;
+				border-radius: bottonHoverRadius;
 				&.active, &:focus, &:hover {
 					background-color: buttonHoverBg;
 					border-color: buttonHoverBg;
@@ -538,7 +541,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
+						border-radius: bottonHoverRadius;
 						color: buttonHoverColor;
 						margin: -2px -4px;
 						padding: 2px 4px;
@@ -579,7 +582,7 @@ else
 							&:hover {
 								background-color: buttonHoverBg;
 								border-color: buttonHoverBg;
-								border-radius: headerHoverRadius !important;
+								border-radius: bottonHoverRadius !important;
 								color: buttonHoverColor;
 								fa-icon.ng-fa-icon {
 									color: buttonHoverColor;
@@ -609,7 +612,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
+						border-radius: bottonHoverRadius;
 						color: buttonHoverColor;
 					}
 				}
@@ -618,7 +621,7 @@ else
 					&:hover {
 						background-color: buttonHoverBg;
 						border-color: buttonHoverBg;
-						border-radius: headerHoverRadius;
+						border-radius: bottonHoverRadius;
 						color: buttonHoverColor;
 						margin: -3px -5px;
 						padding: 3px 5px;
@@ -685,7 +688,7 @@ else
 						&:hover {
 							background-color: buttonHoverBg;
 							border-color: buttonHoverBg;
-							border-radius: headerHoverRadius;
+							border-radius: bottonHoverRadius;
 							color: buttonHoverColor;
 							.count, .label {
 								color: buttonHoverColor;
@@ -1143,7 +1146,7 @@ else
 						color: headerColor !important; // counter-i!
 						&:hover, &[aria-expanded="true"] {
 							background-color: buttonHoverBg;
-							border-radius: headerHoverRadius;
+							border-radius: bottonHoverRadius;
 							color: buttonHoverColor !important; // counter-i!
 							margin: -4px;
 							padding: 4px;
@@ -1157,7 +1160,7 @@ else
 				}
 				.module-pager .module-pager__arrow:not(.disabled):hover {
 					background-color: buttonHoverBg;
-					border-radius: headerHoverRadius;
+					border-radius: bottonHoverRadius;
 					color: buttonHoverColor;
 					margin: 5px;
 					padding: 5px;
@@ -1170,7 +1173,7 @@ else
 						padding: 5px;
 						&:hover {
 							background-color: buttonHoverBg;
-							border-radius: headerHoverRadius;
+							border-radius: bottonHoverRadius;
 							color: buttonHoverColor !important; // counter-i!
 						}
 					}
@@ -1245,13 +1248,13 @@ else
 		.game-header-subtype, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
 			a:hover {
 				background-color: buttonHoverBg;
-				border-radius: headerHoverRadius;
+				border-radius: bottonHoverRadius;
 				color: buttonHoverColor;
 			}
 		}
 		.gameplay-item .btn:not(.btn-empty):hover {
 			background-color: buttonHoverBg;
-			border-radius: headerHoverRadius;
+			border-radius: bottonHoverRadius;
 			color: buttonHoverColor;
 		}
 		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
@@ -1295,7 +1298,7 @@ else
 			&:hover {
 				background-color: buttonHoverBg;
 				border-color: buttonHoverBg;
-				border-radius: headerHoverRadius;
+				border-radius: bottonHoverRadius;
 				color: buttonHoverColor;
 			}
 		}
