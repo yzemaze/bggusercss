@@ -250,3 +250,23 @@ game page: font-size, buttons
 
 0.11.2
 revert: + articleNew/Selected Colors
+
+0.11.3
+comments: x thumbs hover
+game pages: header hover bg/colors
+file pages: buttons padding
+game pages: hover colors
+links/buttons consolidated
+new pages fixes
+legacy fixes
+geekpoll fix
+buttonHoverRadius
+legacy .comment_button
+
+0.11.4
+mobile: game page bg expandable overlay
+game pages: border colors
+game pages: files zebra style
+game pages: more zebra style wiki + more: link colors
+game pages: font size mobile: header bg
+geekmarket: bg, modal-header

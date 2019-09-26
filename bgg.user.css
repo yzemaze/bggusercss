@@ -1266,11 +1266,11 @@ else
 		.btn-white:hover {
 			border-color: buttonHoverBg !important; // counter-i!
 		}
-		.game-header-subtype, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
+		.game-header-flags, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
 			a:hover {
 				background-color: buttonHoverBg;
 				border-radius: buttonHoverRadius;
-				color: buttonHoverColor;
+				color: buttonHoverColor !important;
 			}
 		}
 		.gameplay-item .btn:not(.btn-empty):hover {
