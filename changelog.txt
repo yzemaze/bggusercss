@@ -274,3 +274,4 @@ geekmarket: bg, modal-header
 0.11.5
 mobile: sidebar fixes, search icon color
 search: bg, colors
+front page rightcol: dfp-medrect/margin fix

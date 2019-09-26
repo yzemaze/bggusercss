@@ -1100,9 +1100,9 @@ else
 			.geekcentral_module > center > a[href*="/geekpreview"]{
 				display: none;
 			}
-			.geekcentral_module.rightcol:nth-child(-n+2) {
+			.geekcentral_module.rightcol:nth-child(-n+3) {
 				margin-bottom: 0px;
-				#dfp-medrect-reserved-home {
+				#dfp-medrect-reserved-home, #dfp-medrect {
 					display: none;
 				}
 			}
