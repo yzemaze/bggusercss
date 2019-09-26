@@ -3,12 +3,12 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.12.0
+@version		0.12.1
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
 == specials ==
-@var	select		logo				'Logo'			["default", "BGG", "Ernie"]
+@var	select		logo				'Logo'		["default*", "BGG", "Ernie"]
 @var	checkbox	userMenuLeft		'User menu on the left'					0
 @var	checkbox	searchBarLeft		'Search bar left of menus'				0
 @var	checkbox	siteSelectorHide	'Hide site selector'					0
@@ -37,10 +37,10 @@
 @var	select		bodyFont			"… body text"							["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 @var	select		headerFont			"… header, buttons, small text …"		["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 == background colors ==
+@var 	color		headerBg			'Header background'						#3f3a60
 @var	color		mainBg				'Body background'						#aaa
 @var	color		mainBg2				'Main content background'				#bbb
 @var	color		textColor			'… text'								#222
-@var 	color		headerBg			'Header background'						#3f3a60
 @var	color		moduleBg			'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
 @var	color		menuBg				'Menus, dropdowns etc. background'		#ddd
@@ -80,11 +80,17 @@ buttonBorder = menuBorder
 buttonHoverBg = headerHoverBg
 buttonHoverColor = headerHoverColor
 buttonHoverRadius = 2px
+buttonHover = {
+	background-color: buttonHoverBg,
+	border-color: buttonHoverBg,
+	border-radius: buttonHoverRadius,
+	color: buttonHoverColor
+}
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
 fontSizeXL = 1.2rem
-fontSizeL = 0.875rem /* == fontSize set in config */
+fontSizeL = 0.875rem // == fontSize set in config
 fontSizeM = 0.75rem
 fontSizeS = 0.625rem
 
@@ -98,8 +104,14 @@ else
 	headerHoverBg = darken(headerBg, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
 	headerLinkColor = darken(headerColor, 20%)
-	
+
 headerHoverRadius = 2px
+headerHover = {
+	background-color: headerHoverBg,
+	border-color: headerHoverBg,
+	border-radius: headerHoverRadius,
+	color: headerHoverColor
+}
 inputBorder = 1px solid inputBorderColor
 
 if linkUnderlineStyle != "none"
@@ -122,7 +134,7 @@ else
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com") {
 	html {
 		font-family: headerFont;
-		font-size: round((fontSize/0.875)); /* body text = 0.875rem */
+		font-size: round((fontSize/0.875)); // body text = 0.875rem 
 	}
 	body {
 		background: mainBg;
@@ -147,8 +159,7 @@ else
 		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item {
 			color: textColor;
 			&:hover, &:visited:hover {
-				background-color: headerHoverBg;
-				color: headerHoverColor;
+				{headerHover}
 				text-decoration: linkStyle;
 			}
 		}
@@ -213,17 +224,12 @@ else
 	}
 	.btn:not(.disabled):not(.btn-empty):not(.btn-xs):not(.btn-primary), .btn-outline-secondary, input[type="button"] {
 		&:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			border-radius: buttonHoverRadius;
-			color: buttonHoverColor;
+			{buttonHover}
 		}
 	}
 	.btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
 		&:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			color: buttonHoverColor;
+			{buttonHover}
 			i {
 				color: buttonHoverColor;
 			}
@@ -242,8 +248,7 @@ else
 	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link {
 		color: textColor;
 		&:hover {
-			background-color: buttonHoverBg;
-			color: buttonHoverColor;
+			{buttonHover}
 		}
 	}
 	hr {
@@ -280,7 +285,7 @@ else
 					} 
 					a:first-child:after {			
 						content: "BGG";
-						color: headerColor; /* #ff5100 */
+						color: headerColor; // #ff5100 
 						font: fontXXL;
 						font-size: 36px;
 						font-weight: 900;
@@ -310,7 +315,7 @@ else
 				}
 				/* open user menu to the right */
 				div.c-nav-primary-user .dropdown-menu {
-					left: 217px !important; /* counter inline transform */
+					left: 217px !important; // counter inline transform 
 					right: auto !important;
 				}
 			}
@@ -354,26 +359,24 @@ else
 					}
 				}
 			}
-			/* site selector */
+			//  site selector 
 			gg-menu-logo .menu-logo-inner > .dropdown > button.dropdown-toggle[aria-haspopup="true"] {
 				color: headerColor !important;
 				border-radius: headerHoverRadius;
 				padding: 0.4em 0.5em;
 				&:hover {
-					background-color: headerHoverBg !important;
-					color: headerHoverColor !important;
+					{headerHover}
+					color: headerHoverColor !important; // counter-i!
 				}
 			}
-			/* search */
+			//  search 
 			.c-advanced {
 				background: menuBg;
 				color: textColor;
 				a, select.custom-select {
 					color: linkColor;
 					&:hover {
-						background: headerHoverBg;
-						border-color: headerHoverBg;
-						color: headerHoverColor;
+						{headerHover}
 					}
 				}
 				select.custom-select {
@@ -411,7 +414,7 @@ else
 					}
 					&:hover {
 						background-color: headerHoverBg;
-						padding: p=0.35em;
+						padding: 0.35em;
 						path {
 							fill: headerHoverColor;			
 						}
@@ -427,8 +430,7 @@ else
 					margin-left: 0;
 					padding: 0.7em 0.3em;
 					&:hover {
-						background-color: headerHoverBg;
-						color: headerHoverColor;
+						{headerHover}
 						path {
 							fill: headerHoverColor;			
 						}
@@ -441,8 +443,7 @@ else
 				border-radius: headerHoverRadius;
 				padding: 0.5em;
 				&:hover, &[aria-expanded="true"] {
-					background-color: headerHoverBg; 
-					color: headerHoverColor;
+					{headerHover}
 				}
 			}
 			/* fix for Angular8 header dropdowns to extend hover range */
@@ -466,8 +467,7 @@ else
 				background-color: headerBg;
 				color: headerColor;
 				&:hover {
-					background-color: headerHoverBg;
-					color: headerHoverColor;
+					{headerHover}
 				}
 			}
 			.geeksidebar-section-body {
@@ -493,8 +493,7 @@ else
 					padding: 0.15em 0.5em;
 				}
 				li:hover, li a:hover {
-					background-color: buttonHoverBg;
-					color: buttonHoverColor;
+					{buttonHover}
 				}
 			}
 		}
@@ -507,9 +506,10 @@ else
 				color: linkColor;
 			}
 			.btn:hover {
-				background-color: buttonHoverBg;
-				border: 1px solid buttonHoverBg;
-				color: buttonHoverColor;
+				{buttonHover}
+			}
+			.feedback-trigger {
+				border-radius: buttonHoverRadius;
 			}
 			/* thumbs button */		
 			.interaction-btn.thumbsup:hover path#thumbsup-outline {
@@ -528,8 +528,7 @@ else
 				gg-geekgold-quick-give.dropdown-menu.show {
 					background-color: menuBg;
 					button.dropdown-item:hover {
-						background-color: headerHoverBg;
-						color: headerHoverColor;
+						{headerHover}
 					}
 				}
 			}
@@ -537,10 +536,7 @@ else
 			ul.comment-actions > li button.comment-btn {
 				border-radius: buttonHoverRadius;
 				&.active, &:focus, &:hover {
-					background-color: buttonHoverBg;
-					border-color: buttonHoverBg;
-					border-radius: buttonHoverRadius;
-					color: buttonHoverColor;
+					{buttonHover}
 				}
 			}
 			/* input */
@@ -553,7 +549,7 @@ else
 			/* == header == */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg {
 				background-color: moduleBg;
-				margin: 0; /* fix different margins */
+				margin: 0; // fix different margins 
 				> span.c-crumb:first-of-type {
 					padding-left: 1em;
 				}
@@ -577,17 +573,14 @@ else
 				a {
 					color: linkColor;
 					&:hover {
-						background-color: buttonHoverBg;
-						border-color: buttonHoverBg;
-						border-radius: buttonHoverRadius;
-						color: buttonHoverColor;
+						{buttonHover}
 						margin: -2px -4px;
 						padding: 2px 4px;
 					}
 				}
 			}
 			gg-image-nav {
-				border-bottom: moduleBorder;
+				border-color: moduleBorderColor;
 				.image-metadata {
 					background-color: moduleBg;
 					&:hover {
@@ -597,7 +590,7 @@ else
 			}
 			gg-filepage-caption {
 				.filepage-metadata {
-					border-bottom: moduleBorder;
+					border-color: moduleBorderColor;
 					gg-license-editable {
 						background-color: moduleBg !important;
 						&:hover {
@@ -613,15 +606,12 @@ else
 				background-color: moduleBg;
 				border: moduleBorder;
 				.media-sidebar-actions {
-					border-bottom: moduleBorder;
+					border-color: moduleBorderColor;
 					gg-subscription-button, gg-image-size-dropdown, gg-share-buttons {
 						.btn {
 							border: none !important; // counter-i!
 							&:hover {
-								background-color: buttonHoverBg;
-								border-color: buttonHoverBg;
 								border-radius: buttonHoverRadius !important;
-								color: buttonHoverColor;
 								fa-icon.ng-fa-icon {
 									color: buttonHoverColor;
 								}
@@ -636,9 +626,7 @@ else
 					&.btn-tag {
 						background-color: buttonBg;
 						&:hover {
-							background-color: buttonHoverBg;
-							border-color: buttonHoverBg;
-							color: buttonHoverColor;
+							{buttonHover}
 						}
 					}
 				}
@@ -648,19 +636,13 @@ else
 				a.see-all-btn {
 					padding: 3px 5px;
 					&:hover {
-						background-color: buttonHoverBg;
-						border-color: buttonHoverBg;
-						border-radius: buttonHoverRadius;
-						color: buttonHoverColor;
+						{buttonHover}
 					}
 				}
 				.tag-link-wrapper button.btn-unstyled {
 					color: linkColor;
 					&:hover {
-						background-color: buttonHoverBg;
-						border-color: buttonHoverBg;
-						border-radius: buttonHoverRadius;
-						color: buttonHoverColor;
+						{buttonHover}
 						margin: -3px -5px;
 						padding: 3px 5px;
 						text-decoration: none;
@@ -702,9 +684,7 @@ else
 					border-color: moduleBorderColor;					
 				}
 				a:hover .file-badge, a:not(.loading) .file-badge:hover {
-					color: buttonHoverColor;
-					background-color: buttonHoverBg;
-					border-color: buttonHoverBg;
+					{buttonHover}
 				}
 			}
 			.view-all-container {
@@ -724,10 +704,7 @@ else
 					gg-reactions-popup-trigger a {
 						padding: 4px 8px;
 						&:hover {
-							background-color: buttonHoverBg;
-							border-color: buttonHoverBg;
-							border-radius: buttonHoverRadius;
-							color: buttonHoverColor;
+							{buttonHover}
 							.count, .label {
 								color: buttonHoverColor;
 							}
@@ -781,7 +758,7 @@ else
 					} 
 					a:first-child:after {			
 						content: "BGG";
-						color: headerColor; /* #ff5100 */
+						color: headerColor; // #ff5100 
 						font: fontXXL;
 						font-size: 36px;
 						font-weight: 900;
@@ -860,8 +837,8 @@ else
 			.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle {
 				color: headerColor !important; // counter-i!
 				&:hover, &[aria-expanded="true"], &:focus {
-					background-color: headerHoverBg;
-					color: headerHoverColor !important; /* override counter-i! */
+					{headerHover}
+					color: headerHoverColor !important; // override counter-i!
 				}
 			}
 			.btn.btn-empty.global-header-icon.global-header-nav-toggle {
@@ -887,9 +864,7 @@ else
 						background: menuBg;
 					}
 					a:hover {
-						background: headerHoverBg;
-						border-color: headerHoverBg;
-						color: headerHoverColor;
+						{headerHover}
 					}
 				}
 			}
@@ -935,23 +910,6 @@ else
 		.global-header-nav-search-advanced a:hover {
 			background-color: moduleBg;
 		}
-		/* links, buttons */
-		/*.btn:not(.disabled):not(.btn-empty):not(.btn-xs), .btn-outline-secondary {
-			&:hover {
-				background-color: buttonHoverBg;
-				color: buttonHoverColor;
-			}
-		}
-		.btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active {
-			&:hover {
-				background-color: buttonHoverBg;
-				border-color: buttonHoverBg;
-				color: buttonHoverColor;
-				i {
-					color: buttonHoverColor;
-				}
-			}
-		}*/
 
 		/* === front page === */
 		/* columns */
@@ -1071,8 +1029,7 @@ else
 				background-color: headerBg;
 				color: headerColor;
 				&:hover {
-					background-color: headerHoverBg;
-					color: headerHoverColor;
+					{headerHover}
 				}
 			}
 			.toggler-caret-target, .geeksidebar-section-body {
@@ -1099,8 +1056,7 @@ else
 				padding: 0.15em 0.5em;
 			}
 			li:hover, li a:hover {
-				background-color: buttonHoverBg;
-				color: buttonHoverColor;
+				{buttonHover}
 			}
 		}
 		/* === hidden modules === */
@@ -1196,7 +1152,7 @@ else
 				}
 			}
 			.dropdown-menu > li > button.btn:hover {
-				background-color: headerHoverBg;
+				{buttonHover}
 				color: headerHoverColor !important;
 			}
 		}
@@ -1224,8 +1180,7 @@ else
 					.dropdown-toggle {
 						color: headerColor !important; // counter-i!
 						&:hover, &[aria-expanded="true"] {
-							background-color: buttonHoverBg;
-							border-radius: buttonHoverRadius;
+							{buttonHover}
 							color: buttonHoverColor !important; // counter-i!
 							margin: -4px;
 							padding: 4px;
@@ -1233,14 +1188,11 @@ else
 					}
 					/* dropdown menus */
 					.dropdown-menu > li > button.btn:hover {
-						background-color: headerHoverBg;
-						color: headerHoverColor;
+						{buttonHover}
 					}
 				}
 				.module-pager .module-pager__arrow:not(.disabled):hover {
-					background-color: buttonHoverBg;
-					border-radius: buttonHoverRadius;
-					color: buttonHoverColor;
+					{buttonHover}
 					margin: 5px;
 					padding: 5px;
 				}
@@ -1251,8 +1203,7 @@ else
 						color: headerLinkColor !important;
 						padding: 5px;
 						&:hover {
-							background-color: buttonHoverBg;
-							border-radius: buttonHoverRadius;
+							{buttonHover}
 							color: buttonHoverColor !important; // counter-i!
 						}
 					}
@@ -1314,8 +1265,7 @@ else
 		.game-nav-tabs .nav.nav-tabs > li > a, .game-nav-tabs .nav.nav-tabs > li.active > a {
 			color: textColor;
 			&:hover {
-				background-color: buttonHoverBg;
-				color: buttonHoverColor;
+				{buttonHover}
 			}
 		}
 		@media (max-width:767px) {
@@ -1332,24 +1282,19 @@ else
 		}
 		/* hover colors */
 		.btn-primary:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			color: buttonHoverColor;
+			{buttonHover}
 		}
 		.btn-white:hover {
 			border-color: buttonHoverBg !important; // counter-i!
 		}
 		.game-header-flags, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope {
 			a:hover {
-				background-color: buttonHoverBg;
-				border-radius: buttonHoverRadius;
+				{buttonHover}
 				color: buttonHoverColor !important;
 			}
 		}
 		.gameplay-item .btn:not(.btn-empty):hover {
-			background-color: buttonHoverBg;
-			border-radius: buttonHoverRadius;
-			color: buttonHoverColor;
+			{buttonHover}
 		}
 		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male {
 			&:hover {
@@ -1369,7 +1314,7 @@ else
 			}
 			a:hover {
 				/* padding-left: 10px;*/
-				background-color: headerHoverBg;
+				{buttonHover}
 				color: headerHoverColor !important;
 			}
 		}
@@ -1377,7 +1322,7 @@ else
 			background-color: menuBg !important;
 		}
 		.summary-border .summary-item {
-			border-bottom: menuBorder;
+			border-color: menuBorderColor;
 		}
 		/* overview – images */
 		.summary-media-grid-count {
@@ -1390,10 +1335,7 @@ else
 				}
 			}
 			&:hover {
-				background-color: buttonHoverBg;
-				border-color: buttonHoverBg;
-				border-radius: buttonHoverRadius;
-				color: buttonHoverColor;
+				{buttonHover}
 			}
 		}
 		/* sections */
@@ -1450,8 +1392,7 @@ else
 				color: linkHover;		
 			}
 			.summary-item-tag a:hover {
-				background: buttonHoverBg;
-				color: buttonHoverColor;
+				{buttonHover}
 			}
 		}
 		.summary-item-counts:hover .summary-item-counts-item {
@@ -1523,23 +1464,19 @@ else
 						color: linkVisited;
 					}	
 					&:hover {
-						background-color: buttonHoverBg;
-						color: buttonHoverColor;
+						{buttonHover}
 					}
 				}
 				li.summary-item .summary-item-meta > .summary-item-tag > a {
 					&:hover {
-						background-color: buttonHoverBg;
-						color: buttonHoverColor;
+						{buttonHover}
 					}
 				}
 			}
 		}
 		/* files */
 		.summary-file-type a:hover {
-			background-color: buttonHoverBg;
-			border-color: buttonHoverBg;
-			color: buttonHoverColor;
+			{buttonHover}
 		}
 		/* more */
 		ul.list-block-border > li {
@@ -1579,7 +1516,7 @@ else
 		}
 		.geekpreview-toolbar-primary-search form input.form-control {
 			background-color: inputBg;
-			border: inputBorderColor;
+			border-color: inputBorderColor;
 			color: textColor;
 		}
 		.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher {
@@ -1689,7 +1626,7 @@ else
 		.forum_table td, .forum_index_table td {
 			color: textColor;
 			background-color: moduleBg;
-			border-bottom: moduleBorder;
+			border-color: moduleBorderColor;
 		}
 		.forum_table, .forum_index_table {
 			border-spacing: 0;
@@ -1729,7 +1666,7 @@ else
 			color: textColor;
 		}
 		div.article dl {
-			border-bottom: moduleBorder;
+			border-color: moduleBorderColor;
 		}
 		div.article dd.right, div.article dd.doubleright, div.article dd.commands, div.article dd.doublecommands {
 			border-left: moduleBorder;
@@ -1786,10 +1723,7 @@ else
 			border-color: linkColor;
 			background-color: buttonBg;
 			&:hover {
-				background-color: buttonHoverBg;
-				border-color: buttonHoverBg;
-				border-radius: buttonHoverRadius;
-				color: buttonHoverColor;
+				{buttonHover}
 			}
 		}
 		a, a:link {
@@ -1881,7 +1815,7 @@ else
 			border: moduleBorder;
 		}
 		.geeklist_item_title {
-			border-bottom: moduleBorder;
+			border-color: moduleBorderColor;
 		}
 		#header {
 			border-top: menuBorder;
@@ -1904,7 +1838,7 @@ else
 		}
 		div#mychecks > table > tbody > tr {
 			border: 0px !important;
-			border-bottom: moduleBorder;
+			border-color: moduleBorderColor;
 		}
 		td.sf div[style*="background-color"] {
 			background-color: mainBg !important;
@@ -1961,8 +1895,7 @@ else
 		
 		/* === user profile === */
 		.tabOn {
-			background-color: headerHoverBg;
-			color: headerHoverColor;
+			{headerHover}
 		}
 		.tabOff a:link, .profile_title a  {
 			color: headerLinkColor;
@@ -1972,12 +1905,11 @@ else
 				padding: 4px 10px;
 			}
 			a:hover {
-				background-color: headerHoverBg;
-				color: headerHoverColor;
+				{headerHover}
 			}
 		}
 		.tabOn a:link {
-				background-color: headerHoverBg;
+				{headerHover}
 				color: headerHoverColor !important;
 				text-decoration: linkStyle;
 		}
@@ -2008,7 +1940,7 @@ else
 				a {
 					color: headerLinkColor;
 					&:hover {
-						background-color: headerHoverBg;
+						{headerHover}
 						color: headerHoverColor !important;
 					}
 				}
@@ -2021,7 +1953,7 @@ else
 			white-space: normal;
 		}
 		.editfield:hover {
-			background-color: headerHoverBg;
+			{buttonHover}
 		}
 		
 		/* === subscription icon === */
@@ -2051,11 +1983,11 @@ else
 			background-color: headerBg;
 			color: headerColor;
 			a {
-				color: headerLinkColor !important;
+				color: headerLinkColor !important; // counter-i
+				padding: 1px 3px;
 				&:hover {
-					background-color: headerHoverBg;
-					color: headerHoverColor !important;
-					padding: 3px;
+					{headerHover}
+					color: headerHoverColor !important; // counter-i!
 				}
 			}
 		}
@@ -2063,9 +1995,9 @@ else
 			border: none;
 		}
 		input[type="submit"] {
+			border-radius: buttonHoverRadius;
 			&:hover {
-				background-color: buttonHoverBg;
-				color: buttonHoverColor;				
+				{buttonHover}				
 			}
 		}
 	}
