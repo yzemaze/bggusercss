@@ -270,3 +270,7 @@ game pages: files zebra style
 game pages: more zebra style wiki + more: link colors
 game pages: font size mobile: header bg
 geekmarket: bg, modal-header
+
+0.11.5
+mobile: sidebar fixes, search icon color
+search: bg, colors

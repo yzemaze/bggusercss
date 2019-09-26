@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.11.4
+@version		0.11.5
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -252,8 +252,9 @@ else
 	hr+br {
 		display: none;
 	}
+/* ===== /new pages ===== */
 	
-/* ===== Angular 8 PAGES ===== */
+/* ===== ANGULAR 8 PAGES ===== */
 	/* ==== header, file, image & video pages ==== */
 	gg-app {
 		/* ==== header ==== */
@@ -362,6 +363,25 @@ else
 					background-color: headerHoverBg !important;
 					color: headerHoverColor !important;
 				}
+			}
+			/* search */
+			.c-advanced {
+				background: menuBg;
+				color: textColor;
+				a, select.custom-select {
+					color: linkColor;
+					&:hover {
+						background: headerHoverBg;
+						border-color: headerHoverBg;
+						color: headerHoverColor;
+					}
+				}
+				select.custom-select {
+					background: menuBg;
+				}
+			}
+			.c-inner gg-header-search.c-mobile {
+				background: headerBg;
 			}
 			/* geekmail */
 			gg-geekmail-notifications {
@@ -717,9 +737,15 @@ else
 			}
 		}
 	}
+/* ===== /angular8 pages ===== */
 	
 /* ===== AngularJS PAGES ===== */
 	body.ng-scope {
+		.btn-indigo {
+			background: headerBg;
+			border-color: headerBg;
+			color: headerColor;
+		}
 	/* ==== header ==== */
 		.global-header {
 			/* === logo === */
@@ -838,6 +864,24 @@ else
 				border-radius: headerHoverRadius;		
 				padding: 7px 9px;
 			}
+			/* search */
+			.global-header-nav-search {
+				.global-header-nav-search-inner {
+					background: mainBg;
+				}
+				.global-header-nav-search-advanced {
+					background: menuBg;
+					span.btn {
+						background: menuBg;
+					}
+					a:hover {
+						background: headerHoverBg;
+						border-color: headerHoverBg;
+						color: headerHoverColor;
+					}
+				}
+			}
+			/* geekmail */
 			geekmail-notifications a.global-header-icon {
 				border-radius: headerHoverRadius;
 				padding: 4px 7px;
@@ -1556,8 +1600,32 @@ else
 				color: textColor;
 			}
 		}
+		/* === MOBILE === */
+		.has-mobile-nav {
+			.global-header-nav-primary-wrapper {
+				background: mainBg;
+				ul.global-header-nav-primary {
+					background: moduleBg;
+					color: textColor;
+					button.btn {
+						color: textColor !important;
+					}
+				}
+				li.dropdown {
+					border-color: moduleBorderColor;
+				}
+			}
+			.global-secondary-nav-section-header {
+				background: headerBg;
+				color: headerColor;
+			}
+		}
+		div.global-header-nav-mobile-links button.global-header-icon {
+			color: headerColor;
+		}
 	}
-
+/* ===== /angularjs pages ===== */
+	
 	
 /* ===== LEGACY PAGES ===== */
 	.legacy {
