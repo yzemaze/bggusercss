@@ -3,7 +3,7 @@
 @description	Easy customization of BGG's UI with user.css
 @namespace		https://github.com/yzemaze/bggusercss/
 @supportURL		https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version		0.11.5
+@version		0.12.0
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
@@ -472,8 +472,9 @@ else
 			}
 			.geeksidebar-section-body {
 				background-color: moduleBg;
+				padding: 0.2em 0;
 				.geeksidebar-links > li:not(:last-child) {
-					border-bottom: moduleBorder;
+					border-color: mainBg;
 				}
 				.btn, .quickbar-pagination .btn, .quickbar-header .color-icon {
 					color: linkColor;
@@ -481,8 +482,19 @@ else
 						color: linkHover;
 					}
 				}
-				a:hover {
-					color: linkHover;
+				/* row hover */
+				div.quickbar-header {
+					padding: 0 0.5em;
+				}
+				.quickbar-list li {
+					min-height: 1.7em;
+				}
+				li {
+					padding: 0.15em 0.5em;
+				}
+				li:hover, li a:hover {
+					background-color: buttonHoverBg;
+					color: buttonHoverColor;
 				}
 			}
 		}
@@ -1048,30 +1060,47 @@ else
 		}
 
 		/* ==== sidebar ==== */
-		.global-secondary-nav-section .global-secondary-nav-section-header.toggler-caret {
-			background-color: headerBg;
-			color: headerColor;
-			&:hover {
-				background-color: headerHoverBg;
-				color: headerHoverColor;
-			}
-		}
-		.global-secondary-nav-section .toggler-caret-target, .geeksidebar-section-body {
-			background-color: moduleBg;
-		}
-		ul.global-secondary-nav-links > li {
-			border-bottom: moduleBorder;
-		}
-		.quickbar-list-group {
-			margin-bottom: -5px;
-		}
-		ul.global-secondary-nav-links a:hover, .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover {
-			color: linkHover;
-		}
 		if quickbarSticky {
 			.global-body-content-container .global-secondary-nav {
 				position: sticky;
 				top: 72px;
+			}
+		}
+		.global-secondary-nav-section {
+			.global-secondary-nav-section-header.toggler-caret {
+				background-color: headerBg;
+				color: headerColor;
+				&:hover {
+					background-color: headerHoverBg;
+					color: headerHoverColor;
+				}
+			}
+			.toggler-caret-target, .geeksidebar-section-body {
+				padding: 0.2em 0;
+				background-color: moduleBg;
+			}
+			ul.global-secondary-nav-links > li {
+				border-color: mainBg;
+			}
+			.quickbar-list-group {
+				margin-bottom: -5px;
+			}
+			.quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover {
+				color: linkHover;
+			}
+			/* row hover */
+			div.quickbar-header {
+				padding: 0 0.5em;
+			}
+			.quickbar-list li {
+				min-height: 1.7em;
+			}
+			li {
+				padding: 0.15em 0.5em;
+			}
+			li:hover, li a:hover {
+				background-color: buttonHoverBg;
+				color: buttonHoverColor;
 			}
 		}
 		/* === hidden modules === */
