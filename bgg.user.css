@@ -1297,12 +1297,11 @@ textStyle()
 			border articleSelectedBorder
 		.quotetitle
 			bg quoteTitle
-			border quoteBorder
-			border-bottom none
 			c quoteTitle
 		.quote
 			bg quote
 			border quoteBorder
+			border-top none
 			c quote
 			
 		/* === links === */

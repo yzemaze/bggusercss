@@ -285,3 +285,4 @@ buttonHoverStyle(), headerHoverStyle()
 maintenance: {};: /* */, background etc.
 textStyle(), inputStyle(), headerStyle(), linkStyle()
 bg(), c()
+quoteBorder
