@@ -283,5 +283,5 @@ sidebar: hover bg/color
 feedback button
 buttonHoverStyle(), headerHoverStyle()
 maintenance: {};: /* */, background etc.
-textStyle(), inputStyle(), headerStyle()
-linkStyle(), bg()
+textStyle(), inputStyle(), headerStyle(), linkStyle()
+bg(), c()
