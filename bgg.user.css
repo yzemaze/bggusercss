@@ -7,24 +7,27 @@
 @author			yzemaze
 @license		CC-BY-NC 4.0
 @preprocessor stylus
+
 == specials ==
-@var	select		logo				'Logo'		["default*", "BGG", "Ernie"]
+@var	select		logo				'Logo'									["default*", "BGG", "Ernie"]
 @var	checkbox	userMenuLeft		'User menu on the left'					0
 @var	checkbox	searchBarLeft		'Search bar left of menus'				0
 @var	checkbox	siteSelectorHide	'Hide site selector'					0
-@var	checkbox	editHomepageHide 	'Hide subdomain dropdown / edit homepage'	0
-@var	checkbox	announcementHide	'Hide announcements'					0
-@var	checkbox	contestHide			'Hide contests'							0
-@var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen etc.)'	0
-@var	checkbox	skyscraperHide 		'Hide skyscraper ad'					0
+@var	checkbox	editHomepageHide 	'… subdomain dropdown / edit homepage'	0
+@var	checkbox	announcementHide	'… announcements'						0
+@var	checkbox	contestHide			'… contests'							0
+@var	checkbox	geekpreviewHide		'… geekpreviews (GenCon, Essen etc.)'	0
+@var	checkbox	skyscraperHide 		'… skyscraper ad'						0
 @var	range		pageWidth			'Max width of page'						[1550,770,3840,10,"px"]
+
+== front page ==
 @var	range		columns				'Front page columns'					[2,2,5,1]
 @var	checkbox	frontpageCondensed	'… less whitespace'						1
-@var	color		fpColor2n			'… background of even rows'				#ddd
-@var	color		fpColor2n1			'… background of odd rows'				#ccc
+@var	color		fp2nBgColor			'… background of even rows'				#ddd
+@var	color		fp2n1BgColor		'… background of odd rows'				#ccc
 @var	color		fpLinkColor			'… links'								#222
-@var	color		fpLinkVisited		'… links visited'						#666
-@var	select		fpLinkWeight		'… link weight'	["bold","bolder","lighter","normal*"]
+@var	color		fplinkVisitedColorColor		'… links visited'						#666
+@var	select		fpLinkWeight		'… link weight'							["bold", "bolder", "lighter", "normal*"]
 @var	color		metadataColor		'Post metadata'							#666
 @var	checkbox	metadataInline		'… inline'								0
 @var	checkbox	titleTruncation		'… truncate titles'						1
@@ -32,59 +35,67 @@
 @var	checkbox	metadataAuthorHide	'… hide author'							0
 @var	checkbox	metadataReactionsHide	'… hide reactions'					0
 @var	checkbox	quickbarSticky		'Quickbar etc. sticky'					1
+
 == fonts ==
 @var	range		fontSize			"Font size text"						[14,6,36,1,"px"]
 @var	select		bodyFont			"… body text"							["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 @var	select		headerFont			"… header, buttons, small text …"		["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
-==  background-color colors ==
-@var 	color		headerBg			'Header background'						#3f3a60
-@var	color		mainBg				'Body background'						#aaa
-@var	color		mainBg2				'Main content background'				#bbb
-@var	color		textColor			'… text'								#222
-@var	color		moduleBg			'Module background'						#ccc
+
+==  background & border colors ==
+@var 	color		headerBgColor		'Header background'						#3f3a60
+@var	color		mainBgColor			'Body background'						#aaa
+@var	color		mainBgColor2Color	'Main content background'				#bbb
+@var	color		moduleBgColor		'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
-@var	color		menuBg				'Menus, dropdowns etc. background'		#ddd
+@var	color		menuBgColor			'Menus, dropdowns etc. background'		#ddd
 @var	color		menuBorderColor		'… border'								#999
-@var	color		inputBg				'Input background'						#eee
+@var	color		inputBgColor		'Input background'						#eee
 @var	color		inputBorderColor	'… border'								#999
-@var	color		tableColor2n		'Tables even rows'						#ddd
-@var	color		tableColor2n1		'… odd rows'							#ccc
+@var	color		table2nBgColor		'Tables even rows'						#ddd
+@var	color		table2n1BgColor		'… odd rows'							#ccc
+
 == text colors ==
+@var	color		textColor			'Text'									#222
 @var	color		linkColor			'Links'									#0053b7
-@var	color		linkHover			'… hover'								#c5130e
-@var	color		linkSelected		'… selected'							#fdad2f
+@var	color		linkHoverColor		'… hover'								#c5130e
+@var	color		linkSelectedColor	'… selected'							#fdad2f
 @var	select		linkUnderlineStyle	'… underline style'				["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
-@var	color		linkVisited			'… visited'								#666
+@var	color		linkVisitedColor	'… visited'								#666
 @var	color		positiveColor		'Positive values'						#01ac01
 @var	color		errorColor			'New item, negative values, errors'		#ff5100
+
 == game pages ==
-@var	color		gamepageHeaderColor	'Game pages header text'				#ddd
+@var	color		gamepageHeaderColor	'Game pages: header text'				#ddd
 @var	checkbox	promotedVideoHide	'… hide promoted videos'				0
 @var	checkbox	recommendationsHide	'… hide recommendations "Fans Also Like"'	0
+
 == geeklists, forum ==
 @var	color		articleNewColor		'Article/item new border'				#CE6C6D
-@var	color		articleSelectedColor	'… selected border'				#000AFF
+@var	color		articleSelectedColor	'… selected border'					#000AFF
+
 == subscriptions ==
 @var	checkbox	nextAlways			'Subscriptions display NEXT when empty'	0
 @var	checkbox	nextChange			'… change next new sub icon'			0
 @var	text		nextIcon			'… icon (unicode)'						138			
-@var	color		nextColor			'… icon'								#01ac01
-@var	range		nextSize			'… size'								[1.5,1,6,0.25,"em"]
+@var	color		nextIconColor		'… icon'								#01ac01
+@var	range		nextIconSize		'… size'								[1.5,1,6,0.25,"em"]
 ==/UserStyle== */
 
 /* ===== VARS ===== */
 articleNewBorder = solid 3px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
-buttonBg = menuBg
+borderRadius = 2px
+buttonBg = menuBgColor
 buttonBorder = menuBorder
 buttonHoverBg = headerHoverBg
 buttonHoverColor = headerHoverColor
-buttonHoverRadius = 2px
+buttonHoverRadius = borderRadius
 buttonHover()
 	background-color buttonHoverBg
 	border-color buttonHoverBg
 	border-radius buttonHoverRadius
 	color buttonHoverColor
+
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
@@ -93,50 +104,65 @@ fontSizeL = 0.875rem // == fontSize set in config
 fontSizeM = 0.75rem
 fontSizeS = 0.625rem
 
-if dark(headerBg)
-	headerColor = lighten(headerBg, 85%)
-	headerHoverBg = lighten(headerBg, 50%)
+if dark(headerBgColor)
+	headerColor = lighten(headerBgColor, 85%)
+	headerHoverBg = lighten(headerBgColor, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 	headerLinkColor = lighten(headerColor, 20%)
 else
-	headerColor = darken(headerBg, 85%)
-	headerHoverBg = darken(headerBg, 50%)
+	headerColor = darken(headerBgColor, 85%)
+	headerHoverBg = darken(headerBgColor, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
 	headerLinkColor = darken(headerColor, 20%)
 
-headerHoverRadius = 2px
+headerHoverRadius = borderRadius
 headerHover()
 	background-color headerHoverBg
 	border-color headerHoverBg
 	border-radius headerHoverRadius
 	color headerHoverColor
+headerStyle()
+	background-color headerBgColor
+	color headerColor
+	
 inputBorder = 1px solid inputBorderColor
+inputStyle()
+	background-color inputBgColor
+	border inputBorder
+	border-radius borderRadius
+	textStyle()
 
 if linkUnderlineStyle != "none"
 	linkStyle = underline linkUnderlineStyle
 else
 	linkStyle = none
+
 menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
-quoteTitleBg = headerBg
+quoteTitleBg = headerBgColor
 quoteTitleColor = headerColor
 quoteBorder = moduleBorder
 
-if dark(moduleBg)
-	quoteBg = lighten(moduleBg, 10%)
+if dark(moduleBgColor)
+	quoteBg = lighten(moduleBgColor, 10%)
 	quoteColor = darken(textColor, 5%)
 else
-	quoteBg = darken(moduleBg, 5%)
+	quoteBg = darken(moduleBgColor, 5%)
 	quoteColor = lighten(textColor, 5%)
+
+textStyle()
+	color textColor
+	
 /* ===== /vars ===== */
+
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
 	html
 		font-family headerFont
 		font-size round((fontSize/0.875)) // body text = 0.875rem 
 	body
-		 background-color mainBg
-		color textColor
-		font-family:headerFont
+		background-color mainBgColor
+		textStyle()
+		font-family headerFont
 		font-size 0.875rem
 
 	/* ===== NEW PAGES ===== */
@@ -150,32 +176,32 @@ else
 	/* === menus === */
 	/* dropdowns */
 	.dropdown-menu
-		background-color menuBg
+		background-color menuBgColor
 		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item
-			color textColor
+			textStyle()
 			&:hover, &:visited:hover
 				headerHover()
 				text-decoration linkStyle
 	/* modal dialogs */
 	div.modal-content
-		background-color moduleBg
+		background-color moduleBgColor
 		.list-group-item
-			 background-color menuBg
+			background-color menuBgColor
 	/* popover */
 	.popover
-		background-color menuBg
+		background-color menuBgColor
 		.dropdown-item:hover
-			color linkHover
+			color linkHoverColor
 	/* overlay */
 	.expandable div.expandable-envelope p.expandable-overlay
-		background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), mainBg2)
+		background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), mainBgColor2Color)
 		
 	/* === text === */
 	p, textarea
-		color textColor
+		textStyle()
 		font-family bodyFont
 	.text-muted:hover
-		color textColor !important // counter-i!
+		textStyle() !important // counter-i!
 		filter opacity(100%)
 		
 	/* === links, buttons === */
@@ -183,20 +209,20 @@ else
 		outline none !important
 	a, .link-muted-color
 		&:hover
-			color linkHover
+			color linkHoverColor
 			text-decoration linkStyle	
 	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
 		color linkColor
 	.link-text:link, .link-text:visited
-		color textColor
+		textStyle()
 	a:visited, .link-text-color:visited
-		color linkVisited
+		color linkVisitedColor
 	a:hover, .link-text-color:hover
-		color linkHover
+		color linkHoverColor
 	.outline.outline-muted a:hover:not(.btn)
-		color linkHover
+		color linkHoverColor
 	a.selected
-		color linkSelected !important
+		color linkSelectedColor !important
 	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover
 		text-decoration linkStyle
 	.btn:not(.disabled):not(.btn-empty):not(.btn-xs):not(.btn-primary), .btn-outline-secondary, input[type="button"]
@@ -210,15 +236,13 @@ else
 				
 	/* === inputs, forms === */
 	input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
-		background-color inputBg
-		border inputBorder
-		color textColor
+		inputStyle()
 		&:focus
-			background-color inputBg
+			background-color inputBgColor
 			
 	/* === navigation === */
 	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link
-		color textColor
+		textStyle()
 		&:hover
 			buttonHover()	
 			
@@ -297,7 +321,7 @@ else
 
 			/* === colors === */
 			> header.header > .container-fluid
-				background-color headerBg
+				headerStyle()
 
 			/* === sidebar toggle === */
 			div.c-inner button.btn.btn-empty.header-icon
@@ -321,16 +345,16 @@ else
 					
 			/* === search === */
 			.c-advanced
-				 background-color menuBg
-				color textColor
+				background-color menuBgColor
+				textStyle()
 				a, select.custom-select
 					color linkColor
 					&:hover
 						headerHover()
 				select.custom-select
-					 background-color menuBg
+					background-color menuBgColor
 			.c-inner gg-header-search.c-mobile
-				 background-color headerBg			
+				headerStyle()			
 
 			/* === geekmail === */
 			gg-geekmail-notifications
@@ -392,19 +416,18 @@ else
 				top 70px
 		.geeksidebar-section
 			.geeksidebar-section-header.toggler-caret
-				background-color headerBg
-				color headerColor
+				headerStyle()
 				&:hover
 					headerHover()
 			.geeksidebar-section-body
-				background-color moduleBg
+				background-color moduleBgColor
 				padding 0.2em 0
 				.geeksidebar-links > li:not(:last-child)
-					border-color mainBg
+					border-color mainBgColor
 				.btn, .quickbar-pagination .btn, .quickbar-header .color-icon
 					color linkColor
 					&:hover
-						color linkHover
+						color linkHoverColor
 				/* row hover */
 				div.quickbar-header
 					padding 0 0.5em
@@ -417,7 +440,7 @@ else
 					
 		/* ==== body ==== */
 		div.global-body-content, .global-body-content-primary
-			background-color mainBg2
+			background-color mainBgColor2Color
 			gg-markup-text
 				font-family bodyFont
 			
@@ -439,7 +462,7 @@ else
 					&#coin-outline
 						fill #a37900				
 				gg-geekgold-quick-give.dropdown-menu.show
-					background-color menuBg
+					background-color menuBgColor
 					button.dropdown-item:hover
 						headerHover()
 			/* comment buttons */
@@ -450,21 +473,19 @@ else
 					
 			/* === input === */
 			input, textarea, .form-control, textarea.form-control[readonly]
-				background-color inputBg
-				border inputBorder
-				color textColor
+				inputStyle()
 
 			/* === image pages, gallery, file pages, video pages === */
 			/* == header == */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg
-				background-color moduleBg
+				background-color moduleBgColor
 				margin 0 // fix different margins 
 				> span.c-crumb:first-of-type
 					padding-left 1em			
 			.c-container,  gg-image-nav .image-nav, gg-comment
-				background-color moduleBg
+				background-color moduleBgColor
 				.popover
-					background-color menuBg !important			
+					background-color menuBgColor !important			
 			.c-container
 				border moduleBorder !important
 			gg-markup-quote
@@ -482,20 +503,20 @@ else
 			gg-image-nav
 				border-color moduleBorderColor
 				.image-metadata
-					background-color moduleBg
+					background-color moduleBgColor
 					&:hover
-						color textColor				
+						textStyle()				
 			gg-filepage-caption
 				.filepage-metadata
 					border-color moduleBorderColor
 					gg-license-editable
-						background-color moduleBg !important
+						background-color moduleBgColor !important
 						&:hover
-							color textColor			
+							textStyle()			
 			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon
-				color linkHover
+				color linkHoverColor
 			.media-sidebar
-				background-color moduleBg
+				background-color moduleBgColor
 				border moduleBorder
 				.media-sidebar-actions
 					border-color moduleBorderColor
@@ -514,7 +535,7 @@ else
 						&:hover
 							buttonHover()
 				a.dropdown:hover fa-icon.ng-fa-icon
-					color linkHover
+					color linkHoverColor
 				a.see-all-btn
 					padding 3px 5px
 					&:hover
@@ -547,7 +568,7 @@ else
 				background-color buttonBg
 				border buttonBorder
 				&:hover
-					color linkHover
+					color linkHoverColor
 			gg-timeline-item .timeline-data
 				border-color moduleBorderColor
 				gg-file + gg-file
@@ -560,7 +581,7 @@ else
 					box-shadow none
 			gg-comments-block .panel
 				button.flex-grow-1
-					background-color menuBg
+					background-color menuBgColor
 				gg-comment
 					border moduleBorder
 					margin 0.5em 0
@@ -576,15 +597,14 @@ else
 		/* ==== footer ==== */
 		div.global-body-content-secondary .geekfooter
 			a:hover
-				color linkHover
+				color linkHoverColor
 	/* ===== /angular8 pages ===== */
 
 	/* ===== AngularJS PAGES ===== */
 	body.ng-scope
 		.btn-indigo
-			 background-color headerBg
-			border-color headerBg
-			color headerColor
+			headerStyle()
+			border-color headerBgColor
 			
 		/* ==== header ==== */
 		.global-header
@@ -661,7 +681,7 @@ else
 				text-decoration linkStyle
 
 			/* === colors === */
-			background-color headerBg
+			headerStyle()
 			.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle
 				color headerColor !important // counter-i!
 				&:hover, &[aria-expanded="true"], &:focus
@@ -679,11 +699,11 @@ else
 			/* === search === */
 			.global-header-nav-search
 				.global-header-nav-search-inner
-					 background-color mainBg
+					background-color mainBgColor
 				.global-header-nav-search-advanced
-					 background-color menuBg
+					background-color menuBgColor
 					span.btn
-						 background-color menuBg
+						background-color menuBgColor
 					a:hover
 						headerHover()
 
@@ -704,22 +724,21 @@ else
 				font-size fontSizeM !important
 				font-weight 700
 			.ui-select-bootstrap .ui-select-choices-row.active > a
-				background-color headerBg
-				color headerColor
+				headerStyle()
 			if siteSelectorHide
 				button.global-header-site-selector
 					display none
 
 		/* ==== body ==== */
 		.global-body-content, footer.global-footer
-			background-color mainBg2
+			background-color mainBgColor2Color
 
 		.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a
-			color textColor
+			textStyle()
 		.btn-success
 			background-color positiveColor
 		.global-header-nav-search-advanced a:hover
-			background-color moduleBg
+			background-color moduleBgColor
 
 		/* === front page === */
 		/* == columns == */
@@ -736,9 +755,9 @@ else
 				.geekcentral_rightcol > .geekcentral_module
 					break-inside avoid
 		.global-body-content-primary
-			background-color mainBg2
+			background-color mainBgColor2Color
 		ul.geekcentral-controls
-			background-color moduleBg
+			background-color moduleBgColor
 			border moduleBorder
 		if frontpageCondensed
 			.media-cell
@@ -784,17 +803,17 @@ else
 			border menuBorder
 			border-top none
 		.media-header
-			background-color headerBg
-		.media-header, h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager 
+			headerStyle()
+		h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager 
 			color headerColor
 
 		/* == zebra striped modules == */
 		.geekcentral
 			.media-module
 				.media-cell:nth-child(2n)
-					background-color fpColor2n
+					background-color fp2nBgColor
 				.media-cell:nth-child(2n+1)
-					background-color fpColor2n1
+					background-color fp2n1BgColor
 
 		/* === sidebar === */
 		if quickbarSticky
@@ -803,19 +822,18 @@ else
 				top 72px
 		.global-secondary-nav-section
 			.global-secondary-nav-section-header.toggler-caret
-				background-color headerBg
-				color headerColor
+				headerStyle()
 				&:hover
 					headerHover()
 			.toggler-caret-target, .geeksidebar-section-body
 				padding 0.2em 0
-				background-color moduleBg
+				background-color moduleBgColor
 			ul.global-secondary-nav-links > li
-				border-color mainBg
+				border-color mainBgColor
 			.quickbar-list-group
 				margin-bottom -5px
 			.quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover
-				color linkHover
+				color linkHoverColor
 			/* row hover */
 			div.quickbar-header
 				padding 0 0.5em
@@ -848,9 +866,8 @@ else
 
 		/* === panels === */
 		.panel-default > .panel-heading, .panel-primary > .panel-heading
-			background-color headerBg
+			headerStyle()
 			border moduleBorder
-			color headerColor
 
 		/* === fonts === */
 		/* AngularJS only, Angular 8 rem */
@@ -873,7 +890,7 @@ else
 
 		/* === text-colors === */
 		h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price
-			color textColor
+			textStyle()
 		.text-muted:not(label)
 			filter opacity(60%)
 
@@ -882,7 +899,7 @@ else
 			button, .link-text-color:link
 				color fpLinkColor
 				&.btn.btn-empty:hover
-					color linkHover				
+					color linkHoverColor				
 			.dropdown-menu > li > button.btn:hover
 				buttonHover()
 				color headerHoverColor !important
@@ -893,9 +910,9 @@ else
 				color fpLinkColor
 			.link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link
 				&:hover
-					color linkHover
+					color linkHoverColor
 			.link-text-color:visited
-				color fpLinkVisited
+				color fplinkVisitedColorColor
 			.link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a
 				font-weight fpLinkWeight
 			a.post-meta__link, a.post-meta__link:visited
@@ -920,8 +937,7 @@ else
 					margin 5px
 					padding 5px
 				.media-filters
-					background-color headerBg
-					color headerColor
+					headerStyle()
 					.media-link
 						color headerLinkColor !important
 						padding 5px
@@ -934,28 +950,27 @@ else
 
 		/* === zebra striped tables === */
 		table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"]
-			background-color tableColor2n !important
+			background-color table2nBgColor !important
 		table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"]
-			background-color tableColor2n1
+			background-color table2n1BgColor
 
 		/* === geekmarket === */
 		div[ng-controller="GeekMarketCtrl"]
 			.white-bg
-				background-color moduleBg
+				background-color moduleBgColor
 			nav.navbar-static-side li.active, .panel-primary, .dropdown-menu
-				background-color menuBg
+				background-color menuBgColor
 			nav.navbar-static-side  li > a:hover
-				background-color headerBg
+				headerHover()
 			nav.navbar-static-side li.active > a
-				color linkSelected
+				color linkSelectedColor
 			.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu
 				border menuBorder
 			div.panel-heading
 				border none
 			div#confirm div.modal-header
-				background-color headerBg
+				headerStyle()
 				border none
-				color headerColor
 
 		/* === game pages === */
 		/* == hidden modules == */
@@ -968,7 +983,7 @@ else
 				
 		/* == mobile == */
 		.game-nav-tabs .nav.nav-tabs > li > a, .game-nav-tabs .nav.nav-tabs > li.active > a
-			color textColor
+			textStyle()
 			&:hover
 				buttonHover()
 		@media (max-width:767px)
@@ -994,13 +1009,13 @@ else
 			buttonHover()
 		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male
 			&:hover
-				color linkHover
+				color linkHoverColor
 		a i.fi-pencil.c-icon:hover
-			color linkHover !important // counter-i!
+			color linkHoverColor !important // counter-i!
 			
 		/* == navigation == */
 		.game-nav-tabs
-			background-color mainBg2
+			background-color mainBgColor2Color
 		div.nav-tabs-more-dropdown
 			a
 				padding-left 5px
@@ -1009,13 +1024,13 @@ else
 				buttonHover()
 				color headerHoverColor !important
 		.well
-			background-color menuBg !important
+			background-color menuBgColor !important
 		.summary-border .summary-item
 			border-color menuBorderColor
 			
 		/* == overview, images == */
 		.summary-media-grid-count
-			background-color menuBg
+			background-color menuBgColor
 			border menuBorder
 			a
 				color linkColor
@@ -1026,11 +1041,11 @@ else
 				
 		/* === sections === */
 		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3
-			color textColor
+			textStyle()
 		.panel-header-lg .panel-title > a:link
 			color linkColor
 			&:hover
-				color linkHover
+				color linkHoverColor
 				
 		/* == zebra style == */
 		ul.summary > li.summary-item
@@ -1038,9 +1053,9 @@ else
 			padding-top 0.2em
 			padding-right 0.2em
 			&:nth-child(2n)
-				 background-color tableColor2n
+				background-color table2nBgColor
 			&:nth-child(2n+1)
-				 background-color tableColor2n1
+				background-color table2n1BgColor
 			&:last-child
 				border-bottom none
 				
@@ -1051,9 +1066,9 @@ else
 				color linkColor
 				text-decoration linkStyle
 			&:hover
-				color linkHover
+				color linkHoverColor
 		.text-domain:hover
-			color linkHover !important // counter-i!
+			color linkHoverColor !important // counter-i!
 			
 		/* == buy a copy == */
 		ul.summary-sale > li.summary-sale-item
@@ -1062,63 +1077,63 @@ else
 			
 		/* == geekmarket == */
 		.panel-inline-links > a:link:not(.btn):hover
-			color linkHover
+			color linkHoverColor
 			
 		/* == videos, reviews == */
 		.summary-item-meta
 			a:hover
-				color linkHover		
+				color linkHoverColor		
 			.summary-item-tag a:hover
 				buttonHover()
 		.summary-item-counts:hover .summary-item-counts-item
-			color linkHover
+			color linkHoverColor
 			
 		/* == forum == */
 		/* navigation */
 		ul.nav.nav-pills
 			> li
-				color textColor
+				textStyle()
 				.active > a .glyphicon-chevron-right
-					color linkSelected
+					color linkSelectedColor
 				> a:hover, > a:hover .glyphicon-chevron-right
-					color linkHover
+					color linkHoverColor
 				> a .nav-pills-count
-					color textColor
+					textStyle()
 			li.nav-header
-				color textColor
+				textStyle()
 			> li > a
-				color textColor
+				textStyle()
 		.panel-header-actions
 			a:not(.btn), a.is-active
 				&:hover
-					color linkHover !important // counter-i!
+					color linkHoverColor !important // counter-i!
 		/* threads */
 		forum-threads
-			background-color moduleBg
+			background-color moduleBgColor
 			ul.summary
 				> li.summary-item:nth-child(2n)
-					background-color tableColor2n
+					background-color table2nBgColor
 					> a
-						background-color tableColor2n
+						background-color table2nBgColor
 					ul.pagination a, ul.pagination span, .summary-item-tag a
-						background-color tableColor2n1
+						background-color table2n1BgColor
 						border-radius 2px
 				> li.summary-item:nth-child(2n+1)
-					background-color tableColor2n1
+					background-color table2n1BgColor
 					> a
-						background-color tableColor2n1
+						background-color table2n1BgColor
 					ul.pagination a, ul.pagination span, .summary-item-tag a
-						background-color tableColor2n
+						background-color table2nBgColor
 						border-radius 2px
 				.summary-item-counts:hover .summary-item-counts-item
-					color linkHover
+					color linkHoverColor
 				.summary-item-title	a:visited
-					color linkVisited
+					color linkVisitedColor
 				ul.summary-item-pagination.pagination > li > a
 					&:link				
 						color linkColor
 					&:visited
-						color linkVisited
+						color linkVisitedColor
 					&:hover
 						buttonHover()
 				li.summary-item .summary-item-meta > .summary-item-tag > a
@@ -1134,9 +1149,9 @@ else
 			border-color moduleBorderColor
 			padding 0 0.5em
 			&:nth-child(2n)
-				 background-color tableColor2n
+				background-color table2nBgColor
 			&:nth-child(2n+1)
-				 background-color tableColor2n1
+				background-color table2n1BgColor
 		.game-more > li > a::after
 			color linkColor
 			
@@ -1144,9 +1159,9 @@ else
 		.summary-item-geeklist
 			border-color moduleBorderColor
 			&:hover
-				border-color linkHover
+				border-color linkHoverColor
 				.summary-item-title
-					color linkHover
+					color linkHoverColor
 
 		/* === geekpreview === */
 		.geekpreview-header, .geekpreview-header-info, .geekpreview-header h1
@@ -1154,21 +1169,17 @@ else
 			p, .text-muted
 				color gamepageHeaderColor !important
 		.geekpreview-sticky-menu
-			background-color headerBg
-			color headerColor
+			headerStyle()
 		.geekpreview-toolbar-primary-search form input.form-control
-			background-color inputBg
-			border-color inputBorderColor
-			color textColor
+			inputStyle()
 		.geekpreview-item-inner-info-header-title h3 span, dl.geekpreview-item-inline-summary dt, .geekpreview-item-publisher
-			color textColor
+			textStyle()
 			a
 				color linkColor
 		div.geekpreview-item-inner-info-header p.text-muted a
 			color linkColor
 		.geekpreview-parent
-			background-color headerBg
-			color headerColor
+			headerStyle()
 			border none
 		.geekpreview-parent-info h2 a, .geekpreview-parent-social .btn, .geekpreview-parent-info a
 			color headerLinkColor
@@ -1178,55 +1189,52 @@ else
 		/* === modal dialog === */
 		.modal .modal-dialog
 			.modal-header
-				background-color headerBg
+				headerStyle()
 				border none
-				color headerColor
 				button.close:hover
 					color errorColor
 				.modal-title, button.close
 					color headerColor
 			.modal-body, .modal-footer
-				background-color moduleBg
+				background-color moduleBgColor
 				ul.list-group .list-group-item
-					background-color menuBg
+					background-color menuBgColor
 			.modal-footer
 				border-top moduleBorder
 			.panel-title
-				color textColor
+				textStyle()
 		
 		/* === mobile === */
 		.has-mobile-nav
 			.global-header-nav-primary-wrapper
-				 background-color mainBg
+				background-color mainBgColor
 				ul.global-header-nav-primary
-					 background-color moduleBg
-					color textColor
+					background-color moduleBgColor
+					textStyle()
 					button.btn
-						color textColor !important
+						textStyle() !important
 				li.dropdown
 					border-color moduleBorderColor
 			.global-secondary-nav-section-header
-				 background-color headerBg
-				color headerColor
+				headerStyle()
 		div.global-header-nav-mobile-links button.global-header-icon
 			color headerColor
 	/* ===== /angularjs pages ===== */
 
 	/* ===== LEGACY PAGES ===== */
 	.legacy
-		background-color mainBg2
-		color textColor
+		background-color mainBgColor2Color
+		textStyle()
 		
 		/* === modules === */
 		.moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header
-			background-color headerBg		
-			color headerColor
+			headerStyle()
 		.moduletable
 			border moduleBorder
 		.pages a
 			border-color headerColor
 		.pages a:hover, .pages a:active
-			border-color linkHover
+			border-color linkHoverColor
 		.module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages
 			color headerColor
 			
@@ -1236,16 +1244,16 @@ else
 		.forum_table th, .forum_index_table th
 			color headerColor
 		.forum_table td, .forum_index_table td
-			color textColor
-			background-color moduleBg
+			textStyle()
+			background-color moduleBgColor
 			border-color moduleBorderColor
 		.forum_table, .forum_index_table
 			border-spacing 0
 			border moduleBorder
 			tr:nth-child(2n), tr:nth-child(2n) > td
-				background-color tableColor2n
+				background-color table2nBgColor
 			tr:nth-child(2n+1), tr:nth-child(2n+1) > td
-				background-color tableColor2n1
+				background-color table2n1BgColor
 		/* border fix */
 		/*.forum_table
 			background-color moduleBorderColor
@@ -1254,18 +1262,18 @@ else
 			border-spacing 0
 			border moduleBorder
 			tr.moduleRow:nth-child(2n)
-				background-color tableColor2n
+				background-color table2nBgColor
 			tr.moduleRow:nth-child(2n+1)
-				background-color tableColor2n1
+				background-color table2n1BgColor
 				
 		/* === quickbar edit === */
 		form[action="/quickbar.php"]
 			.forum_table tr:nth-child(2n), .forum_table tr:nth-child(2n) > td
-				background-color tableColor2n !important
+				background-color table2nBgColor !important
 			.forum_table tr:nth-child(2n+1), .forum_table tr:nth-child(2n+1) > td
-				background-color tableColor2n1 !important
+				background-color table2n1BgColor !important
 		.infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select
-			color textColor
+			textStyle()
 		div.article dl
 			border-color moduleBorderColor
 		div.article dd.right, div.article dd.doubleright, div.article dd.commands, div.article dd.doublecommands
@@ -1278,7 +1286,7 @@ else
 		ul.commands li.divider
 			background-color moduleBorderColor
 		.post_numcomments, .dull, .darkgray, div.header
-			color textColor
+			textStyle()
 		div.article.subbed
 			border articleNewBorder
 		div.article.selected, div.article.subbed_selected
@@ -1295,16 +1303,16 @@ else
 			
 		/* === links === */
 		a:visited
-			color linkVisited
+			color linkVisitedColor
 		a, a:link, .nav > li > a, .bluebox a
 			color linkColor
 			&:hover
-				color linkHover
+				color linkHoverColor
 				transition none
 		.geeksub_minorlink a:hover
-			color linkHover
+			color linkHoverColor
 		.menutab-open li a:hover, .geeksub_minorlink a:active
-			color linkHover
+			color linkHoverColor
 		.comment_button
 			border-color linkColor
 			background-color buttonBg
@@ -1314,12 +1322,12 @@ else
 			text-decoration linkStyle
 		.forumlink, .objectlink
 			a:visited, a:link, a:hover, a:active
-				color textColor
+				textStyle()
 				
 		/* === overtext / popup === */
 		.location, js-location, .js-badgeovertext, .avatarovertext
-			background-color menuBg
-			color textColor
+			background-color menuBgColor
+			textStyle()
 			
 		/* === text color === */
 		.error, text-danger
@@ -1346,16 +1354,15 @@ else
 			
 		/* === backgrounds === */
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox
-			background-color moduleBg
+			background-color moduleBgColor
 		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body
-			background-color menuBg
+			background-color menuBgColor
 		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body
 			border menuBorder
 			
 		/* === input, select === */
 		input:not([type="button"]), .geekinput, .geekinput_medium, .geekinput_large, select
-			background-color inputBg
-			border inputBorder
+			inputStyle()
 		input[type="button"], .geekinput
 			font-size fontSizeL !important
 			font-weight 600
@@ -1365,15 +1372,13 @@ else
 			
 		/* === geeklists === */
 		.geeklist_title, .geeklist_item_title
-			color headerColor
-			background-color headerBg
+			headerStyle()
 			a
 				color headerLinkColor
 				&:hover
-					color linkHover
+					color linkHoverColor
 		.comment_toolbar
-			color headerColor
-			background-color headerBg
+			headerStyle()
 		.geeklist_title, .blog_post
 			border moduleBorder
 		.geeklist_item_title
@@ -1381,56 +1386,54 @@ else
 		#header
 			border-top menuBorder
 		.infobox
-			background-color moduleBg
+			background-color moduleBgColor
 			border moduleBorder
 			
 		/* === geekmail === */
 		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks
-			background-color moduleBg !important
+			background-color moduleBgColor !important
 			border moduleBorder !important
 		table.gm_messages:nth-child(2n) tr
-			background-color tableColor2n1 !important
+			background-color table2n1BgColor !important
 		table.gm_messages:nth-child(2n+1) tr
-			background-color tableColor2n !important
+			background-color table2nBgColor !important
 		div#mychecks > table > tbody > tr
 			border 0px !important
 			border-color moduleBorderColor
 		td.sf div[style*="background-color"]
-			background-color mainBg !important
+			background-color mainBgColor !important
 			
 		/* === polls === */
 		.outerpoll
-			background-color moduleBg	
+			background-color moduleBgColor	
 		.geekpoll
 			th
-				background-color headerBg
-				color headerColor
+				headerStyle()
 			tr th.questiontext
-				 background-color transparent
-				color textColor
+				background-color transparent
+				textStyle()
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext
-				background-color menuBg !important
+				background-color menuBgColor !important
 			tr:nth-child(2n) 
-				background-color tableColor2n
+				background-color table2nBgColor
 			tr:nth-child(2n+1) 
-				background-color tableColor2n1
+				background-color table2n1BgColor
 		.pollresults
 			th, tfoot > tr > * 
-				background-color menuBg !important
+				background-color menuBgColor !important
 			tr:nth-child(2n) td
-				background-color tableColor2n
+				background-color table2nBgColor
 			tr:nth-child(2n+1) td
-				background-color tableColor2n1
+				background-color table2n1BgColor
 				
 		/* === blog === */
 		#blog_header, #blog_nav h2
-			background-color headerBg		
-			color headerColor
+			headerStyle()
 		#blog_title a
 			color headerLinkColor
 		#blog_nav > div > *:nth-child(2)
-			color textColor
-			background-color moduleBg
+			textStyle()
+			background-color moduleBgColor
 			border moduleBorder
 			
 		/* === user profile === */
@@ -1448,22 +1451,20 @@ else
 				color headerHoverColor !important
 				text-decoration linkStyle
 		.profile_block
-			color textColor
+			textStyle()
 		div.profile_title
-			background-color headerBg
-			color headerColor
+			headerStyle()
 			padding-left 5px
 			
 		/* === collection === */
 		.collectionfilter_commandbar
-			background-color headerBg
-			color headerColor
+			headerStyle()
 		.collectionfilter_body
-			background-color menuBg
+			background-color menuBgColor
 		.geekcollection_pager a
 			color headerLinkColor
 		table.collection_table > tbody > tr:first-child
-			background-color headerBg
+			headerStyle()
 			th 
 				color headerColor
 				a
@@ -1483,10 +1484,10 @@ else
 			img.i_silk_newspaper_go_gray, img.i_silk_newspaper_go
 				display none
 			.subsicon::after
-				color nextColor
+				color nextIconColor
 				content "\f" + nextIcon
 				font-family FontAwesome
-				font-size nextSize
+				font-size nextIconSize
 			/* scale old icon
 			.subsicon > img
 				transform:scale(1.5)
@@ -1494,12 +1495,11 @@ else
 			
 		/* === tags === */
 		div.tagouter
-			background-color moduleBg
+			background-color moduleBgColor
 			
 		/* === plays === */
 		table.forum_table > tbody > tr > th
-			background-color headerBg
-			color headerColor
+			headerStyle()
 			a
 				color headerLinkColor !important // counter-i
 				padding 1px 3px
