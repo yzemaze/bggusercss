@@ -17,7 +17,7 @@
 @var	checkbox	contestHide			'Hide contests'							0
 @var	checkbox	geekpreviewHide		'Hide geekpreviews (GenCon, Essen etc.)'	0
 @var	checkbox	skyscraperHide 		'Hide skyscraper ad'					0
-@var	range		pageWidth			'Max width of page'						[1550,1000,3840,10,"px"]
+@var	range		pageWidth			'Max width of page'						[1550,770,3840,10,"px"]
 @var	range		columns				'Front page columns'					[2,2,5,1]
 @var	checkbox	frontpageCondensed	'… less whitespace'						1
 @var	color		fpColor2n			'… background of even rows'				#ddd
@@ -36,7 +36,7 @@
 @var	range		fontSize			"Font size text"						[14,6,36,1,"px"]
 @var	select		bodyFont			"… body text"							["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
 @var	select		headerFont			"… header, buttons, small text …"		["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
-== background colors ==
+==  background-color colors ==
 @var 	color		headerBg			'Header background'						#3f3a60
 @var	color		mainBg				'Body background'						#aaa
 @var	color		mainBg2				'Main content background'				#bbb
@@ -134,7 +134,7 @@ else
 		font-family headerFont
 		font-size round((fontSize/0.875)) // body text = 0.875rem 
 	body
-		background mainBg
+		 background-color mainBg
 		color textColor
 		font-family:headerFont
 		font-size 0.875rem
@@ -160,7 +160,7 @@ else
 	div.modal-content
 		background-color moduleBg
 		.list-group-item
-			background menuBg
+			 background-color menuBg
 	/* popover */
 	.popover
 		background-color menuBg
@@ -321,16 +321,16 @@ else
 					
 			/* === search === */
 			.c-advanced
-				background menuBg
+				 background-color menuBg
 				color textColor
 				a, select.custom-select
 					color linkColor
 					&:hover
 						headerHover()
 				select.custom-select
-					background menuBg
+					 background-color menuBg
 			.c-inner gg-header-search.c-mobile
-				background headerBg			
+				 background-color headerBg			
 
 			/* === geekmail === */
 			gg-geekmail-notifications
@@ -417,7 +417,7 @@ else
 					
 		/* ==== body ==== */
 		div.global-body-content, .global-body-content-primary
-			background mainBg2
+			background-color mainBg2
 			gg-markup-text
 				font-family bodyFont
 			
@@ -582,7 +582,7 @@ else
 	/* ===== AngularJS PAGES ===== */
 	body.ng-scope
 		.btn-indigo
-			background headerBg
+			 background-color headerBg
 			border-color headerBg
 			color headerColor
 			
@@ -679,11 +679,11 @@ else
 			/* === search === */
 			.global-header-nav-search
 				.global-header-nav-search-inner
-					background mainBg
+					 background-color mainBg
 				.global-header-nav-search-advanced
-					background menuBg
+					 background-color menuBg
 					span.btn
-						background menuBg
+						 background-color menuBg
 					a:hover
 						headerHover()
 
@@ -1038,9 +1038,9 @@ else
 			padding-top 0.2em
 			padding-right 0.2em
 			&:nth-child(2n)
-				background tableColor2n
+				 background-color tableColor2n
 			&:nth-child(2n+1)
-				background tableColor2n1
+				 background-color tableColor2n1
 			&:last-child
 				border-bottom none
 				
@@ -1134,9 +1134,9 @@ else
 			border-color moduleBorderColor
 			padding 0 0.5em
 			&:nth-child(2n)
-				background tableColor2n
+				 background-color tableColor2n
 			&:nth-child(2n+1)
-				background tableColor2n1
+				 background-color tableColor2n1
 		.game-more > li > a::after
 			color linkColor
 			
@@ -1197,16 +1197,16 @@ else
 		/* === mobile === */
 		.has-mobile-nav
 			.global-header-nav-primary-wrapper
-				background mainBg
+				 background-color mainBg
 				ul.global-header-nav-primary
-					background moduleBg
+					 background-color moduleBg
 					color textColor
 					button.btn
 						color textColor !important
 				li.dropdown
 					border-color moduleBorderColor
 			.global-secondary-nav-section-header
-				background headerBg
+				 background-color headerBg
 				color headerColor
 		div.global-header-nav-mobile-links button.global-header-icon
 			color headerColor
@@ -1406,7 +1406,7 @@ else
 				background-color headerBg
 				color headerColor
 			tr th.questiontext
-				background transparent
+				 background-color transparent
 				color textColor
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext
 				background-color menuBg !important
