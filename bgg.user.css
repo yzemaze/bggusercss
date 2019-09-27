@@ -43,8 +43,8 @@
 
 ==  background & border colors ==
 @var 	color		headerBgColor		'Header background'						#3f3a60
-@var	color		mainBgColor			'Body background'						#aaa
-@var	color		mainBgColor2Color	'Main content background'				#bbb
+@var	color		bodyBgColor			'Body background'						#aaa
+@var	color		contentBgColor		'Content background'					#bbb
 @var	color		moduleBgColor		'Module background'						#ccc
 @var	color		moduleBorderColor	'… border'								#999
 @var	color		menuBgColor			'Menus, dropdowns etc. background'		#ddd
@@ -84,15 +84,17 @@
 /* ===== VARS ===== */
 articleNewBorder = solid 3px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
+bg(item)
+	background-color item + "BgColor"
 borderRadius = 2px
 buttonBg = menuBgColor
 buttonBorder = menuBorder
-buttonHoverBg = headerHoverBg
+buttonHoverBgColor = headerHoverBgColor
 buttonHoverColor = headerHoverColor
 buttonHoverRadius = borderRadius
-buttonHover()
-	background-color buttonHoverBg
-	border-color buttonHoverBg
+buttonHoverStyle()
+	bg buttonHover
+	border-color buttonHoverBgColor
 	border-radius buttonHoverRadius
 	color buttonHoverColor
 
@@ -106,36 +108,38 @@ fontSizeS = 0.625rem
 
 if dark(headerBgColor)
 	headerColor = lighten(headerBgColor, 85%)
-	headerHoverBg = lighten(headerBgColor, 50%)
+	headerHoverBgColor = lighten(headerBgColor, 50%)
 	headerHoverColor = darken(headerColor, 90%)
 	headerLinkColor = lighten(headerColor, 20%)
 else
 	headerColor = darken(headerBgColor, 85%)
-	headerHoverBg = darken(headerBgColor, 50%)
+	headerHoverBgColor = darken(headerBgColor, 50%)
 	headerHoverColor = lighten(headerColor, 90%)
 	headerLinkColor = darken(headerColor, 20%)
 
 headerHoverRadius = borderRadius
-headerHover()
-	background-color headerHoverBg
-	border-color headerHoverBg
+headerHoverStyle()
+	bg headerHover
+	border-color headerHoverBgColor
 	border-radius headerHoverRadius
 	color headerHoverColor
 headerStyle()
-	background-color headerBgColor
+	bg header
 	color headerColor
 	
 inputBorder = 1px solid inputBorderColor
 inputStyle()
-	background-color inputBgColor
+	bg input
 	border inputBorder
 	border-radius borderRadius
 	textStyle()
 
 if linkUnderlineStyle != "none"
-	linkStyle = underline linkUnderlineStyle
+	linkStyle()
+		text-decoration underline linkUnderlineStyle
 else
-	linkStyle = none
+	linkStyle()
+		text-decoration none
 
 menuBorder = 1px solid menuBorderColor
 moduleBorder = 1px solid moduleBorderColor
@@ -160,7 +164,7 @@ textStyle()
 		font-family headerFont
 		font-size round((fontSize/0.875)) // body text = 0.875rem 
 	body
-		background-color mainBgColor
+		bg body
 		textStyle()
 		font-family headerFont
 		font-size 0.875rem
@@ -176,25 +180,25 @@ textStyle()
 	/* === menus === */
 	/* dropdowns */
 	.dropdown-menu
-		background-color menuBgColor
+		bg menu
 		a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item
 			textStyle()
 			&:hover, &:visited:hover
-				headerHover()
-				text-decoration linkStyle
+				headerHoverStyle()
+				linkStyle()
 	/* modal dialogs */
 	div.modal-content
-		background-color moduleBgColor
+		bg module
 		.list-group-item
-			background-color menuBgColor
+			bg menu
 	/* popover */
 	.popover
-		background-color menuBgColor
+		bg menu
 		.dropdown-item:hover
 			color linkHoverColor
 	/* overlay */
 	.expandable div.expandable-envelope p.expandable-overlay
-		background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), mainBgColor2Color)
+		background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), contentBgColor)
 		
 	/* === text === */
 	p, textarea
@@ -210,7 +214,7 @@ textStyle()
 	a, .link-muted-color
 		&:hover
 			color linkHoverColor
-			text-decoration linkStyle	
+			linkStyle()	
 	a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
 		color linkColor
 	.link-text:link, .link-text:visited
@@ -224,13 +228,13 @@ textStyle()
 	a.selected
 		color linkSelectedColor !important
 	a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover
-		text-decoration linkStyle
+		linkStyle()
 	.btn:not(.disabled):not(.btn-empty):not(.btn-xs):not(.btn-primary), .btn-outline-secondary, input[type="button"]
 		&:hover
-			buttonHover()	
+			buttonHoverStyle()	
 	.btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active
 		&:hover
-			buttonHover()
+			buttonHoverStyle()
 			i
 				color buttonHoverColor
 				
@@ -238,13 +242,13 @@ textStyle()
 	input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
 		inputStyle()
 		&:focus
-			background-color inputBgColor
+			bg input
 			
 	/* === navigation === */
 	.nav.nav-tabs > li > a, .nav.nav-tabs .nav-link
 		textStyle()
 		&:hover
-			buttonHover()	
+			buttonHoverStyle()	
 			
 	/* === misc === */
 	hr
@@ -330,7 +334,7 @@ textStyle()
 				path
 					fill headerColor
 				&:hover
-					background-color headerHoverBg 
+					bg headerHover 
 					path
 						fill headerHoverColor
 						
@@ -340,19 +344,19 @@ textStyle()
 				border-radius headerHoverRadius
 				padding 0.4em 0.5em
 				&:hover
-					headerHover()
+					headerHoverStyle()
 					color headerHoverColor !important // counter-i!
 					
 			/* === search === */
 			.c-advanced
-				background-color menuBgColor
+				bg menu
 				textStyle()
 				a, select.custom-select
 					color linkColor
 					&:hover
-						headerHover()
+						headerHoverStyle()
 				select.custom-select
-					background-color menuBgColor
+					bg menu
 			.c-inner gg-header-search.c-mobile
 				headerStyle()			
 
@@ -363,7 +367,7 @@ textStyle()
 				path
 					fill headerColor
 				&:hover
-					background-color headerHoverBg
+					bg headerHover
 					path
 						fill headerHoverColor
 						
@@ -378,7 +382,7 @@ textStyle()
 					span.count
 						transform translate(-5px, 5px)
 					&:hover
-						background-color headerHoverBg
+						bg headerHover
 						padding 0.35em
 						path
 							fill headerHoverColor								
@@ -392,7 +396,7 @@ textStyle()
 					margin-left 0
 					padding 0.7em 0.3em
 					&:hover
-						headerHover()
+						headerHoverStyle()
 						path
 							fill headerHoverColor
 							
@@ -402,7 +406,7 @@ textStyle()
 				border-radius headerHoverRadius
 				padding 0.5em
 				&:hover, &[aria-expanded="true"]
-					headerHover()
+					headerHoverStyle()
 			/* fix for Angular8 header dropdowns to extend hover range */ // TODO remove
 			.dropdown-menu .dropdown-item a
 				padding 0.25em 1em
@@ -418,12 +422,12 @@ textStyle()
 			.geeksidebar-section-header.toggler-caret
 				headerStyle()
 				&:hover
-					headerHover()
+					headerHoverStyle()
 			.geeksidebar-section-body
-				background-color moduleBgColor
+				bg module
 				padding 0.2em 0
 				.geeksidebar-links > li:not(:last-child)
-					border-color mainBgColor
+					border-color bodyBgColor
 				.btn, .quickbar-pagination .btn, .quickbar-header .color-icon
 					color linkColor
 					&:hover
@@ -436,11 +440,11 @@ textStyle()
 				li
 					padding 0.15em 0.5em
 				li:hover, li a:hover
-					buttonHover()
+					buttonHoverStyle()
 					
 		/* ==== body ==== */
 		div.global-body-content, .global-body-content-primary
-			background-color mainBgColor2Color
+			bg content
 			gg-markup-text
 				font-family bodyFont
 			
@@ -448,7 +452,7 @@ textStyle()
 			.btn-icon, .form-group-search button.search
 				color linkColor
 			.btn:hover
-				buttonHover()
+				buttonHoverStyle()
 			.feedback-trigger
 				border-radius buttonHoverRadius
 			/* thumbs button */		
@@ -462,14 +466,14 @@ textStyle()
 					&#coin-outline
 						fill #a37900				
 				gg-geekgold-quick-give.dropdown-menu.show
-					background-color menuBgColor
+					bg menu
 					button.dropdown-item:hover
-						headerHover()
+						headerHoverStyle()
 			/* comment buttons */
 			ul.comment-actions > li button.comment-btn
 				border-radius buttonHoverRadius
 				&.active, &:focus, &:hover
-					buttonHover()
+					buttonHoverStyle()
 					
 			/* === input === */
 			input, textarea, .form-control, textarea.form-control[readonly]
@@ -478,14 +482,14 @@ textStyle()
 			/* === image pages, gallery, file pages, video pages === */
 			/* == header == */
 			.breadcrumb-row gg-breadcrumbs.c-light-bg
-				background-color moduleBgColor
+				bg module
 				margin 0 // fix different margins 
 				> span.c-crumb:first-of-type
 					padding-left 1em			
 			.c-container,  gg-image-nav .image-nav, gg-comment
-				background-color moduleBgColor
+				bg module
 				.popover
-					background-color menuBgColor !important			
+					bg menu !important			
 			.c-container
 				border moduleBorder !important
 			gg-markup-quote
@@ -497,26 +501,26 @@ textStyle()
 				a
 					color linkColor
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 						margin -2px -4px
 						padding 2px 4px				
 			gg-image-nav
 				border-color moduleBorderColor
 				.image-metadata
-					background-color moduleBgColor
+					bg module
 					&:hover
 						textStyle()				
 			gg-filepage-caption
 				.filepage-metadata
 					border-color moduleBorderColor
 					gg-license-editable
-						background-color moduleBgColor !important
+						bg module !important
 						&:hover
 							textStyle()			
 			.caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon
 				color linkHoverColor
 			.media-sidebar
-				background-color moduleBgColor
+				bg module
 				border moduleBorder
 				.media-sidebar-actions
 					border-color moduleBorderColor
@@ -533,17 +537,17 @@ textStyle()
 					&.btn-tag
 						background-color buttonBg
 						&:hover
-							buttonHover()
+							buttonHoverStyle()
 				a.dropdown:hover fa-icon.ng-fa-icon
 					color linkHoverColor
 				a.see-all-btn
 					padding 3px 5px
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 				.tag-link-wrapper button.btn-unstyled
 					color linkColor
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 						margin -3px -5px
 						padding 3px 5px
 						text-decoration none
@@ -574,14 +578,14 @@ textStyle()
 				gg-file + gg-file
 					border-color moduleBorderColor					
 				a:hover .file-badge, a:not(.loading) .file-badge:hover
-					buttonHover()
+					buttonHoverStyle()
 			.view-all-container
 				border-color moduleBorderColor
 				&::before
 					box-shadow none
 			gg-comments-block .panel
 				button.flex-grow-1
-					background-color menuBgColor
+					bg menu
 				gg-comment
 					border moduleBorder
 					margin 0.5em 0
@@ -589,7 +593,7 @@ textStyle()
 					gg-reactions-popup-trigger a
 						padding 4px 8px
 						&:hover
-							buttonHover()
+							buttonHoverStyle()
 							.count, .label
 								color buttonHoverColor
 		/* ==== /body ==== */
@@ -637,19 +641,11 @@ textStyle()
 			/* === order of menu items === */
 			if userMenuLeft
 				ul.global-header-nav-primary >
+					for i in (1..6)
+						li:nth-child({i})
+							order 2 + i
 					li:nth-child(1)
-						order 3
 						margin-left 20px
-					li:nth-child(2)
-						order 4
-					li:nth-child(3)
-						order 5
-					li:nth-child(4)
-						order 6
-					li:nth-child(5)
-						order 7
-					li:nth-child(6)
-						order 8
 					li:nth-child(7)
 						order 1
 						margin-left 20px
@@ -678,14 +674,14 @@ textStyle()
 			/* TODO remove */
 			.global-header-nav-primary .dropdown-menu li a:hover
 				color headerHoverColor
-				text-decoration linkStyle
+				linkStyle()
 
 			/* === colors === */
 			headerStyle()
 			.global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle
 				color headerColor !important // counter-i!
 				&:hover, &[aria-expanded="true"], &:focus
-					headerHover()
+					headerHoverStyle()
 					color headerHoverColor !important // override counter-i!
 			.btn.btn-empty.global-header-icon.global-header-nav-toggle
 				path
@@ -699,13 +695,13 @@ textStyle()
 			/* === search === */
 			.global-header-nav-search
 				.global-header-nav-search-inner
-					background-color mainBgColor
+					bg body
 				.global-header-nav-search-advanced
-					background-color menuBgColor
+					bg menu
 					span.btn
-						background-color menuBgColor
+						bg menu
 					a:hover
-						headerHover()
+						headerHoverStyle()
 
 			/* === geekmail === */
 			geekmail-notifications a.global-header-icon
@@ -731,14 +727,14 @@ textStyle()
 
 		/* ==== body ==== */
 		.global-body-content, footer.global-footer
-			background-color mainBgColor2Color
+			bg content
 
 		.summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a
 			textStyle()
 		.btn-success
 			background-color positiveColor
 		.global-header-nav-search-advanced a:hover
-			background-color moduleBgColor
+			bg module
 
 		/* === front page === */
 		/* == columns == */
@@ -755,9 +751,9 @@ textStyle()
 				.geekcentral_rightcol > .geekcentral_module
 					break-inside avoid
 		.global-body-content-primary
-			background-color mainBgColor2Color
+			bg content
 		ul.geekcentral-controls
-			background-color moduleBgColor
+			bg module
 			border moduleBorder
 		if frontpageCondensed
 			.media-cell
@@ -811,9 +807,9 @@ textStyle()
 		.geekcentral
 			.media-module
 				.media-cell:nth-child(2n)
-					background-color fp2nBgColor
+					bg fp2n
 				.media-cell:nth-child(2n+1)
-					background-color fp2n1BgColor
+					bg fp2n1
 
 		/* === sidebar === */
 		if quickbarSticky
@@ -824,12 +820,12 @@ textStyle()
 			.global-secondary-nav-section-header.toggler-caret
 				headerStyle()
 				&:hover
-					headerHover()
+					headerHoverStyle()
 			.toggler-caret-target, .geeksidebar-section-body
 				padding 0.2em 0
-				background-color moduleBgColor
+				bg module
 			ul.global-secondary-nav-links > li
-				border-color mainBgColor
+				border-color bodyBgColor
 			.quickbar-list-group
 				margin-bottom -5px
 			.quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover
@@ -844,7 +840,7 @@ textStyle()
 			li
 				a, &
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 		
 		/* === hidden modules === */
 		if editHomepageHide
@@ -901,7 +897,7 @@ textStyle()
 				&.btn.btn-empty:hover
 					color linkHoverColor				
 			.dropdown-menu > li > button.btn:hover
-				buttonHover()
+				buttonHoverStyle()
 				color headerHoverColor !important
 		
 		/* == modules == */
@@ -924,16 +920,16 @@ textStyle()
 					.dropdown-toggle
 						color headerColor !important // counter-i!
 						&:hover, &[aria-expanded="true"]
-							buttonHover()
+							buttonHoverStyle()
 							color buttonHoverColor !important // counter-i!
 							margin -4px
 							padding 4px
 							
 					/* dropdown menus */
 					.dropdown-menu > li > button.btn:hover
-						buttonHover()
+						buttonHoverStyle()
 				.module-pager .module-pager__arrow:not(.disabled):hover
-					buttonHover()
+					buttonHoverStyle()
 					margin 5px
 					padding 5px
 				.media-filters
@@ -942,7 +938,7 @@ textStyle()
 						color headerLinkColor !important
 						padding 5px
 						&:hover
-							buttonHover()
+							buttonHoverStyle()
 							color buttonHoverColor !important // counter-i!
 				.media-grid
 					border-color moduleBorderColor
@@ -950,18 +946,18 @@ textStyle()
 
 		/* === zebra striped tables === */
 		table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"]
-			background-color table2nBgColor !important
+			bg table2n !important
 		table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"]
-			background-color table2n1BgColor
+			bg table2n1
 
 		/* === geekmarket === */
 		div[ng-controller="GeekMarketCtrl"]
 			.white-bg
-				background-color moduleBgColor
+				bg module
 			nav.navbar-static-side li.active, .panel-primary, .dropdown-menu
-				background-color menuBgColor
+				bg menu
 			nav.navbar-static-side  li > a:hover
-				headerHover()
+				headerHoverStyle()
 			nav.navbar-static-side li.active > a
 				color linkSelectedColor
 			.table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu
@@ -985,7 +981,7 @@ textStyle()
 		.game-nav-tabs .nav.nav-tabs > li > a, .game-nav-tabs .nav.nav-tabs > li.active > a
 			textStyle()
 			&:hover
-				buttonHover()
+				buttonHoverStyle()
 		@media (max-width:767px)
 			.game-header-body
 				background-color #0a090f
@@ -998,15 +994,15 @@ textStyle()
 			
 		/* == hover colors == */
 		.btn-primary:hover
-			buttonHover()
+			buttonHoverStyle()
 		.btn-white:hover
-			border-color buttonHoverBg !important // counter-i!
+			border-color buttonHoverBgColor !important // counter-i!
 		.game-header-flags, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope
 			a:hover
-				buttonHover()
+				buttonHoverStyle()
 				color buttonHoverColor !important
 		.gameplay-item .btn:not(.btn-empty):hover
-			buttonHover()
+			buttonHoverStyle()
 		.gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male
 			&:hover
 				color linkHoverColor
@@ -1015,29 +1011,29 @@ textStyle()
 			
 		/* == navigation == */
 		.game-nav-tabs
-			background-color mainBgColor2Color
+			bg content
 		div.nav-tabs-more-dropdown
 			a
 				padding-left 5px
 			a:hover
 				/* padding-left 10px*/
-				buttonHover()
+				buttonHoverStyle()
 				color headerHoverColor !important
 		.well
-			background-color menuBgColor !important
+			bg menu !important
 		.summary-border .summary-item
 			border-color menuBorderColor
 			
 		/* == overview, images == */
 		.summary-media-grid-count
-			background-color menuBgColor
+			bg menu
 			border menuBorder
 			a
 				color linkColor
 				&:hover 
 					color buttonHoverColor
 			&:hover
-				buttonHover()
+				buttonHoverStyle()
 				
 		/* === sections === */
 		.panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3
@@ -1053,9 +1049,9 @@ textStyle()
 			padding-top 0.2em
 			padding-right 0.2em
 			&:nth-child(2n)
-				background-color table2nBgColor
+				bg table2n
 			&:nth-child(2n+1)
-				background-color table2n1BgColor
+				bg table2n1
 			&:last-child
 				border-bottom none
 				
@@ -1064,7 +1060,7 @@ textStyle()
 			&:link
 				border-bottom none
 				color linkColor
-				text-decoration linkStyle
+				linkStyle()
 			&:hover
 				color linkHoverColor
 		.text-domain:hover
@@ -1084,7 +1080,7 @@ textStyle()
 			a:hover
 				color linkHoverColor		
 			.summary-item-tag a:hover
-				buttonHover()
+				buttonHoverStyle()
 		.summary-item-counts:hover .summary-item-counts-item
 			color linkHoverColor
 			
@@ -1109,21 +1105,21 @@ textStyle()
 					color linkHoverColor !important // counter-i!
 		/* threads */
 		forum-threads
-			background-color moduleBgColor
+			bg module
 			ul.summary
 				> li.summary-item:nth-child(2n)
-					background-color table2nBgColor
+					bg table2n
 					> a
-						background-color table2nBgColor
+						bg table2n
 					ul.pagination a, ul.pagination span, .summary-item-tag a
-						background-color table2n1BgColor
+						bg table2n1
 						border-radius 2px
 				> li.summary-item:nth-child(2n+1)
-					background-color table2n1BgColor
+					bg table2n1
 					> a
-						background-color table2n1BgColor
+						bg table2n1
 					ul.pagination a, ul.pagination span, .summary-item-tag a
-						background-color table2nBgColor
+						bg table2n
 						border-radius 2px
 				.summary-item-counts:hover .summary-item-counts-item
 					color linkHoverColor
@@ -1135,23 +1131,23 @@ textStyle()
 					&:visited
 						color linkVisitedColor
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 				li.summary-item .summary-item-meta > .summary-item-tag > a
 					&:hover
-						buttonHover()
+						buttonHoverStyle()
 						
 		/* == files == */
 		.summary-file-type a:hover
-			buttonHover()
+			buttonHoverStyle()
 			
 		/* == more == */
 		ul.list-block-border > li
 			border-color moduleBorderColor
 			padding 0 0.5em
 			&:nth-child(2n)
-				background-color table2nBgColor
+				bg table2n
 			&:nth-child(2n+1)
-				background-color table2n1BgColor
+				bg table2n1
 		.game-more > li > a::after
 			color linkColor
 			
@@ -1196,9 +1192,9 @@ textStyle()
 				.modal-title, button.close
 					color headerColor
 			.modal-body, .modal-footer
-				background-color moduleBgColor
+				bg module
 				ul.list-group .list-group-item
-					background-color menuBgColor
+					bg menu
 			.modal-footer
 				border-top moduleBorder
 			.panel-title
@@ -1207,9 +1203,9 @@ textStyle()
 		/* === mobile === */
 		.has-mobile-nav
 			.global-header-nav-primary-wrapper
-				background-color mainBgColor
+				bg body
 				ul.global-header-nav-primary
-					background-color moduleBgColor
+					bg module
 					textStyle()
 					button.btn
 						textStyle() !important
@@ -1223,7 +1219,7 @@ textStyle()
 
 	/* ===== LEGACY PAGES ===== */
 	.legacy
-		background-color mainBgColor2Color
+		bg content
 		textStyle()
 		
 		/* === modules === */
@@ -1245,15 +1241,15 @@ textStyle()
 			color headerColor
 		.forum_table td, .forum_index_table td
 			textStyle()
-			background-color moduleBgColor
+			bg module
 			border-color moduleBorderColor
 		.forum_table, .forum_index_table
 			border-spacing 0
 			border moduleBorder
 			tr:nth-child(2n), tr:nth-child(2n) > td
-				background-color table2nBgColor
+				bg table2n
 			tr:nth-child(2n+1), tr:nth-child(2n+1) > td
-				background-color table2n1BgColor
+				bg table2n1
 		/* border fix */
 		/*.forum_table
 			background-color moduleBorderColor
@@ -1262,16 +1258,16 @@ textStyle()
 			border-spacing 0
 			border moduleBorder
 			tr.moduleRow:nth-child(2n)
-				background-color table2nBgColor
+				bg table2n
 			tr.moduleRow:nth-child(2n+1)
-				background-color table2n1BgColor
+				bg table2n1
 				
 		/* === quickbar edit === */
 		form[action="/quickbar.php"]
 			.forum_table tr:nth-child(2n), .forum_table tr:nth-child(2n) > td
-				background-color table2nBgColor !important
+				bg table2n !important
 			.forum_table tr:nth-child(2n+1), .forum_table tr:nth-child(2n+1) > td
-				background-color table2n1BgColor !important
+				bg table2n1 !important
 		.infobox, .messagebox, .geekpoll, .popupbox, .bluebox, .whitebox, button, input, optgroup, select
 			textStyle()
 		div.article dl
@@ -1317,16 +1313,16 @@ textStyle()
 			border-color linkColor
 			background-color buttonBg
 			&:hover
-				buttonHover()
+				buttonHoverStyle()
 		a, a:link
-			text-decoration linkStyle
+			linkStyle()
 		.forumlink, .objectlink
 			a:visited, a:link, a:hover, a:active
 				textStyle()
 				
 		/* === overtext / popup === */
 		.location, js-location, .js-badgeovertext, .avatarovertext
-			background-color menuBgColor
+			bg menu
 			textStyle()
 			
 		/* === text color === */
@@ -1354,9 +1350,9 @@ textStyle()
 			
 		/* === backgrounds === */
 		.mainmenutabs, .menu_login, .menu_quickbar, .profile_block, table#collectionitems, div.global-body-content > div, div.header , div.article, .blog_post, .bluebox
-			background-color moduleBgColor
+			bg module
 		.messagebox, .popupbox, .infobox, .whitebox, div.recommend_block, div.wikitoc, .img-thumbnail, .menutab-open, .mainmenutabs li a.open, .submenutabs li a.open, .post_numcomments, .post_nlinks ul li a, div.geeksub_pulldown_body
-			background-color menuBgColor
+			bg menu
 		.menu_login,  .messagebox, .popupbox, .infobox, .whitebox, .bluebox, .errorbox, .warningbox, .greenbox, div.header, div.recommend_block, div.article, div.comment_toolbar, .post_numcomments, .post_categories ul li a, .post_nlinks ul li a, div.geeksub_pulldown_body
 			border menuBorder
 			
@@ -1386,26 +1382,26 @@ textStyle()
 		#header
 			border-top menuBorder
 		.infobox
-			background-color moduleBgColor
+			bg module
 			border moduleBorder
 			
 		/* === geekmail === */
 		tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks
-			background-color moduleBgColor !important
+			bg module !important
 			border moduleBorder !important
 		table.gm_messages:nth-child(2n) tr
-			background-color table2n1BgColor !important
+			bg table2n1 !important
 		table.gm_messages:nth-child(2n+1) tr
-			background-color table2nBgColor !important
+			bg table2n !important
 		div#mychecks > table > tbody > tr
 			border 0px !important
 			border-color moduleBorderColor
 		td.sf div[style*="background-color"]
-			background-color mainBgColor !important
+			bg body !important
 			
 		/* === polls === */
 		.outerpoll
-			background-color moduleBgColor	
+			bg module	
 		.geekpoll
 			th
 				headerStyle()
@@ -1413,18 +1409,18 @@ textStyle()
 				background-color transparent
 				textStyle()
 			th.header, tfoot > tr, tr.columnlabel, th.questiontext
-				background-color menuBgColor !important
+				bg menu !important
 			tr:nth-child(2n) 
-				background-color table2nBgColor
+				bg table2n
 			tr:nth-child(2n+1) 
-				background-color table2n1BgColor
+				bg table2n1
 		.pollresults
 			th, tfoot > tr > * 
-				background-color menuBgColor !important
+				bg menu !important
 			tr:nth-child(2n) td
-				background-color table2nBgColor
+				bg table2n
 			tr:nth-child(2n+1) td
-				background-color table2n1BgColor
+				bg table2n1
 				
 		/* === blog === */
 		#blog_header, #blog_nav h2
@@ -1433,23 +1429,23 @@ textStyle()
 			color headerLinkColor
 		#blog_nav > div > *:nth-child(2)
 			textStyle()
-			background-color moduleBgColor
+			bg module
 			border moduleBorder
 			
 		/* === user profile === */
 		.tabOn
-			headerHover()
+			headerHoverStyle()
 		.tabOff a:link, .profile_title a 
 			color headerLinkColor
 		.tabOff, .tabOn
 			a
 				padding 4px 10px
 			a:hover
-				headerHover()
+				headerHoverStyle()
 		.tabOn a:link
-				headerHover()
+				headerHoverStyle()
 				color headerHoverColor !important
-				text-decoration linkStyle
+				linkStyle()
 		.profile_block
 			textStyle()
 		div.profile_title
@@ -1460,7 +1456,7 @@ textStyle()
 		.collectionfilter_commandbar
 			headerStyle()
 		.collectionfilter_body
-			background-color menuBgColor
+			bg menu
 		.geekcollection_pager a
 			color headerLinkColor
 		table.collection_table > tbody > tr:first-child
@@ -1470,14 +1466,14 @@ textStyle()
 				a
 					color headerLinkColor
 					&:hover
-						headerHover()
+						headerHoverStyle()
 						color headerHoverColor !important
 		.collection_table td
 			padding 2px
 		.collection_version
 			white-space normal
 		.editfield:hover
-			buttonHover()
+			buttonHoverStyle()
 			
 		/* === subscription icon === */
 		if nextChange		
@@ -1495,7 +1491,7 @@ textStyle()
 			
 		/* === tags === */
 		div.tagouter
-			background-color moduleBgColor
+			bg module
 			
 		/* === plays === */
 		table.forum_table > tbody > tr > th
@@ -1504,11 +1500,11 @@ textStyle()
 				color headerLinkColor !important // counter-i
 				padding 1px 3px
 				&:hover
-					headerHover()
+					headerHoverStyle()
 					color headerHoverColor !important // counter-i!
 		form[action="/geekplay.php"] .forum_table td
 			border none
 		input[type="submit"]
 			border-radius buttonHoverRadius
 			&:hover
-				buttonHover()
+				buttonHoverStyle()
