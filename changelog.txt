@@ -286,3 +286,7 @@ maintenance: {};: /* */, background etc.
 textStyle(), inputStyle(), headerStyle(), linkStyle()
 bg(), c()
 quoteBorder
+
+0.12.2
+themes/color palettes
+geekmail/subscription badge
