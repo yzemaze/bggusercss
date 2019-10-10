@@ -94,7 +94,7 @@ if theme
     if red(headerBgColor) > 200
         badgeColor      = tint(#ff5100, 30)
     else
-        badgeColor      = #ff5100   
+        badgeColor      = #ff5100
     
     bodyBgColor         = color2
     if dark(bodyBgColor)
@@ -104,16 +104,16 @@ if theme
         fpLinkVisitedColor  = darken(fpLinkColor, 30)
         moduleBgColor       = lighten(bodyBgColor, 10)
         moduleBorderColor   = lighten(bodyBgColor, 20)
-        textColor           = lighten(bodyBgColor, 90)
+        textColor           = lighten(bodyBgColor, 95%)
         metadataColor       = darken(textColor, 20)
     else
-        contentBgColor      = darken(bodyBgColor, 5)
-        fp2nBgColor         = lighten(bodyBgColor, 5)
-        fp2n1BgColor        = darken(bodyBgColor, 5)
-        fpLinkVisitedColor  = ligthen(fpLinkColor, 30)
+        contentBgColor      = darken(bodyBgColor, 5%)
+        fp2nBgColor         = lighten(bodyBgColor, 5%)
+        fp2n1BgColor        = darken(bodyBgColor, 5%)
+        fpLinkVisitedColor  = ligthen(fpLinkColor, 30%)
         moduleBgColor       = darken(bodyBgColor, 10)
         moduleBorderColor   = darken(bodyBgColor, 20)
-        textColor           = darken(bodyBgColor, 90)
+        textColor           = darken(bodyBgColor, 95%)
         metadataColor       = lighten(textColor, 20)
     if red(contentBgColor) > 200
         alarmColor      = tint(#ff5100, 30)
@@ -134,7 +134,12 @@ if theme
     articleNewColor     = linkHoverColor
     articleSelectedColor = linkColor
     buttonHoverBgColor  = linkHoverColor
-
+else
+    if red(headerBgColor) > 200
+        badgeColor      = tint(#ff5100, 30)
+    else
+        badgeColor      = #ff5100
+    
 if dark(buttonHoverBgColor)
     buttonHoverColor    = #fff
 else
@@ -220,10 +225,8 @@ else
         text-decoration none
 
 menuHoverStyle()
-    bg buttonHover
-    border-color buttonHoverBgColor
-    border-radius buttonHoverRadius
-    c buttonHover
+    headerHoverStyle()
+    // buttonHoverStyle()
 
 textStyle()
     c text
@@ -1771,3 +1774,7 @@ textStyle()
         .wiki .forum_table th
             bg header
             c header
+        /* === thumbs === */
+        dt.recs, dt.recsbig
+            > a
+                color positiveColor
