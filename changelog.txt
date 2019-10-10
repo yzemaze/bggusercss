@@ -287,7 +287,7 @@ textStyle(), inputStyle(), headerStyle(), linkStyle()
 bg(), c()
 quoteBorder
 
-0.12.2
+0.13.0
 theme: 3 colors only
 geekmail/subscription badge
 menuHoverStyle()
