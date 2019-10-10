@@ -1671,6 +1671,7 @@ textStyle()
                 headerStyle()
             tr th.questiontext
                 background-color transparent
+                background-image none
                 textStyle()
             th.header, tfoot > tr, tr.columnlabel, th.questiontext
                 bg menu !important
