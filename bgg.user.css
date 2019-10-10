@@ -9,9 +9,10 @@
 @preprocessor stylus
 
 == theme ==
-@var    select      pri                 'Theme: primary color'                  ["custom*", "Red", "Pink", "Purple", "Deep-Purple", "Indigo", "Blue", "Light-Blue", "Cyan", "Teal", "Green", "Light-Green", "Lime", "Yellow", "Amber", "Orange", "Deep-Orange", "Brown", "Grey", "Blue-Grey"]
-@var    select      val                 '… shade/tint'                          ["dark", "pure hue*", "light"]
-@var    select      sec                 '… secondary color'                     ["custom*", "Red", "Pink", "Purple", "Deep-Purple", "Indigo", "Blue", "Light-Blue", "Cyan", "Teal", "Green", "Light-Green", "Lime", "Yellow", "Amber", "Orange", "Deep-Orange", "Brown", "Grey", "Blue-Grey"]
+@var    checkbox    theme               '3 color theme'                         0
+@var    color       color1              'Color 1 (header)'                      #3f3a60
+@var    color       color2              'Color 2 (background)'                  #ededee
+@var    color       color3              'Color 3 (links)'                       #005bca
 
 == specials ==
 @var    select      logo                'Logo'                                  ["default*", "BGG", "Ernie"]
@@ -66,6 +67,7 @@
 @var    color       linkSelectedColor   '… selected'                            #fdad2f
 @var    color       linkVisitedColor    '… visited'                             #666
 @var    select      linkUnderlineStyle  '… underline style'             ["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
+@var    color       buttonHoverBgColor  'Button hover'                          #ff5100
 @var    color       positiveColor       'Positive values'                       #01ac01
 @var    color       alarmColor          'New item, negative values, errors'     #ff5100
 
@@ -86,687 +88,75 @@
 @var    range       nextIconSize        '… size'                                [1.5,1,6,0.25,"em"]
 ==/UserStyle== */
 
-/**
- * google-material-color v1.2.6
- * https://github.com/danlevan/google-material-color
- */
-$palette = {
-  'Red': {
-    '50': #FFEBEE,
-    '100': #FFCDD2,
-    '200': #EF9A9A,
-    '300': #E57373,
-    '400': #EF5350,
-    '500': #F44336,
-    '600': #E53935,
-    '700': #D32F2F,
-    '800': #C62828,
-    '900': #B71C1C,
-    'A100': #FF8A80,
-    'A200': #FF5252,
-    'A400': #FF1744,
-    'A700': #D50000,
-  },
-  'Pink': {
-    '50': #FCE4EC,
-    '100': #F8BBD0,
-    '200': #F48FB1,
-    '300': #F06292,
-    '400': #EC407A,
-    '500': #E91E63,
-    '600': #D81B60,
-    '700': #C2185B,
-    '800': #AD1457,
-    '900': #880E4F,
-    'A100': #FF80AB,
-    'A200': #FF4081,
-    'A400': #F50057,
-    'A700': #C51162,
-  },
-  'Purple': {
-    '50': #F3E5F5,
-    '100': #E1BEE7,
-    '200': #CE93D8,
-    '300': #BA68C8,
-    '400': #AB47BC,
-    '500': #9C27B0,
-    '600': #8E24AA,
-    '700': #7B1FA2,
-    '800': #6A1B9A,
-    '900': #4A148C,
-    'A100': #EA80FC,
-    'A200': #E040FB,
-    'A400': #D500F9,
-    'A700': #AA00FF,
-  },
-  'Deep-Purple': {
-    '50': #EDE7F6,
-    '100': #D1C4E9,
-    '200': #B39DDB,
-    '300': #9575CD,
-    '400': #7E57C2,
-    '500': #673AB7,
-    '600': #5E35B1,
-    '700': #512DA8,
-    '800': #4527A0,
-    '900': #311B92,
-    'A100': #B388FF,
-    'A200': #7C4DFF,
-    'A400': #651FFF,
-    'A700': #6200EA,
-  },
-  'Indigo': {
-    '50': #E8EAF6,
-    '100': #C5CAE9,
-    '200': #9FA8DA,
-    '300': #7986CB,
-    '400': #5C6BC0,
-    '500': #3F51B5,
-    '600': #3949AB,
-    '700': #303F9F,
-    '800': #283593,
-    '900': #1A237E,
-    'A100': #8C9EFF,
-    'A200': #536DFE,
-    'A400': #3D5AFE,
-    'A700': #304FFE,
-  },
-  'Blue': {
-    '50': #E3F2FD,
-    '100': #BBDEFB,
-    '200': #90CAF9,
-    '300': #64B5F6,
-    '400': #42A5F5,
-    '500': #2196F3,
-    '600': #1E88E5,
-    '700': #1976D2,
-    '800': #1565C0,
-    '900': #0D47A1,
-    'A100': #82B1FF,
-    'A200': #448AFF,
-    'A400': #2979FF,
-    'A700': #2962FF,
-  },
-  'Light-Blue': {
-    '50': #E1F5FE,
-    '100': #B3E5FC,
-    '200': #81D4FA,
-    '300': #4FC3F7,
-    '400': #29B6F6,
-    '500': #03A9F4,
-    '600': #039BE5,
-    '700': #0288D1,
-    '800': #0277BD,
-    '900': #01579B,
-    'A100': #80D8FF,
-    'A200': #40C4FF,
-    'A400': #00B0FF,
-    'A700': #0091EA,
-  },
-  'Cyan': {
-    '50': #E0F7FA,
-    '100': #B2EBF2,
-    '200': #80DEEA,
-    '300': #4DD0E1,
-    '400': #26C6DA,
-    '500': #00BCD4,
-    '600': #00ACC1,
-    '700': #0097A7,
-    '800': #00838F,
-    '900': #006064,
-    'A100': #84FFFF,
-    'A200': #18FFFF,
-    'A400': #00E5FF,
-    'A700': #00B8D4,
-  },
-  'Teal': {
-    '50': #E0F2F1,
-    '100': #B2DFDB,
-    '200': #80CBC4,
-    '300': #4DB6AC,
-    '400': #26A69A,
-    '500': #009688,
-    '600': #00897B,
-    '700': #00796B,
-    '800': #00695C,
-    '900': #004D40,
-    'A100': #A7FFEB,
-    'A200': #64FFDA,
-    'A400': #1DE9B6,
-    'A700': #00BFA5,
-  },
-  'Green': {
-    '50': #E8F5E9,
-    '100': #C8E6C9,
-    '200': #A5D6A7,
-    '300': #81C784,
-    '400': #66BB6A,
-    '500': #4CAF50,
-    '600': #43A047,
-    '700': #388E3C,
-    '800': #2E7D32,
-    '900': #1B5E20,
-    'A100': #B9F6CA,
-    'A200': #69F0AE,
-    'A400': #00E676,
-    'A700': #00C853,
-  },
-  'Light-Green': {
-    '50': #F1F8E9,
-    '100': #DCEDC8,
-    '200': #C5E1A5,
-    '300': #AED581,
-    '400': #9CCC65,
-    '500': #8BC34A,
-    '600': #7CB342,
-    '700': #689F38,
-    '800': #558B2F,
-    '900': #33691E,
-    'A100': #CCFF90,
-    'A200': #B2FF59,
-    'A400': #76FF03,
-    'A700': #64DD17,
-  },
-  'Lime': {
-    '50': #F9FBE7,
-    '100': #F0F4C3,
-    '200': #E6EE9C,
-    '300': #DCE775,
-    '400': #D4E157,
-    '500': #CDDC39,
-    '600': #C0CA33,
-    '700': #AFB42B,
-    '800': #9E9D24,
-    '900': #827717,
-    'A100': #F4FF81,
-    'A200': #EEFF41,
-    'A400': #C6FF00,
-    'A700': #AEEA00,
-  },
-  'Yellow': {
-    '50': #FFFDE7,
-    '100': #FFF9C4,
-    '200': #FFF59D,
-    '300': #FFF176,
-    '400': #FFEE58,
-    '500': #FFEB3B,
-    '600': #FDD835,
-    '700': #FBC02D,
-    '800': #F9A825,
-    '900': #F57F17,
-    'A100': #FFFF8D,
-    'A200': #FFFF00,
-    'A400': #FFEA00,
-    'A700': #FFD600,
-  },
-  'Amber': {
-    '50': #FFF8E1,
-    '100': #FFECB3,
-    '200': #FFE082,
-    '300': #FFD54F,
-    '400': #FFCA28,
-    '500': #FFC107,
-    '600': #FFB300,
-    '700': #FFA000,
-    '800': #FF8F00,
-    '900': #FF6F00,
-    'A100': #FFE57F,
-    'A200': #FFD740,
-    'A400': #FFC400,
-    'A700': #FFAB00,
-  },
-  'Orange': {
-    '50': #FFF3E0,
-    '100': #FFE0B2,
-    '200': #FFCC80,
-    '300': #FFB74D,
-    '400': #FFA726,
-    '500': #FF9800,
-    '600': #FB8C00,
-    '700': #F57C00,
-    '800': #EF6C00,
-    '900': #E65100,
-    'A100': #FFD180,
-    'A200': #FFAB40,
-    'A400': #FF9100,
-    'A700': #FF6D00,
-  },
-  'Deep-Orange': {
-    '50': #FBE9E7,
-    '100': #FFCCBC,
-    '200': #FFAB91,
-    '300': #FF8A65,
-    '400': #FF7043,
-    '500': #FF5722,
-    '600': #F4511E,
-    '700': #E64A19,
-    '800': #D84315,
-    '900': #BF360C,
-    'A100': #FF9E80,
-    'A200': #FF6E40,
-    'A400': #FF3D00,
-    'A700': #DD2C00,
-  },
-  'Brown': {
-    '50': #EFEBE9,
-    '100': #D7CCC8,
-    '200': #BCAAA4,
-    '300': #A1887F,
-    '400': #8D6E63,
-    '500': #795548,
-    '600': #6D4C41,
-    '700': #5D4037,
-    '800': #4E342E,
-    '900': #3E2723,
-  },
-  'Grey': {
-    '50': #FAFAFA,
-    '100': #F5F5F5,
-    '200': #EEEEEE,
-    '300': #E0E0E0,
-    '400': #BDBDBD,
-    '500': #9E9E9E,
-    '600': #757575,
-    '700': #616161,
-    '800': #424242,
-    '900': #212121,
-  },
-  'Blue-Grey': {
-    '50': #ECEFF1,
-    '100': #CFD8DC,
-    '200': #B0BEC5,
-    '300': #90A4AE,
-    '400': #78909C,
-    '500': #607D8B,
-    '600': #546E7A,
-    '700': #455A64,
-    '800': #37474F,
-    '900': #263238,
-  },
-  'Black': {
-    '500': #000000,
-    'text': rgba(0,0,0,0.87),
-    'Primary': rgba(0,0,0,0.87),
-    'Secondary': rgba(0,0,0,0.54),
-    'Icons': rgba(0,0,0,0.38),
-    'Disabled': rgba(0,0,0,0.38),
-    'Hint': rgba(0,0,0,0.38),
-    'Dividers': rgba(0,0,0,0.12),
-  },
-  'White': {
-    '500': #ffffff,
-    'text': #ffffff,
-    'Primary': #ffffff,
-    'Secondary': rgba(255,255,255,0.7),
-    'Icons': rgba(255,255,255,0.5),
-    'Disabled': rgba(255,255,255,0.5),
-    'Hint': rgba(255,255,255,0.5),
-    'Dividers': rgba(255,255,255,0.12),
-  },
-}
-
-$paletteText = {
-  'Red': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Pink': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'White',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Purple': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'White',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Deep-Purple': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'White',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Indigo': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'White',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Blue': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'White',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Light-Blue': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'White',
-  },
-  'Cyan': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Teal': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Green': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Light-Green': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Lime': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'Black',
-    '800': 'Black',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Yellow': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'Black',
-    '800': 'Black',
-    '900': 'Black',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Amber': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'Black',
-    '800': 'Black',
-    '900': 'Black',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Orange': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'Black',
-    '700': 'Black',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'Black',
-    'A700': 'Black',
-  },
-  'Deep-Orange': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-    'A100': 'Black',
-    'A200': 'Black',
-    'A400': 'White',
-    'A700': 'White',
-  },
-  'Brown': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'White',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-  },
-  'Grey': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'Black',
-    '500': 'Black',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-  },
-  'Blue-Grey': {
-    '50': 'Black',
-    '100': 'Black',
-    '200': 'Black',
-    '300': 'Black',
-    '400': 'White',
-    '500': 'White',
-    '600': 'White',
-    '700': 'White',
-    '800': 'White',
-    '900': 'White',
-  },
-  'Black': {
-    '500': 'White',
-    'text': 'White',
-    'Primary': 'White',
-    'Secondary': 'White',
-    'Icons': 'White',
-    'Disabled': 'White',
-    'Hint': 'White',
-    'Dividers': 'White',
-  },
-  'White': {
-    '500': 'Black',
-    'text': 'White',
-    'Primary': 'Black',
-    'Secondary': 'Black',
-    'Icons': 'Black',
-    'Disabled': 'Black',
-    'Hint': 'Black',
-    'Dividers': 'Black',
-  },
-}
-
-palette(color, accent='500')
-  return $palette[color][accent]
-
-paletteText(color, accent='500', textAccent='Primary')
-  return $palette[$paletteText[color][accent]][textAccent]
-
-/*
-Colors
-Red, Pink, Purple, Deep Purple, Indigo, Blue, Light Blue, Cyan, Teal, Green, Light Green, Lime, Yellow, Amber, Orange, Deep Orange, Brown, Grey, Blue Grey
-
-Shades (note that not all color have all the shades)
-50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, A100, A200, A400, A700
-
-Text Colors
-White, Black
-
-Text Shades
-Primary, Secondary, Icons, Disabled, Hint, Dividers
-*/
-
 /* ===== THEME ===== */
-if pri != "custom"
-    headerBgColor       = palette(pri, '500')
-    bodyBgColor         = palette(pri, '400')
-    contentBgColor      = palette(pri, '300')
-    moduleBgColor       = palette(pri, '200')
-    moduleBorderColor   = palette(pri, '700')
-    menuBgColor         = palette(pri, '300')
-    menuBorderColor     = palette(pri, '700')
-    inputBgColor        = palette(pri, '100')
-    inputBorderColor    = palette(pri, '700')
-    fp2nBgColor         = palette(pri, '50')
-    table2nBgColor      = palette(pri, '50')
-    fp2n1BgColor        = palette(pri, '100')
-    table2n1BgColor     = palette(pri, '100')
-    positiveColor       = palette(pri, '300')
-    alarmColor          = palette(pri, '300')
-    articleNewColor     = palette(pri, '300')
-    articleSelectedColor = palette(pri, '300')
-if sec != "custom"
-    textColor           = paletteText(sec, '200')
-    linkColor           = palette(sec, '900')
-    fpLinkColor         = palette(sec, '900')
-    linkHoverColor      = palette(sec, '500')
-    linkSelectedColor   = palette(sec, '500')
-    linkVisitedColor    = lighten(paletteText(sec, '200'), 30)
-    fpLinkVisitedColor  = lighten(paletteText(sec, '200'), 30)
+if theme
+    headerBgColor       = color1
+    if red(headerBgColor) > 200
+        badgeColor      = tint(#ff5100, 30)
+    else
+        badgeColor      = #ff5100   
+    
+    bodyBgColor         = color2
+    if dark(bodyBgColor)
+        contentBgColor      = lighten(bodyBgColor, 5)
+        fp2nBgColor         = darken(bodyBgColor, 5)
+        fp2n1BgColor        = lighten(bodyBgColor, 5)
+        fpLinkVisitedColor  = darken(fpLinkColor, 30)
+        moduleBgColor       = lighten(bodyBgColor, 10)
+        moduleBorderColor   = lighten(bodyBgColor, 20)
+        textColor           = lighten(bodyBgColor, 90)
+        metadataColor       = darken(textColor, 20)
+    else
+        contentBgColor      = darken(bodyBgColor, 5)
+        fp2nBgColor         = lighten(bodyBgColor, 5)
+        fp2n1BgColor        = darken(bodyBgColor, 5)
+        fpLinkVisitedColor  = ligthen(fpLinkColor, 30)
+        moduleBgColor       = darken(bodyBgColor, 10)
+        moduleBorderColor   = darken(bodyBgColor, 20)
+        textColor           = darken(bodyBgColor, 90)
+        metadataColor       = lighten(textColor, 20)
+    if red(contentBgColor) > 200
+        alarmColor      = tint(#ff5100, 30)
+    else
+        alarmColor      = #ff5100
+    fpLinkColor         = textColor
+    inputBgColor        = contentBgColor
+    inputBorderColor    = moduleBorderColor
+    menuBgColor         = moduleBgColor
+    menuBorderColor     = moduleBorderColor
+    table2nBgColor      = fp2nBgColor
+    table2n1BgColor     = fp2n1BgColor
+    textMutedColor      = metadataColor
+    linkColor           = color3
+    linkHoverColor      = mix(linkColor, textColor)
+    linkSelectedColor   = badgeColor
+    linkVisitedColor    = mix(linkColor, linkHoverColor)
+    articleNewColor     = linkHoverColor
+    articleSelectedColor = linkColor
+    buttonHoverBgColor  = linkHoverColor
+
+if dark(buttonHoverBgColor)
+    buttonHoverColor    = #fff
+else
+    buttonHoverColor    = #000
+    
+if dark(headerBgColor)
+    headerColor         = lighten(headerBgColor, 85)
+    headerHoverBgColor  = lighten(headerBgColor, 50)
+    headerHoverColor    = darken(headerColor, 90)
+    headerLinkColor     = #fff
+else
+    headerColor         = darken(headerBgColor, 85)
+    headerHoverBgColor  = darken(headerBgColor, 50)
+    headerHoverColor    = lighten(headerColor, 90)
+    headerLinkColor     = #000
+if dark(moduleBgColor)
+    quoteBgColor        = lighten(moduleBgColor, 10)
+    quoteColor          = darken(textColor, 5)
+else
+    quoteBgColor        = darken(moduleBgColor, 5)
+    quoteColor          = lighten(textColor, 5)
+
 /* ===== /theme ===== */
 
 /* ===== VARS ===== */
@@ -774,9 +164,7 @@ articleNewBorder = solid 3px articleNewColor
 articleSelectedBorder = solid 3px articleSelectedColor
 borderRadius = 2px
 buttonBgColor = menuBgColor
-buttonBorder = menuBorder
-buttonHoverBgColor = headerHoverBgColor
-buttonHoverColor = headerHoverColor
+buttonBorderColor = menuBorderColor
 buttonHoverRadius = borderRadius
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
@@ -785,33 +173,14 @@ fontSizeXL = 1.2rem
 fontSizeL = 0.875rem // == fontSize set in config
 fontSizeM = 0.75rem
 fontSizeS = 0.625rem
-
-if dark(headerBgColor)
-    headerColor = lighten(headerBgColor, 85%)
-    headerHoverBgColor = lighten(headerBgColor, 50%)
-    headerHoverColor = darken(headerColor, 90%)
-    headerLinkColor = lighten(headerColor, 20%)
-else
-    headerColor = darken(headerBgColor, 85%)
-    headerHoverBgColor = darken(headerBgColor, 50%)
-    headerHoverColor = lighten(headerColor, 90%)
-    headerLinkColor = darken(headerColor, 20%)
-
 headerHoverRadius = borderRadius
 inputBorder = 1px solid inputBorderColor
 menuBorder = 1px solid menuBorderColor
+menuHoverColor = buttonHoverColor
 moduleBorder = 1px solid moduleBorderColor
 quoteTitleBgColor = headerBgColor
 quoteTitleColor = headerColor
 quoteBorder = moduleBorder
-
-if dark(moduleBgColor)
-    quoteBgColor = lighten(moduleBgColor, 10%)
-    quoteColor = darken(textColor, 5%)
-else
-    quoteBgColor = darken(moduleBgColor, 5%)
-    quoteColor = lighten(textColor, 5%)
-    
 /* ===== /vars ===== */
 
 /* ===== FUNCTIONS ===== */
@@ -850,6 +219,12 @@ else
     linkStyle()
         text-decoration none
 
+menuHoverStyle()
+    bg buttonHover
+    border-color buttonHoverBgColor
+    border-radius buttonHoverRadius
+    c buttonHover
+
 textStyle()
     c text
 
@@ -878,21 +253,31 @@ textStyle()
     .dropdown-menu
         bg menu
         border-color menuBorderColor
-        a, li a, .dropdown-item a, .dropdown-item a:link, &.show a.dropdown-item, &.show .dropdown-item
+        a, li a, .dropdown-item a, .dropdown-item a:link, .dropdown-item a:visited, &.show a.dropdown-item, &.show .dropdown-item, li.dropdown-option > button, li > button.btn
             textStyle()
             &:hover, &:visited:hover
-                headerHoverStyle()
+                menuHoverStyle()
                 linkStyle()
+        li.dropdown-option.active
+            button::before, a::before
+                c linkSelected
     /* modal dialogs */
     div.modal-content
         bg module
         .list-group-item
             bg menu
     /* popover */
-    .popover
+    .popover, .popover-body
         bg menu
-        .dropdown-item:hover
-            c linkHover
+        &, button.close
+            c text
+        .dropdown-item
+            c text
+            &:hover
+                c linkHover
+        .reaction-list
+            &::before, &::after
+                background-image: none
     /* overlay */
     .expandable div.expandable-envelope p.expandable-overlay
         background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), contentBgColor)
@@ -901,9 +286,12 @@ textStyle()
     p, textarea
         textStyle()
         font-family bodyFont
-    .text-muted:hover
-        textStyle() !important // counter-i!
-        filter opacity(100%)
+    .text-muted, .help-block
+        c textMuted
+        &:hover
+            c text
+    label
+        c text
         
     /* === links, buttons === */
     a, button, .link-muted-color
@@ -911,24 +299,41 @@ textStyle()
     a, .link-muted-color
         &:hover
             c linkHover
-            linkStyle() 
-    a, .nav-tabs-more-dropdown a, .summary-image-item .summary-item-title a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
+            linkStyle()
+    a, .nav-tabs-more-dropdown a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
         c link
-    .link-text:link, .link-text:visited
-        textStyle()
-    a:visited, .link-text-color:visited
+        linkStyle()
+    a:visited
         c linkVisited
-    a:hover, .link-text-color:hover
-        c linkHover
-    .outline.outline-muted a:hover:not(.btn)
-        c linkHover
+    .summary-image-item .summary-item-title a
+        &, &:link, &:visited
+            c link
+            linkStyle()
+            &:hover
+                c linkHover
+                linkStyle()
+    .link-text, .link-text-color, a.toggler-caret
+        &, &:link, &:visited
+            textStyle()
+            &:hover
+                c linkHover
+                linkStyle()
+    .link-muted-color
+        &, &:link, &:visited
+            c textMuted
+            &:hover
+                c linkHover
+                linkStyle()
     a.selected
         c linkSelected !important
-    a, a:link, a:hover, a.link-text-color:hover, a.link-text:hover
-        linkStyle()
-    .btn:not(.disabled):not(.btn-empty):not(.btn-xs):not(.btn-primary), .btn-outline-secondary, input[type="button"]
+    a:hover, .outline.outline-muted a:hover:not(.btn)
+        c linkHover
+    a, a:link, .btn-link
+        &, &:hover
+            linkStyle()
+    .btn:not(,btn-empty), .btn-outline-secondary, .btn.btn-secondary, input[type="button"]
         &:hover
-            buttonHoverStyle()  
+            buttonHoverStyle()
     .btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active
         &:hover
             buttonHoverStyle()
@@ -954,7 +359,7 @@ textStyle()
         display none
     /* ===== /new pages ===== */
 
-    /* ===== ANGULAR 8 PAGES ===== */
+    /* ===== ANGULAR8 PAGES ===== */
     /* ==== header, file, image & video pages ==== */
     gg-app
         /* ==== header ==== */
@@ -1036,22 +441,25 @@ textStyle()
                         fill headerHoverColor
                         
             /* === site selector === */
-            gg-menu-logo .menu-logo-inner > .dropdown > button.dropdown-toggle[aria-haspopup="true"]
-                c header !important
-                border-radius headerHoverRadius
-                padding 0.4em 0.5em
-                &:hover
-                    headerHoverStyle()
-                    c headerHover !important // counter-i!
+            gg-menu-logo .menu-logo-inner > .dropdown 
+                > button.dropdown-toggle[aria-haspopup="true"]
+                    c header !important
+                    border-radius headerHoverRadius
+                    padding 0.4em 0.5em
+                    &:hover
+                        headerHoverStyle()
+                        c headerHover !important // c-i!
+                .dropdown-header
+                    textStyle()
                     
             /* === search === */
             .c-advanced
                 bg menu
                 textStyle()
                 a, select.custom-select
-                    c link
+                    c text
                     &:hover
-                        headerHoverStyle()
+                        menuHoverStyle()
                 select.custom-select
                     bg menu
             .c-inner gg-header-search.c-mobile
@@ -1099,8 +507,8 @@ textStyle()
             
             /* == count badges == */
             .geekmail-notification-icon, .geekmenu-notification-icon span.count
-                background-color alarmColor
-                if dark(alarmColor)
+                background-color badgeColor
+                if dark(badgeColor)
                     color white
                 else
                     color black
@@ -1131,12 +539,17 @@ textStyle()
             .geeksidebar-section-body
                 bg module
                 padding 0.2em 0
-                .geeksidebar-links > li:not(:last-child)
-                    border-color bodyBgColor
-                .btn, .quickbar-pagination .btn, .quickbar-header .color-icon
+                .geeksidebar-links
+                    a
+                        c text
+                    > li:not(:last-child)
+                        border-color bodyBgColor
+                .btn, .quickbar-pagination .btn, .quickbar-header .color-icon 
                     c link
                     &:hover
-                        c linkHover
+                        c text
+                .quickbar-header .quickbar-pagination .btn.is-active
+                    c text
                 /* row hover */
                 div.quickbar-header
                     padding 0 0.5em
@@ -1145,10 +558,12 @@ textStyle()
                 li
                     padding 0.15em 0.5em
                 li:hover, li a:hover
-                    buttonHoverStyle()
+                    menuHoverStyle()
+                    fa-icon:hover
+                        c menuHover
                     
         /* ==== body ==== */
-        div.global-body-content, .global-body-content-primary
+        .global-body-content, .global-body-content-primary
             bg content
             gg-markup-text
                 font-family bodyFont
@@ -1174,11 +589,19 @@ textStyle()
                     bg menu
                     button.dropdown-item:hover
                         headerHoverStyle()
+            /* thumbs count */
+            .interaction-btn-group .interaction-btn, ul.comment-count
+                &, span.count
+                    c text
             /* comment buttons */
             ul.comment-actions > li button.comment-btn
                 border-radius buttonHoverRadius
+                c text
                 &.active, &:focus, &:hover
                     buttonHoverStyle()
+            /* edit buttons */
+            .btn-unstyled:hover
+                c linkHover
                     
             /* === input === */
             input, textarea, .form-control, textarea.form-control[readonly]
@@ -1194,7 +617,7 @@ textStyle()
             .c-container,  gg-image-nav .image-nav, gg-comment
                 bg module
                 .popover
-                    bg menu !important          
+                    bg menu !important
             .c-container
                 border moduleBorder !important
             gg-markup-quote
@@ -1212,19 +635,31 @@ textStyle()
                             padding 2px 4px             
             gg-image-nav
                 border-color moduleBorderColor
+                .image-nav .c-control 
+                    .ng-fa-icon
+                        c link
+                    &:hover .ng-fa-icon
+                        c linkHover
                 .image-metadata
+                    c textMuted
                     bg module
                     &:hover
                         textStyle()             
             gg-filepage-caption
+                .caption-user
+                    c textMuted
                 .filepage-metadata
                     border-color moduleBorderColor
                     gg-license-editable
+                        c textMuted
                         bg module !important
                         &:hover
                             textStyle()         
-            .caption-block .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon
-                c linkHover
+            .caption-block
+                .caption-header .user-info
+                    c textMuted
+                .gallery-meta a.edit-btn:hover fa-icon.ng-fa-icon
+                    c linkHover
             .media-sidebar
                 bg module
                 border moduleBorder
@@ -1232,8 +667,12 @@ textStyle()
                     border-color moduleBorderColor
                     gg-subscription-button, gg-image-size-dropdown, gg-share-buttons
                         .btn
-                            border none !important // counter-i!
+                            border none !important // c-i!
+                            textStyle()
+                            fa-icon.ng-fa-icon
+                                textStyle()
                             &:hover
+                                buttonHoverStyle()
                                 border-radius buttonHoverRadius !important
                                 fa-icon.ng-fa-icon
                                     c buttonHover
@@ -1242,11 +681,13 @@ textStyle()
                 a, button
                     &.btn-tag
                         background-color buttonBgColor
+                        textStyle()
                         &:hover
                             buttonHoverStyle()
                 a.dropdown:hover fa-icon.ng-fa-icon
                      c linkHover
                 a.see-all-btn
+                    c textMuted
                     padding 3px 5px
                     &:hover
                         buttonHoverStyle()
@@ -1263,30 +704,35 @@ textStyle()
                     gg-subscription-button .subscription-btn
                         .btn-block.btn-left
                             margin 0 0.7em 0 1.5em
-                            padding 0 1em 0 0 !important // counter-i!
+                            padding 0 1em 0 0 !important // c-i!
                         .btn-right.dropdown-toggle
                             margin 0 0.3em 0 0.3em
-                            padding 0 0 0 0.6em !important // counter-i!
+                            padding 0 0 0 0.6em !important // c-i!
                             fa-icon.ng-fa-icon
                                 border none
                     gg-share-buttons .btn
                         margin 0 3em 0 3em
-                        padding 0 0 0 0.6em !important // counter-i!
+                        padding 0 0 0 0.6em !important // c-i!
                         
             /* == interaction, file timeline == */
             .caption-footer .interaction-btn-group .interaction-btn
-                background-color buttonBgColor
-                border buttonBorder
+                bg button
+                border-color buttonBorderColor
                 &:hover
                     c linkHover
             gg-timeline
                 bg module
-            gg-timeline-item .timeline-data
-                border-color moduleBorderColor
-                gg-file + gg-file
-                    border-color moduleBorderColor                  
-                a:hover .file-badge, a:not(.loading) .file-badge:hover
-                    buttonHoverStyle()
+                gg-timeline-item 
+                    .timeline-item > .timeline-time > .time
+                        c textMuted
+                    .timeline-data
+                        border-color moduleBorderColor
+                        gg-file + gg-file
+                            border-color moduleBorderColor                  
+                        a:hover .file-badge, a:not(.loading) .file-badge:hover
+                            buttonHoverStyle()
+                        .timeline-meta
+                            c textMuted
             .view-all-container
                 border-color moduleBorderColor
                 &::before
@@ -1304,11 +750,17 @@ textStyle()
                             buttonHoverStyle()
                             .count, .label
                                 c buttonHover
+                    .user-info
+                        c textMuted
+                gg-comment-form
+                    .c-guidelines
+                        c textMuted
         /* ==== /body ==== */
                 
         /* ==== footer ==== */
-        div.global-body-content-secondary .geekfooter
-            a:hover
+        div.global-body-content-secondary .geekfooter .geekfooter-item a
+            c text
+            &:hover
                 c linkHover
     /* ===== /angular8 pages ===== */
 
@@ -1380,17 +832,19 @@ textStyle()
 
             /* fix AngularJS header */
             /* TODO remove */
-            .global-header-nav-primary .dropdown-menu li a:hover
-                c headerHover
-                linkStyle()
+            .global-header-nav-primary .dropdown-menu li a
+                c text
+                &:hover
+                    menuHoverStyle()
+                    linkStyle()
 
             /* === colors === */
             headerStyle()
             .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle
-                c header !important // counter-i!
+                c header !important // c-i!
                 &:hover, &[aria-expanded="true"], &:focus
                     headerHoverStyle()
-                    c headerHover !important // override counter-i!
+                    c headerHover !important // override c-i!
             .btn.btn-empty.global-header-icon.global-header-nav-toggle
                 path
                     fill headerColor
@@ -1403,13 +857,14 @@ textStyle()
             /* === search === */
             .global-header-nav-search
                 .global-header-nav-search-inner
-                    bg body
+                    bg menu
                 .global-header-nav-search-advanced
                     bg menu
-                    span.btn
+                    span.btn, a
                         bg menu
-                    a:hover
-                        headerHoverStyle()
+                        c text
+                        &:hover
+                            menuHoverStyle()
 
             /* === geekmail === */
             geekmail-notifications a.global-header-icon
@@ -1419,8 +874,8 @@ textStyle()
                 border-radius headerHoverRadius
                 padding 5px 7px 3px 7px
             a.global-header-icon span.badge, button.btn.global-header-icon span.badge
-                background-color alarmColor
-                if dark(alarmColor)
+                background-color badgeColor
+                if dark(badgeColor)
                     color white
                 else
                     color black
@@ -1447,6 +902,9 @@ textStyle()
             textStyle()
         .btn-success
             background-color positiveColor
+            &:hover
+                bg buttonHover
+                border-color buttonHoverBgColor
         .global-header-nav-search-advanced a:hover
             bg module
 
@@ -1531,6 +989,8 @@ textStyle()
                 position sticky
                 top 72px
         .global-secondary-nav-section
+            ul.global-secondary-nav-links a
+                c text
             .global-secondary-nav-section-header.toggler-caret
                 headerStyle()
                 &:hover
@@ -1542,8 +1002,8 @@ textStyle()
                 border-color bodyBgColor
             .quickbar-list-group
                 margin-bottom -5px
-            .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, div.quickbar-list-groups .btn.btn-empty:hover
-                c linkHover
+            .quickbar-pagination button.btn:hover, a:hover .quickbar-icon, .quickbar-header .quickbar-pagination button.btn.btn-empty.is-active
+                c text
             /* row hover */
             div.quickbar-header
                 padding 0 0.5em
@@ -1551,10 +1011,10 @@ textStyle()
                 min-height 1.7em
             li
                 padding 0.15em 0.5em
-            li
+            li, .shortcut-add, .shortcut-remove
                 a, &
                     &:hover
-                        buttonHoverStyle()
+                        menuHoverStyle()
         
         /* === hidden modules === */
         if editHomepageHide
@@ -1601,8 +1061,6 @@ textStyle()
         /* === text-colors === */
         h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price
             textStyle()
-        .text-muted:not(label)
-            filter opacity(60%)
 
         /* === front page modules & links === */
         .geekcentral-controls
@@ -1611,12 +1069,12 @@ textStyle()
                 &.btn.btn-empty:hover
                     c linkHover             
             .dropdown-menu > li > button.btn:hover
-                buttonHoverStyle()
-                c headerHover !important
+                menuHoverStyle()
+                c menuHover !important
         
         /* == modules == */
         .geekcentral_module
-            ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding
+            .link-text-color, .link-text-color:link, .quickbar a.ng-binding
                 c fpLink
             .link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link
                 &:hover
@@ -1632,18 +1090,20 @@ textStyle()
             .media-module
                 .dropdown
                     .dropdown-toggle
-                        c header !important // counter-i!
+                        c header !important // c-i!
                         &:hover, &[aria-expanded="true"]
-                            buttonHoverStyle()
-                            c buttonHover !important // counter-i!
+                            headerHoverStyle()
+                            c headerHover !important // c-i!
                             margin -4px
                             padding 4px
                             
                     /* dropdown menus */
-                    .dropdown-menu > li > button.btn:hover
-                        buttonHoverStyle()
+                    .dropdown-menu > li > button.btn
+                        c text
+                        &:hover
+                            menuHoverStyle()
                 .module-pager .module-pager__arrow:not(.disabled):hover
-                    buttonHoverStyle()
+                    headerHoverStyle()
                     margin 5px
                     padding 5px
                 .media-filters
@@ -1652,8 +1112,8 @@ textStyle()
                         c headerLink !important
                         padding 5px
                         &:hover
-                            buttonHoverStyle()
-                            c buttonHover !important // counter-i!
+                            headerHoverStyle()
+                            c headerHover !important // c-i!
                 .media-grid
                     border-color moduleBorderColor
         /* === /front page modules & links === */
@@ -1670,10 +1130,20 @@ textStyle()
                 bg module
             nav.navbar-static-side li.active, .panel-primary, .dropdown-menu
                 bg menu
-            nav.navbar-static-side  li > a:hover
-                headerHoverStyle()
+            nav.navbar-static-side li > a
+                c text
+                &:hover
+                    menuHoverStyle()
             nav.navbar-static-side li.active > a
                 c linkSelected
+                &:hover
+                    menuHoverStyle()
+            .nav.navbar-top-links > li > a:hover
+                menuHoverStyle()
+            .navbar-minimalize, .nav.navbar-right > li > a
+                c text
+                &:hover
+                    c menuHover !important // c-i!
             .table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu
                 border menuBorder
             div.panel-heading
@@ -1681,6 +1151,10 @@ textStyle()
             div#confirm div.modal-header
                 headerStyle()
                 border none
+            a .badge 
+                &:hover
+                    bg buttonHover
+                    c buttonHover
 
         /* === game pages === */
         /* == hidden modules == */
@@ -1710,22 +1184,27 @@ textStyle()
         .btn-primary:hover
             buttonHoverStyle()
         .btn-white:hover
-            border-color buttonHoverBgColor !important // counter-i!
+            border-color buttonHoverBgColor !important // c-i!
         .game-header-flags, .game-header-title .game-header-title-summary, .game-header-credits .credits-cta.ng-scope
             a:hover
                 buttonHoverStyle()
                 c buttonHover !important
         .gameplay-item .btn:not(.btn-empty):hover
             buttonHoverStyle()
-        .gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male
+        .gameplay-item .glyphicon.glyphicon-question-sign, .feature-title span.glyphicon, .feature-title [class^="fi-"], .feature-description, .feature-description [class^="fi-"], .feature-description span.glyphicon, a.btn.btn-xs.outline-item-icon i.fi-torsos-female-male, .feature-icon, .btn-empty.text-muted
+            c textMuted
             &:hover
                 c linkHover
-        a i.fi-pencil.c-icon:hover
-            c linkHover !important // counter-i!
+        a i.fi-pencil.c-icon
+            c textMuted !important // c-i!
+            &:hover
+                c linkHover !important // c-i!
             
         /* == navigation == */
         .game-nav-tabs
             bg content
+            .nav.nav-tabs > li.active > a
+                border-color alarmColor
         div.nav-tabs-more-dropdown
             a
                 padding-left 5px
@@ -1734,7 +1213,7 @@ textStyle()
                 buttonHoverStyle()
                 c headerHover !important
         .well
-            bg menu !important
+            bg module !important
         .summary-border .summary-item
             border-color menuBorderColor
             
@@ -1750,12 +1229,16 @@ textStyle()
                 buttonHoverStyle()
                 
         /* === sections === */
-        .panel-header-lg .panel-title, .wiki_angular h2, .wiki_angular h3
-            textStyle()
-        .panel-header-lg .panel-title > a:link
-            c link
-            &:hover
-                c linkHover
+        .wiki_angular h2, .wiki_angular h3
+            c textMuted
+        .panel-header-lg, .panel-header-sm
+            border-color moduleBorderColor
+            .panel-title 
+                c textMuted
+                > a:link
+                    c link
+                    &:hover
+                        c linkHover 
                 
         /* == zebra style == */
         ul.summary > li.summary-item
@@ -1777,24 +1260,33 @@ textStyle()
                 linkStyle()
             &:hover
                 c linkHover
-        .text-domain:hover
-            c linkHover !important // counter-i!
+        .text-domain
+            c textMuted !important // c-i!
+            &:hover
+                c linkHover !important // c-i!
+        .game-itemid
+            c textMuted
             
         /* == buy a copy == */
         ul.summary-sale > li.summary-sale-item
             padding 0.2em 0.5em
-            margin-bottom 0 !important // counter-i!
+            margin-bottom 0 !important // c-i!
             
         /* == geekmarket == */
         .panel-inline-links > a:link:not(.btn):hover
             c linkHover
             
         /* == videos, reviews == */
-        .summary-item-meta
-            a:hover
-                c linkHover     
+        .summary-item-meta, .summary-item-section.text-muted
+            c textMuted
+            a
+                c textMuted
+                &:hover
+                    c linkHover     
             .summary-item-tag a:hover
                 buttonHoverStyle()
+        .summary-item-counts-item
+            c textMuted
         .summary-item-counts:hover .summary-item-counts-item
             c linkHover
             
@@ -1803,8 +1295,9 @@ textStyle()
         ul.nav.nav-pills
             > li
                 textStyle()
-                .active > a .glyphicon-chevron-right
-                    c linkSelected
+                &.active > a
+                    &, .glyphicon-chevron-right
+                        c linkSelected
                 > a:hover, > a:hover .glyphicon-chevron-right
                     c linkHover
                 > a .nav-pills-count
@@ -1815,8 +1308,22 @@ textStyle()
                 textStyle()
         .panel-header-actions
             a:not(.btn), a.is-active
+                c link
                 &:hover
-                    c linkHover !important // counter-i!
+                    c linkHover !important // c-i!
+            a.is-active
+                c linkSelected
+        /* pagination */
+        .pagination > li
+            &:not(.disabled) > a
+                c text
+                &:hover
+                    buttonHoverStyle()
+            &.active > a
+                bg table2n
+            &.disabled > a
+                c textMuted
+                background-color transparent
         /* threads */
         forum-threads
             bg module
@@ -1853,6 +1360,12 @@ textStyle()
         /* == files == */
         .summary-file-type a:hover
             buttonHoverStyle()
+            
+        /* == my games == */
+        .summary-collection-group
+            border none
+        .form-private
+            bg menu
             
         /* == more == */
         ul.list-block-border > li
@@ -1935,6 +1448,8 @@ textStyle()
     .legacy
         bg content
         textStyle()
+        textarea
+            textStyle()
         
         /* === modules === */
         .moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header
@@ -1996,7 +1511,7 @@ textStyle()
         ul.commands li.divider
             background-color moduleBorderColor
         .post_numcomments, .dull, .darkgray, div.header
-            textStyle()
+            c textMuted
         div.article.subbed
             border articleNewBorder
         div.article.selected, div.article.subbed_selected
@@ -2018,8 +1533,13 @@ textStyle()
             &:hover
                 c linkHover
                 transition none
-        .geeksub_minorlink a:hover
-            c linkHover
+            &.comment_button:hover
+                buttonHoverStyle()
+        .geeksub_minorlink a
+            &:link, &:visited
+                c text
+                &:hover
+                    c linkHover
         .menutab-open li a:hover, .geeksub_minorlink a:active
             c linkHover
         .comment_button
@@ -2032,6 +1552,12 @@ textStyle()
         .forumlink, .objectlink
             a:visited, a:link, a:hover, a:active
                 textStyle()
+        .disambiguatedlink
+            a:visited, a:link, a:hover, a:active
+                c link
+                linkStyle()
+                &:hover
+                    c linkHover
                 
         /* === overtext / popup === */
         .location, js-location, .js-badgeovertext, .avatarovertext
@@ -2072,13 +1598,19 @@ textStyle()
         /* === input, select === */
         input:not([type="button"]), .geekinput, .geekinput_medium, .geekinput_large, select
             inputStyle()
-        input[type="button"], .geekinput
+        input[type="button"], input[type="submit"], .geekinput
+            border-radius buttonHoverRadius
             font-size fontSizeL !important
             font-weight 600
+            bg button
+            &:hover
+                buttonHoverStyle()
         .post_numcomments::after, .post_numcomments::before
             border-color transparent moduleBorderColor
             border-right-color moduleBorderColor
-            
+        if light(textColor)
+            .forum_table td.sf a > img
+                background-color #fff
         /* === geeklists === */
         .geeklist_title, .geeklist_item_title
             headerStyle()
@@ -2088,6 +1620,10 @@ textStyle()
                     c linkHover
         .comment_toolbar
             headerStyle()
+            .comment_button
+                c link
+                &:hover
+                    headerHoverStyle()
         .geeklist_title, .blog_post
             border moduleBorder
         .geeklist_item_title
@@ -2097,6 +1633,11 @@ textStyle()
         .infobox
             bg module
             border moduleBorder
+        .recspy_box
+            bg menu
+            .recspy_header
+                bg header
+                c header
             
         /* === geekmail === */
         tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks
@@ -2181,6 +1722,11 @@ textStyle()
                     &:hover
                         headerHoverStyle()
                         c headerHover !important
+        #collectionitems
+            .rating
+                color #000
+            a:hover
+                c buttonHover
         .collection_table td
             padding 2px
         .collection_version
@@ -2214,10 +1760,10 @@ textStyle()
                 padding 1px 3px
                 &:hover
                     headerHoverStyle()
-                    c headerHover !important // counter-i!
+                    c headerHover !important // c-i!
         form[action="/geekplay.php"] .forum_table td
             border none
-        input[type="submit"]
-            border-radius buttonHoverRadius
-            &:hover
-                buttonHoverStyle()
+        /* === wiki === */
+        .wiki .forum_table th
+            bg header
+            c header
