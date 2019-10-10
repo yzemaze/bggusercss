@@ -9,7 +9,7 @@
 @preprocessor stylus
 
 == theme ==
-@var    checkbox    theme               '3 color theme'                         0
+@var    checkbox    theme               '3 color theme'                         1
 @var    color       color1              'Color 1 (header)'                      #3f3a60
 @var    color       color2              'Color 2 (background)'                  #ededee
 @var    color       color3              'Color 3 (links)'                       #005bca
@@ -337,12 +337,15 @@ textStyle()
     .btn:not(,btn-empty), .btn-outline-secondary, .btn.btn-secondary, input[type="button"]
         &:hover
             buttonHoverStyle()
-    .btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active, .btn.btn-link
+    .btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active
         &:hover
             buttonHoverStyle()
             i
                 c buttonHover
-                
+    .btn.btn-link
+        &:hover
+            buttonHoverStyle()
+            
     /* === inputs, forms === */
     input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
         inputStyle()
