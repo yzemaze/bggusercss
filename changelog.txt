@@ -288,5 +288,7 @@ bg(), c()
 quoteBorder
 
 0.12.2
-themes/color palettes
+theme: 3 colors only
 geekmail/subscription badge
+menuHoverStyle()
+maaaaaaaaaaaaany fixes

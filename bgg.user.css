@@ -1778,6 +1778,7 @@ textStyle()
             bg header
             c header
         /* === thumbs === */
-        dt.recs, dt.recsbig
+        dt.recs, dt.recsbig, .positive
+            c positive
             > a
-                color positiveColor
+                c positive
