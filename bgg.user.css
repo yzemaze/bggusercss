@@ -1741,7 +1741,7 @@ textStyle()
         .collection_version
             white-space normal
         .editfield:hover
-            buttonHoverStyle()
+            menuHoverStyle()
             
         /* === subscription icon === */
         if nextChange       
