@@ -1736,8 +1736,6 @@ textStyle()
         #collectionitems
             .rating
                 color #000
-            a:hover
-                c buttonHover
         .collection_table td
             padding 2px
         .collection_version
