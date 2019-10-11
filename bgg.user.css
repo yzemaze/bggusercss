@@ -1248,15 +1248,20 @@ textStyle()
                 
         /* == zebra style == */
         ul.summary > li.summary-item
-            margin-bottom 0
-            padding-top 0.2em
-            padding-right 0.2em
             &:nth-child(2n)
                 bg table2n
             &:nth-child(2n+1)
                 bg table2n1
             &:last-child
                 border-bottom none
+                
+        /* == table margin/padding == */
+        ul.summary > li.summary-item    
+            margin-bottom 0
+            padding-top 0.2em
+            padding-right 0.2em
+        .summary-callout-lg .summary-item
+            padding-left 7em
                 
         /* == description == */
         .game-awards.panel li a, .panel-expandable .expandable-body a
