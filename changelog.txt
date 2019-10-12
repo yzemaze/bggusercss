@@ -293,3 +293,6 @@ geekmail/subscription badge
 menuHoverStyle()
 maaaaaaaaaaaaany fixes
 recs/thumbs = positiveColor
+
+0.13.1
+front page: visited links fix

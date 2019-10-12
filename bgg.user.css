@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.0
+@version        0.13.1
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -98,28 +98,29 @@ if theme
     
     bodyBgColor         = color2
     if dark(bodyBgColor)
-        contentBgColor      = lighten(bodyBgColor, 5)
-        fp2nBgColor         = darken(bodyBgColor, 5)
-        fp2n1BgColor        = lighten(bodyBgColor, 5)
-        fpLinkVisitedColor  = darken(fpLinkColor, 30)
-        moduleBgColor       = lighten(bodyBgColor, 10)
-        moduleBorderColor   = lighten(bodyBgColor, 20)
+        contentBgColor      = lighten(bodyBgColor, 5%)
+        fp2nBgColor         = darken(bodyBgColor, 5%)
+        fp2n1BgColor        = lighten(bodyBgColor, 5%)
         textColor           = lighten(bodyBgColor, 95%)
-        metadataColor       = darken(textColor, 20)
+        fpLinkColor         = textColor
+        fpLinkVisitedColor  = darken(fpLinkColor, 50%)
+        moduleBgColor       = lighten(bodyBgColor, 10%)
+        moduleBorderColor   = lighten(bodyBgColor, 20%)
+        metadataColor       = darken(textColor, 20%)
     else
         contentBgColor      = darken(bodyBgColor, 5%)
         fp2nBgColor         = lighten(bodyBgColor, 5%)
         fp2n1BgColor        = darken(bodyBgColor, 5%)
-        fpLinkVisitedColor  = ligthen(fpLinkColor, 30%)
-        moduleBgColor       = darken(bodyBgColor, 10)
-        moduleBorderColor   = darken(bodyBgColor, 20)
         textColor           = darken(bodyBgColor, 95%)
-        metadataColor       = lighten(textColor, 20)
+        fpLinkColor         = textColor
+        fpLinkVisitedColor  = lighten(fpLinkColor, 50%)
+        moduleBgColor       = darken(bodyBgColor, 10%)
+        moduleBorderColor   = darken(bodyBgColor, 20%)
+        metadataColor       = lighten(textColor, 20%)
     if red(contentBgColor) > 200
         alarmColor      = tint(#ff5100, 30)
     else
         alarmColor      = #ff5100
-    fpLinkColor         = textColor
     inputBgColor        = contentBgColor
     inputBorderColor    = moduleBorderColor
     menuBgColor         = moduleBgColor
