@@ -296,3 +296,6 @@ recs/thumbs = positiveColor
 
 0.13.1
 front page: visited links fix
+
+0.13.2
+front page: visited links fix
