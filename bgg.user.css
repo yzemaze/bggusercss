@@ -32,7 +32,7 @@
 @var    color       fp2nBgColor         '… background of even rows'             #ddd
 @var    color       fp2n1BgColor        '… background of odd rows'              #ccc
 @var    color       fpLinkColor         '… links'                               #222
-@var    color       fplinkVisitedColor  '… links visited'                       #666
+@var    color       fpLinkVisitedColor  '… links visited'                       #666
 @var    select      fpLinkWeight        '… link weight'                         ["bold", "bolder", "lighter", "normal*"]
 @var    color       metadataColor       'Post metadata'                         #666
 @var    checkbox    metadataInline      '… inline'                              0
