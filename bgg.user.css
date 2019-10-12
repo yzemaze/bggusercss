@@ -1083,11 +1083,11 @@ textStyle()
         .geekcentral_module
             .link-text-color, .link-text-color:link, .quickbar a.ng-binding
                 c fpLink
+            .link-text-color:visited
+                c fpLinkVisited
             .link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link
                 &:hover
                     c linkHover
-            .link-text-color:visited
-                c fpLinkVisited
             .link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a
                 font-weight fpLinkWeight
             a.post-meta__link, a.post-meta__link:visited
