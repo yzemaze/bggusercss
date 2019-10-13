@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.2
+@version        0.13.3
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -31,6 +31,8 @@
 @var    checkbox    frontpageCondensed  '… less whitespace'                     1
 @var    color       fp2nBgColor         '… background of even rows'             #ddd
 @var    color       fp2n1BgColor        '… background of odd rows'              #ccc
+@var    checkbox    fpBorder            '… border of rows'                      1
+@var    color       fpBorderColor       '… border-color of rows'                #bbb
 @var    color       fpLinkColor         '… links'                               #222
 @var    color       fpLinkVisitedColor  '… links visited'                       #666
 @var    select      fpLinkWeight        '… link weight'                         ["bold", "bolder", "lighter", "normal*"]
@@ -54,7 +56,7 @@
 @var    color       moduleBgColor       'Module background'                     #ccc
 @var    color       moduleBorderColor   '… border'                              #999
 @var    color       menuBgColor         'Menus, dropdowns etc. background'      #ddd
-@var    color       menuBorderColor     '… border'                              #999
+@var    color       menuBorderColor     '… border'                              #ccc
 @var    color       inputBgColor        'Input background'                      #eee
 @var    color       inputBorderColor    '… border'                              #999
 @var    color       table2nBgColor      'Tables even rows'                      #ddd
@@ -101,6 +103,7 @@ if theme
         contentBgColor      = lighten(bodyBgColor, 5%)
         fp2nBgColor         = darken(bodyBgColor, 5%)
         fp2n1BgColor        = lighten(bodyBgColor, 5%)
+        fpBorderColor       = lighten(bodyBgColor, 10%)
         textColor           = lighten(bodyBgColor, 95%)
         fpLinkColor         = textColor
         fpLinkVisitedColor  = darken(fpLinkColor, 50%)
@@ -111,6 +114,7 @@ if theme
         contentBgColor      = darken(bodyBgColor, 5%)
         fp2nBgColor         = lighten(bodyBgColor, 5%)
         fp2n1BgColor        = darken(bodyBgColor, 5%)
+        fpBorderColor       = darken(bodyBgColor, 10%)
         textColor           = darken(bodyBgColor, 95%)
         fpLinkColor         = textColor
         fpLinkVisitedColor  = lighten(fpLinkColor, 50%)
@@ -179,6 +183,8 @@ fontSizeXL = 1.2rem
 fontSizeL = 0.875rem // == fontSize set in config
 fontSizeM = 0.75rem
 fontSizeS = 0.625rem
+if fpBorder
+    fpBorder = 1px solid fpBorderColor
 headerHoverRadius = borderRadius
 inputBorder = 1px solid inputBorderColor
 menuBorder = 1px solid menuBorderColor
@@ -975,7 +981,7 @@ textStyle()
             .geekcentral_module span.post-reactions, .geekcentral_module span.post-meta__item:nth-last-child(2)::after
                 display:none
         .media-cell
-            border menuBorder
+            border fpBorder
             border-top none
         .media-header
             headerStyle()

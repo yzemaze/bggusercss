@@ -299,3 +299,6 @@ front page: visited links fix
 
 0.13.2
 front page: visited links fix
+
+0.13.3
+front page: borders of rows optional, colors
