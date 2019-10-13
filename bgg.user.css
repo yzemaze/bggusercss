@@ -31,8 +31,8 @@
 @var    checkbox    frontpageCondensed  '… less whitespace'                     1
 @var    color       fp2nBgColor         '… background of even rows'             #ddd
 @var    color       fp2n1BgColor        '… background of odd rows'              #ccc
-@var    checkbox    fpBorder            '… border of rows'                      1
-@var    color       fpBorderColor       '… border-color of rows'                #bbb
+@var    checkbox    fpBorder            '… row borders'                         0
+@var    color       fpBorderColor       '… row border-color'                    #bbb
 @var    color       fpLinkColor         '… links'                               #222
 @var    color       fpLinkVisitedColor  '… links visited'                       #666
 @var    select      fpLinkWeight        '… link weight'                         ["bold", "bolder", "lighter", "normal*"]
@@ -101,8 +101,8 @@ if theme
     bodyBgColor         = color2
     if dark(bodyBgColor)
         contentBgColor      = lighten(bodyBgColor, 5%)
-        fp2nBgColor         = darken(bodyBgColor, 5%)
-        fp2n1BgColor        = lighten(bodyBgColor, 5%)
+        fp2nBgColor         = darken(contentBgColor, 5%)
+        fp2n1BgColor        = lighten(contentBgColor, 15%)
         fpBorderColor       = lighten(bodyBgColor, 10%)
         textColor           = lighten(bodyBgColor, 95%)
         fpLinkColor         = textColor
@@ -112,8 +112,8 @@ if theme
         metadataColor       = darken(textColor, 20%)
     else
         contentBgColor      = darken(bodyBgColor, 5%)
-        fp2nBgColor         = lighten(bodyBgColor, 5%)
-        fp2n1BgColor        = darken(bodyBgColor, 5%)
+        fp2nBgColor         = lighten(contentBgColor, 15%)
+        fp2n1BgColor        = darken(contentBgColor, 5%)
         fpBorderColor       = darken(bodyBgColor, 10%)
         textColor           = darken(bodyBgColor, 95%)
         fpLinkColor         = textColor
