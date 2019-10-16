@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.3
+@version        0.13.4
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -335,7 +335,7 @@ textStyle()
                 c linkHover
                 linkStyle()
     a.selected
-        c linkSelected !important
+        c linkSelected
     a:hover, .outline.outline-muted a:hover:not(.btn)
         c linkHover
     a, a:link, .btn-link
@@ -1484,6 +1484,9 @@ textStyle()
             border-color linkHoverColor
         .module_title, td.module_title + td > div a, td.modulecommands + td > div, td.modulecommands + td > div > a, .moduletable th a, .moduletable div.pages, .moduletable > tbody > tr:first-child, .moduletable .modulecommands, .modulecommands select, .modulecommands option, div.pages
             c header
+        .moduletable th a.selected
+            &, &.visited
+                c alarm
             
         /* === forum === */
         .forum_index_table th a
@@ -1580,6 +1583,9 @@ textStyle()
                 linkStyle()
                 &:hover
                     c linkHover
+        .modulecommands > a, .moduletable th a.selected
+            &:hover
+                headerHoverStyle()
                 
         /* === overtext / popup === */
         .location, js-location, .js-badgeovertext, .avatarovertext

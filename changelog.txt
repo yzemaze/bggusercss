@@ -302,3 +302,7 @@ front page: visited links fix
 
 0.13.3
 front page: borders of rows optional, colors
+
+0.13.4
+modulecommands hover
+module header: selected links alarmColor
