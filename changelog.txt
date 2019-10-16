@@ -306,3 +306,6 @@ front page: borders of rows optional, colors
 0.13.4
 modulecommands hover
 module header: selected links alarmColor
+
+0.13.5
+geekcollection pager hover
