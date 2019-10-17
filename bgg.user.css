@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.5
+@version        0.13.7
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -735,6 +735,8 @@ textStyle()
                     c linkHover
             gg-timeline
                 bg module
+                margin-top 20px
+                padding 15px 10px 0 0
                 gg-timeline-item 
                     .timeline-item > .timeline-time > .time
                         c textMuted
@@ -1666,6 +1668,10 @@ textStyle()
             .recspy_header
                 bg header
                 c header
+                a
+                    c header
+                    &:hover
+                        headerHoverStyle()
             
         /* === geekmail === */
         tr:first-child > td.sf > div.sf, .gm_controlbar, div#pager.geekpages, div#mychecks

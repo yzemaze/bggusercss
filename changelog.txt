@@ -309,3 +309,9 @@ module header: selected links alarmColor
 
 0.13.5
 geekcollection pager hover
+
+0.13.6
+timeline padding fix (new item border overlapping)
+
+0.13.7
+legacy thumb/geekgold box header
