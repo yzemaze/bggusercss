@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.9
+@version        0.13.10
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -1180,6 +1180,8 @@ quoteBorder = moduleBorder
         div[ng-controller="GeekMarketCtrl"]
             .white-bg
                 bg module
+            .border-bottom
+                border-color moduleBorderColor !important //c-i!
             nav.navbar-static-side li.active, .panel-primary, .dropdown-menu
                 bg menu
             nav.navbar-static-side li > a
@@ -1196,6 +1198,9 @@ quoteBorder = moduleBorder
                 c text
                 &:hover
                     c menuHover !important // c-i!
+            .nav-second-level
+                bg menu
+                c menu
             .table-bordered tbody tr td, .table-bordered tbody tr th, .dropdown-menu
                 border menuBorder
             div.panel-heading
