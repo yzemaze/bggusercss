@@ -315,3 +315,8 @@ timeline padding fix (new item border overlapping)
 
 0.13.7
 legacy thumb/geekgold box header
+
+0.13.8
+button colors (custom & theme)
+pagination
+fixes

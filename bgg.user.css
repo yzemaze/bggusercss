@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.7
+@version        0.13.8
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -69,9 +69,12 @@
 @var    color       linkSelectedColor   '… selected'                            #fdad2f
 @var    color       linkVisitedColor    '… visited'                             #666
 @var    select      linkUnderlineStyle  '… underline style'             ["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
-@var    color       buttonHoverBgColor  'Button hover'                          #ff5100
+@var    color       buttonPrimaryBgColor 'Buttons: primary'                     #005bca
+@var    color       buttonStdBgColor    '… standard'                            #fff
+@var    color       buttonSubtleBgColor '… subtle'                              #e9e9ec
+@var    color       buttonHoverBgColor  '… hover'                               #ff5100
 @var    color       positiveColor       'Positive values'                       #01ac01
-@var    color       alarmColor          'New item, negative values, errors'     #ff5100
+@var    color       alarmColor          'Negative values, errors'       #ff5100
 
 == game pages ==
 @var    color       gamepageHeaderColor 'Game pages: header text'               #ddd
@@ -90,117 +93,24 @@
 @var    range       nextIconSize        '… size'                                [1.5,1,6,0.25,"em"]
 ==/UserStyle== */
 
-/* ===== THEME ===== */
-if theme
-    headerBgColor       = color1
-    if red(headerBgColor) > 200
-        badgeColor      = tint(#ff5100, 30)
-    else
-        badgeColor      = #ff5100
-    
-    bodyBgColor         = color2
-    if dark(bodyBgColor)
-        contentBgColor      = lighten(bodyBgColor, 5%)
-        fp2nBgColor         = darken(contentBgColor, 5%)
-        fp2n1BgColor        = lighten(contentBgColor, 15%)
-        fpBorderColor       = lighten(bodyBgColor, 10%)
-        textColor           = lighten(bodyBgColor, 95%)
-        fpLinkColor         = textColor
-        fpLinkVisitedColor  = darken(fpLinkColor, 50%)
-        moduleBgColor       = lighten(bodyBgColor, 10%)
-        moduleBorderColor   = lighten(bodyBgColor, 20%)
-        metadataColor       = darken(textColor, 20%)
-    else
-        contentBgColor      = darken(bodyBgColor, 5%)
-        fp2nBgColor         = lighten(contentBgColor, 15%)
-        fp2n1BgColor        = darken(contentBgColor, 5%)
-        fpBorderColor       = darken(bodyBgColor, 10%)
-        textColor           = darken(bodyBgColor, 95%)
-        fpLinkColor         = textColor
-        fpLinkVisitedColor  = lighten(fpLinkColor, 50%)
-        moduleBgColor       = darken(bodyBgColor, 10%)
-        moduleBorderColor   = darken(bodyBgColor, 20%)
-        metadataColor       = lighten(textColor, 20%)
-    if red(contentBgColor) > 200
-        alarmColor      = tint(#ff5100, 30)
-    else
-        alarmColor      = #ff5100
-    inputBgColor        = contentBgColor
-    inputBorderColor    = moduleBorderColor
-    menuBgColor         = moduleBgColor
-    menuBorderColor     = moduleBorderColor
-    table2nBgColor      = fp2nBgColor
-    table2n1BgColor     = fp2n1BgColor
-    textMutedColor      = metadataColor
-    linkColor           = color3
-    linkHoverColor      = mix(linkColor, textColor)
-    linkSelectedColor   = badgeColor
-    linkVisitedColor    = mix(linkColor, linkHoverColor)
-    articleNewColor     = linkHoverColor
-    articleSelectedColor = linkColor
-    buttonHoverBgColor  = linkHoverColor
-else
-    if red(headerBgColor) > 200
-        badgeColor      = tint(#ff5100, 30)
-    else
-        badgeColor      = #ff5100
-    
-if dark(buttonHoverBgColor)
-    buttonHoverColor    = #fff
-else
-    buttonHoverColor    = #000
-    
-if dark(headerBgColor)
-    headerColor         = lighten(headerBgColor, 85)
-    headerHoverBgColor  = lighten(headerBgColor, 50)
-    headerHoverColor    = darken(headerColor, 90)
-    headerLinkColor     = #fff
-else
-    headerColor         = darken(headerBgColor, 85)
-    headerHoverBgColor  = darken(headerBgColor, 50)
-    headerHoverColor    = lighten(headerColor, 90)
-    headerLinkColor     = #000
-if dark(moduleBgColor)
-    quoteBgColor        = lighten(moduleBgColor, 10)
-    quoteColor          = darken(textColor, 5)
-else
-    quoteBgColor        = darken(moduleBgColor, 5)
-    quoteColor          = lighten(textColor, 5)
-
-/* ===== /theme ===== */
-
-/* ===== VARS ===== */
-articleNewBorder = solid 3px articleNewColor
-articleSelectedBorder = solid 3px articleSelectedColor
-borderRadius = 2px
-buttonBgColor = menuBgColor
-buttonBorderColor = menuBorderColor
-buttonHoverRadius = borderRadius
-fontS = fontM = fontXL = fontXXL = headerFont
-fontL = bodyFont
-fontSizeXXL = 1.5rem
-fontSizeXL = 1.2rem
-fontSizeL = 0.875rem // == fontSize set in config
-fontSizeM = 0.75rem
-fontSizeS = 0.625rem
-if fpBorder
-    fpBorder = 1px solid fpBorderColor
-headerHoverRadius = borderRadius
-inputBorder = 1px solid inputBorderColor
-menuBorder = 1px solid menuBorderColor
-menuHoverColor = buttonHoverColor
-moduleBorder = 1px solid moduleBorderColor
-quoteTitleBgColor = headerBgColor
-quoteTitleColor = headerColor
-quoteBorder = moduleBorder
-/* ===== /vars ===== */
-
 /* ===== FUNCTIONS ===== */
 bg(item, args...)
     background-color item + "BgColor" args
     
 c(item, args...)
     color item + "Color" args
+
+cc(bgColor)
+    if dark(bgColor)
+        color #fff
+    else
+        color #000
+    
+redish(col)
+    if hue(col) < 40deg || hue(col) > 320deg
+        1
+    else
+        0
 
 buttonHoverStyle()
     bg buttonHover
@@ -234,12 +144,118 @@ else
 menuHoverStyle()
     headerHoverStyle()
     // buttonHoverStyle()
-
+    
 textStyle()
     c text
-
 /* ===== /functions ===== */
+
+/* ===== THEME ===== */
+if theme
+    headerBgColor       = color1
+    bodyBgColor         = color2
+    linkColor           = color3
     
+    if dark(bodyBgColor)
+        same = darken
+        diff = lighten
+    else
+        same = lighten
+        diff = darken
+        
+    buttonStdBgColor    = diff(bodyBgColor, 15%)
+    buttonSubtleBgColor = diff(bodyBgColor, 13%)
+    contentBgColor      = diff(bodyBgColor, 5%)
+    fp2nBgColor         = same(contentBgColor, 15%)
+    fp2n1BgColor        = diff(contentBgColor, 5%)
+    fpBorderColor       = diff(bodyBgColor, 10%)
+    fpLinkColor         = diff(bodyBgColor, 95%)
+    fpLinkVisitedColor  = same(fpLinkColor, 50%)
+    moduleBgColor       = diff(bodyBgColor, 10%)
+    moduleBorderColor   = diff(bodyBgColor, 20%)
+    metadataColor       = same(textColor, 20%)
+    textColor           = diff(bodyBgColor, 95%)
+        
+    if redish(contentBgColor)
+        alarmColor      = #0000ff
+        dangerColor     = #0051ff
+    else
+        alarmColor      = #ff0000
+        dangerColor     = #ff5100
+
+    inputBgColor        = contentBgColor
+    inputBorderColor    = moduleBorderColor
+    menuBgColor         = moduleBgColor
+    menuBorderColor     = moduleBorderColor
+    linkHoverColor      = mix(linkColor, textColor)
+    linkSelectedColor   = badgeColor
+    linkVisitedColor    = mix(linkColor, linkHoverColor)
+    articleNewColor     = linkHoverColor
+    articleSelectedColor = linkColor
+    buttonHoverBgColor  = linkHoverColor
+    buttonPrimaryBgColor = linkColor
+    table2nBgColor      = fp2nBgColor
+    table2n1BgColor     = fp2n1BgColor
+    textMutedColor      = metadataColor
+/* ===== /theme ===== */
+
+/* ===== VARS ===== */
+articleNewBorder = solid 3px articleNewColor
+articleSelectedBorder = solid 3px articleSelectedColor
+
+if redish(headerBgColor)
+    badgeColor      = #0051ff
+else
+    badgeColor      = #ff5100
+
+borderRadius = 2px
+buttonBgColor = menuBgColor
+buttonBorderColor = menuBorderColor
+
+if dark(buttonHoverBgColor)
+    buttonHoverColor = #fff
+else
+    buttonHoverColor = #000
+    
+buttonHoverRadius = borderRadius
+fontS = fontM = fontXL = fontXXL = headerFont
+fontL = bodyFont
+fontSizeXXL = 1.5rem
+fontSizeXL = 1.2rem
+fontSizeL = 0.875rem // == fontSize set in config
+fontSizeM = 0.75rem
+fontSizeS = 0.625rem
+
+if fpBorder
+    fpBorder = 1px solid fpBorderColor
+    
+if dark(headerBgColor)
+    headerColor         = lighten(headerBgColor, 85)
+    headerHoverBgColor  = lighten(headerBgColor, 50)
+    headerHoverColor    = darken(headerColor, 90)
+    headerLinkColor     = #fff
+else
+    headerColor         = darken(headerBgColor, 85)
+    headerHoverBgColor  = darken(headerBgColor, 50)
+    headerHoverColor    = lighten(headerColor, 90)
+    headerLinkColor     = #000
+    
+headerHoverRadius = borderRadius
+inputBorder = 1px solid inputBorderColor
+menuBorder = 1px solid menuBorderColor
+menuHoverColor = buttonHoverColor
+moduleBorder = 1px solid moduleBorderColor
+
+if dark(moduleBgColor)
+    quoteBgColor        = lighten(moduleBgColor, 10)
+    quoteColor          = darken(textColor, 5)
+else
+    quoteBgColor        = darken(moduleBgColor, 5)
+    quoteColor          = lighten(textColor, 5)
+    
+quoteTitleBgColor = headerBgColor
+quoteTitleColor = headerColor
+quoteBorder = moduleBorder
+/* ===== /vars ===== */ 
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
     html
         font-family headerFont
@@ -313,7 +329,7 @@ textStyle()
     a, .nav-tabs-more-dropdown a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
         c link
         linkStyle()
-    a:visited
+    a:visited:not(.btn)
         c linkVisited
     .summary-image-item .summary-item-title a
         &, &:link, &:visited
@@ -341,17 +357,40 @@ textStyle()
     a, a:link, .btn-link
         &, &:hover
             linkStyle()
-    .btn:not(,btn-empty), .btn-outline-secondary, .btn.btn-secondary, input[type="button"]
+    .btn-primary
+        bg buttonPrimary
+        border-color buttonPrimaryBgColor
+        cc(buttonPrimaryBgColor)
+    .btn.btn-white, .btn.btn-default
+        &, &:not(.active):not(:disabled)
+            bg buttonStd
+            border-color buttonStdBgColor
+            cc(buttonStdBgColor)
+    .btn-subtle
+        bg buttonSubtle
+        border-color buttonSubtleBgColor
+        cc(buttonSubtleBgColor)
+    .btn:not(,btn-empty), .btn-outline-secondary, .btn.btn-secondary, input[type="button"], .btn.btn-link
         &:hover
             buttonHoverStyle()
+    .btn-success
+        background-color positiveColor
+        border-color positiveColor
+    .btn-warning
+        background-color dangerColor
+        border-color dangerColor
+    .btn-danger
+        background-color alarmColor
+        border-color alarmColor     
+    .btn-success, .btn-warning, .btn-danger
+        &:hover, &:focus, &:active, &.active, .open .dropdown-toggle&
+            buttonHoverStyle()
+            
     .btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active
         &:hover
             buttonHoverStyle()
             i
                 c buttonHover
-    .btn.btn-link
-        &:hover
-            buttonHoverStyle()
             
     /* === inputs, forms === */
     input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
@@ -360,10 +399,13 @@ textStyle()
             bg input
             
     /* === navigation === */
-    .nav.nav-tabs > li > a, .nav.nav-tabs .nav-link
-        textStyle()
-        &:hover
-            buttonHoverStyle()  
+    .nav.nav-tabs 
+        > li > a, > li.active > a, .nav-link
+            textStyle()
+            &:hover
+                bg buttonHover
+                border-radius buttonHoverRadius
+                c buttonHover   
             
     /* === misc === */
     hr
@@ -915,11 +957,6 @@ textStyle()
 
         .summary-item-tag a, .summary-item-pagination.pagination > li > a, .summary-item-pagination.pagination > li > span, .summary-file-type a
             textStyle()
-        .btn-success
-            background-color positiveColor
-            &:hover
-                bg buttonHover
-                border-color buttonHoverBgColor
         .global-header-nav-search-advanced a:hover
             bg module
 
@@ -1181,10 +1218,6 @@ textStyle()
                 display none
                 
         /* == mobile == */
-        .game-nav-tabs .nav.nav-tabs > li > a, .game-nav-tabs .nav.nav-tabs > li.active > a
-            textStyle()
-            &:hover
-                buttonHoverStyle()
         @media (max-width:767px)
             .game-header-body
                 background-color #0a090f
@@ -1228,7 +1261,7 @@ textStyle()
                 menuHoverStyle()
                 c headerHover !important
         .well
-            bg module !important
+            bg module
         .summary-border .summary-item
             border-color menuBorderColor
             
@@ -1336,11 +1369,13 @@ textStyle()
         /* pagination */
         .pagination > li
             &:not(.disabled) > a
-                c text
+                bg buttonStd
+                cc(buttonStdBgColor)
                 &:hover
                     buttonHoverStyle()
             &.active > a
-                bg table2n
+                bg buttonSubtle
+                c linkSelected
             &.disabled > a
                 c textMuted
                 background-color transparent
@@ -1439,7 +1474,7 @@ textStyle()
                 headerStyle()
                 border none
                 button.close:hover
-                    c alarm
+                    c badge
                 .modal-title, button.close
                     c header
             .modal-body, .modal-footer
@@ -1488,7 +1523,7 @@ textStyle()
             c header
         .moduletable th a.selected
             &, &.visited
-                c alarm
+                c badge
             
         /* === forum === */
         .forum_index_table th a
@@ -1551,10 +1586,8 @@ textStyle()
             border quoteBorder
             border-top none
             c quote
-            
+
         /* === links === */
-        a:visited
-            c linkVisited
         a, a:link, .nav > li > a, .bluebox a
             c link
             &:hover
@@ -1793,7 +1826,8 @@ textStyle()
             
         /* === plays === */
         table.forum_table > tbody > tr > th
-            headerStyle()
+            &, & *
+                headerStyle()
             a
                 c headerLink !important // counter-i
                 padding 1px 3px
