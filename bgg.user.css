@@ -172,8 +172,8 @@ if theme
     fpLinkVisitedColor  = same(fpLinkColor, 50%)
     moduleBgColor       = diff(bodyBgColor, 10%)
     moduleBorderColor   = diff(bodyBgColor, 20%)
-    metadataColor       = same(textColor, 20%)
     textColor           = diff(bodyBgColor, 95%)
+    metadataColor       = same(textColor, 20%)
         
     if redish(contentBgColor)
         alarmColor      = #0000ff
@@ -187,7 +187,7 @@ if theme
     menuBgColor         = moduleBgColor
     menuBorderColor     = moduleBorderColor
     linkHoverColor      = mix(linkColor, textColor)
-    linkSelectedColor   = badgeColor
+    linkSelectedColor   = dangerColor
     linkVisitedColor    = mix(linkColor, linkHoverColor)
     articleNewColor     = linkHoverColor
     articleSelectedColor = linkColor
@@ -1116,7 +1116,7 @@ quoteBorder = moduleBorder
 
         /* === front page modules & links === */
         .geekcentral-controls
-            button, .link-text-color:link
+            button, .link-text-color
                 c fpLink
                 &.btn.btn-empty:hover
                     c linkHover             
@@ -1135,7 +1135,7 @@ quoteBorder = moduleBorder
                     c linkHover
             .link-text-color, .link-text-color:link, a.ng-binding, li.ng-binding a
                 font-weight fpLinkWeight
-            a.post-meta__link, a.post-meta__link:visited
+            a.post-meta__link, a.post-meta__link:visited, .post-meta .post-reactions
                 c metadata
 
             /* buttons & dropdowns */
@@ -1511,6 +1511,18 @@ quoteBorder = moduleBorder
             textStyle()
         
         /* === modules === */
+        div#modules
+            #leftmodules, #rightmodules
+                bg module
+                &, & *
+                    border-color moduleBorderColor !important // c-inline
+                .handle
+                    bg header
+                    c header
+                .innermodule
+                    bg menu
+                    c menu
+
         .moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header
             headerStyle()
         .moduletable

@@ -320,3 +320,5 @@ legacy thumb/geekgold box header
 button colors (custom & theme)
 pagination
 fixes
+.post-meta
+login
