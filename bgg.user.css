@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.10
+@version        0.13.11
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -46,8 +46,8 @@
 
 == fonts ==
 @var    range       fontSize            "Font size text"                        [14,6,36,1,"px"]
-@var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
-@var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*"]
+@var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
+@var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
 
 ==  background & border colors ==
 @var    color       headerBgColor       'Header background'                     #3f3a60
@@ -217,6 +217,11 @@ else
     buttonHoverColor = #000
     
 buttonHoverRadius = borderRadius
+for font in Proxima-Nova Roboto
+    if bodyFont == font
+        bodyFont = bodyFont, sans-serif
+    if headerFont == font
+        headerFont = headerFont, sans-serif
 fontS = fontM = fontXL = fontXXL = headerFont
 fontL = bodyFont
 fontSizeXXL = 1.5rem
@@ -1128,6 +1133,8 @@ quoteBorder = moduleBorder
         .geekcentral_module
             .link-text-color, .link-text-color:link, .quickbar a.ng-binding
                 c fpLink
+            .link-text:visited
+                c text
             .link-text-color:visited
                 c fpLinkVisited
             .link-text:link, ul.global-secondary-nav-links a, .link-text-color, .link-text-color:link, .quickbar a.ng-binding, a.post-meta__link
@@ -1212,6 +1219,14 @@ quoteBorder = moduleBorder
                 &:hover
                     bg buttonHover
                     c buttonHover
+            .label
+                padding 3px 5px             
+                &.label-default
+                    bg buttonStd
+                    cc buttonStdBgColor
+            .img-rounded + .label.label-default
+                left 9px !important
+                
 
         /* === game pages === */
         /* == hidden modules == */

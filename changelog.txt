@@ -327,4 +327,8 @@ login
 panel-title header links
 
 0.13.10
-geekmarket borders, nav-second-level
+geekmarket borders, nav-second-level, label "No images"
+fonts: Roboto added, sans-serif as alternative for Proxima-Nova & Roboto
+
+0.13.11
+front page links:visited (again)
