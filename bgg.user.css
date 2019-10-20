@@ -37,9 +37,9 @@
 @var    color       fpLinkVisitedColor  '… links visited'                       #666
 @var    select      fpLinkWeight        '… link weight'                         ["bold", "bolder", "lighter", "normal*"]
 @var    color       metadataColor       'Post metadata'                         #666
-@var    checkbox    metadataInline      '… inline'                              0
+@var    checkbox    metadataInline      '… inline'                              1
 @var    checkbox    titleTruncation     '… truncate titles'                     1
-@var    checkbox    metadataForumHide   '… hide subforum/blog'                  0
+@var    checkbox    metadataForumHide   '… hide subforum/blog'                  1
 @var    checkbox    metadataAuthorHide  '… hide author'                         0
 @var    checkbox    metadataReactionsHide   '… hide reactions'                  0
 @var    checkbox    quickbarSticky      'Quickbar etc. sticky'                  1
@@ -991,10 +991,18 @@ quoteBorder = moduleBorder
                 margin 0px 0 0 0
 
         /* == metadata == */
+        .media-cell
+            border fpBorder
+            border-top none
+        .media-header
+            headerStyle()
+        h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager 
+            c header
         .post-meta
             overflow visible
+
         if metadataInline
-            if not titleTruncation      
+            if not titleTruncation
                 .media-cell
                     overflow auto
                 h2.media-cell__title, p.media-cell__subtitle
@@ -1011,6 +1019,12 @@ quoteBorder = moduleBorder
                 p.media-cell__subtitle
                     align-self flex-end
                     margin-left 5px
+        else 
+            .media-cell__subtitle
+                display flex
+                flex-wrap wrap
+                > span::after
+                    margin-right 0.3em
         if metadataForumHide
             .geekcentral_module span.post-meta__item:nth-last-child(3)
                 display none
@@ -1024,13 +1038,6 @@ quoteBorder = moduleBorder
         if metadataReactionsHide
             .geekcentral_module span.post-reactions, .geekcentral_module span.post-meta__item:nth-last-child(2)::after
                 display:none
-        .media-cell
-            border fpBorder
-            border-top none
-        .media-header
-            headerStyle()
-        h1.media-header__title, .media-module .dropdown .dropdown-toggle, .module-pager .module-pager__arrow, .module-pager 
-            c header
 
         /* == zebra striped modules == */
         .geekcentral
