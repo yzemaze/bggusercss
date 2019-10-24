@@ -1407,6 +1407,7 @@ quoteBorder = moduleBorder
             &.active > a
                 bg buttonSubtle
                 c linkSelected
+                font-weight 700
             &.disabled > a
                 c textMuted
                 background-color transparent
