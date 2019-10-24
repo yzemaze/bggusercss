@@ -333,3 +333,6 @@ fonts: Roboto added, sans-serif as alternative for Proxima-Nova & Roboto
 0.13.11
 front page links:visited (again)
 front page fixes
+
+0.13.12
+angular articleNew/Selected borders

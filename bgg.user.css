@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.11
+@version        0.13.12
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -814,6 +814,10 @@ quoteBorder = moduleBorder
                                 c buttonHover
                     .user-info
                         c textMuted
+                    &.c-targeted
+                        border articleSelectedBorder
+                    &.c-theme-subscription
+                        border articleNewBorder
                 gg-comment-form
                     .c-guidelines
                         c textMuted
@@ -826,7 +830,7 @@ quoteBorder = moduleBorder
                 c linkHover
     /* ===== /angular8 pages ===== */
 
-    /* ===== AngularJS PAGES ===== */
+    /* ===== ANGULARJS PAGES ===== */
     body.ng-scope
         .btn-indigo
             headerStyle()
