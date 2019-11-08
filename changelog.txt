@@ -336,3 +336,6 @@ front page fixes
 
 0.13.12
 angular articleNew/Selected borders
+
+0.13.13
+mobile: forum table padding/margin fix
