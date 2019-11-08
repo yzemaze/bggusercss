@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      https://github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.12
+@version        0.13.13
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -1322,9 +1322,11 @@ quoteBorder = moduleBorder
         /* == zebra style == */
         ul.summary > li.summary-item
             &:nth-child(2n)
-                bg table2n
+                &, & .summary-item-callout
+                    bg table2n
             &:nth-child(2n+1)
-                bg table2n1
+                &, & .summary-item-callout
+                    bg table2n1
             &:last-child
                 border-bottom none
                 
@@ -1332,9 +1334,10 @@ quoteBorder = moduleBorder
         ul.summary > li.summary-item    
             margin-bottom 0
             padding-top 0.2em
+        @media (min-width: 1100px)
             padding-right 0.2em
-        .summary-callout-lg .summary-item
-            padding-left 7em
+            .summary-callout-lg .summary-item
+                padding-left 7em
                 
         /* == description == */
         .game-awards.panel li a, .panel-expandable .expandable-body a
