@@ -339,3 +339,6 @@ angular articleNew/Selected borders
 
 0.13.13
 mobile: forum table padding/margin fix
+
+0.13.14
+legacy quotetitle hover

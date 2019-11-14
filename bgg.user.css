@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name           BGG UI Customizer
 @description    Easy customization of BGG's UI with user.css
-@namespace      https://github.com/yzemaze/bggusercss/
+@namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.13
+@version        0.13.14
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -1628,6 +1628,8 @@ quoteBorder = moduleBorder
         .quotetitle
             bg quoteTitle
             c quoteTitle
+            & a.postlink:hover
+                headerHoverStyle()
         .quote
             bg quote
             border quoteBorder
