@@ -342,3 +342,6 @@ mobile: forum table padding/margin fix
 
 0.13.14
 legacy quotetitle hover
+
+0.13.15
+legacy quotetitle color

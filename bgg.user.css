@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.14
+@version        0.13.15
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -1628,8 +1628,10 @@ quoteBorder = moduleBorder
         .quotetitle
             bg quoteTitle
             c quoteTitle
-            & a.postlink:hover
-                headerHoverStyle()
+            & a.postlink
+                c headerHoverBg
+                &:hover
+                    headerHoverStyle()
         .quote
             bg quote
             border quoteBorder
