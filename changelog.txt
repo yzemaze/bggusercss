@@ -345,3 +345,6 @@ legacy quotetitle hover
 
 0.13.15
 legacy quotetitle color
+
+0.13.16
+hide bgg-con preview

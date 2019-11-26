@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.15
+@version        0.13.16
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -1095,7 +1095,7 @@ quoteBorder = moduleBorder
             .geekcentral_module.leftcol:nth-child(3)
                 display none
         if geekpreviewHide
-            .geekcentral_module > center > a[href*="/geekpreview"]
+            .geekcentral_module a[href*="/geekpreview"]
                 display none
             .geekcentral_module.rightcol:nth-child(-n+3)
                 margin-bottom 0px
