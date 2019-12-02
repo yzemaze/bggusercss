@@ -352,3 +352,5 @@ hide bgg-con preview
 0.13.17
 geeklist item title hover
 
+0.13.18
+hide support drive
