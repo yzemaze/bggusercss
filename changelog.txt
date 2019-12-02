@@ -348,3 +348,7 @@ legacy quotetitle color
 
 0.13.16
 hide bgg-con preview
+
+0.13.17
+geeklist item title hover
+
