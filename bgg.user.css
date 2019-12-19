@@ -4,7 +4,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.19
+@version        0.13.20
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -81,6 +81,7 @@
 
 == game pages ==
 @var    color       gamepageHeaderColor 'Game pages: header text'               #ddd
+@var    checkbox    buyacopyHide        '… hide Buy a Copy button'              0
 @var    checkbox    promotedVideoHide   '… hide promoted videos'                0
 @var    checkbox    recommendationsHide '… hide recommendations "Fans Also Like"'   0
 
@@ -1254,6 +1255,10 @@ quoteBorder = moduleBorder
 
         /* === game pages === */
         /* == hidden modules == */
+        
+        if buyacopyHide
+            .toolbar-actions > div[hide-ad-block="blockbuyacopy"]
+                display none
         if promotedVideoHide
             promotedvideos-module
                 display none

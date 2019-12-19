@@ -357,3 +357,6 @@ hide support drive
 
 0.13.19
 gift guide
+
+0.13.20
+option hide buy a copy button (game pages)
