@@ -4,7 +4,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.22
+@version        0.13.23
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -291,11 +291,13 @@ quoteBorder = moduleBorder
     .dropdown-menu
         bg menu
         border-color menuBorderColor
-        a, li a, .dropdown-item a, .dropdown-item a:link, .dropdown-item a:visited, &.show a.dropdown-item, &.show .dropdown-item, li.dropdown-option > button, li > button.btn
+        a, li a, .dropdown-item a, .dropdown-item a:link, .dropdown-item a:visited, &.show a.dropdown-item, &.show .dropdown-item, li.dropdown-option > button, li > button.btn, .btn-icon.dropdown-item fa-icon
             textStyle()
             &:hover, &:visited:hover
                 menuHoverStyle()
                 linkStyle()
+        .btn-icon.dropdown-item:hover fa-icon
+            menuHoverStyle()
         li.dropdown-option.active
             button::before, a::before
                 c linkSelected
@@ -661,7 +663,7 @@ quoteBorder = moduleBorder
                 &, span.count
                     c text
             /* comment buttons */
-            ul.comment-actions > li button.comment-btn
+            ul.comment-actions > li button.comment-btn, ul.post-actions > li > button.post-btn, ul.post-actions > li.ellipsis-dropdown > div.dropdown > button.post-btn
                 border-radius buttonHoverRadius
                 c text
                 &.active, &:focus, &:hover
@@ -765,7 +767,9 @@ quoteBorder = moduleBorder
                         margin -3px -5px
                         padding 3px 5px
                         text-decoration none
-            /* == posts == */
+            /* == threads, posts == */
+            .forum-actions button.btn.btn-icon:hover fa-icon, gg-thumbs .interaction-btn-group button.interaction-btn.interaction-count:hover
+                buttonHoverStyle()          
             .user-info .user-name .c-user-author > a
                 headerStyle()            
             /* button specials */

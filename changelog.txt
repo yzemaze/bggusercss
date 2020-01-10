@@ -362,10 +362,14 @@ gift guide
 hide buy a copy button (game pages)
 
 0.13.21
-NEXT button color
+NEXT button color (regression fix)
 
 0.13.22
 forum beta: OP = headerStyle
 geekgold button hover (regression fix)
 thumbs button hover (regression fix)
 header user name color (regression fix)
+post buttons (regression fix)
+
+0.13.23
+forum beta: action buttons
