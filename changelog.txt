@@ -359,4 +359,7 @@ hide support drive
 gift guide
 
 0.13.20
-option hide buy a copy button (game pages)
+hide buy a copy button (game pages)
+
+0.13.21
+NEXT button color
