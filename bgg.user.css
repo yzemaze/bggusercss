@@ -581,7 +581,7 @@ quoteBorder = moduleBorder
                     color black
                             
             /* === user + menus === */
-            li.c-nav-user.dropdown-primary button.dropdown-toggle, div.c-nav-primary-wrapper li.dropdown-primary button.dropdown-toggle
+            .c-nav-primary gg-my-geek .dropdown-primary > .btn, li.c-nav-user.dropdown-primary button.dropdown-toggle, div.c-nav-primary-wrapper li.dropdown-primary button.dropdown-toggle
                 c header
                 border-radius headerHoverRadius
                 padding 0.5em

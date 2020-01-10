@@ -368,3 +368,4 @@ NEXT button color
 forum beta: OP = headerStyle
 geekgold button hover (regression fix)
 thumbs button hover (regression fix)
+header user name color (regression fix)
