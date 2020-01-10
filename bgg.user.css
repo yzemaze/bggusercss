@@ -643,14 +643,14 @@ quoteBorder = moduleBorder
             .feedback-trigger
                 border-radius buttonHoverRadius
             /* thumbs button */     
-            .interaction-btn.thumbsup:hover path#thumbsup-outline
+            .interaction-btn.thumbsup:hover path.thumbsup-outline
                 fill positiveColor
             /* geekgold button */
             gg-geekgold gg-reactions-popup-trigger gg-button-geekgold
                 .interaction-btn.geekgold:hover path
-                    &#coin-background
+                    &.coin-background
                         fill #fde538
-                    &#coin-outline
+                    &.coin-outline
                         fill #a37900                
                 gg-geekgold-quick-give.dropdown-menu.show
                     bg menu
