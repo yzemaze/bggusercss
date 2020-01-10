@@ -4,7 +4,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.21
+@version        0.13.22
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -674,7 +674,7 @@ quoteBorder = moduleBorder
             input, textarea, .form-control, textarea.form-control[readonly]
                 inputStyle()
 
-            /* === image pages, gallery, file pages, video pages === */
+            /* === forum, image pages, gallery, file pages, video pages === */
             /* == header == */
             .breadcrumb-row gg-breadcrumbs.c-light-bg
                 bg module
@@ -765,7 +765,10 @@ quoteBorder = moduleBorder
                         margin -3px -5px
                         padding 3px 5px
                         text-decoration none
-            /* button specials … */
+            /* == posts == */
+            .user-info .user-name .c-user-author > a
+                headerStyle()            
+            /* button specials */
             gg-filepage-page, gg-video-page
                 .media-sidebar .media-sidebar-actions
                     gg-subscription-button .subscription-btn

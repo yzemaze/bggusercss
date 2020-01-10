@@ -363,3 +363,6 @@ hide buy a copy button (game pages)
 
 0.13.21
 NEXT button color
+
+0.13.22
+forum beta: OP = headerStyle
