@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.24
+@version        0.13.25
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -405,14 +405,24 @@ quoteBorder = moduleBorder
         border-color alarmColor     
     .btn-success, .btn-warning, .btn-danger
         &:hover, &:focus, &:active, &.active, .open .dropdown-toggle&
-            buttonHoverStyle()
-            
+            buttonHoverStyle()           
     .btn-subtle, .btn.btn-default:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled).is-active, .btn.btn-white:not(.active):not(:disabled), .btn.btn-white:not(.active):not(:disabled).is-active
         &:hover
             buttonHoverStyle()
             i
                 c buttonHover
-            
+    /* == pagination == */       
+    .page-item.active .page-link
+        background-color linkSelectedColor
+        border-color linkSelectedColor
+        cc linkSelectedColor
+    .page-link
+        c link
+        linkStyle()
+        &, &:visited
+            &:hover
+                buttonHoverStyle()  
+                
     /* === inputs, forms === */
     input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
         inputStyle()
