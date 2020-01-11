@@ -785,9 +785,9 @@ quoteBorder = moduleBorder
                             padding 0 0 0 0.6em !important // c-i!
                             fa-icon.ng-fa-icon
                                 border none
-                    gg-share-buttons .btn
+                    /*gg-share-buttons .btn
                         margin 0 3em 0 3em
-                        padding 0 0 0 0.6em !important // c-i!
+                        padding 0 0 0 0.6em !important // c-i! */
                         
             /* == interaction, file timeline == */
             .caption-footer .interaction-btn-group .interaction-btn
