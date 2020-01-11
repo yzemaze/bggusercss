@@ -785,6 +785,10 @@ quoteBorder = moduleBorder
                         padding 3px 5px
                         text-decoration none
             /* == threads, posts == */
+            .alert-warning
+                background-color dangerColor
+                border-color moduleBorderColor
+                cc dangerColor
             .forum-actions button.btn.btn-icon:hover fa-icon, .interaction-btn-group button.interaction-btn.interaction-count:hover
                 buttonHoverStyle()        
             .user-info .user-name .c-user-author > a
