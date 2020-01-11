@@ -381,4 +381,5 @@ file page share button (regression fix)
 0.13.25
 contentBgColor => alarmColor, dangerColor
 forum beta: pagination
-forum beta: alert warning
+forum beta: alert-warning
+breadcrumbs (regression fix)

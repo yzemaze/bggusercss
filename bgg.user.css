@@ -695,11 +695,11 @@ quoteBorder = moduleBorder
 
             /* === forum, image pages, gallery, file pages, video pages === */
             /* == header == */
-            .breadcrumb-row gg-breadcrumbs.c-light-bg
+            /*.breadcrumb-row gg-breadcrumbs.c-light-bg
                 bg module
                 margin 0 // fix different margins 
                 > span.c-crumb:first-of-type
-                    padding-left 1em            
+                    padding-left 1em*/       
             .c-container,  gg-image-nav .image-nav, gg-comment
                 bg module
                 .popover
@@ -711,14 +711,13 @@ quoteBorder = moduleBorder
                 border quoteBorder !important
                 margin 10px 0
                 padding 10px
-            .breadcrumb-row .c-light-bg
-                .c-crumb:first-of-type, .c-crumb
-                    a
-                        c link
-                        &:hover
-                            buttonHoverStyle()
-                            margin -2px -4px
-                            padding 2px 4px             
+            /*.breadcrumb-row .c-light-bg
+                .c-crumb:first-of-type, .c-crumb*/
+            .forum-breadcrumbs, .breadcrumb-row
+                .breadcrumbs__item a
+                    c link
+                    &:hover
+                        buttonHoverStyle() 
             gg-image-nav
                 border-color moduleBorderColor
                 .image-nav .c-control 
@@ -785,6 +784,8 @@ quoteBorder = moduleBorder
                         padding 3px 5px
                         text-decoration none
             /* == threads, posts == */
+            .forum-header
+                bg module
             .alert-warning
                 background-color dangerColor
                 border-color moduleBorderColor
