@@ -4,7 +4,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.23
+@version        0.13.24
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -121,6 +121,7 @@ buttonHoverStyle()
     border-color buttonHoverBgColor
     border-radius buttonHoverRadius
     c buttonHover
+    transition all .4s ease
 
 headerHoverStyle()
     bg headerHover
@@ -644,7 +645,7 @@ quoteBorder = moduleBorder
                 buttonHoverStyle()
             .feedback-trigger
                 border-radius buttonHoverRadius
-            /* thumbs button */     
+            /* thumbs button */
             .interaction-btn.thumbsup:hover path.thumbsup-outline
                 fill positiveColor
             /* geekgold button */
@@ -768,8 +769,8 @@ quoteBorder = moduleBorder
                         padding 3px 5px
                         text-decoration none
             /* == threads, posts == */
-            .forum-actions button.btn.btn-icon:hover fa-icon, gg-thumbs .interaction-btn-group button.interaction-btn.interaction-count:hover
-                buttonHoverStyle()          
+            .forum-actions button.btn.btn-icon:hover fa-icon, .interaction-btn-group button.interaction-btn.interaction-count:hover
+                buttonHoverStyle()        
             .user-info .user-name .c-user-author > a
                 headerStyle()            
             /* button specials */
@@ -792,8 +793,6 @@ quoteBorder = moduleBorder
             .caption-footer .interaction-btn-group .interaction-btn
                 bg button
                 border-color buttonBorderColor
-                &:hover
-                    c linkHover
             gg-timeline
                 bg module
                 margin-top 20px

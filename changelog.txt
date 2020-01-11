@@ -373,3 +373,6 @@ post buttons (regression fix)
 
 0.13.23
 forum beta: action buttons
+
+0.13.24
+button hover transtion (0.4s ease)
