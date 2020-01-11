@@ -1,4 +1,3 @@
-
 /* ==UserStyle==
 @name           BGG UI Customizer
 @description    Easy customization of BGG's UI with user.css
@@ -212,6 +211,13 @@ if redish(headerBgColor)
 else
     badgeColor      = #ff5100
 
+if redish(contentBgColor)
+    alarmColor      = #0000ff
+    dangerColor     = #0051ff
+else
+    alarmColor      = #ff0000
+    dangerColor     = #ff5100
+    
 borderRadius = 2px
 buttonBgColor = menuBgColor
 buttonBorderColor = menuBorderColor
