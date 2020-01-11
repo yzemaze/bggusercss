@@ -383,3 +383,4 @@ contentBgColor => alarmColor, dangerColor
 forum beta: pagination
 forum beta: alert-warning
 breadcrumbs (regression fix)
+forum beta: post bg + border
