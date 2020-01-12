@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.26
+@version        0.13.27
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -132,6 +132,9 @@ headerStyle()
     bg header
     c header
 
+textStyle()
+    c text
+    
 inputStyle()
     bg input
     border inputBorder
@@ -149,10 +152,8 @@ else
 
 menuHoverStyle()
     headerHoverStyle()
-    // buttonHoverStyle()
+    // buttonHoverStyle()   
     
-textStyle()
-    c text
 /* ===== /functions ===== */
 
 /* ===== THEME ===== */
@@ -687,7 +688,7 @@ quoteBorder = moduleBorder
         /* ==== body ==== */
         .global-body-content, .global-body-content-primary
             bg content
-            gg-markup-text
+            gg-markup-text, gg-markup
                 font-family bodyFont
             
             /* === buttons === */
@@ -728,6 +729,8 @@ quoteBorder = moduleBorder
             /* === input === */
             input, textarea, .form-control, textarea.form-control[readonly]
                 inputStyle()
+            textarea
+                font-family bodyFont
 
             /* === forum, image pages, gallery, file pages, video pages === */
             /* == header == */

@@ -399,3 +399,4 @@ forum beta: emoji dialog
 
 0.13.27
 geeklist title hover
+forum beta: post & textarea font (regression fix)
