@@ -382,12 +382,12 @@ quoteBorder = moduleBorder
         bg buttonPrimary
         border-color buttonPrimaryBgColor
         cc buttonPrimaryBgColor
-    .btn.btn-white, .btn.btn-default
+    .btn.btn-white, .btn.btn-default, .btn-outline-secondary
         &, &:not(.active):not(:disabled)
             bg buttonStd
             border-color buttonStdBgColor
             cc buttonStdBgColor
-    .btn-subtle
+    .btn-subtle, .btn-light
         bg buttonSubtle
         border-color buttonSubtleBgColor
         cc buttonSubtleBgColor
@@ -812,7 +812,15 @@ quoteBorder = moduleBorder
                 bg module
                 border-color moduleBorderColor
             .user-info .user-name .c-user-author > a
-                headerStyle()            
+                headerStyle()
+            /* post editor */
+            .post-editor .post-form
+                bg menu
+                border-color moduleBorderColor
+                .editor-toolbar
+                    bg menu
+                    border-color moduleBorderColor
+                    
             /* button specials */
             gg-filepage-page, gg-video-page
                 .media-sidebar .media-sidebar-actions
