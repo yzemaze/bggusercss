@@ -816,6 +816,9 @@ quoteBorder = moduleBorder
                 border-color moduleBorderColor
             .user-info .user-name .c-user-author > a
                 headerStyle()
+            .post-context__title-wrap
+                bg menu
+                c text
             /* post editor */
             .post-editor .post-form
                 bg menu

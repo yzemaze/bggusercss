@@ -391,3 +391,6 @@ forum beta: editor
 forum beta: thumb count
 forum beta: breadcrumbs icon
 footer-copyright
+
+0.13.26
+forum beta: post-context title-wrap
