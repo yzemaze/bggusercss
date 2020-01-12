@@ -394,3 +394,5 @@ footer-copyright
 
 0.13.26
 forum beta: post-context title-wrap
+forum beta: dice rolls dialog
+forum beta: emoji dialog

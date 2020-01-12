@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.25
+@version        0.13.26
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -308,11 +308,34 @@ quoteBorder = moduleBorder
         li.dropdown-option.active
             button::before, a::before
                 c linkSelected
-    /* modal dialogs */
-    div.modal-content
+    /* == dialogs == */
+    /* modal */
+    .modal-header, .modal-footer
+        bg header
+        border-color moduleBorderColor
+        .modal-title, button.close
+            c header
+    .modal-content
         bg module
         .list-group-item
             bg menu
+    /* emoji-mart */
+    .emoji-mart
+        bg module
+        border-color moduleBorderColor
+        c text
+        .emoji-mart-anchor, .emoji-mart-category-label span, .emoji-mart-title-label, .emoji-mart, .emoji-mart-preview, .emoji-mart-no-results, .emoji-mart-preview-shortnames, .emoji-mart-preview-emoticon
+            bg menu
+            c text
+        .emoji-mart-anchor-selected
+            c linkSelected !important // c-i!
+        .emoji-mart-anchor:hover
+            buttonHoverStyle()
+    /* dice rolls */
+    .roll-modal-body .text-muted
+        c textMuted !important // c-i!
+        &:hover
+            c text !important // c-i!
     /* popover */
     .popover, .popover-body
         bg menu
@@ -383,15 +406,14 @@ quoteBorder = moduleBorder
         border-color buttonPrimaryBgColor
         cc buttonPrimaryBgColor
     .btn.btn-white, .btn.btn-default, .btn-outline-secondary
-        &, &:not(.active):not(:disabled)
-            bg buttonStd
-            border-color buttonStdBgColor
-            cc buttonStdBgColor
+        bg buttonStd
+        border-color buttonStdBgColor
+        cc buttonStdBgColor
     .btn-subtle, .btn-light
         bg buttonSubtle
         border-color buttonSubtleBgColor
         cc buttonSubtleBgColor
-    .btn:not(,btn-empty), .btn-outline-secondary, .btn.btn-secondary, input[type="button"], .btn.btn-link
+    .btn, .btn:not(.btn-empty), .btn-primary, .btn-outline-secondary, .btn.btn-secondary, input[type="button"], .btn.btn-link
         &:hover
             buttonHoverStyle()
     .btn-success
@@ -437,6 +459,9 @@ quoteBorder = moduleBorder
         inputStyle()
         &:focus
             bg input
+            inputStyle()
+    .feedback.feedback-invalid
+        c alarm
             
     /* === navigation === */
     .nav.nav-tabs 
