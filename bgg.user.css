@@ -726,7 +726,10 @@ quoteBorder = moduleBorder
                 .breadcrumbs__item a
                     c link
                     &:hover
-                        buttonHoverStyle() 
+                        buttonHoverStyle()
+            .forum-breadcrumbs, .breadcrumb-row
+                .breadcrumbs__icon
+                    c text    
             gg-image-nav
                 border-color moduleBorderColor
                 .image-nav .c-control 
@@ -893,10 +896,12 @@ quoteBorder = moduleBorder
         /* ==== /body ==== */
                 
         /* ==== footer ==== */
-        div.global-body-content-secondary .geekfooter .geekfooter-item a
+        .global-body-content-secondary .geekfooter .geekfooter-item a
             c text
             &:hover
                 c linkHover
+        .global-body-content-secondary .geekfooter-copyright
+            c text
     /* ===== /angular8 pages ===== */
 
     /* ===== ANGULARJS PAGES ===== */

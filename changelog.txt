@@ -389,3 +389,5 @@ forum beta: pagination
 text color links (regression fix)
 forum beta: editor
 forum beta: thumb count
+forum beta: breadcrumbs icon
+footer-copyright
