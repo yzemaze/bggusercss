@@ -820,6 +820,14 @@ quoteBorder = moduleBorder
                 .editor-toolbar
                     bg menu
                     border-color moduleBorderColor
+            .post-footer .post-count
+                &, & .post-count__number, & .post-count__label
+                    c text
+                    &:hover
+                        buttonHoverStyle()
+            .post-footer .post-count:hover
+                .post-count__number, .post-count__label
+                    buttonHoverStyle()
                     
             /* button specials */
             gg-filepage-page, gg-video-page

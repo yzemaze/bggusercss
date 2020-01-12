@@ -388,3 +388,4 @@ forum beta: header, footer, buttons
 forum beta: pagination
 text color links (regression fix)
 forum beta: editor
+forum beta: thumb count
