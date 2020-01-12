@@ -400,3 +400,7 @@ forum beta: emoji dialog
 0.13.27
 geeklist title hover
 forum beta: post & textarea font (regression fix)
+
+0.13.28
+pagination disabled = textMuted
+forum beta: loading animation color

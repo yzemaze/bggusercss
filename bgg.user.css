@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.27
+@version        0.13.28
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -312,6 +312,13 @@ quoteBorder = moduleBorder
             button::before, a::before
                 c linkSelected
     /* == dialogs == */
+    /* loading */
+   .global-body-content gg-loading 
+        span
+            c textMuted
+        span.c-indicator
+            &, &::before, &::after
+                background-color textMutedColor
     /* modal */
     .modal-header, .modal-footer
         bg header
@@ -444,7 +451,7 @@ quoteBorder = moduleBorder
     .page-item.disabled .page-link
         bg buttonSubtle
         border-color buttonSubtleBgColor
-        cc buttonSubtleBgColor
+        c textMuted
     .page-link
         bg buttonStd
         border-color buttonStdBgColor
