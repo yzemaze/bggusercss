@@ -359,12 +359,12 @@ quoteBorder = moduleBorder
             &:hover
                 c linkHover
                 linkStyle()
-    .link-text, .link-text-color, a.toggler-caret
+    .link-text, .link-text-color, a.toggler-caret, .list-inline-item .link-text-color
         &, &:link, &:visited
             textStyle()
             &:hover
                 c linkHover
-                linkStyle()
+                linkStyle()        
     .link-muted-color
         &, &:link, &:visited
             c textMuted
