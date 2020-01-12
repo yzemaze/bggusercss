@@ -396,3 +396,6 @@ footer-copyright
 forum beta: post-context title-wrap
 forum beta: dice rolls dialog
 forum beta: emoji dialog
+
+0.13.27
+geeklist title hover

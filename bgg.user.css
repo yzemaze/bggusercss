@@ -137,6 +137,8 @@ inputStyle()
     border inputBorder
     border-radius borderRadius
     textStyle()
+    &::placeholder
+        c text
 
 if linkUnderlineStyle != "none"
     linkStyle()
@@ -353,7 +355,7 @@ quoteBorder = moduleBorder
         background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), contentBgColor)
         
     /* === text === */
-    p, textarea
+    p
         textStyle()
         font-family bodyFont
     .text-muted, .help-block
@@ -738,6 +740,11 @@ quoteBorder = moduleBorder
                 bg module
                 .popover
                     bg menu !important
+                    /*&.bs-popover-top > .arrow
+                        &::before
+                            border-top-color moduleBorderColor
+                        &::after
+                            border-top-color menu*/
             .c-container
                 border moduleBorder !important
             gg-markup-quote
@@ -1846,7 +1853,7 @@ quoteBorder = moduleBorder
             a
                 c headerLink
                 &:hover
-                    c linkHover
+                    menuHoverStyle()
         .comment_toolbar
             headerStyle()
             .comment_button
