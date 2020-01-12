@@ -416,12 +416,21 @@ quoteBorder = moduleBorder
         background-color linkSelectedColor
         border-color linkSelectedColor
         cc linkSelectedColor
+    .page-item.disabled .page-link
+        bg buttonSubtle
+        border-color buttonSubtleBgColor
+        cc buttonSubtleBgColor
     .page-link
-        c link
-        linkStyle()
+        bg buttonStd
+        border-color buttonStdBgColor
+        cc buttonStdBgColor
+        fa-icon
+            cc buttonStdBgColor
         &, &:visited
             &:hover
-                buttonHoverStyle()  
+                buttonHoverStyle()
+                fa-icon
+                    cc buttonHoverBgColor
                 
     /* === inputs, forms === */
     input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
