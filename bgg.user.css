@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.28
+@version        0.13.29
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -140,8 +140,6 @@ inputStyle()
     border inputBorder
     border-radius borderRadius
     textStyle()
-    &::placeholder
-        c text
 
 if linkUnderlineStyle != "none"
     linkStyle()
@@ -274,7 +272,8 @@ else
 quoteTitleBgColor = headerBgColor
 quoteTitleColor = headerColor
 quoteBorder = moduleBorder
-/* ===== /vars ===== */ 
+/* ===== /vars ===== */
+    
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
     html
         font-family headerFont
@@ -284,7 +283,7 @@ quoteBorder = moduleBorder
         textStyle()
         font-family headerFont
         font-size 0.875rem
-
+        
     /* ===== NEW PAGES ===== */
     /* === page === */
     .container-fluid
@@ -295,7 +294,7 @@ quoteBorder = moduleBorder
     if skyscraperHide
         .global-body-ad
             display none
-            
+
     /* === menus === */
     /* dropdowns */
     .dropdown-menu
@@ -312,8 +311,13 @@ quoteBorder = moduleBorder
             button::before, a::before
                 c linkSelected
     /* == dialogs == */
+    /* warning */
+    .toast-warning
+        background-color dangerColor
+        border-color moduleBorderColor
+        cc dangerColor
     /* loading */
-   .global-body-content gg-loading 
+    .global-body-content gg-loading 
         span
             c textMuted
         span.c-indicator
@@ -340,7 +344,7 @@ quoteBorder = moduleBorder
         .emoji-mart-anchor-selected
             c linkSelected !important // c-i!
         .emoji-mart-anchor:hover
-            buttonHoverStyle()
+            buttonHoverStyle()        
     /* dice rolls */
     .roll-modal-body .text-muted
         c textMuted !important // c-i!
@@ -361,7 +365,7 @@ quoteBorder = moduleBorder
     /* overlay */
     .expandable div.expandable-envelope p.expandable-overlay
         background-image linear-gradient(to bottom, rgba(255, 255, 255, 0), contentBgColor)
-        
+
     /* === text === */
     p
         textStyle()
@@ -372,7 +376,7 @@ quoteBorder = moduleBorder
             c text
     label
         c text
-        
+
     /* === links, buttons === */
     a, button, .link-muted-color
         outline none !important
@@ -463,10 +467,12 @@ quoteBorder = moduleBorder
                 buttonHoverStyle()
                 fa-icon
                     cc buttonHoverBgColor
-                
+
     /* === inputs, forms === */
     input:not([type="button"]), .form-control, textarea, textarea.form-control[readonly]
         inputStyle()
+        &::placeholder
+            c text
         &:focus
             bg input
             inputStyle()
@@ -650,7 +656,7 @@ quoteBorder = moduleBorder
                 padding 0.5em
                 &:hover, &[aria-expanded="true"]
                     headerHoverStyle()
-            /* fix for Angular8 header dropdowns to extend hover range */ // TODO remove
+            /* fix for Angular8 header dropdowns to extend hover range */
             .dropdown-menu .dropdown-item a
                 padding 0.25em 1em
                 margin -0.25em -1em
@@ -2027,4 +2033,4 @@ quoteBorder = moduleBorder
         dt.recs, dt.recsbig, .positive
             c positive
             > a
-                c positive
+                c positive            

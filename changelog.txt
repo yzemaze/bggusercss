@@ -404,3 +404,6 @@ forum beta: post & textarea font (regression fix)
 0.13.28
 pagination disabled = textMuted
 forum beta: loading animation color
+
+0.13.29
+warning dialog
