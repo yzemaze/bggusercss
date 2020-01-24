@@ -407,3 +407,6 @@ forum beta: loading animation color
 
 0.13.29
 warning dialog
+
+0.13.30
+post context title colors

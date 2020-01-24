@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.29
+@version        0.13.30
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -865,8 +865,9 @@ quoteBorder = moduleBorder
             .user-info .user-name .c-user-author > a
                 headerStyle()
             .post-context__title-wrap
-                bg menu
+                bg module
                 c text
+                outline moduleBorderColor solid 0.2em
             /* post editor */
             .post-editor .post-form
                 bg menu
