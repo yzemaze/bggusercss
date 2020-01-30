@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.30
+@version        0.13.32
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -27,6 +27,7 @@
 @var    checkbox    skyscraperHide      '… skyscraper ad'                       0
 @var    checkbox    supportDriveHide    '… support drive'                       0
 @var    range       pageWidth           'Max width of page'                     [1550,770,3840,10,"px"]
+@var    text        posttextareaMaxHeight   'Max height of new post textarea'       400px
 
 == front page ==
 @var    range       columns             'Front page columns'                    [2,2,5,1]
@@ -476,6 +477,8 @@ quoteBorder = moduleBorder
         &:focus
             bg input
             inputStyle()
+    textarea.post-textarea
+        max-height posttextareaMaxHeight
     .feedback.feedback-invalid
         c alarm
             
@@ -859,7 +862,7 @@ quoteBorder = moduleBorder
                 cc dangerColor
             .forum-actions button.btn.btn-icon:hover fa-icon, .interaction-btn-group button.interaction-btn.interaction-count:hover
                 buttonHoverStyle()
-            .post, .post-stub
+            .post, .post-stub, .post-form__preview-markup
                 bg module
                 border-color moduleBorderColor
             .user-info .user-name .c-user-author > a

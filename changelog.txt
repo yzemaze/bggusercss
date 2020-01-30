@@ -410,3 +410,9 @@ warning dialog
 
 0.13.30
 post context title colors
+
+0.13.31
+post preview bg
+
+0.13.32
+new option: post textarea max height
