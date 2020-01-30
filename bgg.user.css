@@ -26,8 +26,8 @@
 @var    checkbox    giftguideHide       '… gift guide'                          0
 @var    checkbox    skyscraperHide      '… skyscraper ad'                       0
 @var    checkbox    supportDriveHide    '… support drive'                       0
-@var    range       pageWidth           'Max width of page'                     [1550,770,3840,10,"px"]
-@var    text        posttextareaMaxHeight   'Max height of new post textarea'       400px
+@var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
+@var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
 
 == front page ==
 @var    range       columns             'Front page columns'                    [2,2,5,1]
