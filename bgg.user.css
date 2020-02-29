@@ -495,7 +495,7 @@ quoteBorder = moduleBorder
             
     /* === misc === */
     hr
-        border-color moduleBorderColor
+        border-top 2px solid moduleBorderColor
     hr+br
         display none
     /* ===== /new pages ===== */
