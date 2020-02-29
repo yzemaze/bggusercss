@@ -377,6 +377,8 @@ quoteBorder = moduleBorder
             c text
     label
         c text
+    table
+        font-variant tabular-nums
 
     /* === links, buttons === */
     a, button, .link-muted-color

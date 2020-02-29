@@ -416,3 +416,6 @@ post preview bg
 
 0.13.32
 new option: post textarea max height
+
+0.13.33
+tables: tabular numbers (https://boardgamegeek.com/thread/2379044/tabular-numbers)
