@@ -426,3 +426,6 @@ new forum threads: quote styling
 
 0.14.1
 new forum threads: options to hide badges
+
+0.14.2
+new forum threads: option to swap real/user name styling

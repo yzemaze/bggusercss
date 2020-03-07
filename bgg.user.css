@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.14.1
+@version        0.14.2
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -27,6 +27,7 @@
 @var    checkbox    recentPatronHide    '… recent patron badge'                 0
 @var    checkbox    originalPosterHide  '… original poster badge'               0
 @var    checkbox    allBadgesHide       '… all badges'                          0
+@var    checkbox    swapRealUserName    'Swap styling of real & user name'      0
 @var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
 @var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
 == front page ==
@@ -878,6 +879,13 @@ quoteBorder = moduleBorder
             if allBadgesHide
                 span.user-display__badges
                     display none
+            if swapRealUserName
+                .user-display__primary-name, .user-attribution__primary-name
+                    font-size 0.875rem
+                    font-weight normal
+                .user-display__secondary-name, .user-attribution__secondary-name
+                    font-size 1rem
+                    font-weight bold
                 
             .post-context__title-wrap
                 bg module
