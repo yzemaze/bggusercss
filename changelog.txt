@@ -432,3 +432,6 @@ new forum threads: option to swap real/user name styling
 
 0.14.3
 new forum threads: quote styling, 2nd+ level fix
+
+0.14.4
+sticky forum header (hat tip: Albia)
