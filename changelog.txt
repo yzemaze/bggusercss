@@ -420,3 +420,6 @@ new option: post textarea max height
 0.13.33
 tables: tabular numbers (https://boardgamegeek.com/thread/2379044/tabular-numbers)
 hr 2px
+
+0.14.0
+new forum threads: quote styling

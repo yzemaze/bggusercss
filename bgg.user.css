@@ -3,17 +3,15 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.13.33
+@version        0.14.0
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
-
 == theme ==
 @var    checkbox    theme               '3 color theme'                         1
 @var    color       color1              'Color 1 (header)'                      #3f3a60
 @var    color       color2              'Color 2 (background)'                  #ededee
 @var    color       color3              'Color 3 (links)'                       #005bca
-
 == specials ==
 @var    select      logo                'Logo'                                  ["default*", "BGG", "Ernie"]
 @var    checkbox    userMenuLeft        'User menu on the left'                 0
@@ -28,7 +26,6 @@
 @var    checkbox    supportDriveHide    '… support drive'                       0
 @var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
 @var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
-
 == front page ==
 @var    range       columns             'Front page columns'                    [2,2,5,1]
 @var    checkbox    frontpageCondensed  '… less whitespace'                     1
@@ -46,12 +43,10 @@
 @var    checkbox    metadataAuthorHide  '… hide author'                         0
 @var    checkbox    metadataReactionsHide   '… hide reactions'                  0
 @var    checkbox    quickbarSticky      'Quickbar etc. sticky'                  1
-
 == fonts ==
 @var    range       fontSize            "Font size text"                        [14,6,36,1,"px"]
 @var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
 @var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
-
 ==  background & border colors ==
 @var    color       headerBgColor       'Header background'                     #3f3a60
 @var    color       bodyBgColor         'Body background'                       #aaa
@@ -64,7 +59,6 @@
 @var    color       inputBorderColor    '… border'                              #999
 @var    color       table2nBgColor      'Tables even rows'                      #ddd
 @var    color       table2n1BgColor     '… odd rows'                            #ccc
-
 == text colors ==
 @var    color       textColor           'Text'                                  #222
 @var    color       linkColor           'Links'                                 #0053b7
@@ -78,17 +72,14 @@
 @var    color       buttonHoverBgColor  '… hover'                               #ff5100
 @var    color       positiveColor       'Positive values'                       #01ac01
 @var    color       alarmColor          'Negative values, errors'       #ff5100
-
 == game pages ==
 @var    color       gamepageHeaderColor 'Game pages: header text'               #ddd
 @var    checkbox    buyacopyHide        '… hide Buy a Copy button'              0
 @var    checkbox    promotedVideoHide   '… hide promoted videos'                0
 @var    checkbox    recommendationsHide '… hide recommendations "Fans Also Like"'   0
-
 == geeklists, forum ==
 @var    color       articleNewColor     'Article/item new border'               #CE6C6D
 @var    color       articleSelectedColor    '… selected border'                 #000AFF
-
 == subscriptions ==
 @var    checkbox    nextAlways          'Subscriptions display NEXT when empty' 0
 @var    checkbox    nextChange          '… change next new sub icon'            0
@@ -501,7 +492,7 @@ quoteBorder = moduleBorder
     /* ===== /new pages ===== */
 
     /* ===== ANGULAR8 PAGES ===== */
-    /* ==== header, file, image & video pages ==== */
+    /* ==== header, new forum threads, file, image & video pages ==== */
     gg-app
         /* ==== header ==== */
         gg-header
@@ -769,10 +760,16 @@ quoteBorder = moduleBorder
             .c-container
                 border moduleBorder !important
             gg-markup-quote
-                bg quote !important
-                border quoteBorder !important
+                bg quote
+                border quoteBorder
                 margin 10px 0
-                padding 10px
+                padding 0
+                .c-header
+                    bg quoteTitle
+                    c quoteTitle
+                    padding 5px 5px 3px 8px
+                gg-markup-content
+                    padding 5px 5px 5px 8px
             /*.breadcrumb-row .c-light-bg
                 .c-crumb:first-of-type, .c-crumb*/
             .forum-breadcrumbs, .breadcrumb-row
@@ -2039,4 +2036,4 @@ quoteBorder = moduleBorder
         dt.recs, dt.recsbig, .positive
             c positive
             > a
-                c positive            
+                c positive  
