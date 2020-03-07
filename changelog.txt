@@ -423,3 +423,6 @@ hr 2px
 
 0.14.0
 new forum threads: quote styling
+
+0.14.1
+new forum threads: options to hide badges
