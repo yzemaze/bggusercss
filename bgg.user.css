@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.14.2
+@version        0.14.3
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -766,14 +766,14 @@ quoteBorder = moduleBorder
             gg-markup-quote
                 bg quote
                 border quoteBorder
-                margin 10px 0
+                margin 5px
                 padding 0
+                > *
+                    margin 5px
                 .c-header
                     bg quoteTitle
                     c quoteTitle
-                    padding 5px 5px 3px 8px
-                gg-markup-content
-                    padding 5px 5px 5px 8px
+                    padding 5px 5px 3px 7px
             /*.breadcrumb-row .c-light-bg
                 .c-crumb:first-of-type, .c-crumb*/
             .forum-breadcrumbs, .breadcrumb-row
