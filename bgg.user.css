@@ -28,7 +28,7 @@
 @var    checkbox    originalPosterHide  '… original poster badge'               0
 @var    checkbox    allBadgesHide       '… all badges'                          0
 @var    checkbox    stickyForumHeader   'Sticky forum header'                   0
-@var    checkbox    stickyPostHeader    'Sticky post header'                    0
+@var    checkbox    stickyPostHeader    'Sticky post header & avatar'           0
 @var    checkbox    swapRealUserName    'Swap styling of real & user name'      0
 @var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
 @var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
