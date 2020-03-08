@@ -904,12 +904,26 @@ quoteBorder = moduleBorder
                     top 50px
                     z-index 100
             if stickyPostHeader
-                gg-thread .post-header
-                    bg module
-                    border-bottom menuBorder
-                    position sticky
-                    top 137px
-                    z-index 99
+                gg-thread
+                    .post-header
+                        bg module
+                        border-bottom menuBorder
+                    .post-header
+                        position sticky
+                        top 137px
+                        z-index 99
+                    .post-avatar
+                        height 108px
+                        position sticky
+                        z-index 99
+                        top 138px
+                        /*gg-avatar-popup-trigger-button, gg-user-microbadge-set
+                            position sticky
+                            z-index 99
+                        gg-avatar-popup-trigger-button
+                            top 138px
+                        gg-user-microbadge-set
+                            top 228px*/
             if recentPatronHide
                 gg-badge-verified[type="GeekSupporter"]
                     display none
