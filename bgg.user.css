@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.14.6
+@version        0.14.7
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -904,26 +904,26 @@ quoteBorder = moduleBorder
                     top 50px
                     z-index 100
             if stickyPostHeader
+                .post-header
+                    bg module
+                    border-bottom menuBorder
+                    position sticky
+                    z-index 99
+                .post-avatar
+                    height 108px
+                    position sticky
+                    z-index 99
                 gg-thread
                     .post-header
-                        bg module
-                        border-bottom menuBorder
-                    .post-header
-                        position sticky
                         top 137px
-                        z-index 99
                     .post-avatar
                         height 108px
-                        position sticky
-                        z-index 99
                         top 138px
-                        /*gg-avatar-popup-trigger-button, gg-user-microbadge-set
-                            position sticky
-                            z-index 99
-                        gg-avatar-popup-trigger-button
-                            top 138px
-                        gg-user-microbadge-set
-                            top 228px*/
+                gg-image-page, gg-filepage-page
+                    .post-header
+                        top 50px
+                    .post-avatar
+                        top 53px
             if recentPatronHide
                 gg-badge-verified[type="GeekSupporter"]
                     display none

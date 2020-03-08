@@ -442,4 +442,8 @@ Verdana
 post editor: buttons, preview
 
 0.14.6
+sticky post header just in threads
+
+0.14.7
 sticky avatar
+file/image pages: sticky post header & avatar
