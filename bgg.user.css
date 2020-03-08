@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
-@version        0.14.4
+@version        0.14.5
 @author         yzemaze
 @license        CC-BY-NC 4.0
 @preprocessor stylus
@@ -28,6 +28,7 @@
 @var    checkbox    originalPosterHide  '… original poster badge'               0
 @var    checkbox    allBadgesHide       '… all badges'                          0
 @var    checkbox    stickyForumHeader   'Sticky forum header'                   0
+@var    checkbox    stickyPostHeader    'Sticky post header'                    0
 @var    checkbox    swapRealUserName    'Swap styling of real & user name'      0
 @var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
 @var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
@@ -50,8 +51,8 @@
 @var    checkbox    quickbarSticky      'Quickbar etc. sticky'                  1
 == fonts ==
 @var    range       fontSize            "Font size text"                        [14,6,36,1,"px"]
-@var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
-@var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto"]
+@var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
+@var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
 ==  background & border colors ==
 @var    color       headerBgColor       'Header background'                     #3f3a60
 @var    color       bodyBgColor         'Body background'                       #aaa
@@ -877,6 +878,12 @@ quoteBorder = moduleBorder
                     position sticky
                     top 50px
                     z-index 100
+            if stickyPostHeader
+                .post-header
+                    bg module
+                    position sticky
+                    top 137px
+                    z-index 99
             if recentPatronHide
                 gg-badge-verified[type="GeekSupporter"]
                     display none

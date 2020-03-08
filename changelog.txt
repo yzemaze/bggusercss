@@ -435,3 +435,7 @@ new forum threads: quote styling, 2nd+ level fix
 
 0.14.4
 sticky forum header (hat tip: Albia)
+
+0.14.5
+sticky post header
+Verdana
