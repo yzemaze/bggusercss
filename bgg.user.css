@@ -906,6 +906,7 @@ quoteBorder = moduleBorder
             if stickyPostHeader
                 .post-header
                     bg module
+                    border-bottom menuBorder
                     position sticky
                     top 137px
                     z-index 99
