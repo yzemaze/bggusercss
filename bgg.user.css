@@ -401,13 +401,13 @@ quoteBorder = moduleBorder
             textStyle()
             &:hover
                 c linkHover
-                linkStyle()        
+                linkStyle()   
     .link-muted-color
         &, &:link, &:visited
             c textMuted
             &:hover
                 c linkHover
-                linkStyle()
+                linkStyle()              
     a.selected
         c linkSelected
     a:hover, .outline.outline-muted a:hover:not(.btn)
@@ -419,11 +419,11 @@ quoteBorder = moduleBorder
         bg buttonPrimary
         border-color buttonPrimaryBgColor
         cc buttonPrimaryBgColor
-    .btn.btn-white, .btn.btn-default, .btn-outline-secondary
+    .btn.btn-white, .btn.btn-default, .btn-outline-secondary, .btn.editor-tabnav__tab.active
         bg buttonStd
         border-color buttonStdBgColor
         cc buttonStdBgColor
-    .btn-subtle, .btn-light
+    .btn-subtle, .btn-light, .btn.editor-tabnav__tab
         bg buttonSubtle
         border-color buttonSubtleBgColor
         cc buttonSubtleBgColor
@@ -872,6 +872,31 @@ quoteBorder = moduleBorder
                 border-color moduleBorderColor
             .user-info .user-name .c-user-author > a
                 headerStyle()
+            .post-context__title-wrap
+                bg module
+                c text
+                outline moduleBorderColor solid 0.2em
+            .link-text-color, .user-display__primary-link
+                &, &:link, &:visited
+                    textStyle()
+                    &:hover
+                        c linkHover
+                        linkStyle()
+            .btn.editor-tabnav__tab
+                bg buttonSubtle
+                border-color buttonSubtleBgColor
+                cc buttonSubtleBgColor
+                &:hover
+                    buttonHoverStyle()
+                    bg buttonHover !important // c-i!
+                    border-color buttonHoverBgColor !important // c-i!
+            .btn.editor-tabnav__tab.active
+                bg buttonStd !important // c-i!
+                border-color buttonStdBgColor !important // c-i!
+                cc buttonStdBgColor
+            .post-preview.bg-white
+                bg menu !important // c-i!
+                border menuBorder !important // c-i!
             if stickyForumHeader
                 .forum-header
                     width 100%
@@ -899,12 +924,7 @@ quoteBorder = moduleBorder
                     font-weight normal
                 .user-display__secondary-name, .user-attribution__secondary-name
                     font-size 1rem
-                    font-weight bold
-                
-            .post-context__title-wrap
-                bg module
-                c text
-                outline moduleBorderColor solid 0.2em
+                    font-weight bold            
             /* post editor */
             .post-editor .post-form
                 bg menu
