@@ -453,3 +453,10 @@ file/image pages: sticky post header & avatar
 
 1.0.1
 quote-bg slightly lighter on light bg
+
+1.0.2
+hide geekpreview/giftguide regression fix
+
+1.0.3
+subscription icon options removed
+config options reordered

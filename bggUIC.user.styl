@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name           BGG UI Customizer
-@description    Easy customization of BGG's User Interface
+@description    Easy customization of BGG's UI with user.css
 @namespace      github.com/yzemaze/bggusercss/
-@supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.1
+@supportURL     https://www.boardgamegeek.com/thread/2009167/bgg-ui-customizer-colors-fonts-dark-theme-hide-con
+@version        1.0.3
 @author         yzemaze
 @license        GPLv3
-@preprocessor   stylus
+@preprocessor stylus
 == theme ==
 @var    checkbox    theme               '3 color theme'                         1
 @var    color       color1              'Color 1 (header)'                      #3f3a60
@@ -22,18 +22,12 @@
 @var    checkbox    contestHide         '… contests'                            0
 @var    checkbox    geekpreviewHide     '… geekpreviews (GenCon, Essen etc.)'   0
 @var    checkbox    giftguideHide       '… gift guide'                          0
-@var    checkbox    skyscraperHide      '… skyscraper ad'                       0
 @var    checkbox    supportDriveHide    '… support drive'                       0
-@var    checkbox    recentPatronHide    '… recent patron badge'                 0
-@var    checkbox    originalPosterHide  '… original poster badge'               0
-@var    checkbox    allBadgesHide       '… all badges'                          0
-@var    checkbox    stickyForumHeader   'Sticky forum header'                   0
-@var    checkbox    stickyPostHeader    'Sticky post header & avatar'           0
-@var    checkbox    swapRealUserName    'Swap styling of real & user name'      0
+@var    checkbox    skyscraperHide      '… skyscraper ad'                       0
 @var    range       pageWidth           'Max width of page'                     [1550,770,4090,10,"px"]
-@var    range       posttextareaMaxHeight   'Max height of new post textarea'   [400,150,2160,10,"px"]
 == front page ==
-@var    range       columns             'Front page columns'                    [2,2,5,1]
+@var    range       columns             'Front page: columns'                   [2,2,5,1]
+@var    checkbox    quickbarSticky      '… quickbar sticky'                     1
 @var    checkbox    frontpageCondensed  '… less whitespace'                     1
 @var    color       fp2nBgColor         '… background of even rows'             #ddd
 @var    color       fp2n1BgColor        '… background of odd rows'              #ccc
@@ -48,11 +42,10 @@
 @var    checkbox    metadataForumHide   '… hide subforum/blog'                  1
 @var    checkbox    metadataAuthorHide  '… hide author'                         0
 @var    checkbox    metadataReactionsHide   '… hide reactions'                  0
-@var    checkbox    quickbarSticky      'Quickbar etc. sticky'                  1
 == fonts ==
-@var    range       fontSize            "Font size text"                        [14,6,36,1,"px"]
-@var    select      bodyFont            "… body text"                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
-@var    select      headerFont          "… header, buttons, small text …"       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
+@var    range       fontSize            'Font size text'                        [14,6,36,1,"px"]
+@var    select      bodyFont            '… body text'                           ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
+@var    select      headerFont          '… header, buttons, small text …'       ["initial", "monospace", "proportional", "sans-serif", "serif", "Proxima-Nova*", "Roboto", "Verdana"]
 ==  background & border colors ==
 @var    color       headerBgColor       'Header background'                     #3f3a60
 @var    color       bodyBgColor         'Body background'                       #aaa
@@ -71,27 +64,29 @@
 @var    color       linkHoverColor      '… hover'                               #c5130e
 @var    color       linkSelectedColor   '… selected'                            #fdad2f
 @var    color       linkVisitedColor    '… visited'                             #666
-@var    select      linkUnderlineStyle  '… underline style'             ["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
+@var    select      linkUnderlineStyle  '… underline style'                     ["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
 @var    color       buttonPrimaryBgColor 'Buttons: primary'                     #005bca
 @var    color       buttonStdBgColor    '… standard'                            #fff
 @var    color       buttonSubtleBgColor '… subtle'                              #e9e9ec
 @var    color       buttonHoverBgColor  '… hover'                               #ff5100
 @var    color       positiveColor       'Positive values'                       #01ac01
-@var    color       alarmColor          'Negative values, errors'       #ff5100
+@var    color       alarmColor          'Negative values, errors'               #ff5100
+== forum ==
+@var    checkbox    stickyForumHeader   'Forum: sticky thread header'           0
+@var    checkbox    stickyPostHeader    '… sticky username row & avatar'        0
+@var    checkbox    swapRealUserName    '… swap styling of real & user name'    0
+@var    checkbox    recentPatronHide    '… hide recent patron badge'            0
+@var    checkbox    originalPosterHide  '… hide original poster badge'          0
+@var    checkbox    allBadgesHide       '… hide all badges'                     0
+@var    range       posttextareaMaxHeight   '… max height new post textarea'    [400,150,2160,10,"px"]
+== geeklists, forum ==
+@var    color       articleNewColor     'Post/item new border'             #CE6C6D
+@var    color       articleSelectedColor    '… selected border'                 #000AFF
 == game pages ==
 @var    color       gamepageHeaderColor 'Game pages: header text'               #ddd
 @var    checkbox    buyacopyHide        '… hide Buy a Copy button'              0
 @var    checkbox    promotedVideoHide   '… hide promoted videos'                0
-@var    checkbox    recommendationsHide '… hide recommendations "Fans Also Like"'   0
-== geeklists, forum ==
-@var    color       articleNewColor     'Article/item new border'               #CE6C6D
-@var    color       articleSelectedColor    '… selected border'                 #000AFF
-== subscriptions ==
-@var    checkbox    nextAlways          'Subscriptions display NEXT when empty' 0
-@var    checkbox    nextChange          '… change next new sub icon'            0
-@var    text        nextIconUnicode     '… icon (unicode)'                      138         
-@var    color       nextIconColor       '… icon'                                #01ac01
-@var    range       nextIconSize        '… size'                                [1.5,1,6,0.25,"em"]
+@var    checkbox    recommendationsHide '… hide recommendations/fans also like' 0
 ==/UserStyle== */
 
 /* ===== FUNCTIONS ===== */
@@ -561,7 +556,6 @@ quoteBorder = moduleBorder
                         div.c-nav-primary div.dropdown-menu.show
                             left auto !important
                             right 0 !important                  
-            /* nextAlways doesn’t work */
 
             /* === colors === */
             > header.header > .container-fluid
@@ -1090,9 +1084,6 @@ quoteBorder = moduleBorder
                     order 1
                 div.global-header-nav-search-advanced ul.dropdown-menu
                     left 0 !important
-            if nextAlways
-                a.global-header-user-notification-action.ng-hide
-                    display initial !important
 
             /* fix AngularJS header */
             /* TODO remove */
@@ -1301,11 +1292,19 @@ quoteBorder = moduleBorder
                         display none
         else
             if geekpreviewHide
-                .geekcentral_module a[href^="/geekpreview"]
+                .geekcentral_module a[href^="https://boardgamegeek.com/geekpreview"]
                     display none
+                .geekcentral_module.rightcol:nth-child(-n+3)
+                    margin-bottom 0px
+                    #dfp-medrect-reserved-home, #dfp-medrect
+                        display none
             if giftguideHide
-                .geekcentral_module a[href^="/wiki/page/Board_Game_Gift_Guide"]
+                .geekcentral_module a[href^="https://boardgamegeek.com/wiki/page/Board_Game_Gift_Guide"]
                     display none
+                .geekcentral_module.rightcol:nth-child(-n+3)
+                    margin-bottom 0px
+                    #dfp-medrect-reserved-home, #dfp-medrect
+                        display none
                         
         /* === panels === */
         .panel-default > .panel-heading, .panel-primary > .panel-heading
@@ -2067,20 +2066,6 @@ quoteBorder = moduleBorder
             white-space normal
         .editfield:hover
             menuHoverStyle()
-            
-        /* === subscription icon === */
-        if nextChange       
-            img.i_silk_newspaper_go_gray, img.i_silk_newspaper_go
-                display none
-            .subsicon::after
-                c nextIcon
-                content "\f" + nextIconUnicode
-                font-family FontAwesome
-                font-size nextIconSize
-            /* scale old icon
-            .subsicon > img
-                transform:scale(1.5)
-            */
             
         /* === tags === */
         div.tagouter
