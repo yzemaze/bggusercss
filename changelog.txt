@@ -460,3 +460,6 @@ hide geekpreview/giftguide regression fix
 1.0.3
 subscription icon options removed
 config options reordered
+
+1.0.4
+forum buttons: unstyled refinements

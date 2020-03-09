@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.3
+@version        1.0.4
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -732,8 +732,13 @@ quoteBorder = moduleBorder
                 &.active, &:focus, &:hover
                     buttonHoverStyle()
             /* edit buttons */
-            .btn-unstyled:hover
-                c linkHover
+            .btn-unstyled
+                background-color transparent
+                border-color transparent
+                &:hover
+                    buttonHoverStyle()
+                    path
+                        fill headerColor
                     
             /* === input === */
             input, textarea, .form-control, textarea.form-control[readonly]
@@ -849,8 +854,9 @@ quoteBorder = moduleBorder
             .forum-header, .forum-footer
                 bg module
                 border-color moduleBorderColor
-                button, .interaction-btn-group .interaction-btn
+                .interaction-btn-group .interaction-btn
                     bg buttonStd
+                button, .interaction-btn-group .interaction-btn
                     border-color buttonStdBgColor
                     cc buttonStdBgColor
                     fa-icon
