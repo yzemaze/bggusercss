@@ -450,3 +450,6 @@ file/image pages: sticky post header & avatar
 
 1.0.0
 .user.css => .user.styl (finally!)
+
+1.0.1
+quote-bg slightly lighter on light bg

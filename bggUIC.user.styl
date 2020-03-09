@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.0
+@version        1.0.1
 @author         yzemaze
 @license        GPLv3
 @preprocessor   stylus
@@ -264,7 +264,7 @@ if dark(moduleBgColor)
     quoteBgColor        = lighten(moduleBgColor, 10)
     quoteColor          = darken(textColor, 5)
 else
-    quoteBgColor        = darken(moduleBgColor, 5)
+    quoteBgColor        = darken(moduleBgColor, 3)
     quoteColor          = lighten(textColor, 5)
     
 quoteTitleBgColor = headerBgColor
