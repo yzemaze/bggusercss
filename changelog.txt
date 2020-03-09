@@ -447,3 +447,6 @@ sticky post header just in threads
 0.14.7
 sticky avatar
 file/image pages: sticky post header & avatar
+
+1.0.0
+.user.css => .user.styl (finally!)
