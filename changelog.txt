@@ -463,3 +463,6 @@ config options reordered
 
 1.0.4
 forum buttons: unstyled refinements
+
+1.0.5
+level 3+ quotes background
