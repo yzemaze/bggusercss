@@ -466,6 +466,3 @@ forum buttons: unstyled refinements
 
 1.0.5
 level 3+ quotes background
-
-1.0.6
-sticky post header & avatar: fix
