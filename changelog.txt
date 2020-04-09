@@ -469,3 +469,6 @@ level 3+ quotes background
 
 1.0.6
 sticky post header + avatar fixes
+
+1.0.7
+hide recommendations (regression fix)
