@@ -472,3 +472,6 @@ sticky post header + avatar fixes
 
 1.0.7
 hide recommendations (regression fix)
+
+1.0.8
+quotes: Zebra style

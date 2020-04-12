@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.7
+@version        1.0.8
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -259,12 +259,13 @@ if dark(moduleBgColor)
     quoteBgColor        = lighten(moduleBgColor, 10)
     quoteColor          = darken(textColor, 5)
 else
-    quoteBgColor        = darken(moduleBgColor, 3)
+    quoteBgColor        = darken(moduleBgColor, 8)
     quoteColor          = lighten(textColor, 5)
     
+quoteBorder = moduleBorder
 quoteTitleBgColor = headerBgColor
 quoteTitleColor = headerColor
-quoteBorder = moduleBorder
+quoteZebraBgColor = moduleBgColor
 /* ===== /vars ===== */
     
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
@@ -772,7 +773,18 @@ quoteBorder = moduleBorder
                 > *
                     margin 5px
                 gg-markup-quote
-                    bg quote
+                    bg quoteZebra
+                    gg-markup-quote
+                        bg quote
+                        gg-markup-quote
+                            bg quoteZebra
+                            gg-markup-quote
+                                bg quote                
+                                gg-markup-quote
+                                    bg quoteZebra
+                                    gg-markup-quote
+                                        bg quote  
+                            
                 .c-header
                     bg quoteTitle
                     c quoteTitle
