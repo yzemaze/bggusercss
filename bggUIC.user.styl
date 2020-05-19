@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.8
+@version        1.0.9
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -73,11 +73,13 @@
 @var    color       alarmColor          'Negative values, errors'               #ff5100
 == forum ==
 @var    checkbox    stickyForumHeader   'Forum: sticky thread header'           0
-@var    checkbox    stickyPostHeader    '… sticky username row & avatar'        0
+@var    checkbox    stickyPostHeader    '… sticky avatar & post header'         0
+@var    color       postHeaderBgColor   '… post header background'              #ccc
 @var    checkbox    swapRealUserName    '… swap styling of real & user name'    0
 @var    checkbox    recentPatronHide    '… hide recent patron badge'            0
 @var    checkbox    originalPosterHide  '… hide original poster badge'          0
 @var    checkbox    allBadgesHide       '… hide all badges'                     0
+@var    select      postFooterAlignment '… align post footer'                   ["space-between", "left", "right"]
 @var    range       posttextareaMaxHeight   '… max height new post textarea'    [400,150,2160,10,"px"]
 == geeklists, forum ==
 @var    color       articleNewColor     'Post/item new border'             #CE6C6D
@@ -191,6 +193,7 @@ if theme
     articleSelectedColor = linkColor
     buttonHoverBgColor  = linkHoverColor
     buttonPrimaryBgColor = linkColor
+    postHeaderBgColor   = moduleBgColor
     table2nBgColor      = fp2nBgColor
     table2n1BgColor     = fp2n1BgColor
     textMutedColor      = metadataColor
@@ -939,6 +942,8 @@ quoteZebraBgColor = moduleBgColor
                         top 50px
                     .post-avatar
                         top 53px
+            .post-header
+                bg postHeader
             if recentPatronHide
                 gg-badge-verified[type="GeekSupporter"]
                     display none
@@ -954,7 +959,9 @@ quoteZebraBgColor = moduleBgColor
                     font-weight normal
                 .user-display__secondary-name, .user-attribution__secondary-name
                     font-size 1rem
-                    font-weight bold            
+                    font-weight bold    
+            footer.post-footer
+                justify-content postFooterAlignment
             /* post editor */
             .post-editor .post-form
                 bg menu
