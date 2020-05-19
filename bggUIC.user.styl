@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.9
+@version        1.0.10
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -1311,28 +1311,21 @@ quoteZebraBgColor = moduleBgColor
         if contestHide
             .geekcentral_module.leftcol:nth-child(3)
                 display none
-        if geekpreviewHide and giftguideHide
-            .geekcentral_module.rightcol > div:not([class]):not([id])
-                display none
+        if geekpreviewHide or giftguideHide
             .geekcentral_module.rightcol:nth-child(-n+3)
                     margin-bottom 0px
                     #dfp-medrect-reserved-home, #dfp-medrect
-                        display none
+                        display none            
+        if geekpreviewHide and giftguideHide
+            .geekcentral_module.rightcol > div:not([class]):not([id])
+                display none
         else
             if geekpreviewHide
                 .geekcentral_module a[href^="https://boardgamegeek.com/geekpreview"]
                     display none
-                .geekcentral_module.rightcol:nth-child(-n+3)
-                    margin-bottom 0px
-                    #dfp-medrect-reserved-home, #dfp-medrect
-                        display none
             if giftguideHide
                 .geekcentral_module a[href^="https://boardgamegeek.com/wiki/page/Board_Game_Gift_Guide"]
                     display none
-                .geekcentral_module.rightcol:nth-child(-n+3)
-                    margin-bottom 0px
-                    #dfp-medrect-reserved-home, #dfp-medrect
-                        display none
                         
         /* === panels === */
         .panel-default > .panel-heading, .panel-primary > .panel-heading
