@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.10
+@version        1.0.11
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -1521,7 +1521,7 @@ quoteZebraBgColor = moduleBgColor
                 menuHoverStyle()
                 c headerHover !important
         .well
-            bg module
+            bg module !important // c-i!
         .summary-border .summary-item
             border-color menuBorderColor
             
