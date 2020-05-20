@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.11
+@version        1.0.12
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -79,6 +79,7 @@
 @var    checkbox    recentPatronHide    '… hide recent patron badge'            0
 @var    checkbox    originalPosterHide  '… hide original poster badge'          0
 @var    checkbox    allBadgesHide       '… hide all badges'                     0
+@var    color       quoteBgColor        '… quotes background'                   #ddd
 @var    select      postFooterAlignment '… align post footer'                   ["space-between", "left", "right"]
 @var    range       posttextareaMaxHeight   '… max height new post textarea'    [400,150,2160,10,"px"]
 == geeklists, forum ==
@@ -181,6 +182,7 @@ if theme
     else
         alarmColor      = #ff0000
         dangerColor     = #ff5100
+        
 
     inputBgColor        = contentBgColor
     inputBorderColor    = moduleBorderColor
@@ -194,9 +196,27 @@ if theme
     buttonHoverBgColor  = linkHoverColor
     buttonPrimaryBgColor = linkColor
     postHeaderBgColor   = moduleBgColor
+    
+    if dark(moduleBgColor)
+        quoteBgColor        = lighten(moduleBgColor, 10)
+        quoteColor          = darken(textColor, 5)
+    else
+        quoteBgColor        = darken(moduleBgColor, 8)
+        quoteColor          = lighten(textColor, 5)
+    quoteBorder = moduleBorder
+    quoteZebraBgColor = moduleBgColor
+    
     table2nBgColor      = fp2nBgColor
     table2n1BgColor     = fp2n1BgColor
     textMutedColor      = metadataColor
+else
+    if dark(quoteBgColor)
+        quoteColor          = lighten(quoteBgColor, 95%)
+        quoteZebraBgColor   = lighten(quoteBgColor, 10)
+    else
+        quoteColor          = darken(quoteBgColor, 95%)
+        quoteZebraBgColor   = darken(quoteBgColor, 10)
+    quoteBorder = moduleBorder
 /* ===== /theme ===== */
 
 /* ===== VARS ===== */
@@ -258,17 +278,9 @@ menuBorder = 1px solid menuBorderColor
 menuHoverColor = buttonHoverColor
 moduleBorder = 1px solid moduleBorderColor
 
-if dark(moduleBgColor)
-    quoteBgColor        = lighten(moduleBgColor, 10)
-    quoteColor          = darken(textColor, 5)
-else
-    quoteBgColor        = darken(moduleBgColor, 8)
-    quoteColor          = lighten(textColor, 5)
-    
-quoteBorder = moduleBorder
+
 quoteTitleBgColor = headerBgColor
 quoteTitleColor = headerColor
-quoteZebraBgColor = moduleBgColor
 /* ===== /vars ===== */
     
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
@@ -771,6 +783,7 @@ quoteZebraBgColor = moduleBgColor
             gg-markup-quote
                 bg quote
                 border quoteBorder
+                c quote
                 margin 5px
                 padding 0
                 > *
