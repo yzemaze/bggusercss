@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.14
+@version        1.0.15
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -1132,7 +1132,7 @@ quoteTitleColor = headerColor
 
             /* === colors === */
             headerStyle()
-            .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle
+            .global-header-nav-primary .dropdown-toggle, .global-header-nav-primary button.btn, .global-header-nav-primary-separated span a.global-header-icon, geekmail-notifications a.global-header-icon, subscription-notifications span a, button.global-header-nav-toggle, button.global-header-site-selector, a.global-header-icon.is-active i, button.btn.global-header-icon.is-active i, .btn.btn-empty.global-header-icon.global-header-nav-toggle
                 c header !important // c-i!
                 &:hover, &[aria-expanded="true"], &:focus
                     headerHoverStyle()
@@ -1159,7 +1159,7 @@ quoteTitleColor = headerColor
                             menuHoverStyle()
 
             /* === geekmail === */
-            geekmail-notifications a.global-header-icon
+            .global-header-nav-primary-separated span a.global-header-icon, geekmail-notifications a.global-header-icon
                 border-radius headerHoverRadius
                 padding 4px 7px
             subscription-notifications span a.global-header-icon
