@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.15
+@version        1.0.16
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -1430,9 +1430,9 @@ quoteTitleColor = headerColor
         /* === /front page modules & links === */
 
         /* === zebra striped tables === */
-        table.salesreport tr.odd, .table-striped tr:nth-child(2n), .table-condensed tr:nth-child(2n), div.wrapper tr:nth-child(2n), .collection_table > tbody > tr:nth-child(2n), tr[bgcolor="#FFFFFF"]
-            bg table2n !important
-        table.salesreport tr.even, .table-striped tr:nth-child(2n+1), .table-striped > tbody > tr:nth-child(2n+1) > th, .table-striped > tbody > tr:nth-child(2n+1) > td , .table-condensed tr:nth-child(2n+1), div.wrapper tr:nth-child(2n+1), .collection_table > tbody > tr:nth-child(2n+1), tr[bgcolor="#ECEDEE"]
+        tr:nth-child(2n), table.salesreport tr.odd, tr[bgcolor="#FFFFFF"], [ng-repeat="product in data.products"]:nth-child(2n+1)
+            bg table2n
+        tr:nth-child(2n+1), table.salesreport tr.even, tr[bgcolor="#ECEDEE"], [ng-repeat="product in data.products"]:nth-child(2n)
             bg table2n1
 
         /* === geekmarket === */
@@ -1805,7 +1805,7 @@ quoteTitleColor = headerColor
                     bg menu
                     c menu
 
-        .moduletable th, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header
+        .moduletable th, .moduletable th tr, .bggstore_widget_controls, .geekcollection_pager, .menu_noquickbar_bottom, .hotitems th, .bg-red th, .bg-blue th, .profile_table th, .menu_table, .tabOn, .tabOff, .geekmail_header, div.recommendbox_str, .searchbox_header
             headerStyle()
         .moduletable
             border moduleBorder
