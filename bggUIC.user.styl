@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.16
+@version        1.0.17
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -427,7 +427,7 @@ quoteTitleColor = headerColor
         bg buttonPrimary
         border-color buttonPrimaryBgColor
         cc buttonPrimaryBgColor
-    .btn.btn-white, .btn.btn-default, .btn-outline-secondary, .btn.editor-tabnav__tab.active
+    .btn.btn-white:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled), .btn-outline-secondary, .btn.editor-tabnav__tab.active
         bg buttonStd
         border-color buttonStdBgColor
         cc buttonStdBgColor
@@ -878,8 +878,8 @@ quoteTitleColor = headerColor
                         text-decoration none
             /* == threads, posts == */
             .forum-header, .forum-footer
-                bg module
-                border-color moduleBorderColor
+                bg module !important // c-i!
+                border-color moduleBorderColor !important // c-i!
                 .interaction-btn-group .interaction-btn
                     bg buttonStd
                 button, .interaction-btn-group .interaction-btn
