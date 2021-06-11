@@ -235,7 +235,7 @@ else
     alarmColor      = #ff0000
     dangerColor     = #ff5100
 
-borderRadius = 2px
+borderRadius = 4px
 buttonBgColor = menuBgColor
 buttonBorderColor = menuBorderColor
 
@@ -278,12 +278,81 @@ menuBorder = 1px solid menuBorderColor
 menuHoverColor = buttonHoverColor
 moduleBorder = 1px solid moduleBorderColor
 
-
 quoteTitleBgColor = headerBgColor
 quoteTitleColor = headerColor
 /* ===== /vars ===== */
 
 @-moz-document domain("boardgamegeek.com"), domain("bgg.cc"), domain("rpggeek.com"), domain("videogamegeek.com")
+    /* ===== BGG VARS ===== */
+    :root
+        --gray-100 bodyBgColor
+        --gray-200 mix(bodyBgColor, moduleBorderColor)
+        --gray-300 moduleBorderColor
+        --white bodyBgColor
+    body    
+        --cmpBgColor bodyBgColor
+        --cmpTextColor textColor
+        --cmpLinkColor linkColor
+        /*--cmpPurposesColor: var(--black)*/
+        --cmpBrandColor headerBgColor
+        if logo == "Ernie"
+            --cmpLogo url("https://cf.geekdo-static.com/images/geekdo/bgg_cornerlogo.png")    
+    /*
+    --gray-100:#f7f7f8;
+    --gray-200:#ecedee;
+    --gray-300:#e1e3e5;
+    --gray-400:#d1d4d7;
+    --gray-500:#c0c5c8;
+    --gray-600:#878f96;
+    --gray-700:#666e75;
+    --gray-800:#373b3f;
+    --gray-900:#212426;
+    --black:#000;
+    --blue-dark:#0049a2;
+    --purple-dark:#2e2b47;
+    --pink-dark:#aa1b52;
+    --red-dark:#ae141e;
+    --orange-dark:#d34604;
+    --yellow-dark:#bd7a00;
+    --green-dark:#17643c;
+    --teal-dark:#00635b;
+    --cyan-dark:#1b8194;
+    --muted:#585f65;
+    --blue:#005bca;
+    --indigo:#6610f2;
+    --purple:#3f3a60;
+    --pink:#da2b6f;
+    --red:#d71925;
+    --orange:#ff5100;
+    --yellow:#ffa400;
+    --green:#1e8650;
+    --teal:#00857a;
+    --cyan:#63cfe3;
+    --white:#fff;
+    --gray:#878f96;
+    --gray-dark:#373b3f;
+    --primary:#005bca;
+    --secondary:#c0c5c8;
+    --success:#1e8650;
+    --info:#3f3a60;
+    --warning:#ffa400;
+    --danger:#d71925;
+    --light:#f7f7f8;
+    --dark:#212426;
+    --facebook:#3b5998;
+    --twitter:#00aced;
+    --pinterest:#cb2027;
+    --reddit:#ff5700;
+    --breakpoint-xs:0;
+    --breakpoint-sm:576px;
+    --breakpoint-md:768px;
+    --breakpoint-lg:1000px;
+    --breakpoint-xl:1280px;
+    --breakpoint-xxl:1550px;
+    --font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace:Monaco,Consolas,"Liberation Mono","Courier New",monospace
+    */          
+            
     html
         font-family headerFont
         font-size round((fontSize/0.875)) // body text = 0.875rem
@@ -300,7 +369,7 @@ quoteTitleColor = headerColor
     if supportDriveHide
         .support-plea-container, gg-support-leaderboard-ad
             display none
-
+            
     /* === menus === */
     /* dropdowns */
     .dropdown-menu
@@ -316,6 +385,8 @@ quoteTitleColor = headerColor
         li.dropdown-option.active
             button::before, a::before
                 c linkSelected
+    .dropdown-item.active, .dropdown-item:active
+        bg body
     /* == dialogs == */
     /* warning */
     .toast-warning
@@ -406,8 +477,8 @@ quoteTitleColor = headerColor
                 linkStyle()
     .link-text, .link-text-color, a.toggler-caret, .list-inline-item .link-text-color
         &, &:link, &:visited
-            textStyle()
-            &:hover
+            c inherit
+            &:not(button):hover
                 c linkHover
                 linkStyle()
     .link-muted-color
@@ -427,7 +498,7 @@ quoteTitleColor = headerColor
         bg buttonPrimary
         border-color buttonPrimaryBgColor
         cc buttonPrimaryBgColor
-    .btn.btn-white:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled), .btn-outline-secondary, .btn.editor-tabnav__tab.active
+    .btn.btn-white:not(.active):not(:disabled), .btn.btn-default:not(.active):not(:disabled), .btn-outline-secondary, .btn.editor-tabnav__tab.active, .show > .btn-outline-secondary.dropdown-toggle
         bg buttonStd
         border-color buttonStdBgColor
         cc buttonStdBgColor
@@ -877,6 +948,9 @@ quoteTitleColor = headerColor
                         padding 3px 5px
                         text-decoration none
             /* == threads, posts == */
+            .tw-py-3 // new forums 20210610
+                padding 0.25rem 0 !important // c-i!
+
             .forum-header, .forum-footer
                 bg module !important // c-i!
                 border-color moduleBorderColor !important // c-i!
@@ -904,8 +978,8 @@ quoteTitleColor = headerColor
                 outline moduleBorderColor solid 0.2em
             .link-text-color, .user-display__primary-link
                 &, &:link, &:visited
-                    textStyle()
-                    &:hover
+                    c inherit
+                    &:not(button):hover
                         c linkHover
                         linkStyle()
             .btn.editor-tabnav__tab
