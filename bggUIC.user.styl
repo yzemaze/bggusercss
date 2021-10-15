@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.18
+@version        1.0.19
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -576,7 +576,7 @@ quoteTitleColor = headerColor
         display none
     /* ===== /new pages ===== */
 
-    /* ===== ANGULAR8 PAGES ===== */
+    /* ===== ANGULAR8+ PAGES ===== */
     /* ==== header, new forum threads, file, image & video pages ==== */
     gg-app
         /* ==== header ==== */
@@ -1043,6 +1043,8 @@ quoteTitleColor = headerColor
                 .user-display__secondary-name, .user-attribution__secondary-name
                     font-size 1rem
                     font-weight bold
+            .md\\:tw-text-\\[15px\\]
+                font-size fontSizeL !important // c-i!
             footer.post-footer
                 justify-content postFooterAlignment
             /* post editor */
