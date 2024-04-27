@@ -1,0 +1,71 @@
+1. 3 color theme
+2. Color 1 (header)
+3. Color 2 (background)
+4. Color 3 (links)
+5. Logo
+6. User menu on the left
+7. Search bar left of menus
+8. Hide site selector
+9. … subdomain dropdown / edit homepage
+10. … announcements
+11. … contests
+12. … geekpreviews (GenCon, Essen etc.)
+13. … gift guide
+14. … support drive
+15. … skyscraper ad
+16. Max width of page
+17. Front page: columns
+18. … quickbar sticky
+19. … less whitespace
+20. … background of even rows
+21. … background of odd rows
+22. … row borders
+23. … row border-color
+24. … links
+25. … links visited
+26. … link weight
+27. Post metadata
+28. … inline
+29. … truncate titles
+30. … hide subforum/blog
+31. … hide author
+32. … hide reactions
+33. Font size text
+34. … body text
+35. … header, buttons, small text …
+36. Header background
+37. Body background
+38. Content background
+39. Module background
+40. … border
+41. Menus, dropdowns etc. background
+42. … border
+43. Input background
+44. … border
+45. Tables even rows
+46. … odd rows
+47. Text
+48. Links
+49. … hover
+50. … selected
+51. … visited
+52. … underline style
+53. Buttons: primary
+54. … standard
+55. … subtle
+56. … hover
+57. Positive values
+58. Negative values, errors
+59. Forum: sticky thread header
+60. … sticky username row & avatar
+61. … swap styling of real & user name
+62. … hide recent patron badge
+63. … hide original poster badge
+64. … hide all badges
+65. … max height new post textarea
+66. Post/item new border
+67. … selected border
+68. Game pages: header text
+69. … hide Buy a Copy button
+70. … hide promoted videos
+71. … hide recommendations/fans also like
