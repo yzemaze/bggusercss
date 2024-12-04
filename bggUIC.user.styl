@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.20
+@version        1.0.21
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -63,7 +63,6 @@
 @var    color       linkColor           'Links'                                 #0053b7
 @var    color       linkHoverColor      '… hover'                               #c5130e
 @var    color       linkSelectedColor   '… selected'                            #fdad2f
-@var    color       linkVisitedColor    '… visited'                             #666
 @var    select      linkUnderlineStyle  '… underline style'                     ["dashed","dotted","double","initial","inherit","none*","solid","wavy"]
 @var    color       buttonPrimaryBgColor 'Buttons: primary'                     #005bca
 @var    color       buttonStdBgColor    '… standard'                            #fff
@@ -190,7 +189,6 @@ if theme
     menuBorderColor     = moduleBorderColor
     linkHoverColor      = mix(linkColor, textColor)
     linkSelectedColor   = dangerColor
-    linkVisitedColor    = mix(linkColor, linkHoverColor)
     articleNewColor     = linkHoverColor
     articleSelectedColor = linkColor
     buttonHoverBgColor  = linkHoverColor
@@ -466,8 +464,6 @@ quoteTitleColor = headerColor
     a, .nav-tabs-more-dropdown a, .panel-body-toolbar > a, .advertisement-text-body a, .btn.btn-text-link, .btn.btn-link, .btn.btn-text-link.active, .quickbar-pagination button.btn, .panel-inline-links > a:link:not(.btn), .global-footer-item a, .quickbar-icon, .shortcut-add, .shortcut-remove
         c link
         linkStyle()
-    a:visited:not(.btn)
-        c linkVisited
     .summary-image-item .summary-item-title a
         &, &:link, &:visited
             c link
@@ -1755,13 +1751,9 @@ quoteTitleColor = headerColor
                         border-radius 2px
                 .summary-item-counts:hover .summary-item-counts-item
                     c linkHover
-                .summary-item-title a:visited
-                    c linkVisited
                 ul.summary-item-pagination.pagination > li > a
                     &:link
                         c link
-                    &:visited
-                        c linkVisited
                     &:hover
                         buttonHoverStyle()
                 li.summary-item .summary-item-meta > .summary-item-tag > a
