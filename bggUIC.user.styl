@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.24
+@version        1.0.25
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -1394,10 +1394,10 @@ quoteTitleColor = headerColor
             .geekcentral-controls
                 display none
         if announcementHide
-            .geekcentral_module.leftcol:nth-child(2)
+            .geekcentral_module.leftcol:nth-child(2):has(header.bg-red)
                 display none
         if contestHide
-            .geekcentral_module.leftcol:nth-child(3)
+            .geekcentral_module.leftcol:nth-child(3):has(header.bg-blue)
                 display none
         if geekpreviewHide or giftguideHide
             .geekcentral_module.rightcol:nth-child(-n+3)
