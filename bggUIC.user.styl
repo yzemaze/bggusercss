@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.21
+@version        1.0.22
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -443,7 +443,6 @@ quoteTitleColor = headerColor
 
     /* === text === */
     p
-        textStyle()
         font-family bodyFont
     .text-muted, .help-block
         c textMuted
@@ -1440,7 +1439,7 @@ quoteTitleColor = headerColor
             font-family "Glyphicons Halflings"
 
         /* === text-colors === */
-        h1, h2, h3, h4, h5, h6, p, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price
+        h1, h2, h3, h4, h5, h6, .dropdown-header, .panel-heading, .text-muted, .summary-sale-item-price
             textStyle()
 
         /* === front page modules & links === */
