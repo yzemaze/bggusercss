@@ -18,7 +18,7 @@
 @var    checkbox    searchBarLeft       'Search bar left of menus'              0
 @var    checkbox    siteSelectorHide    'Hide site selector'                    0
 @var    checkbox    homeNavHide         '… home nav (explore, dashboard)'       0
-@var    checkbox    editHomepageHide    '… subdomain dropdown / edit homepage'  0
+@var    checkbox    editDashboardHide   '… subdomain dropdown / edit dashboard' 0
 @var    checkbox    announcementHide    '… announcements'                       0
 @var    checkbox    contestHide         '… contests'                            0
 @var    checkbox    geekpreviewHide     '… geekpreviews (GenCon, Essen etc.)'   0
@@ -1390,7 +1390,7 @@ quoteTitleColor = headerColor
                 padding-top 0 !important // c-i!
             .home-tab__inner-container
                 display none
-        if editHomepageHide
+        if editDashboardHide
             .geekcentral-controls
                 display none
         if announcementHide
