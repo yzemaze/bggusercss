@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.26
+@version        1.0.27
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -86,9 +86,12 @@
 @var    color       articleSelectedColor    '… selected border'                 #000AFF
 == game pages ==
 @var    color       gamepageHeaderColor 'Game pages: header text'               #ddd
-@var    checkbox    buyacopyHide        '… hide Buy a Copy button'              0
+@var    checkbox    buyButtonHide				'… hide Buy a Copy button'              0
+@var    checkbox    sleeveButtonHide		'… hide Sleeve It button'								0
+@var    checkbox    buySectionHide			'… hide Buy a Copy section'             0
+@var    checkbox    sleeveSectionHide		'… hide Sleeves section'								0
 @var    checkbox    promotedVideoHide   '… hide promoted videos'                0
-@var    checkbox    recommendationsHide '… hide recommendations/fans also like' 0
+@var    checkbox    recommendationsHide '… hide fans also like'									0
 ==/UserStyle== */
 
 /* ===== FUNCTIONS ===== */
@@ -1555,8 +1558,17 @@ quoteTitleColor = headerColor
         /* === game pages === */
         /* == hidden modules == */
 
-        if buyacopyHide
+        if buyButtonHide
             .toolbar-actions > div[hide-ad-block="blockbuyacopy"]
+                display none
+        if sleeveButtonHide
+            .toolbar-actions > div[hide-ad-block="blocksleevesad"]
+                display none
+        if buySectionHide
+            div[hide-ad-block="blockbuyacopy"]
+                display none
+        if sleeveSectionHide
+            div[hide-ad-block="blocksleevesad"]
                 display none
         if promotedVideoHide
             promotedvideos-module
