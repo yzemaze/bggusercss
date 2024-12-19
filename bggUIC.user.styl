@@ -3,7 +3,7 @@
 @description    Easy customization of BGG's User Interface
 @namespace      github.com/yzemaze/bggusercss/
 @supportURL     https://boardgamegeek.com/guild/3741
-@version        1.0.27
+@version        1.0.28
 @author         yzemaze
 @license        GPLv3
 @preprocessor stylus
@@ -92,6 +92,7 @@
 @var    checkbox    sleeveSectionHide		'… hide Sleeves section'								0
 @var    checkbox    promotedVideoHide   '… hide promoted videos'                0
 @var    checkbox    recommendationsHide '… hide fans also like'									0
+@var    checkbox    trendsBuyButtonHide	'Trends: hide Buy buttons'              0
 ==/UserStyle== */
 
 /* ===== FUNCTIONS ===== */
@@ -1576,6 +1577,11 @@ quoteTitleColor = headerColor
         if recommendationsHide
             recs-module-overview
                 display none
+
+        /* == Trends == */
+        if trendsBuyButtonHide
+        	gg-affiliate-button-compact
+        		display none
 
         /* == mobile == */
         @media (max-width:767px)
